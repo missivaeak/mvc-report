@@ -1,0 +1,12 @@
+
+.lucky-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1rem;
+    img {
+        width: min(calc(960px - 3rem) / 2, calc(100vw - 3rem) / 2);
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}

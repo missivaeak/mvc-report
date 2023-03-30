@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+img {
+    width: 100%;
+}
+
+.two-col {
+    display: flex;
+    flex-direction: row;
+    > * {
+        width: 50%;
+    }
+}
