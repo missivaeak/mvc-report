@@ -1,0 +1,44 @@
+@use "vars";
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Jost');
+
+html {
+    font-size: 100%;
+}
+
+body {
+    line-height: 1.4;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Jost', sans-serif;
+    color: vars.$text-colour-body;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 2.8rem;
+    border-bottom: solid 1px vars.$text-colour-body;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.4rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+p {
+    font-size: 1rem;
+    font-family: 'Cabin', serif;
+    color: vars.$text-colour-body;
+    margin-bottom: 1.4rem;
+}
+
+a, a:visited {
+    color: vars.$text-colour-link;
+}

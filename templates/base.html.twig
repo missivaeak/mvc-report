@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}mvc.ades22{% endblock %}</title>
+        <link rel="icon" href="{{ asset('img/favicon.ico') }}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {{ include('partials/header.html.twig') }}
+        {{ include('partials/nav.html.twig') }}
+        <main class="main">
+            {% block body %}{% endblock %}
+        </main>
+        {{ include('partials/footer.html.twig') }}
+    </body>
+</html>
