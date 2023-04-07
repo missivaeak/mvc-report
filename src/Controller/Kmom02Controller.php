@@ -41,7 +41,7 @@ class Kmom02Controller extends AbstractController
     #[Route("/card/deck/shuffle", name: "card_shuffle")]
     public function cardShuffle(SessionInterface $session): Response
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $deck->shuffle();
         $session->set("deck", $deck);
         return $this->render('pages/card/shuffle.html.twig', [
@@ -65,15 +65,14 @@ class Kmom02Controller extends AbstractController
             'card' => $card,
         ]);
     }
-    
+
     #[Route("/card/deck/draw/{num<\d+>}", name: "card_draw_multiple")]
     public function cardDrawMultiple(
         SessionInterface $session,
         int $num
-        ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
-        $hand = new Hand;
+        $hand = new Hand();
 
         for ($i = 0; $i < $num; $i++) {
             try {
@@ -89,21 +88,20 @@ class Kmom02Controller extends AbstractController
             'hand' => $hand,
         ]);
     }
-    
+
 
     #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deal")]
     public function cardDeal(
         SessionInterface $session,
         int $players,
         int $cards
-        ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
         $hands = [];
 
         // ge varje spela en hand
         for ($i = 0; $i < $players; $i++) {
-            $hands[] = new Hand;
+            $hands[] = new Hand();
         }
 
         // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut

@@ -37,7 +37,7 @@ class ApiController extends AbstractController
     #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ["POST"])]
     public function apiShuffle(SessionInterface $session): Response
     {
-        $deck = new Deck;
+        $deck = new Deck();
         $deck->shuffle();
         $session->set("deck", $deck);
 
@@ -76,7 +76,7 @@ class ApiController extends AbstractController
     public function apiDrawMultiple(SessionInterface $session, int $num): Response
     {
         $deck = $session->get("deck");
-        $hand = new Hand;
+        $hand = new Hand();
 
         for ($i = 0; $i < $num; $i++) {
             try {
@@ -104,14 +104,13 @@ class ApiController extends AbstractController
         SessionInterface $session,
         int $players,
         int $cards
-        ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
         $hands = [];
 
         // ge varje spela en hand
         for ($i = 1; $i <= $players; $i++) {
-            $hands["player" . $i] = new Hand;
+            $hands["player" . $i] = new Hand();
         }
 
         // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut
@@ -127,7 +126,7 @@ class ApiController extends AbstractController
 
         $data = [
             'cardsRemaining' => $deck->getCardsRemaining(),
-            'hands' => array_map(function($hand) { return $hand->peekAllCards(); }, $hands)
+            'hands' => array_map(function ($hand) { return $hand->peekAllCards(); }, $hands)
         ];
 
         $response = new JsonResponse($data);
@@ -136,11 +135,5 @@ class ApiController extends AbstractController
         );
 
         return $response;
-
-        return $this->render('pages/card/deal.html.twig', [
-            'title' => $this->title . ".card.deal",
-            'deck' => $deck,
-            'hands' => $hands,
-        ]);
     }
 }

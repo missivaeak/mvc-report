@@ -13,23 +13,47 @@
         <a href="#kmom10">kmom10</a>
     </nav>
     <p>Redovisningstexter för samtliga kursmoment.</p>
-    <h2 id="kmom01">kmom01</h2>
-    <p>Min tidigare erfarenheter med objektorientering är enbart oopython-kursen som vi precis gick på programmet.</p>
-    <p>Det känns som att det är väldigt likt pythons klasser och objekt hittills. Relationen mellan klass och objekt samt hur konstruktorer och instanser fungerar känn som kärnan i idéen. Jag gillade konstruktionen med en autoloader.</p>
-    <p>Det känns lite som att fuska att använda något så omfattande som symfony, som har så mycket kod som jag inte vet hur det fungerar. Kodstrukturen känns lite svårgreppbar just nu, men det kanske löser sig med lite mer arbete kring det. Idéen med routes och templates är bekant vid det här laget.</p>
-    <p>Det var en väldigt stort dokument så jag har inte läst det från pärm till pärm, men vid snabb anblick så gillar jag att det finns resurser för stilguider, kodstruktur, phpdoc, praktiker. Om det är så bra som det utlovar så är det en väldigt bra resurs!</p>
-    <p>Min TIL var vad -> betyder i php, har jag funderat lite på innan.</p>
+    <section>
+        <h2 id="kmom01">kmom01</h2>
+        <p>Min tidigare erfarenheter med objektorientering är enbart oopython-kursen som vi precis gick på programmet.</p>
+        <p>Det känns som att det är väldigt likt pythons klasser och objekt hittills. Relationen mellan klass och objekt samt hur konstruktorer och instanser fungerar känn som kärnan i idéen. Jag gillade konstruktionen med en autoloader.</p>
+        <p>Det känns lite som att fuska att använda något så omfattande som symfony, som har så mycket kod som jag inte vet hur det fungerar. Kodstrukturen känns lite svårgreppbar just nu, men det kanske löser sig med lite mer arbete kring det. Idéen med routes och templates är bekant vid det här laget.</p>
+        <p>Det var en väldigt stort dokument så jag har inte läst det från pärm till pärm, men vid snabb anblick så gillar jag att det finns resurser för stilguider, kodstruktur, phpdoc, praktiker. Om det är så bra som det utlovar så är det en väldigt bra resurs!</p>
+        <p>Min TIL var vad -> betyder i php, har jag funderat lite på innan.</p>
+    </section>
+    <section>
+        <h2 id="kmom02">kmom02</h2>
 
-    <h2 id="kmom02">kmom02</h2>
-    <p>TBD</p>
+        <p>Arv och komposition beskriver hur objekt är sammansatta. Arv beskriver att något är en delpart av något mer generellt. T.ex. så är ett bil ett fordon, en bil-klass kan då tänkas ärva delar från en fordons-klass. Komposition är när ett objekt har ett annat objekt som beståndsdel.</p>
+
+        <p>Traits är en funktionalitet som kan återkomma eller återanvändas i flera klasser. De är konstruerade enligt väldigt lika regler som en klass, förutom att de behöver inkluderas i en annan klass för att kunna åstadkomma något. Meningen är att de ska ha en funktionalitet som är nyttig för flera klasser.<p>
+
+        <p>Interface är en abstrakt beskrivning av en klass metoder. Om en klass implementerar ett interface så måste den klassen uppfylla interfacets beskrivning. Sedan kan andra delar av koden referera till det interfacet istället för en specifik klass när programmerar t.ex. vill specificera en giltig klass av parameter. Då kan programmerar lita på att den minimifunktionalitet som beskrivs i interfacet uppfylls och kan då tillåta fler sorters parametrar användas i sin kod. Det blir ett sätt att säga jag vill enbart att "denna sortens klasser" ska användas här, istället för att hårdkoda en särskilt klass.</p>
+
+        <p>Jag är på det hela nöjd. Jag försökte använda arv, komposition och interface på ett rimligt vis. Jag gjorde så att en kortlek (Deck) och en hand (Hand) ärver från en abstrakt klass (CardCollectionAbstract) då jag ville få med ett arv men att testa en abstrakt. Jag använde ett interface för korten (Card och CardInterface), det var ju lite överflödigt då jag bara har ett sorts kort, men jag ville testa och det är ju tänkbart att det finns andra sorters kort. För att förbättra koden så skulle jag kanske kunna tänka ut ett sätt att använda traits, eller kanske utöka min Hand-klass med lite mer specifik funktionalitet.</p>
+
+        <p>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</p>
+
+        <p>Jag kunde inte stoppa in en klass som en parameter i en konstruktor, det trodde jag att jag kunde göra. Jag ville göra $deck = new Deck(Card), för att berätta vilken sorts kort som kortleken skulle fyllas med. Efter lite tråcklande så bestämde jag mig för att göra på ett annat vis.</p>
+    </section>
+    <section>
     <h2 id="kmom03">kmom03</h2>
     <p>TBD</p>
+    </section>
+    <section>
     <h2 id="kmom04">kmom04</h2>
     <p>TBD</p>
+    </section>
+    <section>
     <h2 id="kmom05">kmom05</h2>
     <p>TBD</p>
+    </section>
+    <section>
     <h2 id="kmom06">kmom06</h2>
     <p>TBD</p>
+    </section>
+    <section>
     <h2 id="kmom10">kmom10</h2>
     <p>TBD</p>
+    </section>
 {% endblock %}
