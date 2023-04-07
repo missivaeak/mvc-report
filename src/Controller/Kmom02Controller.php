@@ -28,7 +28,7 @@ class Kmom02Controller extends AbstractController
         ]);
     }
 
-    #[Route("/card/deck", name: "cardDeck")]
+    #[Route("/card/deck", name: "card_deck")]
     public function cardDeck(SessionInterface $session): Response
     {
         $deck = $session->get("deck");
@@ -38,7 +38,7 @@ class Kmom02Controller extends AbstractController
         ]);
     }
 
-    #[Route("/card/deck/shuffle", name: "cardShuffle")]
+    #[Route("/card/deck/shuffle", name: "card_shuffle")]
     public function cardShuffle(SessionInterface $session): Response
     {
         $deck = new Deck;
@@ -50,7 +50,7 @@ class Kmom02Controller extends AbstractController
         ]);
     }
 
-    #[Route("/card/deck/draw", name: "cardDraw")]
+    #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(SessionInterface $session): Response
     {
         $deck = $session->get("deck");
@@ -66,8 +66,11 @@ class Kmom02Controller extends AbstractController
         ]);
     }
     
-    #[Route("/card/deck/draw/{num<\d+>}", name: "cardDrawMultiple")]
-    public function cardDrawMultiple(SessionInterface $session, int $num): Response
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_draw_multiple")]
+    public function cardDrawMultiple(
+        SessionInterface $session,
+        int $num
+        ): Response
     {
         $deck = $session->get("deck");
         $hand = new Hand;
@@ -88,36 +91,36 @@ class Kmom02Controller extends AbstractController
     }
     
 
-    #[Route("/card/deck/deal", name: "cardDeal")]
-    public function cardDeal(): Response
+    #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card_deal")]
+    public function cardDeal(
+        SessionInterface $session,
+        int $players,
+        int $cards
+        ): Response
     {
+        $deck = $session->get("deck");
+        $hands = [];
+
+        // ge varje spela en hand
+        for ($i = 0; $i < $players; $i++) {
+            $hands[] = new Hand;
+        }
+
+        // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut
+        for ($j = 0; $j < $cards; $j++) {
+            foreach ($hands as $hand) {
+                try {
+                    $hand->add($deck->draw());
+                } catch (TypeError $e) {
+                    break;
+                }
+            }
+        }
+
         return $this->render('pages/card/deal.html.twig', [
             'title' => $this->title . ".card.deal",
+            'deck' => $deck,
+            'hands' => $hands,
         ]);
-    }
-
-    #[Route("/api/card", name: "api_quote")]
-    public function apiQuote(): Response
-    {
-        $quotes = [
-            "Sorry losers and haters, but my I.Q. is one of the highest -and you all know it! Please don't feel so stupid or insecure,it's not your fault",
-            "Windmills are the greatest threat in the US to both bald and golden eagles. Media claims fictional ‘global warming’ is worse.",
-            "Healthy young child goes to doctor, gets pumped with massive shot of many vaccines, doesn't feel good and changes - AUTISM. Many such cases!"
-        ];
-
-        $quote = $quotes[array_rand($quotes)];
-
-        $data = [
-            'message' => 'Citatmaskinen',
-            'quote' => $quote,
-            'author' => "Donald J. Trump"
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $response;
     }
 }

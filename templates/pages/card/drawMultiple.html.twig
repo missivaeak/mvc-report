@@ -21,13 +21,14 @@
         <p>Kort kvar i leken: {{deck.getCardsRemaining()}}</p>
 
         <form>
+            <label class="card-game-label">Antal kort:</label>
             <input type="number" name="number" value="1" step="1" min="1" max="{{deck.getCardsRemaining()}}">
             <input type="button" name="doit" value="Dra"
-                onClick="location.href='{{ path('cardDrawMultiple', {num: 0}) }}'.slice(0, -1) + this.form.elements.number.value;"
+                onClick="location.href='{{ path('card_draw_multiple', {num: 0}) }}'.slice(0, -1) + this.form.elements.number.value;"
             >
         </form>
     {% else %}
         <p>{{deck.getEmptyWarning()}}</p>
-        <p>Använd <a href="{{ path('cardShuffle') }}">shuffle</a> för att börja om.</p>
+        <p>Använd <a href="{{ path('card_shuffle') }}">shuffle</a> för att börja om.</p>
     {% endif %}
 {% endblock %}

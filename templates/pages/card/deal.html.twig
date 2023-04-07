@@ -6,4 +6,32 @@
     {{ include('partials/card/nav.html.twig')}}
 
     <p>[OPTIONELLT] Skapa en sida card/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått. Visa även antalet kort som är kvar i kortleken.</p>
+
+    {% if hands|length > 0 %}
+        <p>Kort kvar i leken: {{ deck.getCardsRemaining() }}</p>
+
+        <div class="game">
+            {% for hand in hands %}
+                <h3 style="width: 100%;">Spelare {{loop.index}}</h3>
+                {% for card in hand.peekAllCards()|sort %}
+                    <img src="{{ asset('img/cards/' ~ card ~ '.svg') }}" class="card">
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% elseif deck.getCardsRemaining() > 0 %}
+        <p>Kort kvar i leken: {{ deck.getCardsRemaining() }}</p>
+
+        <form>
+            <label class="card-game-label">Antal spelare</label>
+            <input type="number" name="players" value="1" step="1" min="1">
+            <label class="card-game-label">Antal kort</label>
+            <input type="number" name="cards" value="1" step="1" min="1">
+            <input type="button" name="doit" value="Dela ut"
+                onClick="location.href='{{ path('card_deal', {players: 0, cards: 0}) }}'.slice(0, -3) + this.form.elements.players.value + '/' + this.form.elements.cards.value;"
+            >
+        </form>
+    {% else %}
+        <p>{{deck.getEmptyWarning()}}</p>
+        <p>Använd <a href="{{ path('card_shuffle') }}">shuffle</a> för att börja om.</p>
+    {% endif %}
 {% endblock %}
