@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use TypeError;
 
 class ApiController extends AbstractController
 {
@@ -78,7 +79,11 @@ class ApiController extends AbstractController
         $hand = new Hand;
 
         for ($i = 0; $i < $num; $i++) {
-            $hand->add($deck->draw());
+            try {
+                $hand->add($deck->draw());
+            } catch (TypeError $e) {
+                break;
+            }
         }
 
         $data = [
@@ -92,5 +97,50 @@ class ApiController extends AbstractController
         );
 
         return $response;
+    }
+
+    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_deal", methods: ["POST"])]
+    public function apiDeal(
+        SessionInterface $session,
+        int $players,
+        int $cards
+        ): Response
+    {
+        $deck = $session->get("deck");
+        $hands = [];
+
+        // ge varje spela en hand
+        for ($i = 1; $i <= $players; $i++) {
+            $hands["player" . $i] = new Hand;
+        }
+
+        // dela ut ett kort per spelare ända tills det är färdigt eller leken är slut
+        for ($j = 0; $j < $cards; $j++) {
+            foreach ($hands as $hand) {
+                try {
+                    $hand->add($deck->draw());
+                } catch (TypeError $e) {
+                    break;
+                }
+            }
+        }
+
+        $data = [
+            'cardsRemaining' => $deck->getCardsRemaining(),
+            'hands' => array_map(function($hand) { return $hand->peekAllCards(); }, $hands)
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+
+        return $this->render('pages/card/deal.html.twig', [
+            'title' => $this->title . ".card.deal",
+            'deck' => $deck,
+            'hands' => $hands,
+        ]);
     }
 }
