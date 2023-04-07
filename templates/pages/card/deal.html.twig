@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/card/nav.html.twig')}}
+
+    <p>[OPTIONELLT] Skapa en sida card/deck/deal/:players/:cards som delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått. Visa även antalet kort som är kvar i kortleken.</p>
+{% endblock %}

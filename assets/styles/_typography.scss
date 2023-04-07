@@ -39,6 +39,10 @@ p {
     margin-bottom: 1.4rem;
 }
 
+pre {
+    color: vars.$text-colour-body;
+}
+
 a, a:visited {
     color: vars.$text-colour-link;
 }

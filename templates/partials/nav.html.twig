@@ -1,7 +1,9 @@
+{% set current = app.current_route %}
+
 <nav class="nav">
-    {% set current = app.request.attributes.get('_route') %}
     <a {% if current == 'home' %}class="active" {% endif %}href="{{ path('home') }}">home</a>
     <a {% if current == 'about' %}class="active" {% endif %}href="{{ path('about') }}">about</a>
     <a {% if current == 'report' %}class="active" {% endif %}href="{{ path('report') }}">report</a>
     <a {% if current == 'lucky' %}class="active" {% endif %}href="{{ path('lucky') }}">lucky</a>
+    <a {% if current starts with 'card' %}class="active" {% endif %}href="{{ path('card') }}">card</a>
 </nav>

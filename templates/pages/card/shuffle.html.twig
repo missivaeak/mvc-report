@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/card/nav.html.twig')}}
+
+    <div class="game">
+        {% for card in deck.peekAllCards() %}
+            <img src="{{ asset('img/cards/' ~ card ~ '.svg') }}" class="card">
+        {% endfor %}
+    </div>
+
+{% endblock %}

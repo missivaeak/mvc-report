@@ -1,0 +1,18 @@
+@use "vars";
+
+.game {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: 893px;
+    gap: 4px;
+
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.card {
+    width: 65px;
+    &.big {
+        width: 170px;
+    }
+}

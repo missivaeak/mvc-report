@@ -1,0 +1,9 @@
+{% set current = app.current_route %}
+
+<nav class="nav small">
+    <a {% if current == 'cardDeck' %}class="active" {% endif %}href="{{ path("cardDeck") }}">deck</a>
+    <a {% if current == 'cardShuffle' %}class="active" {% endif %}href="{{ path("cardShuffle") }}">shuffle</a>
+    <a {% if current == 'cardDraw' %}class="active" {% endif %}href="{{ path("cardDraw") }}">draw</a>
+    <a {% if current == 'cardDrawMultiple' %}class="active" {% endif %}href="{{ path("cardDrawMultiple", {num: 0}) }}">drawMultiple</a>
+    <a {% if current == 'cardDeal' %}class="active" {% endif %}href="{{ path("cardDeal") }}">deal</a>
+</nav>

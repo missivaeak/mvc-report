@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/card/nav.html.twig')}}
+
+    <div class="game">
+        {% if deck.getCardsRemaining() == 0 %}
+            <p>{{deck.getEmptyWarning()}}</p>
+        {% endif %}
+        {% for card in deck.peekAllCards()|sort %}
+            <img src="{{ asset('img/cards/' ~ card ~ '.svg') }}" class="card">
+        {% endfor %}
+    </div>
+{% endblock %}

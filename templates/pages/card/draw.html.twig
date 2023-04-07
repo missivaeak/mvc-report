@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/card/nav.html.twig')}}
+
+    {% if card is not null %}
+        <p>Kort kvar i leken: {{deck.getCardsRemaining()}}</p>
+    {% endif %}
+
+    <div class="game">
+        {% if card is not null %}
+            <img src="{{ asset('img/cards/' ~ card.peek() ~ '.svg') }}" class="card big">
+        {% else %}
+            <p>{{ deck.getEmptyWarning() }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

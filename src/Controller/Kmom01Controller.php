@@ -23,7 +23,7 @@ class Kmom01Controller extends AbstractController
     public function about(): Response
     {
         return $this->render('pages/about.html.twig', [
-            'title' => $this->title,
+            'title' => $this->title . ".about",
         ]);
     }
 
@@ -31,7 +31,7 @@ class Kmom01Controller extends AbstractController
     public function report(): Response
     {
         return $this->render('pages/report.html.twig', [
-            'title' => $this->title,
+            'title' => $this->title . ".report",
         ]);
     }
 
@@ -41,7 +41,7 @@ class Kmom01Controller extends AbstractController
         $number = random_int(3, 4);
 
         return $this->render('pages/lucky.html.twig', [
-            'title' => $this->title,
+            'title' => $this->title . ".lucky",
             'number' => $number,
         ]);
     }
