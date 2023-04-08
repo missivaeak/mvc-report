@@ -6,4 +6,12 @@
     {{ include('partials/card/nav.html.twig')}}
 
     <p>På din landdningssida, berätta kort om strukturen på dina klasser, vilka klasser har du och hur är de relaterade till varandra. Rita ett UML klass diagram och visa i sidan.</p>
+
+    <p>Denna uppgift använder fem klasser. Klasserna <i>Deck</i> och <i>Hand</i>, som representerar en kortlek och en giv, är båda en samling av kort. De ärver från en abstrakt klass, <i>DeckCollectionAbstract</i>, som beskriver vad de har gemensamt, t.ex. en array att spara kort i och möjligheten att lägga till kort. Deck innehåller färger och valör, det som behövs för att göra en vanlig kortlek. En Hand kan inte generera kort på samma vis, utan innehåller enbart kort samt med metoder som passar en giv.</p>
+
+    <p>Klassen <i>Card</i> representerar ett kort, och implementerar <i>CardInterface</i>. Detta är lite överflödigt i dagsläget, men möjligtvis så kan man göra ett spel med andra sorters kort.</p>
+
+    <p>Så här ser systemet ut i ett UML-diagram.</p>
+
+    <img src="{{ asset('img/uml.png') }}">
 {% endblock %}
