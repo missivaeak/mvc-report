@@ -15,6 +15,16 @@ use TypeError;
 
 class ApiController extends AbstractController
 {
+    private string $title = "mvc.ades22";
+
+    #[Route("/api", name: "api")]
+    public function api(): Response
+    {
+        return $this->render('pages/api.html.twig', [
+            'title' => $this->title . ".api",
+        ]);
+    }
+
     #[Route("/api/deck", name: "api_deck", methods: ["GET"])]
     public function apiDeck(SessionInterface $session): Response
     {

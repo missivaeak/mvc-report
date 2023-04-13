@@ -15,12 +15,12 @@ class Card implements CardInterface
         $this->faceUp = false;
     }
 
-    public function hide()
+    public function hide(): void
     {
         $this->faceUp = false;
     }
 
-    public function reveal()
+    public function reveal(): void
     {
         $this->faceUp = true;
     }
@@ -29,9 +29,9 @@ class Card implements CardInterface
     {
         if ($this->faceUp) {
             return $this->value;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     public function peek(): string

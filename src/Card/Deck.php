@@ -9,6 +9,9 @@ class Deck extends CardCollectionAbstract
 {
     private int $values = 13;
 
+    /**
+     * @var array<string>
+     */
     private array $suits = [
         "hearts",
         "diamonds",

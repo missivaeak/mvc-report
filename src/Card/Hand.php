@@ -2,20 +2,18 @@
 
 namespace App\Card;
 
-use App\Card\Card;
 use App\Card\CardCollectionAbstract;
-use App\Card\CardInterface;
 
 class Hand extends CardCollectionAbstract
 {
-    public function revealAll()
+    public function revealAll(): void
     {
         foreach ($this->cards as $card) {
             $card->reveal();
         }
     }
 
-    public function hideAll()
+    public function hideAll(): void
     {
         foreach ($this->cards as $card) {
             $card->hide();

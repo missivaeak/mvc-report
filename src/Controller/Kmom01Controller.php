@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Kmom01Controller extends AbstractController
 {
-    private $title = "mvc.ades22";
+    private string $title = "mvc.ades22";
 
     #[Route("/", name: "home")]
     public function home(): Response
@@ -46,7 +46,7 @@ class Kmom01Controller extends AbstractController
         ]);
     }
 
-    #[Route("/api/quote", name: "api_quote")]
+    #[Route("/api/quote", name: "api_quote", methods: ["GET"])]
     public function apiQuote(): Response
     {
         $quotes = [

@@ -6,6 +6,9 @@ use App\Card\CardInterface;
 
 class CardCollectionAbstract
 {
+    /**
+     * @var array<CardInterface>
+     */
     protected array $cards;
 
     private string $emptyWarning = "Inga kort kvar.";
@@ -15,11 +18,14 @@ class CardCollectionAbstract
         $this->cards = [];
     }
 
-    public function add(CardInterface $card)
+    public function add(CardInterface $card): void
     {
         $this->cards[] = $card;
     }
 
+    /**
+     * @return array<string>
+     */
     public function peekAllCards(): array
     {
         $cards = [];
@@ -39,12 +45,12 @@ class CardCollectionAbstract
         return count($this->cards);
     }
 
-    public function shuffle()
+    public function shuffle(): void
     {
         shuffle($this->cards);
     }
 
-    public function draw(): CardInterface
+    public function draw(): ?CardInterface
     {
         return array_pop($this->cards);
     }

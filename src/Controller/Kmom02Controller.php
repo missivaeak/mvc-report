@@ -14,7 +14,7 @@ use TypeError;
 
 class Kmom02Controller extends AbstractController
 {
-    private $title = "mvc.ades22";
+    private string $title = "mvc.ades22";
 
     #[Route("/card", name: "card")]
     public function card(SessionInterface $session): Response

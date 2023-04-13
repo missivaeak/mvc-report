@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    <p>Här kan du hitta appens alla API end points.</p>
+    <h3>GET /api/quote</h3>
+    <p>Här kan du få citat från Donald Trump.</p>
+    <h3>GET /api/deck</h3>
+    <p>Hämta lekens nuvarande innehåll.</p>
+    <h3>POST /api/deck/shuffle</h3>
+    <p>Återställ och blanda kortleken. Returnerar lekens innehåll.</p>
+    <h3>POST /api/deck/draw</h3>
+    <p>Dra ett kort ur leken och returnera vilket.</p>
+    <h3>POST /api/deck/draw/:number</h3>
+    <p>Dra &lt;number antal&gt; kort ur leken och returnera dem.</p>
+    <h3>POST /api/deck/deal/:players/:cards</h3>
+    <p>Dela ut &lt;cards antal&gt; kort till &lt;players antal&gt; spelare. Returnera innehållet i spelarnas händer.</p>
+{% endblock %}
