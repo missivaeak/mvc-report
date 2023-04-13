@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/game/nav.html.twig')}}
+
+    <div class="two-col">
+        <div>
+            <p>Här kan du spela Gin Rummy.</p>
+
+            <p>Gin Rummy är ett kortspel som spelas av två spelare med en vanlig kortlek utan jokrar. Spelarna har varsin hand med 10 kort och de spelar rundor där de drar och slänger kort för att förbättra sin hand. För varje runda kan spelarna få poäng och först till 100 poäng vinner.</p>
+
+            <p>Till höger kan du se hur spelet spelas. Tryck <a href="{{ path('game_start') }}">här</a> för att börja spela.</p>
+        </div>
+
+        <div>
+            <div class="embed-container">
+                <iframe src="https://www.youtube.com/embed/DPEsY9wYSUg" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

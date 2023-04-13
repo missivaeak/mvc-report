@@ -7,4 +7,5 @@
     <a {% if current == 'api' %}class="active" {% endif %}href="{{ path('api') }}">api</a>
     <a {% if current == 'lucky' %}class="active" {% endif %}href="{{ path('lucky') }}">lucky</a>
     <a {% if current starts with 'card' %}class="active" {% endif %}href="{{ path('card') }}">card</a>
+    <a {% if current starts with 'game' %}class="active" {% endif %}href="{{ path('game') }}">game</a>
 </nav>

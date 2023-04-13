@@ -12,7 +12,7 @@ body {
 
 .site-header {
     position: relative;
-    height: 400px;
+    height: 200px;
     background-size: cover;
     background-position: bottom;
 
@@ -25,6 +25,10 @@ body {
         font-family: "Jost", sans-serif;
         color: vars.$text-colour-site-header;
         font-size: 3rem;
+    }
+
+    &.big {
+        height: 400px;
     }
 }
 
@@ -74,7 +78,9 @@ body {
 
 .main {
     background-color: vars.$main-background;
-    min-height: calc(100vh - 581px);
+    // min-height: calc(100vh - 581px);
+    // min-height: 100%;
+    flex-grow: 1;
     padding: 0 1rem;
 }
 

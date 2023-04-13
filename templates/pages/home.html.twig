@@ -2,6 +2,8 @@
 
 {% block title %}{{title}}{% endblock %}
 
+{% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %}
+
 {% block body %}
     <p>
         Välkommen!

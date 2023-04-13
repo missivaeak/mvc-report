@@ -1,0 +1,6 @@
+{% set current = app.current_route %}
+
+<nav class="nav small">
+    <a {% if current == 'game_start' %}class="active" {% endif %}href="{{ path("game_start") }}">play</a>
+    <a {% if current == 'game_doc' %}class="active" {% endif %}href="{{ path("game_doc") }}">doc</a>
+</nav>
