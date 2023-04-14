@@ -1,3 +1,5 @@
+@use "vars";
+
 * {
     margin: 0;
     padding: 0;
@@ -18,4 +20,11 @@ img {
     > * {
         width: 50%;
     }
+}
+
+.block {
+    margin-left: 2rem;
+    padding-left: 0.5rem;
+    border-left: solid 2px vars.$text-colour-body;
+    margin-bottom: vars.$magic-number;
 }

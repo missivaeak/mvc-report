@@ -16,6 +16,10 @@ body {
     background-size: cover;
     background-position: bottom;
 
+    &.big {
+        height: 400px;
+    }
+
     .site-title {
         position: absolute;
         left: 50%;
@@ -25,10 +29,6 @@ body {
         font-family: "Jost", sans-serif;
         color: vars.$text-colour-site-header;
         font-size: 3rem;
-    }
-
-    &.big {
-        height: 400px;
     }
 }
 

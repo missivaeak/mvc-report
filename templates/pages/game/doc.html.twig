@@ -5,6 +5,69 @@
 {% block body %}
     {{ include('partials/game/nav.html.twig')}}
 
-    <p>time to read</p>
+    <p>Till denna uppgift tänker jag återanvända vissa klasser från kmom02, men med vissa ändringar.</p>
+
+    <p>Jag behåller CardCollectionAbstract och använder Hand och Deck samt skapar en ny Discard-klass. Handklassen får en metoder för att gruppera korten i melds. Jag utökar alla dessa klasser med traits för som innehåller strukturen på en vanlig kortlek, StandardPlayingCardsTrait</p>
+
+    <p>Jag tänker skapa en ny klass vid namn GinRummyScoring, den innehåller logiken för poängsättning. Den tar emot en hand och man kan antigen hämta poäng från handen som den är, eller så gör klassen en automatisk tilldelning av melds och räknar ut de poängen.</p>
+
+    <p>För att hålla ordning på spelets momentana tillstånds kommer jag använda klasserna Game och Round som håller ordning på vems tur det och hur många poäng som har samlats och liknande saker.</p>
+
+    <h2>Pseudokod för poängräkning</h2>
+
+    <div class="block">
+        <code>
+            <pre>BEGIN findRuns
+    // find all 3 card runs
+    FOR each card, starting from lowest
+        IF the next two cards in the suit is in the hand
+            ADD all three cards to set
+            ADD set to meld list
+END
+
+BEGIN findSets
+    // find all 3 card sets
+    FOR each card
+        IF three or four cards of the same value
+            ADD to set
+            ADD set to meld list
+END
+
+BEGIN fitUnmatchedCards
+    // try to add remaining unmatched cards to melds
+    FOR each unmatched card
+        FOR each run
+            IF can be added to the run
+                ADD to run
+    FOR each unmatched card
+        FOR each set
+            IF can be added to the set
+                ADD to set
+END
+
+BEGIN main
+    BEGIN pointsPrioRuns
+        CALL findRuns
+        CALL findSets
+        CALL fitUnmatchedCards
+        RETURN points
+    END
+
+    BEGIN pointsPrioSets
+        CALL findSets
+        CALL findRuns
+        CALL fitUnmatchedCards
+        RETURN points
+    END
+
+    RETURN the lowest of pointsPrioRuns and pointsPrioSets
+END</pre>
+        </code>
+    </div>
+
+    <h2>Flödesschema för en match Gin Rummy</h2>
+
+    <a href="{{ asset("img/game/flowchart.png") }}"><img src="{{ asset("img/game/flowchart.png") }}" alt="Flödesschema för gin rummy"></a>
+
 
 {% endblock %}
