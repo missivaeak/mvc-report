@@ -46,4 +46,9 @@ class StandardPlayingCard implements CardInterface
     {
         return $this->suit;
     }
+
+    public function __toString(): string
+    {
+        return $this->getFace();
+    }
 }

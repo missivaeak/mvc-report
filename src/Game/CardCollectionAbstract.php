@@ -28,16 +28,7 @@ class CardCollectionAbstract
      */
     public function getAllCards(): array
     {
-        $cards = [];
-
-        foreach ($this->cards as $card) {
-            $cards[] = [
-                "suit" => $card->getSuit(),
-                "value" => $card->getValue()
-            ];
-        }
-
-        return $cards;
+        return $this->cards;
     }
 
     /**

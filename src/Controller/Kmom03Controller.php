@@ -5,6 +5,10 @@ namespace App\Controller;
 use App\Game\GinRummyHand;
 use App\Game\StandardPlayingCard;
 use App\Game\StandardPlayingCardsDeck;
+use App\Game\Player;
+use App\Game\Round;
+use App\Game\Discard;
+use App\Game\Game;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,17 +43,25 @@ class Kmom03Controller extends AbstractController
         }
         $deck->shuffle();
 
-        $hand = new GinRummyHand();
-        for ($i = 0; $i < 10; $i++) {
-            $hand->add($deck->draw());
-        }
-        $hand->addMeld();
-        // $hand->addToMeld(9, 0);
+        $player = new Player(new GinRummyHand);
+        $opponent = new Player(new GinRummyHand);
+
+        $round = new Round($player, $opponent);
+        $round->randomiseDealer();
+        $round->setFirstRound();
+
+        $discard = new Discard;
+        $game = new Game(
+            $player,
+            $opponent,
+            $round,
+            $deck,
+            $discard
+        );
 
         return $this->render('pages/game/start.html.twig', [
             'title' => $this->title,
-            'deck' => $deck,
-            'hand' => $hand
+            'game' => $game
         ]);
     }
 

@@ -4,10 +4,11 @@ namespace App\Game;
 
 use App\Game\CardCollectionAbstract;
 use App\Game\StandardPlayingCard;
+use App\Game\Meld;
 
 class GinRummyHand extends CardCollectionAbstract
 {
-    /** @var array<?array<StandardPlayingCard>> */
+    /** @var array<Meld> */
     private array $melds;
 
     public function __construct()
@@ -29,17 +30,17 @@ class GinRummyHand extends CardCollectionAbstract
         }
     }
 
-    /** @return array<?array<StandardPlayingCard>> */
+    /** @return array<Meld> */
     public function getMelds(): array
     {
         return $this->melds;
     }
 
     /** @return ?array<StandardPlayingCard> */
-    public function getMeld(int $index): array
+    public function getMeld(int $index): ?array
     {
         if ($this->melds[$index]) {
-            return $this->melds[$index];
+            return $this->melds[$index]->getAllCards();
         }
         return null;
     }
@@ -47,26 +48,33 @@ class GinRummyHand extends CardCollectionAbstract
     /** @return array<StandardPlayingCard> */
     public function getUnmatched(): array
     {
-        $unmatched = [];
+        $melded = [];
+
         foreach ($this->melds as $meld) {
-            foreach ($meld as $meldCard) {
-                $unmatched = [...array_filter($this->cards, function($unmatchedCard) use($meldCard) {
-                    return $meldCard !== $unmatchedCard;
-                })];
+            foreach ($meld->getAllCards() as $card) {
+                $melded[] = $card;
             }
         }
 
-        return $unmatched;
+        $unmatched = array_diff($this->cards, $melded);
+
+        return array_values($unmatched);
     }
 
-    public function addMeld(): void
+    public function addMeld(): int
     {
-        $this->melds[] = [];
+        $index = count($this->melds);
+        $this->melds[] = new Meld;
+
+        return $index;
     }
 
-    public function addToMeld(int $unmatchedIndex, int $meldIndex): void
+    public function addToMeld(int $unmatchedIndex, int $meldIndex): StandardPlayingCard
     {
         $unmatched = $this->getUnmatched();
-        $this->melds[$meldIndex][] = $unmatched[$unmatchedIndex];
+        $card = $unmatched[$unmatchedIndex];
+        $this->melds[$meldIndex]->add($card);
+
+        return $card;
     }
 }
