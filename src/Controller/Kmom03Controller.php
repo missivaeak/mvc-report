@@ -9,6 +9,7 @@ use App\Game\Player;
 use App\Game\Round;
 use App\Game\Discard;
 use App\Game\Game;
+use App\Game\GinRummyScoring;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,8 +32,8 @@ class Kmom03Controller extends AbstractController
         ]);
     }
 
-    #[Route("/game/start", name: "game_start")]
-    public function gameStart(): Response
+    #[Route("/game/init", name: "game_init")]
+    public function gameInit(SessionInterface $session): Response
     {
         $deck = new StandardPlayingCardsDeck();
         foreach ($deck->getAllValidCardValues() as $validCard) {
@@ -43,25 +44,41 @@ class Kmom03Controller extends AbstractController
         }
         $deck->shuffle();
 
-        $player = new Player(new GinRummyHand);
-        $opponent = new Player(new GinRummyHand);
+        $player = new Player(new GinRummyHand());
+        $opponent = new Player(new GinRummyHand());
 
         $round = new Round($player, $opponent);
         $round->randomiseDealer();
-        $round->setFirstRound();
 
-        $discard = new Discard;
+        $discard = new Discard();
         $game = new Game(
             $player,
             $opponent,
-            $round,
             $deck,
             $discard
         );
 
+        $game->startRound($round);
+
+        $session->set("game", $game);
+
+        return $this->redirectToRoute('game_start', ['_fragment' => 'ginrummy']);
+    }
+
+    #[Route("/game/start", name: "game_start")]
+    public function gameStart(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+
+        $hand = $game->getPlayerHand();
+        $scoring = new GinRummyScoring();
+        $hand->resetMelds();
+        $scoring->meld($hand);
+
         return $this->render('pages/game/start.html.twig', [
             'title' => $this->title,
-            'game' => $game
+            'game' => $game,
+            // 'indexes' => $indexes
         ]);
     }
 

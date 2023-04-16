@@ -24,9 +24,9 @@ class CardCollectionAbstract
     }
 
     /**
-     * @return array<array<CardInterface>>
+     * @return array<CardInterface>
      */
-    public function getAllCards(): array
+    public function getCards(): array
     {
         return $this->cards;
     }
@@ -34,7 +34,7 @@ class CardCollectionAbstract
     /**
      * @return array<string>
      */
-    public function getAllFaces(): array
+    public function getFaces(): array
     {
         $cards = [];
 

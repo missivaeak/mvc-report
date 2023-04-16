@@ -10,7 +10,7 @@
     {% if hands|length > 0 %}
         <p>Kort kvar i leken: {{ deck.getCardsRemaining() }}</p>
 
-        <div class="game">
+        <div class="card-area">
             {% for hand in hands %}
                 <h3 style="width: 100%;">Spelare {{loop.index}}</h3>
                 {% for card in hand.peekAllCards()|sort %}

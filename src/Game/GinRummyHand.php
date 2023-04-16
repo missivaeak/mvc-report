@@ -13,6 +13,7 @@ class GinRummyHand extends CardCollectionAbstract
 
     public function __construct()
     {
+        parent::__construct();
         $this->melds = [];
     }
 
@@ -37,10 +38,10 @@ class GinRummyHand extends CardCollectionAbstract
     }
 
     /** @return ?array<StandardPlayingCard> */
-    public function getMeld(int $index): ?array
+    public function getMeldCards(int $index): ?array
     {
         if ($this->melds[$index]) {
-            return $this->melds[$index]->getAllCards();
+            return $this->melds[$index]->getCards();
         }
         return null;
     }
@@ -51,20 +52,20 @@ class GinRummyHand extends CardCollectionAbstract
         $melded = [];
 
         foreach ($this->melds as $meld) {
-            foreach ($meld->getAllCards() as $card) {
+            foreach ($meld->getCards() as $card) {
                 $melded[] = $card;
             }
         }
 
         $unmatched = array_diff($this->cards, $melded);
 
-        return array_values($unmatched);
+        return $unmatched;
     }
 
-    public function addMeld(): int
+    public function addMeld(Meld $meld): int
     {
         $index = count($this->melds);
-        $this->melds[] = new Meld;
+        $this->melds[] = $meld;
 
         return $index;
     }
@@ -74,6 +75,24 @@ class GinRummyHand extends CardCollectionAbstract
         $unmatched = $this->getUnmatched();
         $card = $unmatched[$unmatchedIndex];
         $this->melds[$meldIndex]->add($card);
+
+        return $card;
+    }
+
+    public function resetMelds(): void
+    {
+        $this->melds = [];
+    }
+
+    public function drawByPattern(string $suit, int $value): ?CardInterface
+    {
+        $card = null;
+        $cardPattern = new StandardPlayingCard($suit, $value);
+        $result = array_search($cardPattern, $this->cards);
+        if (gettype($result) == "integer") {
+            $card = $this->cards[$result];
+            unset($this->cards[$result]);
+        }
 
         return $card;
     }

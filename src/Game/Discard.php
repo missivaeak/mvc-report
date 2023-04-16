@@ -6,5 +6,12 @@ use App\Game\CardCollectionAbstract;
 
 class Discard extends CardCollectionAbstract
 {
-    // pass
+    public function getTopCard(): ?CardInterface
+    {
+        $result = end($this->cards);
+        if ($result === false) {
+            return null;
+        }
+        return $result;
+    }
 }

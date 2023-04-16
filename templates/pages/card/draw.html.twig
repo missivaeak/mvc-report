@@ -9,7 +9,7 @@
         <p>Kort kvar i leken: {{deck.getCardsRemaining()}}</p>
     {% endif %}
 
-    <div class="game">
+    <div class="card-area">
         {% if card is not null %}
             <img src="{{ asset('img/cards/' ~ card.peek() ~ '.svg') }}" class="card big">
         {% else %}

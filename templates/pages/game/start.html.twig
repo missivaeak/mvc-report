@@ -5,8 +5,65 @@
 {% block body %}
     {{ include('partials/game/nav.html.twig')}}
 
-    <p>time to win</p>
+    {% set player = game.getPlayer() %}
+    {% set playerHand = game.getPlayerHand() %}
+    {% set opponent = game.getOpponent() %}
+    {% set opponentHand = game.getOpponentHand() %}
+    {% set deck = game.getDeck() %}
+    {% set discard = game.getDiscard() %}
+    {% set round = game.getRound() %}
 
-    {{ dump(game) }}
+    <h2 id="ginrummy">Gin Rummy</h2>
+
+    <div class="game">
+        <div class="hand">
+        <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Opponent</h3>
+        <h4>{{opponent.getScore()}} points</h4>
+                    {% for card in opponentHand.getCards() %}
+                {% if card.faceUp() == true %}
+                    <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" 
+                    class="card">
+                {% else %}
+                    <img src="{{ asset('img/cards/back.svg') }}" 
+                    class="card">
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="deck">
+            <p>Cards in deck: {{ deck.getCardsRemaining() }}</p>
+            <img src="{{ asset('img/cards/back.svg') }}" class="card big clickable">
+        </div>
+
+        <div class="discard">
+            {% if discard.cardsRemaining() > 0 %}
+                <img src="{{ asset('img/cards/' ~ discard.getTopCard().getFace() ~ '.svg') }}" class="card big clickable">
+            {% endif %}
+        </div>
+
+        <div class="hand">
+        <h3 {% if round.getDealer() is same as player %} style="text-decoration: underline;"{% endif %}>You</h3>
+        <h4>{{player.getScore()}} points</h4>
+            {% for card in playerHand.getUnmatched() %}
+                <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card">
+            {% endfor %}
+            {% for meld in playerHand.getMelds() %}
+                __
+                {% for card in meld.getCards() %}
+                    <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card">
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {# {{ dump(indexes) }} #}
+
+    {{ dump(playerHand) }}
+
+    {{ dump(opponentHand) }}
+
+    {{ dump(deck) }}
+
+    {{ dump(discard) }}
 
 {% endblock %}

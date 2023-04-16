@@ -5,7 +5,7 @@
 {% block body %}
     {{ include('partials/card/nav.html.twig')}}
 
-    <div class="game">
+    <div class="card-area">
         {% for card in deck.peekAllCards() %}
             <img src="{{ asset('img/cards/' ~ card ~ '.svg') }}" class="card">
         {% endfor %}

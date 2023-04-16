@@ -5,7 +5,7 @@
 {% block body %}
     {{ include('partials/card/nav.html.twig')}}
 
-    <div class="game">
+    <div class="card-area">
         {% if deck.getCardsRemaining() == 0 %}
             <p>{{deck.getEmptyWarning()}}</p>
         {% endif %}

@@ -1,0 +1,49 @@
+@use "vars";
+
+.game {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: vars.$magic-number;
+}
+
+.hand {
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    img:not(:first-of-type) {
+        margin-left: vars.$magic-number * 0.2;
+    }
+
+    h3,
+    h4 {
+        width: 100%;
+    }
+}
+
+.deck {
+    grid-column: 1 / 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    column-gap: vars.$magic-number;
+
+    p {
+        display: inline;
+    }
+}
+
+.discard {
+    grid-column: 2 / 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.clickable:hover {
+    outline: solid 3px #a7a7ff;
+    background-color: #a7a7ff;
+    border-radius: 3px;
+}

@@ -24,14 +24,11 @@ class Game
     public function __construct(
         Player $player,
         Player $opponent,
-        Round $round,
         StandardPlayingCardsDeck $deck,
         Discard $discard
-        )
-    {
+    ) {
         $this->player = $player;
         $this->opponent = $opponent;
-        $this->round = $round;
         $this->deck = $deck;
         $this->discard = $discard;
 
@@ -81,5 +78,51 @@ class Game
     public function getHandSize(): int
     {
         return $this->handSize;
+    }
+
+    private function deal(): void
+    {
+        for ($i = 0; $i < $this->handSize; $i++) {
+            $this->round->deal($this->deck);
+        }
+    }
+
+    private function deckToDiscard(): void
+    {
+        $card = $this->deck->draw();
+        $card->reveal();
+        $this->discard->add($card);
+    }
+
+    public function startRound(Round $round): void
+    {
+        $this->round = $round;
+        $this->deal();
+        $this->deckToDiscard();
+    }
+
+    public function getPlayerHand(): GinRummyHand
+    {
+        return $this->player->getHand();
+    }
+
+    public function getOpponentHand(): GinRummyHand
+    {
+        return $this->opponent->getHand();
+    }
+
+    public function getDeck(): StandardPlayingCardsDeck
+    {
+        return $this->deck;
+    }
+
+    public function getDiscard(): Discard
+    {
+        return $this->discard;
+    }
+
+    public function getRound(): Round
+    {
+        return $this->round;
     }
 }

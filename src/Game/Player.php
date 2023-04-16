@@ -14,4 +14,14 @@ class Player
         $this->hand = $hand;
         $this->score = 0;
     }
+
+    public function getHand(): GinRummyHand
+    {
+        return $this->hand;
+    }
+
+    public function getScore(): int
+    {
+        return $this->score;
+    }
 }

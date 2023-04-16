@@ -4,19 +4,23 @@ namespace App\Game;
 
 use App\Game\Player;
 
+use TypeError;
+
 class Round
 {
     private array $players;
     private Player $dealer;
-    private bool $firstRound;
-    
+    private int $turn;
+    private int $turnStep;
+
     public function __construct(Player $player, Player $opponent)
     {
         $this->players = [
             $player,
             $opponent
         ];
-        $this->firstRound = false;
+        $this->turn = 0;
+        $this->turnStep = 0;
     }
 
     public function randomiseDealer(): Player
@@ -46,13 +50,32 @@ class Round
         }
     }
 
-    public function setFirstRound(): void
-    {
-        $this->firstRound = true;
-    }
-
     public function isFirstRound(): bool
     {
-        return $this->firstRound;
+        return $this->turn == 0;
+    }
+
+    public function nextTurn(): void
+    {
+        $this->turn++;
+        $this->turnStep = 0;
+    }
+
+    public function nextStep(): void
+    {
+        $this->turnStep++;
+    }
+
+    public function deal(CardCollectionAbstract $deck): bool
+    {
+        foreach ($this->players as $player) {
+            try {
+                $player->getHand()->add($deck->draw());
+            } catch (TypeError $e) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
