@@ -1,0 +1,9 @@
+@use "vars";
+
+.flash-notice {
+    width: max-content;
+    margin: 0 auto;
+    background-color: #ffe73155;
+    color: #ccc;
+    padding: vars.$magic-number;
+}

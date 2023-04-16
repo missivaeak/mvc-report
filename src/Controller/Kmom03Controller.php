@@ -62,20 +62,26 @@ class Kmom03Controller extends AbstractController
 
         $session->set("game", $game);
 
-        return $this->redirectToRoute('game_start', ['_fragment' => 'ginrummy']);
+        return $this->redirectToRoute('game_main', ['_fragment' => 'ginrummy']);
     }
 
-    #[Route("/game/start", name: "game_start")]
-    public function gameStart(SessionInterface $session): Response
+    #[Route("/game/main", name: "game_main")]
+    public function gameMain(SessionInterface $session): Response
     {
         $game = $session->get("game");
 
+        $this->addFlash(
+            'notice',
+            'Your round was saved to the total!'
+        );
+
+        // ordna spelarens hand i serier
         $hand = $game->getPlayerHand();
         $scoring = new GinRummyScoring();
         $hand->resetMelds();
         $scoring->meld($hand);
 
-        return $this->render('pages/game/start.html.twig', [
+        return $this->render('pages/game/main.html.twig', [
             'title' => $this->title,
             'game' => $game,
             // 'indexes' => $indexes

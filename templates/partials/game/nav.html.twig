@@ -1,6 +1,9 @@
 {% set current = app.current_route %}
 
 <nav class="nav small">
-    <a {% if current == 'game_start' %}class="active" {% endif %}href="{{ path("game_init") }}">play</a>
+    <a href="{{ path("game_init") }}">newGame</a>
+    {% if app.session.get("game") is defined %}
+    <a {% if current == 'game_main' %}class="active" {% endif %}href="{{ path("game_main") }}#ginrummy">continueGame</a>
+    {% endif %}
     <a {% if current == 'game_doc' %}class="active" {% endif %}href="{{ path("game_doc") }}">doc</a>
 </nav>

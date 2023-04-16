@@ -15,6 +15,8 @@
 
     <h2 id="ginrummy">Gin Rummy</h2>
 
+    {{ include('partials/game/flash.html.twig') }}
+
     <div class="game">
         <div class="hand">
         <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Opponent</h3>

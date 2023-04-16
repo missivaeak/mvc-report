@@ -5,12 +5,24 @@ namespace App\Game;
 use App\Game\Player;
 
 use TypeError;
+use Exception;
 
 class Round
 {
     private array $players;
     private Player $dealer;
+    private Player $activePlayer;
     private int $turn;
+    /**
+     * Motsvarar olika steg på en tur
+     * 0 = välja kortet på slänghögen eller pass (första draget),
+     * 1 = tvungen att ta översta kortet på leken (om båda passade),
+     * 2 = välja kortlek eller slänghög,
+     * 3 = slänga kort från handen,
+     * 4 = bestämma om man vill avsluta turen eller knacka,
+     * 5 = matcha kort på motståndarens serier
+     * @var int turnStep
+     */
     private int $turnStep;
 
     public function __construct(Player $player, Player $opponent)
@@ -25,10 +37,13 @@ class Round
 
     public function randomiseDealer(): Player
     {
-        $dealer = $this->players[array_rand($this->players)];
-        $this->dealer = $dealer;
+        $dealerIndex = array_rand($this->players);
+        $activePlayerIndex = ($dealerIndex + 1) % 2;
+        // throw new Exception($dealerIndex.$activePlayerIndex);
+        $this->dealer = $this->players[$dealerIndex];
+        $this->activePlayer = $this->players[$activePlayerIndex];
 
-        return $dealer;
+        return $this->dealer;
     }
 
     public function getDealer(): Player
@@ -39,6 +54,11 @@ class Round
     public function setDealer(Player $dealer)
     {
         $this->dealer = $dealer;
+    }
+
+    public function getActivePlayer(): Player
+    {
+        return $this->activePlayer;
     }
 
     public function getNextDealer(): Player
@@ -59,11 +79,21 @@ class Round
     {
         $this->turn++;
         $this->turnStep = 0;
+        foreach ($this->players as $player) {
+            if ($player !== $this->activePlayer) {
+                $this->activePlayer = $player;
+            }
+        }
     }
 
-    public function nextStep(): void
+    public function getStep(): int
     {
-        $this->turnStep++;
+        return $this->turnStep;
+    }
+
+    public function setStep(int $turnStep): void
+    {
+        $this->turnStep = $turnStep;
     }
 
     public function deal(CardCollectionAbstract $deck): bool
