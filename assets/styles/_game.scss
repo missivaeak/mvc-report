@@ -23,11 +23,15 @@
     }
 }
 
-.deck {
+.deck,
+.knock {
     grid-column: 1 / 1;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+}
+
+.deck {
     column-gap: vars.$magic-number;
 
     p {
@@ -35,7 +39,8 @@
     }
 }
 
-.discard {
+.discard,
+.pass {
     grid-column: 2 / 2;
     display: flex;
     justify-content: flex-start;
@@ -46,4 +51,10 @@
     outline: solid 3px #a7a7ff;
     background-color: #a7a7ff;
     border-radius: 3px;
+}
+
+.knock button,
+.pass button {
+    font-size: 2rem;
+    padding: vars.$magic-number * 0.5 vars.$magic-number;
 }

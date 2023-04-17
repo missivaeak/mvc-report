@@ -5,5 +5,11 @@
     margin: 0 auto;
     background-color: #ffe73155;
     color: #ccc;
-    padding: vars.$magic-number;
+    padding: vars.$magic-number * 0.5 vars.$magic-number;
+    font-weight: 600;
+    font-family: monospace;
+
+    &:not(:last-of-type) {
+        margin-bottom: vars.$magic-number * 0.3;
+    }
 }

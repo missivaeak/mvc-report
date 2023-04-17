@@ -10,11 +10,14 @@ use App\Game\Round;
 use App\Game\Discard;
 use App\Game\Game;
 use App\Game\GinRummyScoring;
+use App\Game\GinRummyOpponentLogic;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
+use Exception;
 
 class Kmom03Controller extends AbstractController
 {
@@ -59,25 +62,32 @@ class Kmom03Controller extends AbstractController
         );
 
         $game->startRound($round);
+        $playerHand = $game->getPlayerHand();
+        $playerHand->resetMelds();
+        $scoring = new GinRummyScoring;
+        $scoring->meld($playerHand);
 
         $session->set("game", $game);
 
-        return $this->redirectToRoute('game_main', ['_fragment' => 'ginrummy']);
+        if ($round->getActivePlayer() === $opponent) {
+            return $this->redirectToRoute('game_opponent');
+        }
+
+        return $this->redirectToRoute('game_main');
     }
 
     #[Route("/game/main", name: "game_main")]
     public function gameMain(SessionInterface $session): Response
     {
         $game = $session->get("game");
+        $scoring = new GinRummyScoring;
+        $hand = $game->getPlayerHand();
 
         $this->addFlash(
             'notice',
-            'Your round was saved to the total!'
+            'Gör ditt drag.'
         );
-
-        // ordna spelarens hand i serier
-        $hand = $game->getPlayerHand();
-        $scoring = new GinRummyScoring();
+        
         $hand->resetMelds();
         $scoring->meld($hand);
 
@@ -98,5 +108,148 @@ class Kmom03Controller extends AbstractController
         return $this->render('pages/game/doc.html.twig', [
             'title' => $this->title . ".doc",
         ]);
+    }
+
+    #[Route("/game/opponent", name: "game_opponent")]
+    public function gameOpponent(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $scoring = new GinRummyScoring;
+        $logic = new GinRummyOpponentLogic($game, $scoring);
+
+        $this->addFlash(
+            'notice',
+            'Motståndaren påbörjar sitt drag.'
+        );
+
+        $step = $round->getStep();
+        $flash = "";
+
+        switch ($step) {
+            case 0:
+            case 1:
+            case 2:
+                $card = $logic->drawDeckOrDrawDiscard();
+                $flash = "Drar kort från kortleken.";
+                $nextStep = 0;
+                if ($card) {
+                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
+                }
+
+                $logic->discard();
+                $flash .= " Slänger kort.";
+
+                $knock = $logic->knockOrPass();
+                if ($knock) {
+                    $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
+                    $nextStep = 3;
+                }
+
+                $round->setStep($nextStep);
+                break;
+            case 3:
+                $nextStep = 0;
+                $flash = "Försöker lägga kort till dina serier.";
+                $round->setStep($nextStep);
+                break;
+            case 4:
+                $card = $logic->drawOrPass();
+                $flash = 'Passar. Du måste nu välja kortet i slänghögen eller passa.';
+                $nextStep = 5;
+                if ($card) {
+                    $logic->discard();
+                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
+                    $nextStep = 0;
+                }
+                $round->setStep($nextStep);
+                break;
+            case 5:
+                $card = $logic->drawOrPass();
+                $flash = 'Passar. Du måste nu välja översta kortet i leken.';
+                $nextStep = 6;
+                if ($card) {
+                    $logic->discard();
+                    $nextStep = 0;
+                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
+                }
+                $round->setStep($nextStep);
+                break;
+            case 6:
+                $logic->pickDeck();
+                $logic->discard();
+                $flash = 'Drar från kortleken. Slänger.';
+                $round->nextStep(0);
+                break;
+        }
+
+        $this->addFlash('notice', $flash);
+
+        $round->nextTurn();
+
+        return $this->redirectToRoute('game_main');
+    }
+
+    #[Route("/game/draw/deck", name: "game_draw_deck")]
+    public function gameDrawDeck(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $deck = $game->getDeck();
+        $hand = $game->getPlayerHand();
+
+        $card = $deck->draw();
+        $hand->add($card);
+
+        $round->setStep(1);
+
+        return $this->redirectToRoute('game_main');
+    }
+
+    #[Route("/game/draw/discard", name: "game_draw_discard")]
+    public function gameDrawDiscard(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $discard = $game->getDiscard();
+        $hand = $game->getPlayerHand();
+
+        $card = $discard->draw();
+        $hand->add($card);
+
+        $round->setStep(1);
+
+        return $this->redirectToRoute('game_main');
+    }
+
+    #[Route("/game/discard/{suit}/{value<\d+>}", name: "game_discard")]
+    public function gameDiscard(
+        SessionInterface $session,
+        string $suit,
+        int $value
+        ): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $hand = $game->getPlayerHand();
+        $discard = $game->getDiscard();
+
+        $card = $hand->drawByPattern($suit, $value);
+        $discard->add($card);
+        $round->setStep(2);
+        $round->nextTurn();
+
+        return $this->redirectToRoute('game_main');
+    }
+
+    #[Route("/game/pass", name: "game_pass")]
+    public function gamePass(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $round->setStep(0);
+        $round->nextTurn();
+
+        return $this->redirectToRoute('game_opponent');
     }
 }

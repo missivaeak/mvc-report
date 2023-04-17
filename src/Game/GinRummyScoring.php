@@ -5,7 +5,6 @@ namespace App\Game;
 use App\Game\Meld;
 use App\Game\GinRummyHand;
 use App\Game\StandardPlayingCard;
-use Doctrine\ORM\Query\Expr;
 use Exception;
 
 // use App\Game\StandardPlayingCardsTrait
@@ -170,5 +169,20 @@ class GinRummyScoring
         $this->findRuns($hand);
         $this->findSets($hand);
         $this->fitUnmatchedCards($hand);
+    }
+
+    public function score(GinRummyHand $hand)
+    {
+        $unmatched = $hand->getUnmatched();
+        $score = 0;
+        foreach ($unmatched as $card) {
+            $value = $card->getValue();
+            if ($value > 10) { $value = 10; }
+            $score += $value;
+        }
+
+        // throw new Exception($score);
+
+        return $score;
     }
 }

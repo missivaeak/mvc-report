@@ -15,12 +15,13 @@ class Round
     private int $turn;
     /**
      * Motsvarar olika steg på en tur
-     * 0 = välja kortet på slänghögen eller pass (första draget),
-     * 1 = tvungen att ta översta kortet på leken (om båda passade),
-     * 2 = välja kortlek eller slänghög,
-     * 3 = slänga kort från handen,
-     * 4 = bestämma om man vill avsluta turen eller knacka,
-     * 5 = matcha kort på motståndarens serier
+     * 0 = välja kortlek eller slänghög,
+     * 1 = slänga kort från handen,
+     * 2 = bestämma om man vill avsluta turen eller knacka,
+     * 3 = matcha kort på motståndarens serier,
+     * 4 = välja kortet på slänghögen eller pass (första draget),
+     * 5 = välja kortet på slänghögen eller pass (andra draget),
+     * 6 = tvungen att ta översta kortet på leken (om båda passade)
      * @var int turnStep
      */
     private int $turnStep;
@@ -32,7 +33,7 @@ class Round
             $opponent
         ];
         $this->turn = 0;
-        $this->turnStep = 0;
+        $this->turnStep = 4;
     }
 
     public function randomiseDealer(): Player
@@ -78,7 +79,6 @@ class Round
     public function nextTurn(): void
     {
         $this->turn++;
-        $this->turnStep = 0;
         foreach ($this->players as $player) {
             if ($player !== $this->activePlayer) {
                 $this->activePlayer = $player;
@@ -94,6 +94,11 @@ class Round
     public function setStep(int $turnStep): void
     {
         $this->turnStep = $turnStep;
+    }
+
+    public function nextStep(): void
+    {
+        $this->turnStep++;
     }
 
     public function deal(CardCollectionAbstract $deck): bool

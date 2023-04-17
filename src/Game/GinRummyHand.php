@@ -83,17 +83,4 @@ class GinRummyHand extends CardCollectionAbstract
     {
         $this->melds = [];
     }
-
-    public function drawByPattern(string $suit, int $value): ?CardInterface
-    {
-        $card = null;
-        $cardPattern = new StandardPlayingCard($suit, $value);
-        $result = array_search($cardPattern, $this->cards);
-        if (gettype($result) == "integer") {
-            $card = $this->cards[$result];
-            unset($this->cards[$result]);
-        }
-
-        return $card;
-    }
 }

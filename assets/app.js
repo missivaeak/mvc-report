@@ -10,3 +10,8 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+// javascript
+import gameHash from './js/game';
+
+document.addEventListener('DOMContentLoaded', gameHash, false);
