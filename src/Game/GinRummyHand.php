@@ -17,20 +17,6 @@ class GinRummyHand extends CardCollectionAbstract
         $this->melds = [];
     }
 
-    public function revealAll(): void
-    {
-        foreach ($this->cards as $card) {
-            $card->reveal();
-        }
-    }
-
-    public function hideAll(): void
-    {
-        foreach ($this->cards as $card) {
-            $card->hide();
-        }
-    }
-
     /** @return array<Meld> */
     public function getMelds(): array
     {

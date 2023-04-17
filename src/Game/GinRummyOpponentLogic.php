@@ -61,6 +61,11 @@ class GinRummyOpponentLogic
         $unmatched = $hand->getUnmatched();
 
         $card = $unmatched[array_rand($unmatched)];
+        foreach ($unmatched as $unmatchedCard) {
+            if ($card->getValue() < $unmatchedCard->getValue()){
+                $card = $unmatchedCard;
+            }
+        }
         $hand->drawByPattern($card->getSuit(), $card->getValue());
         $card->reveal();
         $this->discard->add($card);
@@ -91,7 +96,7 @@ class GinRummyOpponentLogic
      */
     public function drawDeckOrDrawDiscard(): ?CardInterface
     {
-        if (random_int(0, 1) === 0) {
+        if (random_int(0, 4) === 0) {
             $result = $this->pickDiscard();
             return $result;
         }
@@ -103,7 +108,7 @@ class GinRummyOpponentLogic
     public function knockOrPass(): bool
     {
         $hand = $this->opponent->getHand();
-        $score = $this->scoring->score($hand);
+        $score = $this->scoring->handScore($hand);
         if ($score < $this->knockThreshold) {
             return true;
         }

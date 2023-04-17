@@ -138,8 +138,13 @@ class GinRummyScoring
 
     private function fitUnmatchedCard(GinRummyHand $hand, int $meldIndex, string $suit, int $value): bool
     {
-        $remainingCard = new StandardPlayingCard($suit, $value);
-        $cardIndex = array_search($remainingCard, $hand->getUnmatched());
+        $cardIndex = -1;
+        foreach ($hand->getUnmatched() as $key => $card) {
+            if ($card->getSuit() === $suit && $card->getValue() === $value) {
+                $cardIndex = $key;
+                break;
+            }
+        }
         if (gettype($cardIndex) === "integer") {
             $hand->addToMeld($cardIndex, $meldIndex);
             return true;
@@ -171,7 +176,7 @@ class GinRummyScoring
         $this->fitUnmatchedCards($hand);
     }
 
-    public function score(GinRummyHand $hand)
+    public function handScore(GinRummyHand $hand)
     {
         $unmatched = $hand->getUnmatched();
         $score = 0;

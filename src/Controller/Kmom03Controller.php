@@ -94,6 +94,7 @@ class Kmom03Controller extends AbstractController
         return $this->render('pages/game/main.html.twig', [
             'title' => $this->title,
             'game' => $game,
+            'scoring' => $scoring
             // 'indexes' => $indexes
         ]);
     }
@@ -117,6 +118,10 @@ class Kmom03Controller extends AbstractController
         $round = $game->getRound();
         $scoring = new GinRummyScoring;
         $logic = new GinRummyOpponentLogic($game, $scoring);
+        $player = $game->getPlayer();
+        $opponent = $game->getOpponent();
+        $playerHand = $game->getPlayerHand();
+        $opponentHand = $game->getOpponentHand();
 
         $this->addFlash(
             'notice',
@@ -149,9 +154,30 @@ class Kmom03Controller extends AbstractController
                 $round->setStep($nextStep);
                 break;
             case 3:
-                $nextStep = 0;
+                // lägga kort på knack
                 $flash = "Försöker lägga kort till dina serier.";
-                $round->setStep($nextStep);
+
+                //beräknar poäng
+                $playerScore = $scoring->handScore($playerHand);
+                $opponentScore = $scoring->handScore($opponentHand);
+                $difference = $opponentScore - $playerScore;
+                $points = $game->score($player, $opponent, $difference);
+                $scoreFlash = " Lika. Inga poäng delades ut";
+                if ($points > 0) {
+                    $scoreFlash = " Du vinner och får {$points} poäng.";
+                } elseif ($points < 0) {
+                    $scoreFlash = " Motståndaren vinner och får {$points} poäng.";
+                }
+                $flash .= $scoreFlash;
+
+                // fixa inför nästa runda
+                $nextDealer = $round->getNextDealer();
+                $round = new Round($player, $opponent);
+                $round->setDealer($nextDealer);
+                $round->autoSetActivePlayer();
+                $game->returnCards();
+                $game->getDeck()->hideAll();
+                $game->startRound($round);
                 break;
             case 4:
                 $card = $logic->drawOrPass();
@@ -248,6 +274,18 @@ class Kmom03Controller extends AbstractController
         $game = $session->get("game");
         $round = $game->getRound();
         $round->setStep(0);
+        $round->nextTurn();
+
+        return $this->redirectToRoute('game_opponent');
+    }
+
+    #[Route("/game/knock", name: "game_knock")]
+    public function gameKnock(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+
+        $round = $game->getRound();
+        $round->setStep(3);
         $round->nextTurn();
 
         return $this->redirectToRoute('game_opponent');

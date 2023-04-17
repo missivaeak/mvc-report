@@ -12,6 +12,8 @@
     {% set deck = game.getDeck() %}
     {% set discard = game.getDiscard() %}
     {% set round = game.getRound() %}
+    {% set handScore = scoring.handScore(playerHand) %}
+    {% set knockThreshold = game.getKnockthreshold() %}
 
     <h2 id="ginrummy">Gin Rummy</h2>
 
@@ -19,7 +21,7 @@
 
     <div class="game">
         <div class="hand">
-        <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Opponent</h3>
+        <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Motståndare</h3>
         <h4>{{opponent.getScore()}} points</h4>
                     {% for card in opponentHand.getCards() %}
                 {% if card.faceUp() == true %}
@@ -33,7 +35,7 @@
         </div>
 
         <div class="deck">
-            <p>Cards in deck: {{ deck.getCardsRemaining() }}</p>
+            <p>Kort i kortleken: {{ deck.getCardsRemaining() }}</p>
             <img src="{{ asset('img/cards/back.svg') }}" class="card big
             {% if round.getStep() in [0, 6] %}
                 clickable" onclick="location.href='{{ path('game_draw_deck') }}';">
@@ -56,7 +58,7 @@
 
         <div class="hand">
 
-            <h3 {% if round.getDealer() is same as player %} style="text-decoration: underline;"{% endif %}>You</h3>
+            <h3 {% if round.getDealer() is same as player %} style="text-decoration: underline;"{% endif %}>Du</h3>
 
             <h4>{{player.getScore()}} points</h4>
 
@@ -82,8 +84,11 @@
         </div>
 
         <div class="knock">
+            <p>Poäng på handen: {{ handScore }}</p>
             {% if round.getStep() in [2] %}
-                <button>Knacka</button>
+                <button{% if handScore >= knockThreshold %} disabled{% endif %}
+                onclick="location.href='{{ path('game_knock') }}';"
+                >Knacka</button>
             {% endif %}
         </div>
 
@@ -94,7 +99,7 @@
         </div>
     </div>
 
-    {{ dump(game) }}
+    {# {{ dump(game) }} #}
 
     {# {{ dump(playerHand) }}
 

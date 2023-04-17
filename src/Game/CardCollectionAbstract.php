@@ -55,6 +55,20 @@ class CardCollectionAbstract
         return count($this->cards);
     }
 
+    public function revealAll(): void
+    {
+        foreach ($this->cards as $card) {
+            $card->reveal();
+        }
+    }
+
+    public function hideAll(): void
+    {
+        foreach ($this->cards as $card) {
+            $card->hide();
+        }
+    }
+
     public function shuffle(): void
     {
         shuffle($this->cards);
@@ -67,12 +81,16 @@ class CardCollectionAbstract
 
     public function drawByPattern(string $suit, int $value): ?CardInterface
     {
-        $card = null;
-        $cardPattern = new StandardPlayingCard($suit, $value);
-        $result = array_search($cardPattern, $this->cards);
-        if (gettype($result) == "integer") {
-            $card = $this->cards[$result];
-            unset($this->cards[$result]);
+        $cardIndex = null;
+        foreach ($this->cards as $key => $card) {
+            if ($card->getSuit() === $suit && $card->getValue() === $value) {
+                $cardIndex = $key;
+                break;
+            }
+        }
+        if (gettype($cardIndex) == "integer") {
+            $card = $this->cards[$cardIndex];
+            unset($this->cards[$cardIndex]);
         }
 
         return $card;

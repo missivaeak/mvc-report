@@ -62,6 +62,16 @@ class Round
         return $this->activePlayer;
     }
 
+    public function autoSetActivePlayer(): void
+    {
+        foreach ($this->players as $player) {
+            if ($player !== $this->dealer) {
+                $this->activePlayer = $player;
+                return;
+            }
+        }
+    }
+
     public function getNextDealer(): Player
     {
         foreach ($this->players as $player) {
@@ -69,11 +79,6 @@ class Round
                 return $player;
             }
         }
-    }
-
-    public function isFirstRound(): bool
-    {
-        return $this->turn == 0;
     }
 
     public function nextTurn(): void

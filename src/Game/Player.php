@@ -24,4 +24,9 @@ class Player
     {
         return $this->score;
     }
+
+    public function addScore(int $amount): void
+    {
+        $this->score += $amount;
+    }
 }

@@ -94,6 +94,22 @@ class Game
         $this->discard->add($card);
     }
 
+    public function returnCards(): void
+    {
+        $playerHand = $this->player->getHand();
+        $opponentHand = $this->opponent->getHand();
+        $discard = $this->discard;
+        $myList = [$playerHand, $opponentHand, $discard];
+        foreach ($myList as $cards) {
+            $length = $cards->getCardsRemaining();
+            for ($i = 0; $i < $length; $i++) {
+                $this->deck->add($cards->draw());
+            }
+        }
+
+        $this->deck->shuffle();
+    }
+
     public function startRound(Round $round): void
     {
         $this->round = $round;
@@ -124,5 +140,20 @@ class Game
     public function getRound(): Round
     {
         return $this->round;
+    }
+
+    public function score(Player $knocking, Player $notKnocking, int $difference): int
+    {
+        if ($difference > 0) {
+            $amount = $difference + $this->knockBonus;
+            $knocking->addScore($amount);
+            return $amount;
+        } elseif ($difference < 0) {
+            $amount = abs($difference) + $this->undercutBonus;
+            $notKnocking->addScore($amount);
+            return 0 - $amount;
+        }
+
+        return 0;
     }
 }
