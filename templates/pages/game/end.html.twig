@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/game/nav.html.twig')}}
+
+    {% set playerScore = game.getPlayer().getScore() %}
+    {% set opponentScore = game.getOpponent().getScore() %}
+
+    {% if playerScore >= 100 %}
+        <h2>Gratulerar!<h2>
+        <p>Du vann med {{playerScore}} poäng mot motståndarens {{oppenentScore}}.</p>
+    {% else %}
+        <h2>Bättre lycka nästa gång<h2>
+        <p>Din motståndare vann med {{opponentScore}} poäng mot dina {{playerScore}}.</p>
+    {% endif %}
+
+{% endblock %}

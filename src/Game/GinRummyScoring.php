@@ -145,7 +145,7 @@ class GinRummyScoring
                 break;
             }
         }
-        if (gettype($cardIndex) === "integer") {
+        if ($cardIndex > -1) {
             $hand->addToMeld($cardIndex, $meldIndex);
             return true;
         }
@@ -154,23 +154,6 @@ class GinRummyScoring
 
     public function meld(GinRummyHand $hand)
     {
-        // BEGIN main
-        //     BEGIN pointsPrioRuns
-        //         CALL findRuns
-        //         CALL findSets
-        //         CALL fitUnmatchedCards
-        //         RETURN points
-        //     END
-
-        //     BEGIN pointsPrioSets
-        //         CALL findSets
-        //         CALL findRuns
-        //         CALL fitUnmatchedCards
-        //         RETURN points
-        //     END
-
-        //     RETURN the lowest of pointsPrioRuns and pointsPrioSets
-        // END
         $this->findRuns($hand);
         $this->findSets($hand);
         $this->fitUnmatchedCards($hand);
@@ -189,5 +172,52 @@ class GinRummyScoring
         // throw new Exception($score);
 
         return $score;
+    }
+
+    public function addToOthersMeld(
+        string $suit,
+        int $value,
+        GinRummyHand $thisHand,
+        GinRummyHand $otherHand
+    ): bool
+    {
+        $card = $thisHand->drawByPattern($suit, $value);
+        // $thisHand->add($card);
+        $melds = $otherHand->getMelds();
+        // throw new Exception(count($melds));
+        foreach ($melds as $meld) {
+            if ($meld->isRun() === true && $meld->getSuit() === $suit) {
+                // throw new Exception($meld->getSuit());
+                $values = array_map(function ($card) {
+                    return $card->getValue();
+                }, $meld->getCards());
+
+                $lowerValue = $values[0] - 1;
+                $higherValue = $values[array_key_last($values)] + 1;
+
+                if ($value === $lowerValue || $value === $higherValue) {
+                    $meld->add($card);
+                    $card->reveal();
+                    return true;
+                }
+            } elseif ($meld->isSet() === true && $meld->getValue() === $value) {
+                $suits = array_map(function ($card) {
+                    return $card->getSuit();
+                }, $meld->getCards());
+
+                $remainingSuit = array_values(array_diff($this->suits, $suits))[0];
+
+                if ($suit === $remainingSuit) {
+                    $meld->add($card);
+                    $card->reveal();
+                    return true;
+                }
+            }
+        }
+
+        $thisHand->add($card);
+        $this->meld($otherHand);
+
+        return false;
     }
 }

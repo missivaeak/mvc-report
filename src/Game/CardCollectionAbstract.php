@@ -81,14 +81,14 @@ class CardCollectionAbstract
 
     public function drawByPattern(string $suit, int $value): ?CardInterface
     {
-        $cardIndex = null;
+        $cardIndex = -1;
         foreach ($this->cards as $key => $card) {
             if ($card->getSuit() === $suit && $card->getValue() === $value) {
                 $cardIndex = $key;
                 break;
             }
         }
-        if (gettype($cardIndex) == "integer") {
+        if ($cardIndex > -1) {
             $card = $this->cards[$cardIndex];
             unset($this->cards[$cardIndex]);
         }

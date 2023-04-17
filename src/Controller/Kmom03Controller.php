@@ -123,6 +123,11 @@ class Kmom03Controller extends AbstractController
         $playerHand = $game->getPlayerHand();
         $opponentHand = $game->getOpponentHand();
 
+        if ($game->getDeck()->getCardsRemaining() < 3) {
+            $this->addFlash('notice', 'Kortleken tar slut och rundan avslutas. Inga poäng delas ut.');
+            return $this->redirectToRoute('game_end_round');
+        }
+
         $this->addFlash(
             'notice',
             'Motståndaren påbörjar sitt drag.'
@@ -147,14 +152,19 @@ class Kmom03Controller extends AbstractController
 
                 $knock = $logic->knockOrPass();
                 if ($knock) {
+                    $scoring->meld($opponentHand);
+                    $opponentHand->revealAll();
                     $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
-                    $nextStep = 3;
+                    $round->setStep(3);
+                    break;
                 }
 
-                $round->setStep($nextStep);
+                $round->setStep(0);
+                $opponentHand->resetMelds();
                 break;
             case 3:
                 // lägga kort på knack
+                $logic->addToPlayersMeld($playerHand);
                 $flash = "Försöker lägga kort till dina serier.";
 
                 //beräknar poäng
@@ -166,18 +176,10 @@ class Kmom03Controller extends AbstractController
                 if ($points > 0) {
                     $scoreFlash = " Du vinner och får {$points} poäng.";
                 } elseif ($points < 0) {
-                    $scoreFlash = " Motståndaren vinner och får {$points} poäng.";
+                    $scoreFlash = " Motståndaren vinner och får {abs($points)} poäng.";
                 }
                 $flash .= $scoreFlash;
-
-                // fixa inför nästa runda
-                $nextDealer = $round->getNextDealer();
-                $round = new Round($player, $opponent);
-                $round->setDealer($nextDealer);
-                $round->autoSetActivePlayer();
-                $game->returnCards();
-                $game->getDeck()->hideAll();
-                $game->startRound($round);
+                $round->setStep(7);
                 break;
             case 4:
                 $card = $logic->drawOrPass();
@@ -189,6 +191,7 @@ class Kmom03Controller extends AbstractController
                     $nextStep = 0;
                 }
                 $round->setStep($nextStep);
+                $opponentHand->resetMelds();
                 break;
             case 5:
                 $card = $logic->drawOrPass();
@@ -200,16 +203,23 @@ class Kmom03Controller extends AbstractController
                     $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
                 }
                 $round->setStep($nextStep);
+                $opponentHand->resetMelds();
                 break;
             case 6:
                 $logic->pickDeck();
                 $logic->discard();
                 $flash = 'Drar från kortleken. Slänger.';
                 $round->nextStep(0);
+                $opponentHand->resetMelds();
                 break;
         }
 
         $this->addFlash('notice', $flash);
+
+        if ($game->getDeck()->getCardsRemaining() < 3) {
+            $this->addFlash('notice', 'Kortleken tar slut och rundan avslutas. Inga poäng delas ut.');
+            return $this->redirectToRoute('game_end_round');
+        }
 
         $round->nextTurn();
 
@@ -268,6 +278,23 @@ class Kmom03Controller extends AbstractController
         return $this->redirectToRoute('game_main');
     }
 
+    #[Route("/game/meld/{suit}/{value<\d+>}", name: "game_meld")]
+    public function gameMeld(
+        SessionInterface $session,
+        string $suit,
+        int $value
+        ): Response
+    {
+        $game = $session->get("game");
+        $scoring = new GinRummyScoring;
+        $playerHand = $game->getPlayerHand();
+        $opponentHand = $game->getOpponentHand();
+
+        $scoring->addToOthersMeld($suit, $value, $playerHand, $opponentHand);
+
+        return $this->redirectToRoute('game_main');
+    }
+
     #[Route("/game/pass", name: "game_pass")]
     public function gamePass(SessionInterface $session): Response
     {
@@ -279,15 +306,79 @@ class Kmom03Controller extends AbstractController
         return $this->redirectToRoute('game_opponent');
     }
 
+    #[Route("/game/meld/pass", name: "game_meld_pass")]
+    public function gameMeldPass(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $scoring = new GinRummyScoring;
+        $player = $game->getPlayer();
+        $opponent = $game->getOpponent();
+        $playerScore = $scoring->handScore($player->getHand());
+        $opponentScore = $scoring->handScore($opponent->getHand());
+
+        $difference = $opponentScore - $playerScore;
+        $points = $game->score($player, $opponent, $difference);
+        $flash = "Lika. Inga poäng delades ut";
+        if ($points > 0) {
+            $flash = "Motståndaren vinner och får {$points} poäng.";
+        } elseif ($points < 0) {
+            $flash = "Du vinner och får {abs($points)} poäng.";
+        }
+        $this->addFlash('notice', $flash);
+
+        return $this->redirectToRoute('game_end_round');
+    }
+
     #[Route("/game/knock", name: "game_knock")]
     public function gameKnock(SessionInterface $session): Response
     {
         $game = $session->get("game");
+        $opponentHand = $game->getOpponentHand();
+        $scoring = new GinRummyScoring;
+
+        $scoring->meld($opponentHand);
+        $opponentHand->revealAll();
 
         $round = $game->getRound();
         $round->setStep(3);
         $round->nextTurn();
 
         return $this->redirectToRoute('game_opponent');
+    }
+
+    #[Route("/game/end/round", name: "game_end_round")]
+    public function gameEndRound(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $round = $game->getRound();
+        $player = $game->getPlayer();
+        $opponent = $game->getOpponent();
+
+        if ($player->getScore() >= 100 || $opponent->getScore() >= 100) {
+            return $this->redirectToRoute('game_end_game');
+        }
+
+        // fixa inför nästa runda
+        $nextDealer = $round->getNextDealer();
+        $round = new Round($player, $opponent);
+        $round->setDealer($nextDealer);
+        $round->autoSetActivePlayer();
+        $game->returnCards();
+        $game->getDeck()->hideAll();
+        $game->startRound($round);
+
+        return $this->redirectToRoute('game_opponent');
+    }
+
+    #[Route("/game/end/game", name: "game_end_game")]
+    public function gameEndGame(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        $session->remove("game");
+
+        return $this->render('pages/game/end.html.twig', [
+            'title' => $this->title,
+            'game' => $game
+        ]);
     }
 }

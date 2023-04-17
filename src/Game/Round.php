@@ -22,6 +22,7 @@ class Round
      * 4 = välja kortet på slänghögen eller pass (första draget),
      * 5 = välja kortet på slänghögen eller pass (andra draget),
      * 6 = tvungen att ta översta kortet på leken (om båda passade)
+     * 7 = stopp innan rundan är slut
      * @var int turnStep
      */
     private int $turnStep;

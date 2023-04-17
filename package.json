@@ -20,6 +20,7 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
+        "start2": "symfony server:start & encore dev --watch",
         "start": "php -S localhost:8888 -t public & encore dev --watch"
     }
 }

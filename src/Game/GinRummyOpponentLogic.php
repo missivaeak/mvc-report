@@ -114,4 +114,25 @@ class GinRummyOpponentLogic
         }
         return false;
     }
+
+    public function addToPlayersMeld(GinRummyHand $playerHand): void
+    {
+        $opponentHand = $this->opponent->getHand();
+        $unmatched = $opponentHand->getUnmatched();
+        $changesMadeFlag = true;
+
+        while ($changesMadeFlag) {
+            $changesMadeFlag = false;
+            foreach ($unmatched as $card) {
+                $value = $card->getValue();
+                $suit = $card->getSuit();
+                $success = $this->scoring->addToOthersMeld($suit, $value, $opponentHand, $playerHand);
+
+                if ($success) {
+                    $changesMadeFlag = true;
+                    return;
+                }
+            }
+        }
+    }
 }
