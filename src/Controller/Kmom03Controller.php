@@ -14,6 +14,7 @@ use App\Game\GinRummyOpponentLogic;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -320,9 +321,10 @@ class Kmom03Controller extends AbstractController
         $points = $game->score($player, $opponent, $difference);
         $flash = "Lika. Inga poäng delades ut";
         if ($points > 0) {
-            $flash = "Motståndaren vinner och får {$points} poäng.";
+            $flash = "Du vinner och får $points poäng.";
         } elseif ($points < 0) {
-            $flash = "Du vinner och får {abs($points)} poäng.";
+            $points = abs($points);
+            $flash = "Motståndaren vinner och får $points poäng.";
         }
         $this->addFlash('notice', $flash);
 
@@ -355,6 +357,7 @@ class Kmom03Controller extends AbstractController
         $opponent = $game->getOpponent();
 
         if ($player->getScore() >= 100 || $opponent->getScore() >= 100) {
+            $session->getBag('flashes')->all();
             return $this->redirectToRoute('game_end_game');
         }
 
@@ -371,7 +374,10 @@ class Kmom03Controller extends AbstractController
     }
 
     #[Route("/game/end/game", name: "game_end_game")]
-    public function gameEndGame(SessionInterface $session): Response
+    public function gameEndGame(
+        Request $request,
+        SessionInterface $session
+    ): Response
     {
         $game = $session->get("game");
         $session->remove("game");

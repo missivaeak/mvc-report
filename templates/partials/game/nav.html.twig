@@ -2,8 +2,8 @@
 
 <nav class="nav small">
     <a href="{{ path("game_init") }}">newGame</a>
-    {% if app.session.get("game") is defined %}
-    <a {% if current == 'game_main' %}class="active" {% endif %}href="{{ path("game_main") }}">continueGame</a>
+    {% if app.session.has("game") %}
+        <a {% if current == 'game_main' %}class="active" {% endif %}href="{{ path("game_main") }}">continueGame</a>
     {% endif %}
     <a {% if current == 'game_doc' %}class="active" {% endif %}href="{{ path("game_doc") }}">doc</a>
 </nav>

@@ -152,11 +152,32 @@ class GinRummyScoring
         return false;
     }
 
-    public function meld(GinRummyHand $hand)
+    private function meldRunsFirst(GinRummyHand $hand): int
     {
+        $hand->resetMelds();
         $this->findRuns($hand);
         $this->findSets($hand);
         $this->fitUnmatchedCards($hand);
+        return $this->handScore($hand);
+    }
+
+    private function meldSetsFirst(GinRummyHand $hand): int
+    {
+        $hand->resetMelds();
+        $this->findSets($hand);
+        $this->findRuns($hand);
+        $this->fitUnmatchedCards($hand);
+        return $this->handScore($hand);
+    }
+
+    public function meld(GinRummyHand $hand): int
+    {
+        $runsFirst = $this->meldRunsFirst($hand);
+        $setsFirst = $this->meldSetsFirst($hand);
+        if ($runsFirst < $setsFirst) {
+            return $this->meldRunsFirst($hand);
+        }
+        return $this->meldSetsFirst($hand);
     }
 
     public function handScore(GinRummyHand $hand)
