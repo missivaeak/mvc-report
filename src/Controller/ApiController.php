@@ -44,7 +44,7 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ["POST"])]
+    #[Route("/api/deck/shuffle", name: "api_shuffle", methods: ["GET", "POST"])]
     public function apiShuffle(SessionInterface $session): Response
     {
         $deck = new Deck();
@@ -63,7 +63,7 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/draw", name: "api_draw", methods: ["POST"])]
+    #[Route("/api/deck/draw", name: "api_draw", methods: ["GET", "POST"])]
     public function apiDraw(SessionInterface $session): Response
     {
         $deck = $session->get("deck");
@@ -82,7 +82,7 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/draw/{num<\d+>}", name: "api_draw_multiple", methods: ["POST"])]
+    #[Route("/api/deck/draw/{num<\d+>}", name: "api_draw_multiple", methods: ["GET", "POST"])]
     public function apiDrawMultiple(SessionInterface $session, int $num): Response
     {
         $deck = $session->get("deck");
@@ -109,7 +109,7 @@ class ApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_deal", methods: ["POST"])]
+    #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", name: "api_deal", methods: ["GET", "POST"])]
     public function apiDeal(
         SessionInterface $session,
         int $players,
@@ -137,6 +137,36 @@ class ApiController extends AbstractController
         $data = [
             'cardsRemaining' => $deck->getCardsRemaining(),
             'hands' => array_map(function ($hand) { return $hand->peekAllCards(); }, $hands)
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/game", name: "api_game", methods: ["GET"])]
+    public function apiGame(SessionInterface $session): Response
+    {
+        $game = $session->get("game");
+        if ($game) {
+            $playerScore = $game->getPlayer()->getScore();
+            $opponentScore = $game->getOpponent()->getScore();
+            $deck = $game->getDeck()->getFaces();
+            $discard = $game->getDiscard()->getFaces();
+            $playerHand = $game->getPlayer()->getHand()->getFaces();
+            $opponentHand = $game->getOpponent()->getHand()->getFaces();
+        }
+
+        $data = [
+            'playerScore' => $playerScore ?? null,
+            'opponentScore' => $opponentScore ?? null,
+            'playerHand' => $playerHand ?? null,
+            'opponentHand' => $opponentHand ?? null,
+            'deck' => $deck ?? null,
+            'discard' => $discard ?? null,
         ];
 
         $response = new JsonResponse($data);

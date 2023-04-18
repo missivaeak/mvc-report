@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Card\Deck;
 use App\Card\Hand;
-
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,9 +18,13 @@ class Kmom02Controller extends AbstractController
     #[Route("/card", name: "card")]
     public function card(SessionInterface $session): Response
     {
-        if (!$session->get("deck")) {
-            $session->set("deck", new Deck());
-        }
+        // $session->remove("deck");
+        $deck = $session->get("deck") ?? new Deck();
+        $session->set("deck", $deck);
+        // throw new Exception(("aoeaoe"));
+        // if (!$session->get("deck")) {
+        //     $session->set("deck", new Deck);
+        // }
 
         return $this->render('pages/card/index.html.twig', [
             'title' => $this->title . ".card",
@@ -30,7 +34,8 @@ class Kmom02Controller extends AbstractController
     #[Route("/card/deck", name: "card_deck")]
     public function cardDeck(SessionInterface $session): Response
     {
-        $deck = $session->get("deck");
+        $deck = $session->get("deck") ?? new Deck();
+        $session->set("deck", $deck);
         return $this->render('pages/card/deck.html.twig', [
             'title' => $this->title . ".card.deck",
             'deck' => $deck,
@@ -52,7 +57,8 @@ class Kmom02Controller extends AbstractController
     #[Route("/card/deck/draw", name: "card_draw")]
     public function cardDraw(SessionInterface $session): Response
     {
-        $deck = $session->get("deck");
+        $deck = $session->get("deck") ?? new Deck();
+        $session->set("deck", $deck);
         try {
             $card = $deck->draw();
         } catch (TypeError $e) {
@@ -70,7 +76,8 @@ class Kmom02Controller extends AbstractController
         SessionInterface $session,
         int $num
     ): Response {
-        $deck = $session->get("deck");
+        $deck = $session->get("deck") ?? new Deck();
+        $session->set("deck", $deck);
         $hand = new Hand();
 
         for ($i = 0; $i < $num; $i++) {
@@ -95,7 +102,8 @@ class Kmom02Controller extends AbstractController
         int $players,
         int $cards
     ): Response {
-        $deck = $session->get("deck");
+        $deck = $session->get("deck") ?? new Deck();
+        $session->set("deck", $deck);
         $hands = [];
 
         // ge varje spela en hand

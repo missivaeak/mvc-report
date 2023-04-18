@@ -4,16 +4,18 @@
 
 {% block body %}
     <p>Här kan du hitta appens alla API end points.</p>
-    <h3>GET /api/quote</h3>
+    <h3>GET <a href="{{ path('api_quote') }}">/api/quote</a></h3>
     <p>Här kan du få citat från Donald Trump.</p>
-    <h3>GET /api/deck</h3>
+    <h3>GET <a href="{{ path('api_deck') }}">/api/deck</a></h3>
     <p>Hämta lekens nuvarande innehåll.</p>
-    <h3>POST /api/deck/shuffle</h3>
+    <h3>POST <a href="{{ path('api_shuffle') }}">/api/deck/shuffle</a></h3>
     <p>Återställ och blanda kortleken. Returnerar lekens innehåll.</p>
-    <h3>POST /api/deck/draw</h3>
+    <h3>POST <a href="{{ path('api_draw') }}">/api/deck/draw</a></h3>
     <p>Dra ett kort ur leken och returnera vilket.</p>
-    <h3>POST /api/deck/draw/:number</h3>
-    <p>Dra &lt;number antal&gt; kort ur leken och returnera dem.</p>
-    <h3>POST /api/deck/deal/:players/:cards</h3>
+    <h3>POST <a href="{{ path('api_draw_multiple', {"num": 2}) }}">/api/deck/draw/:number</a></h3>
+    <p>Dra &lt;number antal&gt; kort ur leken och returnera dem.</a></p>
+    <h3>POST <a href="{{ path('api_deal', {"players": 2, "cards": 5}) }}">/api/deck/deal/:players/:cards</a></h3>
     <p>Dela ut &lt;cards antal&gt; kort till &lt;players antal&gt; spelare. Returnera innehållet i spelarnas händer.</p>
+    <h3>GET <a href="{{ path('api_game') }}">/api/game</a></h3>
+    <p>Hämta spelets nuvarande poängställning.</p>
 {% endblock %}

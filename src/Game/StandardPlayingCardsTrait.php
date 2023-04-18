@@ -20,7 +20,7 @@ trait StandardPlayingCardsTrait
     ];
 
     /**
-     * @return array<array<string,int>>
+     * @return array<int<0, max>, array{suit: string,value: int<1,max>}>
      */
     public function getAllValidCardValues(): array
     {
@@ -29,8 +29,8 @@ trait StandardPlayingCardsTrait
         foreach ($this->suits as $suit) {
             for ($value = 1; $value <= $this->values; $value++) {
                 $validCardValues[] = [
-                    "suit" => $suit,
-                    "value" => $value
+                    "suit" => strval($suit),
+                    "value" => intval($value)
                 ];
             }
         }

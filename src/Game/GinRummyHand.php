@@ -23,16 +23,13 @@ class GinRummyHand extends CardCollectionAbstract
         return $this->melds;
     }
 
-    /** @return ?array<StandardPlayingCard> */
-    public function getMeldCards(int $index): ?array
+    /** @return array<CardInterface> */
+    public function getMeldCards(int $index): array
     {
-        if ($this->melds[$index]) {
-            return $this->melds[$index]->getCards();
-        }
-        return null;
+        return $this->melds[$index]->getCards();
     }
 
-    /** @return array<StandardPlayingCard> */
+    /** @return array<CardInterface> */
     public function getUnmatched(): array
     {
         $melded = [];
@@ -56,7 +53,7 @@ class GinRummyHand extends CardCollectionAbstract
         return $index;
     }
 
-    public function addToMeld(int $unmatchedIndex, int $meldIndex): StandardPlayingCard
+    public function addToMeld(int $unmatchedIndex, int $meldIndex): CardInterface
     {
         $unmatched = $this->getUnmatched();
         $card = $unmatched[$unmatchedIndex];

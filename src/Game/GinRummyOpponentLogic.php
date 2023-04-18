@@ -30,26 +30,32 @@ class GinRummyOpponentLogic
         $this->knockThreshold = $game->getKnockThreshold();
     }
 
-    public function pickDiscard(): CardInterface
+    public function pickDiscard(): ?CardInterface
     {
         $discard = $this->discard;
         $hand = $this->opponent->getHand();
         $card = $discard->draw();
-        $card->hide();
-        $hand->add($card);
+        if ($card) {
+            $card->hide();
+            $hand->add($card);
+            return $card;
+        }
 
-        return $card;
+        return null;
     }
 
-    public function pickDeck(): CardInterface
+    public function pickDeck(): ?CardInterface
     {
         $deck = $this->deck;
         $hand = $this->opponent->getHand();
         $card = $deck->draw();
-        $card->hide();
-        $hand->add($card);
+        if ($card) {
+            $card->hide();
+            $hand->add($card);
+            return $card;
+        }
 
-        return $card;
+        return null;
     }
 
     public function discard(): ?CardInterface
@@ -62,7 +68,7 @@ class GinRummyOpponentLogic
 
         $card = $unmatched[array_rand($unmatched)];
         foreach ($unmatched as $unmatchedCard) {
-            if ($card->getValue() < $unmatchedCard->getValue()){
+            if ($card->getValue() < $unmatchedCard->getValue()) {
                 $card = $unmatchedCard;
             }
         }

@@ -87,11 +87,15 @@ class Game
         }
     }
 
-    private function deckToDiscard(): void
+    private function deckToDiscard(): bool
     {
         $card = $this->deck->draw();
-        $card->reveal();
-        $this->discard->add($card);
+        if ($card) {
+            $card->reveal();
+            $this->discard->add($card);
+            return true;
+        }
+        return false;
     }
 
     public function returnCards(): void
@@ -103,7 +107,10 @@ class Game
         foreach ($myList as $cards) {
             $length = $cards->getCardsRemaining();
             for ($i = 0; $i < $length; $i++) {
-                $this->deck->add($cards->draw());
+                $card = $cards->draw();
+                if ($card) {
+                    $this->deck->add($card);
+                }
             }
         }
 

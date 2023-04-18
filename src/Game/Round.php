@@ -9,6 +9,7 @@ use Exception;
 
 class Round
 {
+    /** @var array<Player> */
     private array $players;
     private Player $dealer;
     private Player $activePlayer;
@@ -23,9 +24,9 @@ class Round
      * 5 = välja kortet på slänghögen eller pass (andra draget),
      * 6 = tvungen att ta översta kortet på leken (om båda passade)
      * 7 = stopp innan rundan är slut
-     * @var int turnStep
+     * @var int step
      */
-    private int $turnStep;
+    private int $step;
 
     public function __construct(Player $player, Player $opponent)
     {
@@ -34,12 +35,12 @@ class Round
             $opponent
         ];
         $this->turn = 0;
-        $this->turnStep = 4;
+        $this->step = 4;
     }
 
     public function randomiseDealer(): Player
     {
-        $dealerIndex = array_rand($this->players);
+        $dealerIndex = intval(array_rand($this->players));
         $activePlayerIndex = ($dealerIndex + 1) % 2;
         // throw new Exception($dealerIndex.$activePlayerIndex);
         $this->dealer = $this->players[$dealerIndex];
@@ -53,7 +54,7 @@ class Round
         return $this->dealer;
     }
 
-    public function setDealer(Player $dealer)
+    public function setDealer(Player $dealer): void
     {
         $this->dealer = $dealer;
     }
@@ -73,13 +74,14 @@ class Round
         }
     }
 
-    public function getNextDealer(): Player
+    public function getNextDealer(): ?Player
     {
         foreach ($this->players as $player) {
             if ($player !== $this->dealer) {
                 return $player;
             }
         }
+        return null;
     }
 
     public function nextTurn(): void
@@ -94,29 +96,30 @@ class Round
 
     public function getStep(): int
     {
-        return $this->turnStep;
+        return $this->step;
     }
 
-    public function setStep(int $turnStep): void
+    public function setStep(int $step): void
     {
-        $this->turnStep = $turnStep;
+        $this->step = $step;
     }
 
     public function nextStep(): void
     {
-        $this->turnStep++;
+        $this->step++;
     }
 
     public function deal(CardCollectionAbstract $deck): bool
     {
+        $result = false;
         foreach ($this->players as $player) {
-            try {
-                $player->getHand()->add($deck->draw());
-            } catch (TypeError $e) {
-                return false;
+            $card = $deck->draw();
+            if ($card) {
+                $player->getHand()->add($card);
+                $result = true;
             }
         }
 
-        return true;
+        return $result;
     }
 }

@@ -65,7 +65,7 @@ class Kmom03Controller extends AbstractController
         $game->startRound($round);
         $playerHand = $game->getPlayerHand();
         $playerHand->resetMelds();
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
         $scoring->meld($playerHand);
 
         $session->set("game", $game);
@@ -81,14 +81,14 @@ class Kmom03Controller extends AbstractController
     public function gameMain(SessionInterface $session): Response
     {
         $game = $session->get("game");
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
         $hand = $game->getPlayerHand();
 
         $this->addFlash(
             'notice',
             'Gör ditt drag.'
         );
-        
+
         $hand->resetMelds();
         $scoring->meld($hand);
 
@@ -117,7 +117,7 @@ class Kmom03Controller extends AbstractController
     {
         $game = $session->get("game");
         $round = $game->getRound();
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
         $logic = new GinRummyOpponentLogic($game, $scoring);
         $player = $game->getPlayer();
         $opponent = $game->getOpponent();
@@ -173,11 +173,17 @@ class Kmom03Controller extends AbstractController
                 $opponentScore = $scoring->handScore($opponentHand);
                 $difference = $opponentScore - $playerScore;
                 $points = $game->score($player, $opponent, $difference);
-                $scoreFlash = " Lika. Inga poäng delades ut";
-                if ($points > 0) {
-                    $scoreFlash = " Du vinner och får {$points} poäng.";
-                } elseif ($points < 0) {
-                    $scoreFlash = " Motståndaren vinner och får {abs($points)} poäng.";
+                $scoreFlash = " Lika. Inga poäng delades ut.";
+                if ($playerScore === 0) {
+                    $points = $opponentScore + $game->getGinBonus();
+                    $scoreFlash = " Du har gin och får $points poäng.";
+                } else {
+                    if ($points > 0) {
+                        $scoreFlash = " Du vinner och får $points poäng.";
+                    } elseif ($points < 0) {
+                        $points = abs($points);
+                        $scoreFlash = " Motståndaren vinner och får $points poäng.";
+                    }
                 }
                 $flash .= $scoreFlash;
                 $round->setStep(7);
@@ -264,8 +270,7 @@ class Kmom03Controller extends AbstractController
         SessionInterface $session,
         string $suit,
         int $value
-        ): Response
-    {
+    ): Response {
         $game = $session->get("game");
         $round = $game->getRound();
         $hand = $game->getPlayerHand();
@@ -284,10 +289,9 @@ class Kmom03Controller extends AbstractController
         SessionInterface $session,
         string $suit,
         int $value
-        ): Response
-    {
+    ): Response {
         $game = $session->get("game");
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
         $playerHand = $game->getPlayerHand();
         $opponentHand = $game->getOpponentHand();
 
@@ -311,20 +315,26 @@ class Kmom03Controller extends AbstractController
     public function gameMeldPass(SessionInterface $session): Response
     {
         $game = $session->get("game");
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
         $player = $game->getPlayer();
         $opponent = $game->getOpponent();
         $playerScore = $scoring->handScore($player->getHand());
         $opponentScore = $scoring->handScore($opponent->getHand());
 
-        $difference = $opponentScore - $playerScore;
-        $points = $game->score($player, $opponent, $difference);
-        $flash = "Lika. Inga poäng delades ut";
-        if ($points > 0) {
-            $flash = "Du vinner och får $points poäng.";
-        } elseif ($points < 0) {
-            $points = abs($points);
-            $flash = "Motståndaren vinner och får $points poäng.";
+        $difference = $playerScore - $opponentScore;
+        $points = $game->score($opponent, $player, $difference);
+        $flash = "Lika. Inga poäng delades ut.";
+
+        if ($opponentScore === 0) {
+            $points = $playerScore + $game->getGinBonus();
+            $flash = "Motståndaren har gin och får $points poäng.";
+        } else {
+            if ($points > 0) {
+                $flash = "Motståndaren vinner och får $points poäng.";
+            } elseif ($points < 0) {
+                $points = abs($points);
+                $flash = "Du vinner och får $points poäng.";
+            }
         }
         $this->addFlash('notice', $flash);
 
@@ -336,7 +346,7 @@ class Kmom03Controller extends AbstractController
     {
         $game = $session->get("game");
         $opponentHand = $game->getOpponentHand();
-        $scoring = new GinRummyScoring;
+        $scoring = new GinRummyScoring();
 
         $scoring->meld($opponentHand);
         $opponentHand->revealAll();
@@ -357,7 +367,8 @@ class Kmom03Controller extends AbstractController
         $opponent = $game->getOpponent();
 
         if ($player->getScore() >= 100 || $opponent->getScore() >= 100) {
-            $session->getBag('flashes')->all();
+            $flashBag = $session->getBag('flashes');
+            $flashBag->clear();
             return $this->redirectToRoute('game_end_game');
         }
 
@@ -377,8 +388,7 @@ class Kmom03Controller extends AbstractController
     public function gameEndGame(
         Request $request,
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $game = $session->get("game");
         $session->remove("game");
 
