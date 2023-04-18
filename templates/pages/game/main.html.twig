@@ -23,6 +23,16 @@
         <div class="hand">
         <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Motståndare</h3>
         <h4>{{opponent.getScore()}} points</h4>
+            {% for meld in opponentHand.getMelds() %}
+                {% for card in meld.getCards() %}
+                    {% if card.faceUp() == true %}
+                        <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card">
+                    {% else %}
+                        <img src="{{ asset('img/cards/back.svg') }}" class="card">
+                    {% endif %}
+                {% endfor %}
+                __
+            {% endfor %}
             {% for card in opponentHand.getUnmatched() %}
                 {% if card.faceUp() == true %}
                     <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" 
@@ -31,16 +41,6 @@
                     <img src="{{ asset('img/cards/back.svg') }}" 
                     class="card">
                 {% endif %}
-            {% endfor %}
-            {% for meld in opponentHand.getMelds() %}
-                __
-                {% for card in meld.getCards() %}
-                    {% if card.faceUp() == true %}
-                        <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card">
-                    {% else %}
-                        <img src="{{ asset('img/cards/back.svg') }}" class="card">
-                    {% endif %}
-                {% endfor %}
             {% endfor %}
         </div>
 
@@ -72,6 +72,17 @@
 
             <h4>{{player.getScore()}} points</h4>
 
+            {% for meld in playerHand.getMelds() %}
+                {% for card in meld.getCards() %}
+                    <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card
+                    {% if round.getStep() in [1] %}
+                        clickable" onclick="location.href='{{ path('game_discard', {"suit": card.getSuit(), "value": card.getValue()}) }}';">
+                    {% else %}
+                        ">
+                    {% endif %}
+                {% endfor %}
+                __
+            {% endfor %}
             {% for card in playerHand.getUnmatched() %}
                 <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card
                 {% if round.getStep() in [1] %}
@@ -81,17 +92,6 @@
                 {% else %}
                     ">
                 {% endif %}
-            {% endfor %}
-            {% for meld in playerHand.getMelds() %}
-                __
-                {% for card in meld.getCards() %}
-                    <img src="{{ asset('img/cards/' ~ card.getFace() ~ '.svg') }}" class="card
-                    {% if round.getStep() in [1] %}
-                        clickable" onclick="location.href='{{ path('game_discard', {"suit": card.getSuit(), "value": card.getValue()}) }}';">
-                    {% else %}
-                        ">
-                    {% endif %}
-                {% endfor %}
             {% endfor %}
         </div>
 
