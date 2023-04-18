@@ -211,26 +211,28 @@ class GinRummyScoring
         foreach ($melds as $meld) {
             if ($meld->isRun() === true && $meld->getSuit() === $suit) {
                 // throw new Exception($meld->getSuit());
-                $values = array_map(function ($card) {
-                    return $card->getValue();
+                $values = array_map(function ($cardInMeld) {
+                    return $cardInMeld->getValue();
                 }, $meld->getCards());
 
                 $lowerValue = $values[0] - 1;
                 $higherValue = $values[array_key_last($values)] + 1;
 
                 if ($card && ($value === $lowerValue || $value === $higherValue)) {
+                    $otherHand->add($card);
                     $meld->add($card);
                     $card->reveal();
                     return true;
                 }
             } elseif ($meld->isSet() === true && $meld->getValue() === $value) {
-                $suits = array_map(function ($card) {
-                    return $card->getSuit();
+                $suits = array_map(function ($cardInMeld) {
+                    return $cardInMeld->getSuit();
                 }, $meld->getCards());
 
                 $remainingSuit = array_values(array_diff($this->suits, $suits))[0];
 
                 if ($card && $suit === $remainingSuit) {
+                    $otherHand->add($card);
                     $meld->add($card);
                     $card->reveal();
                     return true;
