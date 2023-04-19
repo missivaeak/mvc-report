@@ -22,7 +22,7 @@
     <div class="game">
         <div class="hand">
         <h3 {% if round.getDealer() is same as opponent %} style="text-decoration: underline;"{% endif %}>Motståndare</h3>
-        <h4>{{opponent.getScore()}} points</h4>
+        <h4>{{opponent.getScore()}} poäng</h4>
             {% for meld in opponentHand.getMelds() %}
                 {% for card in meld.getCards() %}
                     {% if card.faceUp() == true %}
@@ -70,7 +70,7 @@
 
             <h3 {% if round.getDealer() is same as player %} style="text-decoration: underline;"{% endif %}>Du</h3>
 
-            <h4>{{player.getScore()}} points</h4>
+            <h4>{{player.getScore()}} poäng</h4>
 
             {% for meld in playerHand.getMelds() %}
                 {% for card in meld.getCards() %}
@@ -115,7 +115,7 @@
         </div>
     </div>
 
-    {# {{ dump(game) }} #}
+    {{ dump(game) }}
 
     {# {{ dump(playerHand) }}
 

@@ -35,15 +35,15 @@ class GinRummyScoring
 
                 // add each card to the meld
                 foreach ($run as $cardInRun) {
-                    $index = -1;
-                    foreach ($hand->getUnmatched() as $key => $unmatchedCard) {
-                        if (($unmatchedCard->getValue() === $cardInRun->getValue())
-                        && ($unmatchedCard->getSuit() === $cardInRun->getSuit())) {
-                            $index = $key;
-                            break;
-                        }
-                    }
-                    // $index = array_search($cardInRun, $hand->getUnmatched());
+                    // $index = -1;
+                    // foreach ($hand->getUnmatched() as $key => $unmatchedCard) {
+                    //     if (($unmatchedCard->getValue() === $cardInRun->getValue())
+                    //     && ($unmatchedCard->getSuit() === $cardInRun->getSuit())) {
+                    //         $index = $key;
+                    //         break;
+                    //     }
+                    // }
+                    $index = intval(array_search($cardInRun, $hand->getUnmatched()));
                     if ($index > 0) {
                         $hand->addToMeld($index, $meldIndex);
                     }
@@ -126,7 +126,10 @@ class GinRummyScoring
                 $suits = array_map(function ($card) {
                     return $card->getSuit();
                 }, $meld->getCards());
-                $remainingSuit = strval(array_values(array_diff($this->suits, $suits))[0]);
+                // $remainingSuit = strval(array_values(array_diff($this->suits, $suits))[0]);
+                $allSuits = $this->suits;
+                $arrayDiff = array_diff($allSuits, $suits);
+                $remainingSuit = end($arrayDiff);
                 $result = $this->fitUnmatchedCard($hand, $meldIndex, $remainingSuit, $value);
                 if ($result) {
                     $success = true;
