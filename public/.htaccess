@@ -4,6 +4,7 @@
 #
 # Do NOT forget to change /~mosstud/ to your own student acronym.
 #
+# DirectoryIndex index.php
 RewriteEngine on
 
 # Igore real files (images, stylesheets etc.)
@@ -18,3 +19,6 @@ RewriteRule (.*) /~ades22/dbwebb-kurser/mvc/me/report/public/index.php/$1 [NC,L]
 # Rewrite 2 - For other requests
 RewriteCond %{HTTP_HOST} !^www\.student\.bth\.se$ [NC]
 RewriteRule (.*) index.php/$1 [NC,L]
+
+# Rewrite 3 - Localhost
+RewriteRule (.*) /dbwebb/mvc/me/report/public/index.php/$1 [NC,L]

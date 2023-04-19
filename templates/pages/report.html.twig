@@ -37,31 +37,31 @@
         <p>Jag kunde inte stoppa in en klass som en parameter i en konstruktor, det trodde jag att jag kunde göra. Jag ville göra $deck = new Deck(Card), för att berätta vilken sorts kort som kortleken skulle fyllas med. Efter lite tråcklande så bestämde jag mig för att göra på ett annat vis.</p>
     </section>
     <section>
-    <h2 id="kmom03">kmom03</h2>
-    <p>Det var absolut väldigt bra i denna uppgift. Flödesschemat som visade upp alla besultssteg var väldigt bra för att jag skulle verkligen förstå alla stegen. Pseudokoden som jag valde att fokusera var något som jag redan börjat jobba på i mitt huvud så att fortsätta med det i pseudokod-form var definitivt bra. Jag valde att göra ett rätt så komplicerat spel, jag tror att det hade väldigt mycket svårare utan detta förarbete.</p>
+        <h2 id="kmom03">kmom03</h2>
+        <p>Det var absolut väldigt bra med flödesschema och pseudokod i denna uppgift. Flödesschemat som visade upp alla besultssteg var väldigt bra för att jag skulle verkligen förstå alla stegen. Pseudokoden som jag valde att fokusera var något som jag redan börjat jobba på i mitt huvud så att fortsätta med det i pseudokod-form var definitivt bra. Jag valde att göra ett rätt så komplicerat spel, jag tror att det hade väldigt mycket svårare utan detta förarbete.</p>
 
-    <p>Jag gjorde spelet Gin Rummy och jag tyckte det blev helt okej till slut. Det var så pass mycket arbete att det finns vissa tydliga förbättringsområden. Motståndaren spelar inte särskilt intelligent, den slänger bara det högsta omatchade kortet. Dessutom så ser det lite märkligt ut om man har en serie på 6 kort så kommer det egentligen vara 2 serier med 3 kort, det skulle jag kunna åtgärda.</p>
+        <p>Jag gjorde spelet Gin Rummy och jag tyckte det blev helt okej till slut. Det var så pass mycket arbete att det finns vissa tydliga förbättringsområden. Motståndaren spelar inte särskilt intelligent, den slänger bara det högsta omatchade kortet. Dessutom så ser det lite märkligt ut om man har en serie på 6 kort så kommer det egentligen vara 2 serier med 3 kort, det skulle jag kunna åtgärda.</p>
 
-    <p>Vad gäller klasserna så kändes det som strukturen var rätt så bra. Jag använde ett interface som bara implementerades i en klass (StandardPlayingCard-CardInterface), och ett trait som bara användes av en klass (StandardPlayingCardsTrait-StandardPlayingCardsDeck). Detta blev lite onödigt men känns ändå rimligt i sammanhang av hur specifika/generella de två paren är.</p>
+        <p>Vad gäller klasserna så kändes det som strukturen var rätt så bra. Jag använde ett interface som bara implementerades i en klass (StandardPlayingCard-CardInterface), och ett trait som bara användes av en klass (StandardPlayingCardsTrait-StandardPlayingCardsDeck). Detta blev lite onödigt men känns ändå rimligt i sammanhang av hur specifika/generella de två paren är.</p>
 
-    <p>Jag har börjat gilla Symfony väldigt mycket hittills. Man får mycket saker lätt tillgängligt, t.ex. bättre session och enkla flashmeddelanden.</p>
+        <p>Jag har börjat gilla Symfony väldigt mycket hittills. Man får mycket saker lätt tillgängligt, t.ex. bättre session och enkla flashmeddelanden.</p>
 
-    <p>Min största lärdom i denna uppgift har varit hur bra Liskov Substitution Principle är i praktiken. Jag använde samma taxonomi och vokabulär i metoderna i klasserna och det gjorde det väldigt lätt att jobba med alla objektet som fanns i spelet. Att plocka fram ett specifikt kort ur handen är bara <code>$game->getPlayer->getHand->drawCardByPattern("hearts", 3);</p> och samma funkar för <code>$game->getDiscard->drawCardByPattern("diamonds", 10);</code>.
+        <p>Min största lärdom i denna uppgift har varit hur bra Liskov Substitution Principle är i praktiken. Jag använde samma taxonomi och vokabulär i metoderna i klasserna och det gjorde det väldigt lätt att jobba med alla objektet som fanns i spelet. Att plocka fram ett specifikt kort ur handen är bara <code>$game->getPlayer->getHand->drawCardByPattern("hearts", 3);</code> och samma funkar för <code>$game->getDiscard->drawCardByPattern("diamonds", 10);</code>.</p>
     </section>
     <section>
-    <h2 id="kmom04">kmom04</h2>
-    <p>TBD</p>
+        <h2 id="kmom04">kmom04</h2>
+        <p>TBD</p>
     </section>
     <section>
-    <h2 id="kmom05">kmom05</h2>
-    <p>TBD</p>
+        <h2 id="kmom05">kmom05</h2>
+        <p>TBD</p>
     </section>
     <section>
-    <h2 id="kmom06">kmom06</h2>
-    <p>TBD</p>
+        <h2 id="kmom06">kmom06</h2>
+        <p>TBD</p>
     </section>
     <section>
-    <h2 id="kmom10">kmom10</h2>
-    <p>TBD</p>
+        <h2 id="kmom10">kmom10</h2>
+        <p>TBD</p>
     </section>
 {% endblock %}
