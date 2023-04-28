@@ -80,14 +80,14 @@ class Game
         return $this->handSize;
     }
 
-    private function deal(): void
+    public function deal(): void
     {
         for ($i = 0; $i < $this->handSize; $i++) {
             $this->round->deal($this->deck);
         }
     }
 
-    private function deckToDiscard(): bool
+    public function deckToDiscard(): bool
     {
         $card = $this->deck->draw();
         if ($card) {
@@ -113,15 +113,11 @@ class Game
                 }
             }
         }
-
-        $this->deck->shuffle();
     }
 
-    public function startRound(Round $round): void
+    public function setRound(Round $round): void
     {
         $this->round = $round;
-        $this->deal();
-        $this->deckToDiscard();
     }
 
     public function getPlayerHand(): GinRummyHand

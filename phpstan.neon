@@ -6,3 +6,11 @@ parameters:
         - tests
     bootstrapFiles:
         #- .phpstan.constants.php
+    ignoreErrors:
+        -
+            messages:
+                - '#Call to an undefined method PHPUnit\\Framework\\MockObject\\MockObject::+[a-zA-Z0-9\\_]+()#'
+                - '#Call to an undefined method +[a-zA-Z0-9\\_]+\&PHPUnit\\Framework\\MockObject\\Stub::+[a-zA-Z0-9\\_]+()#'
+                - '#Call to an undefined method [a-zA-Z0-9\\_]+::method\(\)#'
+                - '#Call to an undefined method [a-zA-Z0-9\\_]+::expects\(\)#'
+            path: tests/*

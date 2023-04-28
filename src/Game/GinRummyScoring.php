@@ -35,14 +35,6 @@ class GinRummyScoring
 
                 // add each card to the meld
                 foreach ($run as $cardInRun) {
-                    // $index = -1;
-                    // foreach ($hand->getUnmatched() as $key => $unmatchedCard) {
-                    //     if (($unmatchedCard->getValue() === $cardInRun->getValue())
-                    //     && ($unmatchedCard->getSuit() === $cardInRun->getSuit())) {
-                    //         $index = $key;
-                    //         break;
-                    //     }
-                    // }
                     $index = intval(array_search($cardInRun, $hand->getUnmatched()));
                     if ($index > 0) {
                         $hand->addToMeld($index, $meldIndex);
@@ -88,7 +80,7 @@ class GinRummyScoring
         }
     }
 
-    public function fitUnmatchedCards(GinRummyHand $hand): bool
+    private function fitUnmatchedCards(GinRummyHand $hand): bool
     {
         $unmatched = $hand->getUnmatched();
         $melds = $hand->getMelds();
@@ -108,13 +100,12 @@ class GinRummyScoring
                         }, $meld->getCards());
                         sort($values);
 
-                        $lowerValue = $values[0] - 1;
+                        $lowerValue = $values[array_key_first($values)] - 1;
                         $lowerResult = $this->fitUnmatchedCard($hand, $meldIndex, $suit, $lowerValue);
 
                         $higherValue = $values[array_key_last($values)] + 1;
                         $higherResult = $this->fitUnmatchedCard($hand, $meldIndex, $suit, $higherValue);
 
-                        // throw new Exception($highest);
                         if ($lowerResult || $higherResult) {
                             $success = true;
                             $changesMadeFlag = true;
@@ -129,7 +120,7 @@ class GinRummyScoring
                 // $remainingSuit = strval(array_values(array_diff($this->suits, $suits))[0]);
                 $allSuits = $this->suits;
                 $arrayDiff = array_diff($allSuits, $suits);
-                $remainingSuit = end($arrayDiff);
+                $remainingSuit = $arrayDiff[array_key_first($arrayDiff)];
                 $result = $this->fitUnmatchedCard($hand, $meldIndex, $remainingSuit, $value);
                 if ($result) {
                     $success = true;
@@ -196,8 +187,6 @@ class GinRummyScoring
             $score += $value;
         }
 
-        // throw new Exception($score);
-
         return $score;
     }
 
@@ -208,9 +197,7 @@ class GinRummyScoring
         GinRummyHand $otherHand
     ): bool {
         $card = $thisHand->drawByPattern($suit, $value);
-        // $thisHand->add($card);
         $melds = $otherHand->getMelds();
-        // throw new Exception(count($melds));
         foreach ($melds as $meld) {
             if ($meld->isRun() === true && $meld->getSuit() === $suit) {
                 // throw new Exception($meld->getSuit());

@@ -4,7 +4,7 @@ namespace App\Game;
 
 use App\Game\CardInterface;
 
-class CardCollectionAbstract
+abstract class CardCollectionAbstract
 {
     /**
      * @var array<CardInterface>

@@ -4,7 +4,6 @@ namespace App\Game;
 
 use App\Game\CardCollectionAbstract;
 use App\Errors\InvalidMeldTypeException;
-use Exception;
 
 class Meld extends CardCollectionAbstract
 {

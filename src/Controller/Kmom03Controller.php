@@ -62,7 +62,9 @@ class Kmom03Controller extends AbstractController
             $discard
         );
 
-        $game->startRound($round);
+        $game->setRound($round);
+        $game->deal();
+        $game->deckToDiscard();
         $playerHand = $game->getPlayerHand();
         $playerHand->resetMelds();
         $scoring = new GinRummyScoring();
@@ -378,8 +380,11 @@ class Kmom03Controller extends AbstractController
         $round->setDealer($nextDealer);
         $round->autoSetActivePlayer();
         $game->returnCards();
+        $game->getDeck()->shuffle();
         $game->getDeck()->hideAll();
-        $game->startRound($round);
+        $game->setRound($round);
+        $game->deal();
+        $game->deckToDiscard();
 
         return $this->redirectToRoute('game_opponent');
     }

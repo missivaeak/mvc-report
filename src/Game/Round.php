@@ -90,6 +90,7 @@ class Round
         foreach ($this->players as $player) {
             if ($player !== $this->activePlayer) {
                 $this->activePlayer = $player;
+                return;
             }
         }
     }

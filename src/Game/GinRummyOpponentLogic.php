@@ -65,16 +65,19 @@ class GinRummyOpponentLogic
         $hand->resetMelds();
         $this->scoring->meld($hand);
         $unmatched = $hand->getUnmatched();
+        $card = null;
 
-        $card = $unmatched[array_rand($unmatched)];
-        foreach ($unmatched as $unmatchedCard) {
-            if ($card->getValue() < $unmatchedCard->getValue()) {
-                $card = $unmatchedCard;
+        if ($unmatched) {
+            $card = $unmatched[array_rand($unmatched)];
+            foreach ($unmatched as $unmatchedCard) {
+                if ($card->getValue() < $unmatchedCard->getValue()) {
+                    $card = $unmatchedCard;
+                }
             }
+            $hand->drawByPattern($card->getSuit(), $card->getValue());
+            $card->reveal();
+            $this->discard->add($card);
         }
-        $hand->drawByPattern($card->getSuit(), $card->getValue());
-        $card->reveal();
-        $this->discard->add($card);
 
         $hand->resetMelds();
         $this->scoring->meld($hand);
@@ -121,11 +124,12 @@ class GinRummyOpponentLogic
         return false;
     }
 
-    public function addToPlayersMeld(GinRummyHand $playerHand): void
+    public function addToPlayersMeld(GinRummyHand $playerHand): bool
     {
         $opponentHand = $this->opponent->getHand();
         $unmatched = $opponentHand->getUnmatched();
         $changesMadeFlag = true;
+        $meldedOnce = false;
 
         while ($changesMadeFlag) {
             $changesMadeFlag = false;
@@ -136,9 +140,11 @@ class GinRummyOpponentLogic
 
                 if ($success) {
                     $changesMadeFlag = true;
-                    return;
+                    $meldedOnce = true;
                 }
             }
         }
+
+        return $meldedOnce;
     }
 }

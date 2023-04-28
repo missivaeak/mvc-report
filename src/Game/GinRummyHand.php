@@ -3,8 +3,9 @@
 namespace App\Game;
 
 use App\Game\CardCollectionAbstract;
-use App\Game\StandardPlayingCard;
 use App\Game\Meld;
+
+use OutOfRangeException;
 
 class GinRummyHand extends CardCollectionAbstract
 {
@@ -26,6 +27,9 @@ class GinRummyHand extends CardCollectionAbstract
     /** @return array<CardInterface> */
     public function getMeldCards(int $index): array
     {
+        if (!array_key_exists($index, $this->melds)) {
+            throw new OutOfRangeException("Invalid meld index");
+        }
         return $this->melds[$index]->getCards();
     }
 

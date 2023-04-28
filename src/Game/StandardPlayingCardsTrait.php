@@ -20,7 +20,7 @@ trait StandardPlayingCardsTrait
     ];
 
     /**
-     * @return array<int<0, max>, array{suit: string,value: int<1,max>}>
+     * @return array<array{suit: string,value: int<1,max>}>
      */
     public function getAllValidCardValues(): array
     {
