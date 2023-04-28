@@ -62,7 +62,7 @@ final class GinRummyScoringTest extends TestCase
 
         $this->hand = $hand;
 
-        $this->scoring = new GinRummyScoring;
+        $this->scoring = new GinRummyScoring();
     }
 
     /**

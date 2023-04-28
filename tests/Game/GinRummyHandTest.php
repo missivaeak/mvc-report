@@ -23,9 +23,9 @@ final class GinRummyHandTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->emptyHand = new GinRummyHand;
+        $this->emptyHand = new GinRummyHand();
 
-        $this->nonEmptyHand = new GinRummyHand;
+        $this->nonEmptyHand = new GinRummyHand();
         $this->meld = $this->createStub(Meld::class);
         $this->nonEmptyHand->addMeld($this->meld);
         for ($i = 0; $i < 10; $i++) {
@@ -126,7 +126,7 @@ final class GinRummyHandTest extends TestCase
     }
 
     /**
-     * Testar att resetMelds gör att melden försvinner ur 
+     * Testar att resetMelds gör att melden försvinner ur
      * getMelds
      */
     public function testResetMelds(): void

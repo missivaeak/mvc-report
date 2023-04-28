@@ -34,7 +34,7 @@ final class MeldTest extends TestCase
         $this->assertInstanceOf("App\Game\Meld", $this->setMeld);
     }
 
-    /** 
+    /**
      * Testar att exception kastas när
      * meld instansieras med fel parameter
      */
@@ -44,7 +44,7 @@ final class MeldTest extends TestCase
         new Meld("oooooo");
     }
 
-    /** 
+    /**
      * Testar att isRun returnerar rätt värden
      */
     public function testIsRun(): void
@@ -53,7 +53,7 @@ final class MeldTest extends TestCase
         $this->assertTrue($this->runMeld->isRun());
     }
 
-    /** 
+    /**
      * Testar att isSet returnerar rätt värden
      */
     public function testIsSet(): void

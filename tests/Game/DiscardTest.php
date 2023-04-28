@@ -20,9 +20,9 @@ final class DiscardTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->emptyDiscard = new Discard;
+        $this->emptyDiscard = new Discard();
 
-        $this->nonEmptyDiscard = new Discard;
+        $this->nonEmptyDiscard = new Discard();
         for ($i = 0; $i < 7; $i++) {
             $card = $this->createStub(StandardPlayingCard::class);
             $this->nonEmptyDiscard->add($card);

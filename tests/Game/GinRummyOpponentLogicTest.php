@@ -67,8 +67,8 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertInstanceOf("App\Game\GinRummyOpponentLogic", $this->logic);
     }
 
-    /** 
-     * Testar att pickDiscard returnerar ett kort 
+    /**
+     * Testar att pickDiscard returnerar ett kort
      */
     public function testPickDiscard(): void
     {
@@ -91,8 +91,8 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertSame(null, $pickedCard);
     }
 
-    /** 
-     * Testar att pickDeck returnerar ett kort 
+    /**
+     * Testar att pickDeck returnerar ett kort
      */
     public function testPickDeck(): void
     {
@@ -115,15 +115,15 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertSame(null, $pickedCard);
     }
 
-    /** 
-     * Testar att discard returnerar 
+    /**
+     * Testar att discard returnerar
      * ett kort om handen inte är tom
      */
     public function testDiscard(): void
     {
         $card1 = clone $this->card;
         $card1->method('getValue')->willReturn(2);
-        
+
         $card2 = clone $this->card;
         $card2->method('getValue')->willReturn(4);
 
@@ -140,8 +140,8 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertTrue($success);
     }
 
-    /** 
-     * Testar att discard returnerar 
+    /**
+     * Testar att discard returnerar
      * ett kort om handen är tom
      */
     public function testDiscardEmptyHand(): void
@@ -153,7 +153,7 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertNull($discardedCard);
     }
 
-    /** 
+    /**
      * Testar om drawOrPass ger CardInterface eller null
      */
     public function testDrawOrPass(): void
@@ -176,7 +176,7 @@ final class GinRummyOpponentLogicTest extends TestCase
         $this->assertTrue($cardOnceFlag && $nullOnceFlag);
     }
 
-    /** 
+    /**
      * Testar om drawDeckOrDrawDiscard ger CardInterface eller null
      */
     public function testDrawDeckOrDrawDiscard(): void

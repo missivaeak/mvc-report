@@ -473,102 +473,102 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Game\\Game",
             "name": "Game",
-            "summary": "",
+            "summary": "Represents\u0020the\u0020state\u0020and\u0020pariticipating\u0020objects\u0020of\u0020a\u0020Gin\u0020Rummy\u0020game",
             "url": "classes/App-Game-Game.html"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor",
             "url": "classes/App-Game-Game.html#method___construct"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetPlayer\u0028\u0029",
             "name": "getPlayer",
-            "summary": "",
+            "summary": "Get\u0020human\u0020player",
             "url": "classes/App-Game-Game.html#method_getPlayer"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetOpponent\u0028\u0029",
             "name": "getOpponent",
-            "summary": "",
+            "summary": "Get\u0020computer\u0020controlled\u0020opponent",
             "url": "classes/App-Game-Game.html#method_getOpponent"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetWinThreshold\u0028\u0029",
             "name": "getWinThreshold",
-            "summary": "",
+            "summary": "Get\u0020the\u0020score\u0020threshold\u0020to\u0020reach\u0020to\u0020win\u0020the\u0020game",
             "url": "classes/App-Game-Game.html#method_getWinThreshold"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetKnockThreshold\u0028\u0029",
             "name": "getKnockThreshold",
-            "summary": "",
+            "summary": "Get\u0020hand\u0020score\u0020threshold\u0020to\u0020knock",
             "url": "classes/App-Game-Game.html#method_getKnockThreshold"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetGinBonus\u0028\u0029",
             "name": "getGinBonus",
-            "summary": "",
+            "summary": "Get\u0020score\u0020bonus\u0020to\u0020go\u0020gin",
             "url": "classes/App-Game-Game.html#method_getGinBonus"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetUndercutBonus\u0028\u0029",
             "name": "getUndercutBonus",
-            "summary": "",
+            "summary": "Get\u0020score\u0020bonus\u0020for\u0020undercutting",
             "url": "classes/App-Game-Game.html#method_getUndercutBonus"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetKnockBonus\u0028\u0029",
             "name": "getKnockBonus",
-            "summary": "",
+            "summary": "Get\u0020the\u0020score\u0020bonus\u0020to\u0020knock",
             "url": "classes/App-Game-Game.html#method_getKnockBonus"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetHandSize\u0028\u0029",
             "name": "getHandSize",
-            "summary": "",
+            "summary": "Get\u0020hand\u0020size\u0020limit",
             "url": "classes/App-Game-Game.html#method_getHandSize"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003Adeal\u0028\u0029",
             "name": "deal",
-            "summary": "",
+            "summary": "Deal\u0020cards\u0020to\u0020both\u0020players\u0020up\u0020to\u0020hand\u0020size",
             "url": "classes/App-Game-Game.html#method_deal"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AdeckToDiscard\u0028\u0029",
             "name": "deckToDiscard",
-            "summary": "",
+            "summary": "Puts\u0020a\u0020card\u0020from\u0020the\u0020deck\u0020in\u0020the\u0020discard\u0020pile",
             "url": "classes/App-Game-Game.html#method_deckToDiscard"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AreturnCards\u0028\u0029",
             "name": "returnCards",
-            "summary": "",
+            "summary": "Return\u0020cards\u0020from\u0020both\u0020players\u0020hands\u0020and\u0020the\u0020discard\u0020pile",
             "url": "classes/App-Game-Game.html#method_returnCards"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AsetRound\u0028\u0029",
             "name": "setRound",
-            "summary": "",
+            "summary": "Sets\u0020round",
             "url": "classes/App-Game-Game.html#method_setRound"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetPlayerHand\u0028\u0029",
             "name": "getPlayerHand",
-            "summary": "",
+            "summary": "Get\u0020the\u0020human\u0020players\u0020hand",
             "url": "classes/App-Game-Game.html#method_getPlayerHand"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetOpponentHand\u0028\u0029",
             "name": "getOpponentHand",
-            "summary": "",
+            "summary": "Get\u0020the\u0020computer\u0020opponent\u0020players\u0020hand",
             "url": "classes/App-Game-Game.html#method_getOpponentHand"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetDeck\u0028\u0029",
             "name": "getDeck",
-            "summary": "",
+            "summary": "Get\u0020the\u0020deck",
             "url": "classes/App-Game-Game.html#method_getDeck"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetDiscard\u0028\u0029",
             "name": "getDiscard",
-            "summary": "",
+            "summary": "Get\u0020the\u0020discard\u0020pile",
             "url": "classes/App-Game-Game.html#method_getDiscard"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003AgetRound\u0028\u0029",
             "name": "getRound",
-            "summary": "",
+            "summary": "Get\u0020the\u0020current\u0020round",
             "url": "classes/App-Game-Game.html#method_getRound"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003Ascore\u0028\u0029",
             "name": "score",
-            "summary": "",
+            "summary": "Give\u0020score\u0020at\u0020the\u0020end\u0020of\u0020a\u0020round,\u0020including\u0020knock\u0020bonus\u0020and\u0020undercut\u0020bonus",
             "url": "classes/App-Game-Game.html#method_score"
         },                {
             "fqsen": "\\App\\Game\\Game\u003A\u003A\u0024player",
