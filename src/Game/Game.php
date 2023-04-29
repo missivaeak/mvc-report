@@ -240,7 +240,7 @@ class Game
      * 
      * @param Player $knocking Knocking player
      * @param Player $notKnocking The player who's not knocking
-     * @param int $difference The difference in score, positive means the knocking player's advantage and negative is the not knocking player's advantage.
+     * @param int $difference The difference in hand score excluding bonuses, positive means the knocking player's advantage and negative is the not knocking player's advantage. 
      */
     public function score(Player $knocking, Player $notKnocking, int $difference): int
     {
