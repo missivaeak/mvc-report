@@ -200,4 +200,26 @@ class ApiController extends AbstractController
 
         return $response;
     }
+
+    #[Route("/api/library/book/{isbn}", name: "api_library_book", methods: ["GET"])]
+    public function apiLibraryBook(
+        BookRepository $bookRepo,
+        mixed $isbn
+    ): Response {
+        $book = $bookRepo->findOneBy(['isbn' => $isbn]);
+
+        $data[] = [
+            'title' => $book->getTitle() ?? null,
+            'author' => $book->getAuthor() ?? null,
+            'isbn' => $book->getIsbn() ?? null,
+            'imageUrl' => $book->getImageUrl() ?? null,
+        ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
 }

@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\Persistence\ConnectionRegistry;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

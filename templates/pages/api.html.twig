@@ -29,6 +29,6 @@
     <h3>GET <a href="{{ path('api_library_books') }}">/api/library/books</a></h3>
     <p>Hämta bibliotekets alla böcker.</p>
 
-    <h3>GET <a href="{{ path('api_library_books') }}">/api/library/book/:isbn</a></h3>
+    <h3>GET <a href="{{ path('api_library_book', {isbn: 9780198830771}) }}">/api/library/book/:isbn</a></h3>
     <p>Hämta en av bibliotekets böcker, givet dess ISBN.</p>
 {% endblock %}
