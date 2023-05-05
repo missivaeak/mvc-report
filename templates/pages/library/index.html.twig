@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    {{ include('partials/library/flash.html.twig') }}
+
+    <p>Välkommen till ett helt vanligt bibliotek.</p>
+{% endblock %}

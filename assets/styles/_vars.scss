@@ -1,5 +1,9 @@
+@use "sass:color";
+
 $body-background: #141424;
 $main-background: #000;
+$box-background: #7e653640;
+$box-background-alt: color.scale($box-background, $alpha: -40%);
 $text-colour-site-header: #7d442e;
 $text-colour-link: #c49d9d;
 $text-colour-body: #b19b86;

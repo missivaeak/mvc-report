@@ -54,3 +54,15 @@ code {
 a, a:visited {
     color: vars.$text-colour-link;
 }
+
+table {
+    color: vars.$text-colour-body;
+}
+
+thead {
+    font-family: 'Jost', sans-serif;
+}
+
+tbody {
+    font-family: 'Cabin', serif;
+}

@@ -1,0 +1,36 @@
+@use "vars";
+
+.table {
+    background-color: vars.$box-background;
+    // max-width: 640px;
+    margin: 0 auto;
+    border-collapse: collapse;
+
+    thead {
+        
+
+        th {
+            padding: vars.$magic-number * 0.5;
+            text-align: left;
+            text-transform: uppercase;
+
+            &:nth-child(1) {
+                width: 60%;
+            }
+
+            &:nth-child(2) {
+                width: 40%;
+            }
+        }
+    }
+
+    tbody {
+        td {
+            vertical-align: top;
+            padding: vars.$magic-number * 0.5;
+        }
+        tr:nth-child(odd) {
+            background-color: vars.$box-background-alt;
+        }
+    }
+}

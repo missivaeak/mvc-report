@@ -1,0 +1,68 @@
+@use "vars";
+
+.library-form {
+    position: relative;
+    z-index: 1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 #00000033, 0 5px 5px 0 #0000003d;
+
+    label {
+        display: block;
+        margin-bottom: 0;
+        text-align: left;
+
+        &::after {
+            content: ":";
+        }
+    }
+
+    input,
+    select {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #ddd;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+        margin-bottom: vars.$magic-number;
+    }
+
+    input[type=submit] {
+        font-family: "Roboto", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: #7e6536;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: #ddd;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: #91743e;
+        }
+    }
+}
+
+.book {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: vars.$magic-number;
+    padding: vars.$magic-number;
+    background-color: vars.$box-background;
+    width: 640px;
+    margin: 0 auto;
+
+    img {
+        max-height: 480px;
+    }
+}

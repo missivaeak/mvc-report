@@ -26,7 +26,7 @@ class Game
 
     /**
      * Constructor
-     * 
+     *
      * @param Player $player The human player
      * @param Player $opponent Computer controlled player
      * @param StandardPlayingCardsDeck $deck Deck of cards
@@ -53,7 +53,7 @@ class Game
 
     /**
      * Get human player
-     * 
+     *
      * @return Player
      */
     public function getPlayer(): Player
@@ -63,7 +63,7 @@ class Game
 
     /**
      * Get computer controlled opponent
-     * 
+     *
      * @return Player
      */
     public function getOpponent(): Player
@@ -73,7 +73,7 @@ class Game
 
     /**
      * Get the score threshold to reach to win the game
-     * 
+     *
      * @return int
      */
     public function getWinThreshold(): int
@@ -83,7 +83,7 @@ class Game
 
     /**
      * Get hand score threshold to knock
-     * 
+     *
      * @return int
      */
     public function getKnockThreshold(): int
@@ -93,7 +93,7 @@ class Game
 
     /**
      * Get score bonus to go gin
-     * 
+     *
      * @return int
      */
     public function getGinBonus(): int
@@ -103,7 +103,7 @@ class Game
 
     /**
      * Get score bonus for undercutting
-     * 
+     *
      * @return int
      */
     public function getUndercutBonus(): int
@@ -113,7 +113,7 @@ class Game
 
     /**
      * Get the score bonus to knock
-     * 
+     *
      * @return int
      */
     public function getKnockBonus(): int
@@ -123,7 +123,7 @@ class Game
 
     /**
      * Get hand size limit
-     * 
+     *
      * @return int
      */
     public function getHandSize(): int
@@ -177,7 +177,7 @@ class Game
 
     /**
      * Sets round
-     * 
+     *
      * @param Round $round A round to set as the current round for the game
      */
     public function setRound(Round $round): void
@@ -187,7 +187,7 @@ class Game
 
     /**
      * Get the human players hand
-     * 
+     *
      * @return GinRummyHand
      */
     public function getPlayerHand(): GinRummyHand
@@ -197,7 +197,7 @@ class Game
 
     /**
      * Get the computer opponent players hand
-     * 
+     *
      * @return GinRummyHand
      */
     public function getOpponentHand(): GinRummyHand
@@ -207,7 +207,7 @@ class Game
 
     /**
      * Get the deck
-     * 
+     *
      * @return StandardPlayingCardsDeck
      */
     public function getDeck(): StandardPlayingCardsDeck
@@ -217,7 +217,7 @@ class Game
 
     /**
      * Get the discard pile
-     * 
+     *
      * @return Discard
      */
     public function getDiscard(): Discard
@@ -227,7 +227,7 @@ class Game
 
     /**
      * Get the current round
-     * 
+     *
      * @return Round
      */
     public function getRound(): Round
@@ -237,10 +237,10 @@ class Game
 
     /**
      * Give score at the end of a round, including knock bonus and undercut bonus
-     * 
+     *
      * @param Player $knocking Knocking player
      * @param Player $notKnocking The player who's not knocking
-     * @param int $difference The difference in hand score excluding bonuses, positive means the knocking player's advantage and negative is the not knocking player's advantage. 
+     * @param int $difference The difference in hand score excluding bonuses, positive means the knocking player's advantage and negative is the not knocking player's advantage.
      */
     public function score(Player $knocking, Player $notKnocking, int $difference): int
     {

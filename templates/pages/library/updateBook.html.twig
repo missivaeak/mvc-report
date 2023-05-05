@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    {{ include('partials/library/flash.html.twig') }}
+
+    <form class="library-form" method="POST">
+        <label>Titel</label>
+        <input type="text" name="title" value="{{ book.getTitle() }}" required>
+        <label>ISBN</label>
+        <input type="text" name="isbn" value="{{ book.getIsbn() }}" required>
+        <label>Författare</label>
+        <input type="text" name="author" value="{{ book.getAuthor() }}" required>
+        <label>Länk till bild (valfritt)</label>
+        <input type="text" name="image_url" value="{{ book.getImageUrl() }}">
+        <br>
+        <input type="submit" name="doit" value="Spara">
+    </form>
+{% endblock %}

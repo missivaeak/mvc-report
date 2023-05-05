@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    {{ include('partials/library/flash.html.twig') }}
+
+    <form class="library-form" method="post">
+        <select name="book-id">
+            <option value="0">Välj...</option>
+
+            {% for book in books %}
+                <option value="{{ book.getId() }}">{{ book.getTitle() }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Ta bort">
+    </form>
+{% endblock %}

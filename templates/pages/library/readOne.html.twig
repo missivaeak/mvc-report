@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    {% set imageSrc =  asset('img/library/default.png') %}
+    {% if book.getImageUrl() %}
+        {% set imageSrc = book.getImageUrl() %}
+    {% endif %}
+
+    <div class="book">
+        <img src="{{ imageSrc }}" alt="{{ book.getTitle() }}">
+        <div class="text">
+            <h3>{{ book.getTitle() }}</h3>
+            <h4><i>{{ book.getAuthor() }}</i></h4>
+            <p>{{ book.getIsbn() }}</p>
+        </div>
+    </div>
+{% endblock %}

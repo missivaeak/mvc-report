@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    <form class="library-form" method="POST">
+        <label>Titel</label>
+        <input type="text" name="title" required>
+        <label>ISBN</label>
+        <input type="text" name="isbn" required>
+        <label>Författare</label>
+        <input type="text" name="author" required>
+        <label>Länk till bild (valfritt)</label>
+        <input type="text" name="image_url">
+        <br>
+        <input type="submit" name="doit" value="Lägg till">
+    </form>
+{% endblock %}

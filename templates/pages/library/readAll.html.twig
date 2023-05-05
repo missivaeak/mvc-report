@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+    {{ include('partials/library/nav.html.twig')}}
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Titel</th>
+            <th>Författare</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>
+                        <a href="{{ path('library_read_one', {id: book.getId()})}}">
+                            {{ book.getTitle() }}
+                        </a>
+                    </td>
+                    <td>{{ book.getAuthor() }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
