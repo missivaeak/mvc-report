@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Card\Deck;
 use App\Card\Hand;
-use App\Card\Card;
+
+use App\Repository\BookRepository;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -168,6 +169,29 @@ class ApiController extends AbstractController
             'deck' => $deck ?? null,
             'discard' => $discard ?? null,
         ];
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/library/books", name: "api_library_books", methods: ["GET"])]
+    public function apiLibraryBooks(
+        BookRepository $bookRepo,
+    ): Response {
+        $data = [];
+        $books = $bookRepo->findAll();
+        foreach ($books as $book) {
+            $data[] = [
+                'title' => $book->getTitle() ?? null,
+                'author' => $book->getAuthor() ?? null,
+                'isbn' => $book->getIsbn() ?? null,
+                'imageUrl' => $book->getImageUrl() ?? null,
+            ];
+        }
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
