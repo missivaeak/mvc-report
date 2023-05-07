@@ -207,13 +207,16 @@ class ApiController extends AbstractController
         mixed $isbn
     ): Response {
         $book = $bookRepo->findOneBy(['isbn' => $isbn]);
+        $data = [];
 
-        $data[] = [
-            'title' => $book->getTitle() ?? null,
-            'author' => $book->getAuthor() ?? null,
-            'isbn' => $book->getIsbn() ?? null,
-            'imageUrl' => $book->getImageUrl() ?? null,
-        ];
+        if ($book) {
+            $data[] = [
+                'title' => $book->getTitle() ?? null,
+                'author' => $book->getAuthor() ?? null,
+                'isbn' => $book->getIsbn() ?? null,
+                'imageUrl' => $book->getImageUrl() ?? null,
+            ];
+        }
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

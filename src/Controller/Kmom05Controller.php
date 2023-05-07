@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Book;
 use App\Repository\BookRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\DBAL\Connection;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -144,6 +145,7 @@ class Kmom05Controller extends AbstractController
     public function libraryReset(
         ManagerRegistry $doctrine
     ): Response {
+        /** @var Connection $connection */
         $connection = $doctrine->getConnection();
 
         $file = '../var/backup.sql';
@@ -153,8 +155,7 @@ class Kmom05Controller extends AbstractController
             DROP TABLE IF EXISTS messenger_messages;
         ' . file_get_contents($file);
 
-
-        $connection->exec($sql);
+        $connection->executeStatement($sql);
         $doctrine->getManager()->flush();
 
         $this->addFlash('notice', "Databasen återställd.");
