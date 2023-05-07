@@ -140,7 +140,7 @@ class Kmom05Controller extends AbstractController
         return $this->redirectToRoute('library');
     }
 
-    #[Route('/library/reset', name: 'library_reset')]
+    #[Route('/library/reset', name: 'library_reset', methods: ["GET", "POST"])]
     public function libraryReset(
         ManagerRegistry $doctrine
     ): Response {

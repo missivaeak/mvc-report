@@ -45,7 +45,7 @@
             <input type="submit" value="lägg till bok">
         </form>
 
-        <form class="library-form" action={{ path('library_reset') }}>
+        <form class="library-form" method="post" action={{ path('library_reset') }}>
             <input type="submit" value="återställ">
         </form>
     </div>
