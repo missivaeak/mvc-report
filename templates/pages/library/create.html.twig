@@ -3,8 +3,6 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-    {{ include('partials/library/nav.html.twig')}}
-
     <form class="library-form" method="POST">
         <label>Titel</label>
         <input type="text" name="title" required>
@@ -16,5 +14,9 @@
         <input type="text" name="image_url">
         <br>
         <input type="submit" name="doit" value="Lägg till">
+    </form>
+
+    <form class="library-form" action={{ path('library') }}>
+        <input type="submit" value="tillbaka">
     </form>
 {% endblock %}

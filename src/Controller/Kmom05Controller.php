@@ -16,10 +16,14 @@ class Kmom05Controller extends AbstractController
     private string $title = "mvc.ades22.library";
 
     #[Route('/library', name: 'library')]
-    public function index(): Response
-    {
+    public function index(
+        BookRepository $bookRepo
+    ): Response {
+        $books = $bookRepo->findAll();
+
         return $this->render('pages/library/index.html.twig', [
             'title' => $this->title,
+            'books' => $books
         ]);
     }
 
@@ -49,31 +53,9 @@ class Kmom05Controller extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        return $this->redirectToRoute('library_create');
-    }
+        $this->addFlash('notice', 'Boken har lagts till.');
 
-    #[Route('/library/read/all', name: 'library_read_all')]
-    public function libraryReadAll(
-        BookRepository $bookRepo
-    ): Response {
-        $books = $bookRepo->findAll();
-
-        return $this->render('pages/library/readAll.html.twig', [
-            'title' => $this->title,
-            'books' => $books
-        ]);
-    }
-
-    #[Route('/library/read', name: 'library_read')]
-    public function libraryRead(
-        BookRepository $bookRepo
-    ): Response {
-        $books = $bookRepo->findAll();
-
-        return $this->render('pages/library/read.html.twig', [
-            'title' => $this->title,
-            'books' => $books
-        ]);
+        return $this->redirectToRoute('library');
     }
 
     #[Route('/library/read/{id<\d+>}', name: 'library_read_one')]
@@ -86,24 +68,12 @@ class Kmom05Controller extends AbstractController
         if (!$book) {
             $this->addFlash('notice', "Boken hittades inte.");
 
-            return $this->redirectToRoute('library_read');
+            return $this->redirectToRoute('library');
         }
 
-        return $this->render('pages/library/readOne.html.twig', [
+        return $this->render('pages/library/book.html.twig', [
             'title' => $this->title,
             'book' => $book
-        ]);
-    }
-
-    #[Route('/library/update', name: 'library_update')]
-    public function libraryUpdate(
-        BookRepository $bookRepo
-    ): Response {
-        $books = $bookRepo->findAll();
-
-        return $this->render('pages/library/update.html.twig', [
-            'title' => $this->title,
-            'books' => $books
         ]);
     }
 
@@ -123,7 +93,7 @@ class Kmom05Controller extends AbstractController
         }
 
         if ($request->isMethod("GET")) {
-            return $this->render('pages/library/updateBook.html.twig', [
+            return $this->render('pages/library/edit.html.twig', [
                 'title' => $this->title,
                 'book' => $book
             ]);
@@ -143,9 +113,9 @@ class Kmom05Controller extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        $this->addFlash('notice', "Boken har uppdaterats.");
+        $this->addFlash('notice', "Ändringar har sparats.");
 
-        return $this->redirectToRoute('library_update_book', ['id' => $id]);
+        return $this->redirectToRoute('library');
     }
 
     #[Route('/library/delete', name: 'library_delete', methods: ["GET", "POST"])]
@@ -154,15 +124,6 @@ class Kmom05Controller extends AbstractController
         BookRepository $bookRepo,
         ManagerRegistry $doctrine
     ): Response {
-        if ($request->isMethod("GET")) {
-            $books = $bookRepo->findAll();
-
-            return $this->render('pages/library/delete.html.twig', [
-                'title' => $this->title,
-                'books' => $books
-            ]);
-        }
-
         $bookId = $request->request->get('book-id');
         $book = $bookRepo->find($bookId);
         $flash = "Hittade inte den produkten i databasen.";
@@ -176,7 +137,7 @@ class Kmom05Controller extends AbstractController
 
         $this->addFlash('notice', $flash);
 
-        return $this->redirectToRoute('library_delete');
+        return $this->redirectToRoute('library');
     }
 
     #[Route('/library/reset', name: 'library_reset')]

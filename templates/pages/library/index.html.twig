@@ -3,9 +3,50 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-    {{ include('partials/library/nav.html.twig')}}
-
     {{ include('partials/library/flash.html.twig') }}
 
-    <p>Välkommen till ett helt vanligt bibliotek.</p>
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Titel</th>
+            <th>Författare</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>
+                        <a href="{{ path('library_read_one', {id: book.getId()})}}">
+                            {{ book.getTitle() }}
+                        </a>
+                    </td>
+                    <td>{{ book.getAuthor() }}</td>
+                    <td>
+                        <a href="{{ path('library_update_book', {id: book.getId()})}}">
+                            redigera
+                        </a>
+                    </td>
+                    <td>
+                        <form method="post" id="delete-book-{{ book.getId() }}" action="{{ path('library_delete') }}">
+                            <input type="hidden" name="book-id" value="{{ book.getId() }}">
+                        </form>
+
+                        <a href="#" onclick="document.getElementById('delete-book-{{ book.getId() }}').submit()">ta bort</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="library-buttons">
+        <form class="library-form" action={{ path('library_create') }}>
+            <input type="submit" value="lägg till bok">
+        </form>
+
+        <form class="library-form" action={{ path('library_reset') }}>
+            <input type="submit" value="återställ">
+        </form>
+    </div>
 {% endblock %}

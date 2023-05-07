@@ -3,10 +3,6 @@
 {% block title %}{{title}}{% endblock %}
 
 {% block body %}
-    {{ include('partials/library/nav.html.twig')}}
-
-    {{ include('partials/library/flash.html.twig') }}
-
     <form class="library-form" method="POST">
         <label>Titel</label>
         <input type="text" name="title" value="{{ book.getTitle() }}" required>
@@ -18,5 +14,9 @@
         <input type="text" name="image_url" value="{{ book.getImageUrl() }}">
         <br>
         <input type="submit" name="doit" value="Spara">
+    </form>
+
+    <form class="library-form" action={{ path('library') }}>
+        <input type="submit" value="tillbaka">
     </form>
 {% endblock %}
