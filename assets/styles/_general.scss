@@ -28,3 +28,11 @@ img {
     border-left: solid 2px vars.$text-colour-body;
     margin-bottom: vars.$magic-number;
 }
+
+ul {
+    margin: 10px 40px;
+
+    li {
+        margin: 0;
+    }
+}

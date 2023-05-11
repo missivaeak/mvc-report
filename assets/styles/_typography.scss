@@ -20,7 +20,7 @@ h4 {
 h1 {
     font-size: 2.4rem;
     margin-bottom: 2.8rem;
-    border-bottom: solid 1px vars.$text-colour-body;
+    // border-bottom: solid 1px vars.$text-colour-body;
 }
 
 h2 {
@@ -39,7 +39,8 @@ h4 {
 }
 
 p,
-label {
+label,
+li {
     font-size: 1rem;
     font-family: 'Cabin', serif;
     color: vars.$text-colour-body;

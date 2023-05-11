@@ -145,7 +145,6 @@ class Kmom03Controller extends AbstractController
             case 2:
                 $card = $logic->drawDeckOrDrawDiscard();
                 $flash = "Drar kort från kortleken.";
-                $nextStep = 0;
                 if ($card) {
                     $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
                 }
