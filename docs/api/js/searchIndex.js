@@ -191,6 +191,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ApiController.html#method_apiGame"
         },                {
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLibraryBooks\u0028\u0029",
+            "name": "apiLibraryBooks",
+            "summary": "",
+            "url": "classes/App-Controller-ApiController.html#method_apiLibraryBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLibraryBook\u0028\u0029",
+            "name": "apiLibraryBook",
+            "summary": "",
+            "url": "classes/App-Controller-ApiController.html#method_apiLibraryBook"
+        },                {
             "fqsen": "\\App\\Controller\\ApiController\u003A\u003A\u0024title",
             "name": "title",
             "summary": "",
@@ -1076,25 +1086,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-Kmom05Controller.html#method_libraryCreate"
         },                {
-            "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryReadAll\u0028\u0029",
-            "name": "libraryReadAll",
-            "summary": "",
-            "url": "classes/App-Controller-Kmom05Controller.html#method_libraryReadAll"
-        },                {
-            "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryRead\u0028\u0029",
-            "name": "libraryRead",
-            "summary": "",
-            "url": "classes/App-Controller-Kmom05Controller.html#method_libraryRead"
-        },                {
             "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryReadOne\u0028\u0029",
             "name": "libraryReadOne",
             "summary": "",
             "url": "classes/App-Controller-Kmom05Controller.html#method_libraryReadOne"
-        },                {
-            "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryUpdate\u0028\u0029",
-            "name": "libraryUpdate",
-            "summary": "",
-            "url": "classes/App-Controller-Kmom05Controller.html#method_libraryUpdate"
         },                {
             "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryUpdateBook\u0028\u0029",
             "name": "libraryUpdateBook",
@@ -1105,6 +1100,11 @@ Search.appendIndex(
             "name": "libraryDelete",
             "summary": "",
             "url": "classes/App-Controller-Kmom05Controller.html#method_libraryDelete"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003AlibraryReset\u0028\u0029",
+            "name": "libraryReset",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom05Controller.html#method_libraryReset"
         },                {
             "fqsen": "\\App\\Controller\\Kmom05Controller\u003A\u003A\u0024title",
             "name": "title",

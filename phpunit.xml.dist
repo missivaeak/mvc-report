@@ -43,4 +43,7 @@
         <extension class="Symfony\Component\Panther\ServerExtension" />
     </extensions>
     -->
+    <logging>
+        <junit outputFile="docs/junit.xml" />
+    </logging>
 </phpunit>
