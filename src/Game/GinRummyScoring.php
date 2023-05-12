@@ -198,22 +198,23 @@ class GinRummyScoring
     ): bool {
         $card = $thisHand->drawByPattern($suit, $value);
         $melds = $otherHand->getMelds();
+        $shouldMeldFlag = false;
+
+        if (!$card) {
+            return false;
+        }
+
         foreach ($melds as $meld) {
-            if ($meld->isRun() === true && $meld->getSuit() === $suit) {
-                $shouldMeldFlag = $this->tryMeldCardWithRun($card, $meld);
-            } elseif ($meld->isSet() === true && $meld->getValue() === $value) {
-                $suits = array_map(function ($cardInMeld) {
-                    return $cardInMeld->getSuit();
-                }, $meld->getCards());
-
-                $remainingSuit = array_values(array_diff($this->suits, $suits))[0];
-
-                if ($card && $suit === $remainingSuit) {
-                    $otherHand->add($card);
-                    $meld->add($card);
-                    $card->reveal();
-                    return true;
-                }
+            if (
+                $meld->isRun() === true
+                && $meld->getSuit() === $suit
+            ) {
+                $shouldMeldFlag = $this->shouldCardMeldWithRun($card, $meld);
+            } elseif (
+                $meld->isSet() === true
+                && $meld->getValue() === $value
+            ) {
+                $shouldMeldFlag = $this->shouldCardMeldWithSet($card, $meld);
             }
 
             if ($shouldMeldFlag) {
@@ -225,16 +226,13 @@ class GinRummyScoring
             }
         }
 
-        if ($card) {
-            $thisHand->add($card);
-        }
-        $this->meld($otherHand);
+        $thisHand->add($card);
 
         return false;
     }
 
-    private function tryMeldCardWithRun(
-        StandardPlayingCard $card,
+    private function shouldCardMeldWithRun(
+        CardInterface $card,
         Meld $meld
     ): bool {
         $value = $card->getValue();
@@ -246,7 +244,25 @@ class GinRummyScoring
         $lowerValue = $values[0] - 1;
         $higherValue = $values[array_key_last($values)] + 1;
 
-        if ($card && ($value === $lowerValue || $value === $higherValue)) {
+        if ($value === $lowerValue || $value === $higherValue) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function shouldCardMeldWithSet(
+        CardInterface $card,
+        Meld $meld
+    ): bool {
+        $suit = $card->getSuit();
+        $suits = array_map(function ($cardInMeld) {
+            return $cardInMeld->getSuit();
+        }, $meld->getCards());
+
+        $remainingSuit = array_values(array_diff($this->suits, $suits))[0];
+
+        if ($suit === $remainingSuit) {
             return true;
         }
 
