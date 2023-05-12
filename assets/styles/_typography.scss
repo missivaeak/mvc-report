@@ -47,6 +47,12 @@ li {
     margin-bottom: 1.4rem;
 }
 
+figcaption {
+    font-size: 0.9rem;
+    font-family: 'Cabin', serif;
+    color: vars.$text-colour-footer;
+}
+
 pre,
 code {
     color: vars.$text-colour-body;

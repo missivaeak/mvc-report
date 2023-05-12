@@ -11,11 +11,17 @@
 
 <p>En minnesregel för god kodkvalitet kan vara de sex C:na; codestyle, coverage, complexity, cohesion, coupling och CRAP. De ringa in vissa önskvärda eller oönskvärda mönster som kan förekomma i kod.</p>
 
-<p>Codestyle handlar om att skriva koden enligt en bra kodstil, med bra menas en kodstil som är lättläst och lätt att efterlikna. I detta arbete så används csfix för att kontrollera samt fixa kodstilen och den kan därför ses som uppfylld utan reservation, det är vanligt att projekt har såna här stilregler men de stil reglerna behöver inte vara samma för alla projekt ens med samma programmeringsspråk.</p>
+<p>Codestyle handlar om att skriva koden enligt en bra kodstil, med bra menas en kodstil som är lättläst och lätt att efterlikna. I detta arbete så används csfix för att kontrollera samt fixa kodstilen och den kan därför ses som uppfylld utan reservation, det är vanligt att projekt har såna här stilregler men de stilreglerna behöver inte vara samma för alla projekt ens med samma programmeringsspråk.</p>
 
-<p>Nyckelordet <i>coverage</i> används för att beskriva hur stor del av ett projekts logiska rader kod som testas. Det säger ingenting om testernas kvalité eller innehåll, enbart hur mycket som testas. Det kan således ge en falsk bild, antigen positivt eller negativt, av hur bra tester ett projekt har.</p>
+<p>Nyckelordet <i>coverage</i> används för att beskriva hur stor del av ett projekts logiska rader kod som testas. Det säger ingenting om testernas kvalité eller innehåll, enbart hur mycket som testas. Det kan således ge en falsk bild, antigen positivt eller negativt, av hur bra tester ett projekt har. Lite slarvigt kan man säga att 70% och mer är hjälpligt, 90% eller mer är bra.</p>
 
-<p><i>Complexity</i> är ett begrepp för ett projekts komplexitet. Det finns inget enskild mätvärde för detta, men oftast används cyklomatisk complexitet (<i>cyclomatic complexity el. CC</i>. CC bedömer enskilda metoders olika beslutsvägar, så om en metod har många möjliga beslutsvägar ökar CC. Hög CC betyder att metoden blir svårare att förstå samt svårare att testa.</p>
+<p><i>Complexity</i> är ett begrepp för ett projekts komplexitet. Det finns inget enskild mätvärde för detta, men oftast används cyklomatisk complexitet (<i>cyclomatic complexity el. CC</i>). CC bedömer enskilda metoders olika beslutsvägar, så om en metod har många möjliga beslutsvägar ökar CC. Hög CC betyder att metoden blir svårare att förstå samt svårare att testa. Klasserna i detta projekt har CC som sträcker sig mellan 1 och 40 och metoder som sträcker sig mellan 0 och 17.</p>
+
+<p>Det fjärde C:et står för <i>cohesion</i> och likt C:et innan så står det för en abstrakt idé med ett mätvärde som ofta används för att representera den idéen. Cohesion handlar om att ens kod ska hänga samman i syfte och funktion, exempelvis så ska en klass arbeta med ett avgränsat arbetsområde. Just denna del kan bedömas med mätvärded <i>Lack of cohesion of methods</i>, där en klass bedöms på just det. Ett högt LCOM betyder stor brist på <i>cohesion</i> och är inte önskvärt. Exempelvis så har detta projekt i skrivandes hög LCOM på controllern som styr alla /api/-routes, med ett värde på 9. Det är högt just för att den controllern använder sig av och arbetar med nästan alla klasser i hela projeketet.</p>
+
+<p><i>Coupling</i> handlar om hur sammankopplade delar av koden är. Vi vill ha kod med låg coupling, det vill säga som gör sin egen sak utan att använda sig eller bli använd av andra delar av koden för mycket. Coupling skapar beroenden som gör det svårare att underhålla och arbeta med koden. Man kan mäta coupling med <i>efferent coupling</i> och <i>afferent coupling</i>, EC och AC. AC anger hur många andra klasser som använder klassen och EC anger hur många andra klasser som klassen använder. I detta projekt har klasserna mellan 0 och 5 AC och mellan 0 och 13 EC.</p>
+
+<p>Det sista C:et är <i>CRAP</i>, <i>change risk anti-pattern</i> eller <i>change risk analyzer and predictor</i>, och det är ett mätvärde som jämför en metods komplexitet med hur mycket tester som utförs på metoden. Idéen är att om du har högt CRAP på en metod så kan det behövas mer tester för att minska risken av buggar i koden.</p>
 
 <h2>Phpmetrics</h2>
 
@@ -23,7 +29,26 @@
 
 <p><i>I ovan analys så kopplar du dina “findings” till 6C. Använd gärna något ytterligare mättal som du finner relevant och intressant.</i></p>
 
-<p>ooooo</p>
+<p>I <a href="../docs/metrics">denna</a> analys av phpmetrics går det att hitta vissa svagheter i projektet.</p>
+
+<figure>
+    <img src="{{ asset('img/metrics/phpmetrics-maintainability.png') }}" alt="Svårunderhållen klass">
+    <figcaption>Phpmetrics graf för maintainability och complexitet.</figcaption>
+</figure>
+
+<p>oeoe</p>
+
+<figure>
+    <img src="{{ asset('img/metrics/phpmetrics-coupling.png') }}" alt="Klass med hög coupling.">
+    <figcaption>Hög AC och EC hos klassen GinRummyHand.</figcaption>
+</figure>
+
+<p>aoeaoeaoeaoe</p>
+
+<figure>
+    <img src="{{ asset('img/metrics/phpmetrics-cohesion.png') }}" alt="Klass med låg cohesion.">
+    <figcaption>Hög LCOM i klassen ApiController.</figcaption>
+</figure>
 
 <h2>Scrutinizer</h2>
 
@@ -31,13 +56,19 @@
 
 <p><i>I ovan analys så kopplar du dina “findings” till 6C. Använd gärna något ytterligare mättal som du finner relevant och intressant.</i></p>
 
+
+<figure>
+    <img src="{{ asset('img/metrics/scrutinizer-cc.png') }}" alt="Hög cyklomatiskt komplexitet">
+    <figcaption>En av projektets mer komplexa metoder, med CC-värde 17. Analys av Scrutinizer.</figcaption>
+</figure>
+
 <p>aoeaoee</p>
 
 <h2>Förbättringar</h2>
 
 <p><i>Skapa en ny rubrik “Förbättringar” där du väljer minst 3 förbättringar som du vill göra med din kod (gärna fler).</i></p>
 
-<ul>
+<i><ul>
     <li>Exempel på förbättringar kan vara:</li>
     <ul>
         <li>Fixa issues</li>
@@ -49,7 +80,7 @@
     <li>Implementera sedan förbättringarna.</li>
     <li>Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.</li>
     <li>Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.</li>
-</ul>
+</ul></i>
 
 
 <p>aoeaoeaoeoe</p>
