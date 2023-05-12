@@ -143,52 +143,11 @@ class Kmom03Controller extends AbstractController
             case 0:
             case 1:
             case 2:
-                // $card = $logic->drawDeckOrDrawDiscard();
-                // $flash = "Drar kort från kortleken.";
-                // if ($card) {
-                //     $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
-                // }
-
-                // $logic->discard();
-                // $flash .= " Slänger kort.";
-
-                // $knock = $logic->knockOrPass();
-                // if ($knock) {
-                //     $scoring->meld($opponentHand);
-                //     $opponentHand->revealAll();
-                //     $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
-                //     $round->setStep(3);
-                //     break;
-                // }
-
-                // $round->setStep(0);
-                // $opponentHand->resetMelds();
                 $flash = $logic->mainStep($round);
                 break;
             case 3:
-                // lägga kort på knack
-                $logic->addToPlayersMeld($playerHand);
-                $flash = "Försöker lägga kort till dina serier.";
-
-                //beräknar poäng
-                $playerScore = $scoring->handScore($playerHand);
-                $opponentScore = $scoring->handScore($opponentHand);
-                $difference = $opponentScore - $playerScore;
-                $points = $game->score($player, $opponent, $difference);
-                $scoreFlash = " Lika. Inga poäng delades ut.";
-                if ($playerScore === 0) {
-                    $points = $opponentScore + $game->getGinBonus();
-                    $scoreFlash = " Du har gin och får $points poäng.";
-                } else {
-                    if ($points > 0) {
-                        $scoreFlash = " Du vinner och får $points poäng.";
-                    } elseif ($points < 0) {
-                        $points = abs($points);
-                        $scoreFlash = " Motståndaren vinner och får $points poäng.";
-                    }
-                }
-                $flash .= $scoreFlash;
-                $round->setStep(7);
+                $flash = $logic->knockStep($round, $playerHand);
+                $flash .= $scoring->checkScoreDiff($player, $opponent, $game);
                 break;
             case 4:
                 $card = $logic->drawOrPass();
@@ -298,6 +257,7 @@ class Kmom03Controller extends AbstractController
         $opponentHand = $game->getOpponentHand();
 
         $scoring->addToOthersMeld($suit, $value, $playerHand, $opponentHand);
+        $opponentHand->revealAll();
 
         return $this->redirectToRoute('game_main');
     }

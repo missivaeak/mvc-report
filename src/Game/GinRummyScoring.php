@@ -17,28 +17,32 @@ class GinRummyScoring
     {
         // for each unmatched card see if that that card's
         // two higher value cards exist among unmatched cards
-        foreach ($hand->getUnmatched() as $card) {
+        $unmatched = $hand->getUnmatched();
+        foreach ($unmatched as $card) {
             $value = $card->getValue();
             $suit = $card->getSuit();
-            $nextCard = new StandardPlayingCard($suit, $value + 1);
-            $nextNextCard = new StandardPlayingCard($suit, $value + 2);
+            $nextCard = $hand->getByPattern($suit, $value + 1);
+            $nextNextCard = $hand->getByPattern($suit, $value + 2);
 
 
-            if (in_array(strval($nextCard), $hand->getUnmatched())
-                && in_array(strval($nextNextCard), $hand->getUnmatched())) {
-
+            if ($nextCard && $nextNextCard) {
                 // create new meld
-                $meldIndex = $hand->addMeld(new Meld("run"));
+                $meld = new Meld("run");
+                $hand->addMeld($meld);
 
                 // arrange the run
                 $run = [$card, $nextCard, $nextNextCard];
 
                 // add each card to the meld
                 foreach ($run as $cardInRun) {
-                    $index = intval(array_search($cardInRun, $hand->getUnmatched()));
-                    if ($index > 0) {
-                        $hand->addToMeld($index, $meldIndex);
-                    }
+                    // $suit = $dummyCard->getSuit();
+                    // $value = $dummyCard->getValue();
+                    // $cardInRun = $hand->getByPattern($suit, $value);
+                    $meld->add($cardInRun);
+                    // $index = intval(array_search($cardInRun, $hand->getUnmatched()));
+                    // if ($index > 0) {
+                    //     $hand->addToMeld($index, $meldIndex);
+                    // }
                 }
             }
         }
@@ -170,7 +174,6 @@ class GinRummyScoring
             if ($shouldMeldFlag) {
                 $otherHand->add($card);
                 $meld->add($card);
-                $card->reveal();
 
                 return true;
             }
@@ -217,5 +220,31 @@ class GinRummyScoring
         }
 
         return false;
+    }
+
+    public function checkScoreDiff(
+        Player $player,
+        Player $opponent,
+        Game $game
+    ): string
+    {
+        //beräknar poäng
+        $playerScore = $this->handScore($player->getHand());
+        $opponentScore = $this->handScore($opponent->getHand());
+        $difference = $opponentScore - $playerScore;
+        $points = $game->score($player, $opponent, $difference);
+        $scoreFlash = " Lika. Inga poäng delades ut.";
+        if ($playerScore === 0) {
+            $points = $opponentScore + $game->getGinBonus();
+            $scoreFlash = " Du har gin och får $points poäng.";
+        } else {
+            if ($points > 0) {
+                $scoreFlash = " Du vinner och får $points poäng.";
+            } elseif ($points < 0) {
+                $points = abs($points);
+                $scoreFlash = " Motståndaren vinner och får $points poäng.";
+            }
+        }
+        return $scoreFlash;
     }
 }

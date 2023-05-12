@@ -148,7 +148,8 @@ class GinRummyOpponentLogic
         return $meldedOnce;
     }
 
-    public function mainStep (Round $round): string {
+    public function mainStep (Round $round): string
+    {
         $card = $this->drawDeckOrDrawDiscard();
         $flash = "Drar kort från kortleken.";
         if ($card) {
@@ -160,7 +161,8 @@ class GinRummyOpponentLogic
 
         $knock = $this->knockOrPass();
         if ($knock) {
-            $scoring->meld($opponentHand);
+            $opponentHand = $this->opponent->getHand();
+            $this->scoring->meld($opponentHand);
             $opponentHand->revealAll();
             $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
             $round->setStep(3);
@@ -173,15 +175,25 @@ class GinRummyOpponentLogic
         return $flash;
     }
 
-    public function knockStep () {
+    public function knockStep (Round $round, GinRummyHand $playerHand): string
+    {
 
+        // lägga kort på knack
+        $this->addToPlayersMeld($playerHand);
+        $flash = "Försöker lägga kort till dina serier.";
+
+        $round->setStep(7);
+
+        return $flash;
     }
 
-    public function topCardChoiceStep() {
+    // public function topCardChoiceStep()
+    // {
 
-    }
+    // }
 
-    public function topCardForcedStep() {
+    // public function topCardForcedStep()
+    // {
 
-    }
+    // }
 }

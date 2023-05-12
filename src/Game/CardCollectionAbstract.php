@@ -81,20 +81,22 @@ abstract class CardCollectionAbstract
 
     public function drawByPattern(string $suit, int $value): ?CardInterface
     {
-        $card = null;
-        $cardIndex = -1;
+        $card = $this->getByPattern($suit, $value);
+
+        $index = intval(array_search($card, $this->cards));
+        unset($this->cards[$index]);
+
+        return $card;
+    }
+
+    public function getByPattern(string $suit, int $value): ?CardInterface
+    {
         foreach ($this->cards as $key => $card) {
             if ($card->getSuit() === $suit && $card->getValue() === $value) {
-                $cardIndex = $key;
-                break;
+                return $card;
             }
         }
 
-        if ($cardIndex > -1) {
-            $card = $this->cards[$cardIndex];
-            unset($this->cards[$cardIndex]);
-        }
-
-        return $card;
+        return null;
     }
 }
