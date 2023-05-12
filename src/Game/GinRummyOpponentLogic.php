@@ -147,4 +147,41 @@ class GinRummyOpponentLogic
 
         return $meldedOnce;
     }
+
+    public function mainStep (Round $round): string {
+        $card = $this->drawDeckOrDrawDiscard();
+        $flash = "Drar kort från kortleken.";
+        if ($card) {
+            $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
+        }
+
+        $this->discard();
+        $flash .= " Slänger kort.";
+
+        $knock = $this->knockOrPass();
+        if ($knock) {
+            $scoring->meld($opponentHand);
+            $opponentHand->revealAll();
+            $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
+            $round->setStep(3);
+            return $flash;
+        }
+
+        $round->setStep(0);
+        $this->opponent->getHand()->resetMelds();
+
+        return $flash;
+    }
+
+    public function knockStep () {
+
+    }
+
+    public function topCardChoiceStep() {
+
+    }
+
+    public function topCardForcedStep() {
+
+    }
 }

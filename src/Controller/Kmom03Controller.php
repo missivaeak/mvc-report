@@ -143,26 +143,27 @@ class Kmom03Controller extends AbstractController
             case 0:
             case 1:
             case 2:
-                $card = $logic->drawDeckOrDrawDiscard();
-                $flash = "Drar kort från kortleken.";
-                if ($card) {
-                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
-                }
+                // $card = $logic->drawDeckOrDrawDiscard();
+                // $flash = "Drar kort från kortleken.";
+                // if ($card) {
+                //     $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen.";
+                // }
 
-                $logic->discard();
-                $flash .= " Slänger kort.";
+                // $logic->discard();
+                // $flash .= " Slänger kort.";
 
-                $knock = $logic->knockOrPass();
-                if ($knock) {
-                    $scoring->meld($opponentHand);
-                    $opponentHand->revealAll();
-                    $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
-                    $round->setStep(3);
-                    break;
-                }
+                // $knock = $logic->knockOrPass();
+                // if ($knock) {
+                //     $scoring->meld($opponentHand);
+                //     $opponentHand->revealAll();
+                //     $flash .= " Knackar. Välj kort att lägga till motståndarens serier.";
+                //     $round->setStep(3);
+                //     break;
+                // }
 
-                $round->setStep(0);
-                $opponentHand->resetMelds();
+                // $round->setStep(0);
+                // $opponentHand->resetMelds();
+                $flash = $logic->mainStep($round);
                 break;
             case 3:
                 // lägga kort på knack
