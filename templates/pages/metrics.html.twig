@@ -7,8 +7,6 @@
 
 <h2>Introduktion</h2>
 
-<p><i>Börja med en rubrik “Introduktion” där du förklarar de sex C:na och hur de kan påverka kodens kvalitet. Exemplifiera, där det passar, med några mätvärden som är kopplad till din egen kod och ge en kort förklaring av mätvärdet relaterat till kodkvalitet.</i></p>
-
 <p>En minnesregel för god kodkvalitet kan vara de sex C:na; codestyle, coverage, complexity, cohesion, coupling och CRAP. De ringa in vissa önskvärda eller oönskvärda mönster som kan förekomma i kod.</p>
 
 <p>Codestyle handlar om att skriva koden enligt en bra kodstil, med bra menas en kodstil som är lättläst och lätt att efterlikna. I detta arbete så används csfix för att kontrollera samt fixa kodstilen och den kan därför ses som uppfylld utan reservation, det är vanligt att projekt har såna här stilregler men de stilreglerna behöver inte vara samma för alla projekt ens med samma programmeringsspråk.</p>
@@ -25,10 +23,6 @@
 
 <h2>Phpmetrics</h2>
 
-<p><i>Skapa en rubrik “Phpmetrics” och analysera dess rapport för din kod. Använd mätvärdena för att hitta flaskhalsar och svaga punkter i din kod (minst 3 stycken). Du vill hitta kod som har förbättringspotential. Visualisera med någon representativ bild från rapporten.</i></p>
-
-<p><i>I ovan analys så kopplar du dina “findings” till 6C. Använd gärna något ytterligare mättal som du finner relevant och intressant.</i></p>
-
 <p>I <a href="../docs/metrics">denna</a> analys av phpmetrics går det att hitta vissa svagheter i projektet.</p>
 
 <figure>
@@ -36,67 +30,82 @@
     <figcaption>Phpmetrics graf för maintainability och complexitet.</figcaption>
 </figure>
 
-<p>oeoe</p>
+<p>Enligt phpmetrics får klassen GinRummyScoring lägst i Maintainablity Index, vilket är ett sammansatt värde som används för att avgöra hur lätt en klass är att underhålla.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/phpmetrics-coupling.png') }}" alt="Klass med hög coupling.">
     <figcaption>Hög AC och EC hos klassen GinRummyHand.</figcaption>
 </figure>
 
-<p>aoeaoeaoeaoe</p>
+<p>Klassen GinRummyHand har hög coupling, framförallt så har den hög AC. Det är många andra klassen som använder GinRummyHand.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/phpmetrics-cohesion.png') }}" alt="Klass med låg cohesion.">
     <figcaption>Hög LCOM i klassen ApiController.</figcaption>
 </figure>
 
+<p>ApiController har stor brist på cohesion, den försöker göra mycket. En annan del av phpmetrics varnar för att den är en <i>god class</i>, vilket är tätt sammakopplat med låg cohesion.</p>
+
 <h2>Scrutinizer</h2>
 
-<p><i>Skapa en rubrik “Scrutinizer” och analysera dess rapport för din kod. Gör på samma sätt som du gjorde med Phpmetrics.</i></p>
+<blockquote class="block">
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a>
 
-<p><i>I ovan analys så kopplar du dina “findings” till 6C. Använd gärna något ytterligare mättal som du finner relevant och intressant.</i></p>
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/coverage.png?b=main" alt="Code Coverage"></a>
+
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/build-status/main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/build.png?b=main" alt="Build Status"></a>
+</blockquote>
+
+<p>I Scrutinizers analys så får projektet bra betyg, se badges ovan. Trots det går det att hitta vissa svagheter.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/scrutinizer-cc.png') }}" alt="Hög cyklomatiskt komplexitet.">
     <figcaption>En av projektets mer komplexa metoder, med CC-värde 17.</figcaption>
 </figure>
 
-<p>ooeoe</p>
+<p>Scrutinizer varnar för att denna metoden har hög cyklomatiskt komplexitet.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/scrutinizer-crap.png') }}" alt="Metoder med högt CRAP-värde.">
     <figcaption>Projektets högsta CRAP-värden.</figcaption>
 </figure>
 
-<p>aoeaoee</p>
+<p>Här kan man se projektets högsta CRAP-värden, där metoden addToOthersMeld() är i störst behov av att ses över.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/scrutinizer-coverage.png') }}" alt="Metoderna med lägst coverage.">
     <figcaption>Metoderna med lägst coverage.</figcaption>
 </figure>
 
-<p>aoeaoee</p>
+<p>Här kan man kolla på testtäckning i koden. Även fast det är bra att ha över 90% täckning, så finns det möjlighet att testa även resten av koden här.</p>
 
 <h2>Förbättringar</h2>
 
-<p><i>Skapa en ny rubrik “Förbättringar” där du väljer minst 3 förbättringar som du vill göra med din kod (gärna fler).</i></p>
+<p>För att förbättra projeketets kodkvalitet kommer jag välja att fokusera på några åtgärder.</p>
+
+<h3>Hög komplexitet Kmom03Controller::gameOpponent()</h3>
+
+<p>Denna metoden är såpass komplex på grund av att den innehåller motståndarens beslustsfattande villkor samt speldrag direkt i kontrollern. Jag har för avsikt att flytta ut mycket av koden från kontrollern till en klass, möjligtvis en helt ny klass som representerar just motståndarens besultsfattande.</p>
+
+<h3>Låg cohesion ApiController</h3>
+
+<p>Denna kontroller har låg cohesion på grund av att jag lagt in alla API-routes i samma controller. Jag plockar ut varje kursmoments egna API-routes till sin egen kontroller och då bör cohesion bli märkbart bättre.</p>
+
+<h3>Hög komplexitet och CRAP i fler metoder i GinRummyScoring</h3>
+
+<p>Denna klass har några alldeles för stora metoder. Jag åtgärdar den höga komplexiteten genom att bryta upp metoderna i mindre beståndsdelar, då kommer även CRAP att minska som följd.</p>
+
+<h3>Issues i Scrutinizer</h3>
+
+<p>Jag jobbar igenom de issues som Scrutinizer flaggar för, den har en bra mess detector som jag gärna betar av.</p>
+
+<p>aoeaoeaoeoe</p>
 
 <i><ul>
-    <li>Exempel på förbättringar kan vara:</li>
-    <ul>
-        <li>Fixa issues</li>
-        <li>Öka kodtäckning</li>
-        <li>Fokusera på kvalitetsindex i Scrutinizer</li>
-        <li>Minska komplexiteten i class/metod</li>
-    </ul>
-    <li>Börja med att skriva om förbättringarna, vad du tänker göra, varför du väljer dem och hur du tror det kommer påverka mätvärdena för kvalitet.</li>
     <li>Implementera sedan förbättringarna.</li>
     <li>Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.</li>
     <li>Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.</li>
 </ul></i>
-
-
-<p>aoeaoeaoeoe</p>
 
 <h2>Diskussion</h2>
 
