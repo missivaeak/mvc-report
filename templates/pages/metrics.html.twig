@@ -23,7 +23,7 @@
 
 <h2>Phpmetrics</h2>
 
-<p>I <a href="../docs/metrics">denna</a> analys av phpmetrics går det att hitta vissa svagheter i projektet.</p>
+<p>I <a href="../docs/metrics-before">denna</a> analys av phpmetrics går det att hitta vissa svagheter i projektet.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/phpmetrics-maintainability.png') }}" alt="Svårunderhållen klass">
@@ -48,13 +48,14 @@
 
 <h2>Scrutinizer</h2>
 
-<blockquote class="block">
-    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a>
+<figure>
+    <img src="{{ asset('img/metrics/quality-score.svg') }}" alt="Scrutinizer Code Quality">
 
-    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/coverage.png?b=main" alt="Code Coverage"></a>
+    <img src="{{ asset('img/metrics/coverage.svg') }}" alt="Code Coverage">
 
-    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/build-status/main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/build.png?b=main" alt="Build Status"></a>
-</blockquote>
+    <img src="{{ asset('img/metrics/build.svg') }}" alt="Build Status">
+    <figcaption>Scrutinizer badges före åtgärder</figcaption>
+</figure>
 
 <p>I Scrutinizers analys så får projektet bra betyg, se badges ovan. Trots det går det att hitta vissa svagheter.</p>
 
@@ -81,31 +82,39 @@
 
 <h2>Förbättringar</h2>
 
-<p>För att förbättra projeketets kodkvalitet kommer jag välja att fokusera på några åtgärder.</p>
+<p>För att förbättra projeketets kodkvalitet kommer jag välja att fokusera på några åtgärder. 9.67</p>
 
 <h3>Hög komplexitet Kmom03Controller::gameOpponent()</h3>
 
-<p>Denna metoden är såpass komplex på grund av att den innehåller motståndarens beslustsfattande villkor samt speldrag direkt i kontrollern. Jag har för avsikt att flytta ut mycket av koden från kontrollern till en klass, möjligtvis en helt ny klass som representerar just motståndarens besultsfattande.</p>
+<p>Denna metoden är såpass komplex på grund av att den innehåller motståndarens beslustsfattande villkor samt speldrag direkt i kontrollern. Jag har för avsikt att flytta ut mycket av koden från kontrollern till en klass, möjligtvis en helt ny klass som representerar just motståndarens besultsfattande. cc 17</p>
 
 <h3>Låg cohesion ApiController</h3>
 
-<p>Denna kontroller har låg cohesion på grund av att jag lagt in alla API-routes i samma controller. Jag plockar ut varje kursmoments egna API-routes till sin egen kontroller och då bör cohesion bli märkbart bättre.</p>
+<p>Denna kontroller har låg cohesion på grund av att jag lagt in alla API-routes i samma controller. Jag plockar ut varje kursmoments egna API-routes till sin egen kontroller och då bör cohesion bli märkbart bättre. lcom 9</p>
 
-<h3>Hög komplexitet och CRAP i fler metoder i GinRummyScoring</h3>
+<h3>Högt CRAP-värde i fler metoder i GinRummyScoring</h3>
 
-<p>Denna klass har några alldeles för stora metoder. Jag åtgärdar den höga komplexiteten genom att bryta upp metoderna i mindre beståndsdelar, då kommer även CRAP att minska som följd.</p>
+<p>Denna klass har några alldeles för stora metoder. Jag åtgärdar den höga komplexiteten genom att bryta upp metoderna i mindre beståndsdelar, då kommer även CRAP att minska som följd. Möjligtvis lägger jag till några nya tester för också då täckningen inte är 100%, men jag kanske nöjer mig utan det. crap 12, 10, 7</p>
 
 <h3>Issues i Scrutinizer</h3>
 
-<p>Jag jobbar igenom de issues som Scrutinizer flaggar för, den har en bra mess detector som jag gärna betar av.</p>
-
-<p>aoeaoeaoeoe</p>
+<p>Jag jobbar igenom de issues som Scrutinizer flaggar för, den har en bra mess detector som jag gärna betar av. 25 issues</p>
 
 <i><ul>
     <li>Implementera sedan förbättringarna.</li>
     <li>Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.</li>
     <li>Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.</li>
 </ul></i>
+
+<figure>
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a>
+
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/coverage.png?b=main" alt="Code Coverage"></a>
+
+    <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/build-status/main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/build.png?b=main" alt="Build Status"></a>
+
+    <figcaption>Scrutinizer badges efter åtgärder</figcaption>
+</figure>
 
 <h2>Diskussion</h2>
 
