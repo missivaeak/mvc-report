@@ -200,20 +200,7 @@ class GinRummyScoring
         $melds = $otherHand->getMelds();
         foreach ($melds as $meld) {
             if ($meld->isRun() === true && $meld->getSuit() === $suit) {
-                // throw new Exception($meld->getSuit());
-                $values = array_map(function ($cardInMeld) {
-                    return $cardInMeld->getValue();
-                }, $meld->getCards());
-
-                $lowerValue = $values[0] - 1;
-                $higherValue = $values[array_key_last($values)] + 1;
-
-                if ($card && ($value === $lowerValue || $value === $higherValue)) {
-                    $otherHand->add($card);
-                    $meld->add($card);
-                    $card->reveal();
-                    return true;
-                }
+                $shouldMeldFlag = $this->tryMeldCardWithRun($card, $meld);
             } elseif ($meld->isSet() === true && $meld->getValue() === $value) {
                 $suits = array_map(function ($cardInMeld) {
                     return $cardInMeld->getSuit();
@@ -228,12 +215,40 @@ class GinRummyScoring
                     return true;
                 }
             }
+
+            if ($shouldMeldFlag) {
+                $otherHand->add($card);
+                $meld->add($card);
+                $card->reveal();
+
+                return true;
+            }
         }
 
         if ($card) {
             $thisHand->add($card);
         }
         $this->meld($otherHand);
+
+        return false;
+    }
+
+    private function tryMeldCardWithRun(
+        StandardPlayingCard $card,
+        Meld $meld
+    ): bool {
+        $value = $card->getValue();
+        // throw new Exception($meld->getSuit());
+        $values = array_map(function ($cardInMeld) {
+            return $cardInMeld->getValue();
+        }, $meld->getCards());
+
+        $lowerValue = $values[0] - 1;
+        $higherValue = $values[array_key_last($values)] + 1;
+
+        if ($card && ($value === $lowerValue || $value === $higherValue)) {
+            return true;
+        }
 
         return false;
     }

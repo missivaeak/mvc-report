@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683803819">
-  <project timestamp="1683803819">
+<coverage generated="1683926620">
+  <project timestamp="1683926620">
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/CardCollectionAbstract.php">
       <class name="App\Game\CardCollectionAbstract" namespace="global">
         <metrics complexity="18" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="25" elements="36" coveredelements="36"/>
@@ -247,7 +247,7 @@
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/GinRummyScoring.php">
       <class name="App\Game\GinRummyScoring" namespace="global">
-        <metrics complexity="47" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="125" coveredstatements="123" elements="134" coveredelements="130"/>
+        <metrics complexity="49" methods="10" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="130" coveredstatements="128" elements="140" coveredelements="136"/>
       </class>
       <line num="16" type="method" name="findRuns" visibility="private" complexity="6" crap="6" count="4"/>
       <line num="20" type="stmt" count="4"/>
@@ -354,36 +354,42 @@
       <line num="185" type="stmt" count="3"/>
       <line num="187" type="stmt" count="3"/>
       <line num="190" type="stmt" count="4"/>
-      <line num="193" type="method" name="addToOthersMeld" visibility="public" complexity="12" crap="12" count="3"/>
+      <line num="193" type="method" name="addToOthersMeld" visibility="public" complexity="10" crap="10" count="3"/>
       <line num="199" type="stmt" count="3"/>
       <line num="200" type="stmt" count="3"/>
       <line num="201" type="stmt" count="3"/>
       <line num="202" type="stmt" count="3"/>
-      <line num="204" type="stmt" count="2"/>
-      <line num="205" type="stmt" count="2"/>
-      <line num="206" type="stmt" count="2"/>
-      <line num="208" type="stmt" count="2"/>
-      <line num="209" type="stmt" count="2"/>
-      <line num="211" type="stmt" count="2"/>
-      <line num="212" type="stmt" count="1"/>
-      <line num="213" type="stmt" count="1"/>
-      <line num="214" type="stmt" count="1"/>
-      <line num="215" type="stmt" count="2"/>
-      <line num="217" type="stmt" count="1"/>
+      <line num="203" type="stmt" count="2"/>
       <line num="218" type="stmt" count="1"/>
       <line num="219" type="stmt" count="1"/>
       <line num="220" type="stmt" count="1"/>
-      <line num="222" type="stmt" count="1"/>
-      <line num="224" type="stmt" count="1"/>
+      <line num="221" type="stmt" count="1"/>
+      <line num="223" type="stmt" count="1"/>
       <line num="225" type="stmt" count="1"/>
       <line num="226" type="stmt" count="1"/>
       <line num="227" type="stmt" count="1"/>
       <line num="228" type="stmt" count="1"/>
-      <line num="233" type="stmt" count="1"/>
+      <line num="229" type="stmt" count="1"/>
+      <line num="233" type="stmt" count="2"/>
       <line num="234" type="stmt" count="1"/>
+      <line num="235" type="stmt" count="1"/>
       <line num="236" type="stmt" count="1"/>
       <line num="238" type="stmt" count="1"/>
-      <metrics loc="241" ncloc="228" classes="1" methods="9" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="125" coveredstatements="123" elements="134" coveredelements="130"/>
+      <line num="242" type="stmt" count="1"/>
+      <line num="243" type="stmt" count="1"/>
+      <line num="245" type="stmt" count="1"/>
+      <line num="247" type="stmt" count="1"/>
+      <line num="250" type="method" name="tryMeldCardWithRun" visibility="private" complexity="4" crap="4" count="2"/>
+      <line num="254" type="stmt" count="2"/>
+      <line num="256" type="stmt" count="2"/>
+      <line num="257" type="stmt" count="2"/>
+      <line num="258" type="stmt" count="2"/>
+      <line num="260" type="stmt" count="2"/>
+      <line num="261" type="stmt" count="2"/>
+      <line num="263" type="stmt" count="2"/>
+      <line num="264" type="stmt" count="1"/>
+      <line num="267" type="stmt" count="1"/>
+      <metrics loc="270" ncloc="245" classes="1" methods="10" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="130" coveredstatements="128" elements="140" coveredelements="136"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/Meld.php">
       <class name="App\Game\Meld" namespace="global">
@@ -530,6 +536,6 @@
       <line num="38" type="stmt" count="1"/>
       <metrics loc="41" ncloc="32" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
     </file>
-    <metrics files="13" loc="1194" ncloc="1038" classes="11" methods="85" coveredmethods="82" conditionals="0" coveredconditionals="0" statements="369" coveredstatements="366" elements="454" coveredelements="448"/>
+    <metrics files="13" loc="1223" ncloc="1055" classes="11" methods="86" coveredmethods="83" conditionals="0" coveredconditionals="0" statements="374" coveredstatements="371" elements="460" coveredelements="454"/>
   </project>
 </coverage>
