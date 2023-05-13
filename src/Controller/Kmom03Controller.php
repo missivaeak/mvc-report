@@ -150,28 +150,8 @@ class Kmom03Controller extends AbstractController
                 $flash .= $scoring->checkScoreDiff($player, $opponent, $game);
                 break;
             case 4:
-                $card = $logic->drawOrPass();
-                $flash = 'Passar. Du måste nu välja kortet i slänghögen eller passa.';
-                $nextStep = 5;
-                if ($card) {
-                    $logic->discard();
-                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
-                    $nextStep = 0;
-                }
-                $round->setStep($nextStep);
-                $opponentHand->resetMelds();
-                break;
             case 5:
-                $card = $logic->drawOrPass();
-                $flash = 'Passar. Du måste nu välja översta kortet i leken.';
-                $nextStep = 6;
-                if ($card) {
-                    $logic->discard();
-                    $nextStep = 0;
-                    $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
-                }
-                $round->setStep($nextStep);
-                $opponentHand->resetMelds();
+                $flash = $logic->topCardChoiceStep($round);
                 break;
             case 6:
                 $logic->pickDeck();

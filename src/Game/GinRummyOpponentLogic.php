@@ -187,10 +187,29 @@ class GinRummyOpponentLogic
         return $flash;
     }
 
-    // public function topCardChoiceStep()
-    // {
+    public function topCardChoiceStep(Round $round): string
+    {
+        $currentStep = $round->getStep();
+        $card = $this->drawOrPass();
+        $flash = 'Passar. Du måste nu välja kortet i slänghögen eller passa.';
+        $nextStep = 5;
 
-    // }
+        if ($currentStep === 5) {
+            $flash = 'Passar. Du måste nu välja översta kortet i leken.';
+            $nextStep = 6;
+        }
+
+        if ($card) {
+            $this->discard();
+            $flash = "Väljer {$card->getValue()} of {$card->getSuit()} från slänghögen. Slänger.";
+            $nextStep = 0;
+        }
+
+        $round->setStep($nextStep);
+        $this->opponent->getHand()->resetMelds();
+
+        return $flash;
+    }
 
     // public function topCardForcedStep()
     // {
