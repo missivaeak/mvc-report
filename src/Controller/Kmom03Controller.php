@@ -154,11 +154,7 @@ class Kmom03Controller extends AbstractController
                 $flash = $logic->topCardChoiceStep($round);
                 break;
             case 6:
-                $logic->pickDeck();
-                $logic->discard();
-                $flash = 'Drar från kortleken. Slänger.';
-                $round->nextStep(0);
-                $opponentHand->resetMelds();
+                $flash = $logic->topCardForcedStep($round);
                 break;
         }
 

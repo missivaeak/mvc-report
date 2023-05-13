@@ -211,8 +211,14 @@ class GinRummyOpponentLogic
         return $flash;
     }
 
-    // public function topCardForcedStep()
-    // {
+    public function topCardForcedStep(Round $round): string
+    {
+        $this->pickDeck();
+        $this->discard();
+        $flash = 'Drar från kortleken. Slänger.';
+        $round->nextStep(0);
+        $opponentHand->resetMelds();
 
-    // }
+        return $flash;
+    }
 }

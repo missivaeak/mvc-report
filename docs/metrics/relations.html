@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2023-05-12 22:11:06        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2023-05-13 08:27:15        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -400,7 +400,9 @@
     {
         "name": "\\App\\Game\\StandardPlayingCard",
         "size": 3000,
-        "relations": []
+        "relations": [
+            "\\App\\Game\\CardInterface"
+        ]
     },
     {
         "name": "\\App\\Game\\GinRummyHand",
@@ -438,9 +440,10 @@
         "size": 3000,
         "relations": [
             "\\App\\Game\\GinRummyHand",
-            "\\App\\Game\\StandardPlayingCard",
             "\\App\\Game\\Meld",
-            "\\App\\Game\\CardInterface"
+            "\\App\\Game\\CardInterface",
+            "\\App\\Game\\Player",
+            "\\App\\Game\\Game"
         ]
     },
     {
@@ -449,7 +452,8 @@
         "relations": [
             "\\App\\Game\\Game",
             "\\App\\Game\\GinRummyScoring",
-            "\\App\\Game\\GinRummyHand"
+            "\\App\\Game\\GinRummyHand",
+            "\\App\\Game\\Round"
         ]
     },
     {
