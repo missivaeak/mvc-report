@@ -67,7 +67,7 @@ class GinRummyOpponentLogic
         $unmatched = $hand->getUnmatched();
         $card = null;
 
-        if ($unmatched) {
+        if (!empty($unmatched)) {
             $card = $unmatched[array_rand($unmatched)];
             foreach ($unmatched as $unmatchedCard) {
                 if ($card->getValue() < $unmatchedCard->getValue()) {
