@@ -72,7 +72,8 @@ final class GinRummyHandTest extends TestCase
     public function testGetMeldCards(): void
     {
         $meld = $this->meld;
-        $meld->expects($this->once())->method('getCards');
+        $meld/** @scrutinizer ignore-call */
+            ->expects($this->once())->method('getCards');
 
         $this->nonEmptyHand->getMeldCards(0);
     }
