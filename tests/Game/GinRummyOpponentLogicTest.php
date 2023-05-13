@@ -326,7 +326,7 @@ final class GinRummyOpponentLogicTest extends TestCase
 
             if ($flash === "Väljer 2 of hearts från slänghögen. Slänger kort.") {
                 $drawDiscardFlag = true;
-            } else if ($flash === "Drar kort från kortleken. Slänger kort.") {
+            } elseif ($flash === "Drar kort från kortleken. Slänger kort.") {
                 $drawDeckFlag = true;
             }
         }
@@ -378,7 +378,7 @@ final class GinRummyOpponentLogicTest extends TestCase
 
             if ($flash === "Väljer 2 of hearts från slänghögen. Slänger kort. Knackar. Välj kort att lägga till motståndarens serier.") {
                 $drawDiscardFlag = true;
-            } else if ($flash === "Drar kort från kortleken. Slänger kort. Knackar. Välj kort att lägga till motståndarens serier.") {
+            } elseif ($flash === "Drar kort från kortleken. Slänger kort. Knackar. Välj kort att lägga till motståndarens serier.") {
                 $drawDeckFlag = true;
             }
         }
@@ -483,7 +483,7 @@ final class GinRummyOpponentLogicTest extends TestCase
         for ($i = 0; $i < 100; $i++) {
             $flash = $this->logic->topCardChoiceStep($round);
 
-            if ($flash = "Väljer 2 of hearts från slänghögen. Slänger.") {
+            if ($flash === "Väljer 2 of hearts från slänghögen. Slänger.") {
                 $pickDiscardFlag = true;
             }
         }

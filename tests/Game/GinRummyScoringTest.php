@@ -16,6 +16,7 @@ final class GinRummyScoringTest extends TestCase
 {
     private GinRummyScoring $scoring;
     private GinRummyHand $hand;
+    /** @var array<StandardPlayingCard> */
     private array $cards;
 
     /**
