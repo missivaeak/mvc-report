@@ -14,18 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use TypeError;
 
-class ApiController extends AbstractController
+class Kmom02ApiController extends AbstractController
 {
-    private string $title = "mvc.ades22";
-
-    #[Route("/api", name: "api")]
-    public function api(): Response
-    {
-        return $this->render('pages/api.html.twig', [
-            'title' => $this->title . ".api",
-        ]);
-    }
-
     #[Route("/api/deck", name: "api_deck", methods: ["GET"])]
     public function apiDeck(SessionInterface $session): Response
     {
@@ -139,84 +129,6 @@ class ApiController extends AbstractController
             'cardsRemaining' => $deck->getCardsRemaining(),
             'hands' => array_map(function ($hand) { return $hand->peekAllCards(); }, $hands)
         ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $response;
-    }
-
-    #[Route("/api/game", name: "api_game", methods: ["GET"])]
-    public function apiGame(SessionInterface $session): Response
-    {
-        $game = $session->get("game");
-        if ($game) {
-            $playerScore = $game->getPlayer()->getScore();
-            $opponentScore = $game->getOpponent()->getScore();
-            $deck = $game->getDeck()->getFaces();
-            $discard = $game->getDiscard()->getFaces();
-            $playerHand = $game->getPlayer()->getHand()->getFaces();
-            $opponentHand = $game->getOpponent()->getHand()->getFaces();
-        }
-
-        $data = [
-            'playerScore' => $playerScore ?? null,
-            'opponentScore' => $opponentScore ?? null,
-            'playerHand' => $playerHand ?? null,
-            'opponentHand' => $opponentHand ?? null,
-            'deck' => $deck ?? null,
-            'discard' => $discard ?? null,
-        ];
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $response;
-    }
-
-    #[Route("/api/library/books", name: "api_library_books", methods: ["GET"])]
-    public function apiLibraryBooks(
-        BookRepository $bookRepo,
-    ): Response {
-        $data = [];
-        $books = $bookRepo->findAll();
-        foreach ($books as $book) {
-            $data[] = [
-                'title' => $book->getTitle() ?? null,
-                'author' => $book->getAuthor() ?? null,
-                'isbn' => $book->getIsbn() ?? null,
-                'imageUrl' => $book->getImageUrl() ?? null,
-            ];
-        }
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-
-        return $response;
-    }
-
-    #[Route("/api/library/book/{isbn}", name: "api_library_book", methods: ["GET"])]
-    public function apiLibraryBook(
-        BookRepository $bookRepo,
-        mixed $isbn
-    ): Response {
-        $book = $bookRepo->findOneBy(['isbn' => $isbn]);
-        $data = [];
-
-        if ($book) {
-            $data[] = [
-                'title' => $book->getTitle() ?? null,
-                'author' => $book->getAuthor() ?? null,
-                'isbn' => $book->getIsbn() ?? null,
-                'imageUrl' => $book->getImageUrl() ?? null,
-            ];
-        }
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
