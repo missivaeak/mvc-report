@@ -226,8 +226,7 @@ class GinRummyScoring
         Player $player,
         Player $opponent,
         Game $game
-    ): string
-    {
+    ): string {
         //beräknar poäng
         $playerScore = $this->handScore($player->getHand());
         $opponentScore = $this->handScore($opponent->getHand());

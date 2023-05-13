@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683966374">
-  <project timestamp="1683966374">
+<coverage generated="1683967827">
+  <project timestamp="1683967827">
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/CardCollectionAbstract.php">
       <class name="App\Game\CardCollectionAbstract" namespace="global">
         <metrics complexity="18" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="35" coveredelements="35"/>
@@ -167,7 +167,7 @@
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/GinRummyOpponentLogic.php">
       <class name="App\Game\GinRummyOpponentLogic" namespace="global">
-        <metrics complexity="26" methods="11" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="100" coveredstatements="65" elements="111" coveredelements="73"/>
+        <metrics complexity="27" methods="12" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="65" elements="118" coveredelements="73"/>
       </class>
       <line num="22" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="12"/>
       <line num="26" type="stmt" count="12"/>
@@ -280,7 +280,14 @@
       <line num="208" type="stmt" count="0"/>
       <line num="209" type="stmt" count="0"/>
       <line num="211" type="stmt" count="0"/>
-      <metrics loc="219" ncloc="206" classes="1" methods="11" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="100" coveredstatements="65" elements="111" coveredelements="73"/>
+      <line num="214" type="method" name="topCardForcedStep" visibility="public" complexity="1" crap="2" count="0"/>
+      <line num="216" type="stmt" count="0"/>
+      <line num="217" type="stmt" count="0"/>
+      <line num="218" type="stmt" count="0"/>
+      <line num="219" type="stmt" count="0"/>
+      <line num="220" type="stmt" count="0"/>
+      <line num="222" type="stmt" count="0"/>
+      <metrics loc="225" ncloc="215" classes="1" methods="12" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="106" coveredstatements="65" elements="118" coveredelements="73"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/GinRummyScoring.php">
       <class name="App\Game\GinRummyScoring" namespace="global">
@@ -556,6 +563,6 @@
       <line num="38" type="stmt" count="1"/>
       <metrics loc="41" ncloc="32" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
     </file>
-    <metrics files="13" loc="1274" ncloc="1107" classes="11" methods="91" coveredmethods="83" conditionals="0" coveredconditionals="0" statements="389" coveredstatements="336" elements="480" coveredelements="419"/>
+    <metrics files="13" loc="1280" ncloc="1116" classes="11" methods="92" coveredmethods="83" conditionals="0" coveredconditionals="0" statements="395" coveredstatements="336" elements="487" coveredelements="419"/>
   </project>
 </coverage>
