@@ -10,6 +10,7 @@ use App\Game\Discard;
 use App\Game\GinRummyHand;
 use App\Game\StandardPlayingCardsDeck;
 use App\Game\StandardPlayingCard;
+use App\Game\Round;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject;
@@ -279,5 +280,235 @@ final class GinRummyOpponentLogicTest extends TestCase
 
         $success = $this->logic->addToPlayersMeld($playerHand);
         $this->assertTrue($success);
+    }
+
+    /**
+     * Testar om mainStep returnerar både alternativen av returvärde
+     * utan att vilja knacka
+     */
+    public function testMainStep(): void
+    {
+        $this->deck-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
+
+        $this->discard-> /** @scrutinizer ignore-call */
+                method('draw')->
+                willReturn($this->card);
+
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getValue')->
+            willReturn(2);
+
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getSuit')->
+            willReturn('hearts');
+
+        $round = $this->createMock(Round::class);
+        $round->
+            expects($this->exactly(100))->
+            method('setStep')->
+            with($this->anything());
+
+        $this->opponentHand->
+            expects($this->any())->
+            method('resetMelds');
+
+        $this->scoring->
+            method('handScore')->
+            willReturn(12);
+
+        $drawDeckFlag = false;
+        $drawDiscardFlag = false;
+
+        for ($i = 0; $i < 100; $i++) {
+            $flash = $this->logic->mainStep($round);
+
+            if ($flash === "Väljer 2 of hearts från slänghögen. Slänger kort.") {
+                $drawDiscardFlag = true;
+            } else if ($flash === "Drar kort från kortleken. Slänger kort.") {
+                $drawDeckFlag = true;
+            }
+        }
+
+        $this->assertTrue($drawDeckFlag && $drawDiscardFlag);
+    }
+
+    /**
+     * Testar om mainStep returnerar både alternativen av returvärde
+     * med att vilja knacka
+     */
+    public function testMainStepKnock(): void
+    {
+        $this->deck-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
+
+        $this->discard-> /** @scrutinizer ignore-call */
+                method('draw')->
+                willReturn($this->card);
+
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getValue')->
+            willReturn(2);
+
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getSuit')->
+            willReturn('hearts');
+
+        $round = $this->createMock(Round::class);
+        $round->
+            expects($this->exactly(100))->
+            method('setStep')->
+            with($this->anything());
+
+        $this->opponentHand->
+            expects($this->any())->
+            method('resetMelds');
+
+        $this->scoring->
+            method('handScore')->
+            willReturn(2);
+
+        $drawDeckFlag = false;
+        $drawDiscardFlag = false;
+
+        for ($i = 0; $i < 100; $i++) {
+            $flash = $this->logic->mainStep($round);
+
+            if ($flash === "Väljer 2 of hearts från slänghögen. Slänger kort. Knackar. Välj kort att lägga till motståndarens serier.") {
+                $drawDiscardFlag = true;
+            } else if ($flash === "Drar kort från kortleken. Slänger kort. Knackar. Välj kort att lägga till motståndarens serier.") {
+                $drawDeckFlag = true;
+            }
+        }
+
+        $this->assertTrue($drawDeckFlag && $drawDiscardFlag);
+    }
+
+    /**
+     * Testar om knockstep returnerar rätt
+     * värde och sätter rätt nästa step
+     */
+    public function testKnockStep(): void
+    {
+        $round = $this->createMock(Round::class);
+        $round->
+            expects($this->once())->
+            method('setStep')->
+            with($this->equalTo(7));
+
+        $playerHand = $this->createStub(GinRummyHand::class);
+
+        $flash = $this->logic->knockStep($round, $playerHand);
+
+        $this->assertEquals($flash, "Försöker lägga kort till dina serier.");
+    }
+
+    /**
+     * Testar om topCardChoiceStep returnerar rätt
+     * värde och sätter rätt nästa step
+     * om nuvarande step är 4 och motståndaren passar
+     */
+    public function testTopCardChoiceStepFour(): void
+    {
+        $round = $this->createMock(Round::class);
+        $round->
+            method('getStep')->
+            willReturn(4);
+        $round->
+            expects($this->once())->
+            method('setStep')->
+            with($this->equalTo(5));
+        $this->opponentHand->
+            expects($this->once())->
+            method('resetMelds');
+
+        $flash = $this->logic->topCardChoiceStep($round);
+
+        $this->assertEquals($flash, "Passar. Du måste nu välja kortet i slänghögen eller passa.");
+    }
+
+    /**
+     * Testar om topCardChoiceStep returnerar rätt
+     * värde och sätter rätt nästa step
+     * om nuvarande step är 5 och motståndaren passar
+     */
+    public function testTopCardChoiceStepFive(): void
+    {
+        $round = $this->createMock(Round::class);
+        $round->
+            method('getStep')->
+            willReturn(5);
+        $round->
+            expects($this->once())->
+            method('setStep')->
+            with($this->equalTo(6));
+        $this->opponentHand->
+            expects($this->once())->
+            method('resetMelds');
+
+        $flash = $this->logic->topCardChoiceStep($round);
+
+        $this->assertEquals($flash, "Passar. Du måste nu välja översta kortet i leken.");
+    }
+
+    /**
+     * Testar om topCardChoiceStep returnerar rätt
+     * värde och sätter rätt nästa step
+     * om motståndaren väljer kort från leken
+     */
+    public function testTopCardChoiceStepDraw(): void
+    {
+        $this->discard-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getValue')->
+            willReturn(2);
+        $this->card-> /** @scrutinizer ignore-call */
+            method('getSuit')->
+            willReturn('hearts');
+        $round = $this->createMock(Round::class);
+        $round->
+            expects($this->exactly(100))->
+            method('setStep')->
+            with($this->anything());
+        $this->opponentHand->
+            expects($this->any())->
+            method('resetMelds');
+
+        $pickDiscardFlag = false;
+
+        for ($i = 0; $i < 100; $i++) {
+            $flash = $this->logic->topCardChoiceStep($round);
+
+            if ($flash = "Väljer 2 of hearts från slänghögen. Slänger.") {
+                $pickDiscardFlag = true;
+            }
+        }
+
+        $this->assertTrue($pickDiscardFlag);
+    }
+
+    /**
+     * Testar om topCardForcedStep returnerar rätt
+     * värde och sätter rätt nästa step
+     * om nuvarande step är 5 och motståndaren passar
+     */
+    public function testTopCardForcedStep(): void
+    {
+        $round = $this->createMock(Round::class);
+        $round->
+            expects($this->once())->
+            method('setStep')->
+            with($this->equalTo(0));
+        $this->opponentHand->
+            expects($this->any())->
+            method('resetMelds');
+
+        $flash = $this->logic->topCardForcedStep($round);
+
+        $this->assertEquals($flash, "Drar från kortleken. Slänger.");
     }
 }

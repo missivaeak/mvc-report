@@ -16,6 +16,7 @@ final class GinRummyScoringTest extends TestCase
 {
     private GinRummyScoring $scoring;
     private GinRummyHand $hand;
+    private array $cards;
 
     /**
      * Setup för testfallen
@@ -61,7 +62,7 @@ final class GinRummyScoringTest extends TestCase
         $hand->method('getCards')->willReturn($cards);
 
         $this->hand = $hand;
-
+        $this->cards = $cards;
         $this->scoring = new GinRummyScoring();
     }
 
@@ -203,5 +204,74 @@ final class GinRummyScoringTest extends TestCase
         $this->assertSame(1, $thisHand->getCardsRemaining());
         $this->assertSame(10, $otherHand->getCardsRemaining());
         $this->assertSame(3, $meld->getCardsRemaining());
+    }
+
+    public function testCheckScoreDiffNeg(): void
+    {
+        $unmatched = [
+            $this->cards[0],
+            $this->cards[1]
+        ];
+        $this->hand->
+            method('getUnmatched')->
+            willReturn($unmatched);
+        $player = $this->createStub(Player::class);
+        $player->
+            method('getHand')->
+            willReturn($this->hand);
+        $opponent = $this->createStub(Player::class);
+        $game = $this->createStub(Game::class);
+        $game->
+            method('score')->
+            willReturn(-1);
+
+        $flash = $this->scoring->checkScoreDiff($player, $opponent, $game);
+
+        $this->assertEquals($flash, " Motståndaren vinner och får 1 poäng.");
+    }
+
+    public function testCheckScoreDiffPos(): void
+    {
+        $unmatched = [
+            $this->cards[0],
+            $this->cards[1]
+        ];
+        $this->hand->
+            method('getUnmatched')->
+            willReturn($unmatched);
+        $player = $this->createStub(Player::class);
+        $player->
+            method('getHand')->
+            willReturn($this->hand);
+        $opponent = $this->createStub(Player::class);
+        $game = $this->createStub(Game::class);
+        $game->
+            method('score')->
+            willReturn(1);
+
+        $flash = $this->scoring->checkScoreDiff($player, $opponent, $game);
+
+        $this->assertEquals($flash, " Du vinner och får 1 poäng.");
+    }
+
+    public function testCheckScoreDiffEqual(): void
+    {
+        $unmatched = [];
+        $this->hand->
+            method('getUnmatched')->
+            willReturn($unmatched);
+        $player = $this->createStub(Player::class);
+        $player->
+            method('getHand')->
+            willReturn($this->hand);
+        $opponent = $this->createStub(Player::class);
+        $game = $this->createStub(Game::class);
+        $game->
+            method('score')->
+            willReturn(10);
+
+        $flash = $this->scoring->checkScoreDiff($player, $opponent, $game);
+
+        $this->assertEquals($flash, " Du har gin och får 10 poäng.");
     }
 }

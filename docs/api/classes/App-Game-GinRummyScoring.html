@@ -180,6 +180,13 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Game-GinRummyScoring.html#method_checkScoreDiff">checkScoreDiff()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Game-StandardPlayingCardsTrait.html#method_getAllValidCardValues">getAllValidCardValues()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
@@ -215,13 +222,6 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCard">fitUnmatchedCard()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCards">fitUnmatchedCards()</a>
     <span>
                                 &nbsp;: bool    </span>
@@ -239,6 +239,20 @@
     <a href="classes/App-Game-GinRummyScoring.html#method_meldSetsFirst">meldSetsFirst()</a>
     <span>
                                 &nbsp;: int    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithRun">shouldCardMeldWithRun()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithSet">shouldCardMeldWithSet()</a>
+    <span>
+                                &nbsp;: bool    </span>
 </dt>
 <dd></dd>
 
@@ -338,7 +352,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">147</span>
 
     </aside>
 
@@ -399,6 +413,66 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_checkScoreDiff">
+        checkScoreDiff()
+        <a href="classes/App-Game-GinRummyScoring.html#method_checkScoreDiff" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">225</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">checkScoreDiff</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Player.html"><abbr title="\App\Game\Player">Player</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$player</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Player.html"><abbr title="\App\Game\Player">Player</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$opponent</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Game.html"><abbr title="\App\Game\Game">Game</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$game</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$player</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Player.html"><abbr title="\App\Game\Player">Player</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$opponent</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Player.html"><abbr title="\App\Game\Player">Player</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$game</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Game.html"><abbr title="\App\Game\Game">Game</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_getAllValidCardValues">
         getAllValidCardValues()
         <a href="classes/App-Game-StandardPlayingCardsTrait.html#method_getAllValidCardValues" class="headerlink"><i class="fas fa-link"></i></a>
@@ -438,7 +512,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">132</span>
 
     </aside>
 
@@ -482,7 +556,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">168</span>
+    <span class="phpdocumentor-element-found-in__line">122</span>
 
     </aside>
 
@@ -570,7 +644,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -607,74 +681,6 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_fitUnmatchedCard">
-        fitUnmatchedCard()
-        <a href="classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCard" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">134</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">fitUnmatchedCard</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GinRummyHand.html"><abbr title="\App\Game\GinRummyHand">GinRummyHand</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$hand</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$meldIndex</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suit</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$hand</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-GinRummyHand.html"><abbr title="\App\Game\GinRummyHand">GinRummyHand</abbr></a></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$meldIndex</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$suit</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_fitUnmatchedCards">
         fitUnmatchedCards()
         <a href="classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCards" class="headerlink"><i class="fas fa-link"></i></a>
@@ -682,7 +688,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 
     </aside>
 
@@ -726,7 +732,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">150</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 
     </aside>
 
@@ -770,7 +776,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
@@ -797,6 +803,110 @@
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_shouldCardMeldWithRun">
+        shouldCardMeldWithRun()
+        <a href="classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithRun" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">187</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">shouldCardMeldWithRun</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-CardInterface.html"><abbr title="\App\Game\CardInterface">CardInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Meld.html"><abbr title="\App\Game\Meld">Meld</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$meld</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$card</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-CardInterface.html"><abbr title="\App\Game\CardInterface">CardInterface</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$meld</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Meld.html"><abbr title="\App\Game\Meld">Meld</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_shouldCardMeldWithSet">
+        shouldCardMeldWithSet()
+        <a href="classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithSet" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Game/GinRummyScoring.php"><a href="files/src-game-ginrummyscoring.html"><abbr title="src/Game/GinRummyScoring.php">GinRummyScoring.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">207</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">shouldCardMeldWithSet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-CardInterface.html"><abbr title="\App\Game\CardInterface">CardInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$card</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Meld.html"><abbr title="\App\Game\Meld">Meld</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$meld</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$card</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-CardInterface.html"><abbr title="\App\Game\CardInterface">CardInterface</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$meld</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Game-Meld.html"><abbr title="\App\Game\Meld">Meld</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
         
     

@@ -234,7 +234,7 @@ class GinRummyScoring
         $points = $game->score($player, $opponent, $difference);
         $scoreFlash = " Lika. Inga poäng delades ut.";
         if ($playerScore === 0) {
-            $points = $opponentScore + $game->getGinBonus();
+            $points = $points + $game->getGinBonus();
             $scoreFlash = " Du har gin och får $points poäng.";
         } else {
             if ($points > 0) {

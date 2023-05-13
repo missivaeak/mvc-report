@@ -151,61 +151,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Card-Hand.html#method_hideAll"
         },                {
-            "fqsen": "\\App\\Controller\\ApiController",
-            "name": "ApiController",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003Aapi\u0028\u0029",
-            "name": "api",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_api"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDeck\u0028\u0029",
-            "name": "apiDeck",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiDeck"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiShuffle\u0028\u0029",
-            "name": "apiShuffle",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiShuffle"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDraw\u0028\u0029",
-            "name": "apiDraw",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiDraw"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDrawMultiple\u0028\u0029",
-            "name": "apiDrawMultiple",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiDrawMultiple"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiDeal\u0028\u0029",
-            "name": "apiDeal",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiDeal"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiGame\u0028\u0029",
-            "name": "apiGame",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiGame"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLibraryBooks\u0028\u0029",
-            "name": "apiLibraryBooks",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiLibraryBooks"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003AapiLibraryBook\u0028\u0029",
-            "name": "apiLibraryBook",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#method_apiLibraryBook"
-        },                {
-            "fqsen": "\\App\\Controller\\ApiController\u003A\u003A\u0024title",
-            "name": "title",
-            "summary": "",
-            "url": "classes/App-Controller-ApiController.html#property_title"
-        },                {
             "fqsen": "\\App\\Controller\\Kmom01Controller",
             "name": "Kmom01Controller",
             "summary": "",
@@ -230,11 +175,6 @@ Search.appendIndex(
             "name": "lucky",
             "summary": "",
             "url": "classes/App-Controller-Kmom01Controller.html#method_lucky"
-        },                {
-            "fqsen": "\\App\\Controller\\Kmom01Controller\u003A\u003AapiQuote\u0028\u0029",
-            "name": "apiQuote",
-            "summary": "",
-            "url": "classes/App-Controller-Kmom01Controller.html#method_apiQuote"
         },                {
             "fqsen": "\\App\\Controller\\Kmom01Controller\u003A\u003A\u0024title",
             "name": "title",
@@ -425,6 +365,11 @@ Search.appendIndex(
             "name": "drawByPattern",
             "summary": "",
             "url": "classes/App-Game-CardCollectionAbstract.html#method_drawByPattern"
+        },                {
+            "fqsen": "\\App\\Game\\CardCollectionAbstract\u003A\u003AgetByPattern\u0028\u0029",
+            "name": "getByPattern",
+            "summary": "",
+            "url": "classes/App-Game-CardCollectionAbstract.html#method_getByPattern"
         },                {
             "fqsen": "\\App\\Game\\CardCollectionAbstract\u003A\u003A\u0024cards",
             "name": "cards",
@@ -726,6 +671,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-GinRummyOpponentLogic.html#method_addToPlayersMeld"
         },                {
+            "fqsen": "\\App\\Game\\GinRummyOpponentLogic\u003A\u003AmainStep\u0028\u0029",
+            "name": "mainStep",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyOpponentLogic.html#method_mainStep"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyOpponentLogic\u003A\u003AknockStep\u0028\u0029",
+            "name": "knockStep",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyOpponentLogic.html#method_knockStep"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyOpponentLogic\u003A\u003AtopCardChoiceStep\u0028\u0029",
+            "name": "topCardChoiceStep",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyOpponentLogic.html#method_topCardChoiceStep"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyOpponentLogic\u003A\u003AtopCardForcedStep\u0028\u0029",
+            "name": "topCardForcedStep",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyOpponentLogic.html#method_topCardForcedStep"
+        },                {
             "fqsen": "\\App\\Game\\GinRummyOpponentLogic\u003A\u003A\u0024opponent",
             "name": "opponent",
             "summary": "",
@@ -766,11 +731,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCards"
         },                {
-            "fqsen": "\\App\\Game\\GinRummyScoring\u003A\u003AfitUnmatchedCard\u0028\u0029",
-            "name": "fitUnmatchedCard",
-            "summary": "",
-            "url": "classes/App-Game-GinRummyScoring.html#method_fitUnmatchedCard"
-        },                {
             "fqsen": "\\App\\Game\\GinRummyScoring\u003A\u003AmeldRunsFirst\u0028\u0029",
             "name": "meldRunsFirst",
             "summary": "",
@@ -795,6 +755,21 @@ Search.appendIndex(
             "name": "addToOthersMeld",
             "summary": "",
             "url": "classes/App-Game-GinRummyScoring.html#method_addToOthersMeld"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyScoring\u003A\u003AshouldCardMeldWithRun\u0028\u0029",
+            "name": "shouldCardMeldWithRun",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithRun"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyScoring\u003A\u003AshouldCardMeldWithSet\u0028\u0029",
+            "name": "shouldCardMeldWithSet",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyScoring.html#method_shouldCardMeldWithSet"
+        },                {
+            "fqsen": "\\App\\Game\\GinRummyScoring\u003A\u003AcheckScoreDiff\u0028\u0029",
+            "name": "checkScoreDiff",
+            "summary": "",
+            "url": "classes/App-Game-GinRummyScoring.html#method_checkScoreDiff"
         },                {
             "fqsen": "\\App\\Game\\Meld",
             "name": "Meld",
@@ -1205,6 +1180,91 @@ Search.appendIndex(
             "name": "remove",
             "summary": "",
             "url": "classes/App-Repository-BookRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom01ApiController",
+            "name": "Kmom01ApiController",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom01ApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom01ApiController\u003A\u003Aapi\u0028\u0029",
+            "name": "api",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom01ApiController.html#method_api"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom01ApiController\u003A\u003AapiQuote\u0028\u0029",
+            "name": "apiQuote",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom01ApiController.html#method_apiQuote"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController",
+            "name": "Kmom02ApiController",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController\u003A\u003AapiDeck\u0028\u0029",
+            "name": "apiDeck",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html#method_apiDeck"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController\u003A\u003AapiShuffle\u0028\u0029",
+            "name": "apiShuffle",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html#method_apiShuffle"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController\u003A\u003AapiDraw\u0028\u0029",
+            "name": "apiDraw",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html#method_apiDraw"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController\u003A\u003AapiDrawMultiple\u0028\u0029",
+            "name": "apiDrawMultiple",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html#method_apiDrawMultiple"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom02ApiController\u003A\u003AapiDeal\u0028\u0029",
+            "name": "apiDeal",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom02ApiController.html#method_apiDeal"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom03ApiController",
+            "name": "Kmom03ApiController",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom03ApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom03ApiController\u003A\u003AapiGame\u0028\u0029",
+            "name": "apiGame",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom03ApiController.html#method_apiGame"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom05ApiController",
+            "name": "Kmom05ApiController",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom05ApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom05ApiController\u003A\u003AapiLibraryBooks\u0028\u0029",
+            "name": "apiLibraryBooks",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom05ApiController.html#method_apiLibraryBooks"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom05ApiController\u003A\u003AapiLibraryBook\u0028\u0029",
+            "name": "apiLibraryBook",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom05ApiController.html#method_apiLibraryBook"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom06Controller",
+            "name": "Kmom06Controller",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom06Controller.html"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom06Controller\u003A\u003Aindex\u0028\u0029",
+            "name": "index",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom06Controller.html#method_index"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom06Controller\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom06Controller.html#property_title"
         },                {
             "fqsen": "\\",
             "name": "\\",
