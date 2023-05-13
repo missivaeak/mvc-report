@@ -249,7 +249,7 @@ class Game
             $knocking->addScore($amount);
             return $amount;
         } elseif ($difference < 0) {
-            $amount = abs($difference) + $this->undercutBonus;
+            $amount = intval(abs($difference) + $this->undercutBonus);
             $notKnocking->addScore($amount);
             return 0 - $amount;
         }

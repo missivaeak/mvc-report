@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1683967827">
-  <project timestamp="1683967827">
+<coverage generated="1683969735">
+  <project timestamp="1683969735">
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/CardCollectionAbstract.php">
       <class name="App\Game\CardCollectionAbstract" namespace="global">
         <metrics complexity="18" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="35" coveredelements="35"/>
@@ -402,6 +402,7 @@
       <line num="219" type="stmt" count="1"/>
       <line num="222" type="stmt" count="0"/>
       <line num="225" type="method" name="checkScoreDiff" visibility="public" complexity="4" crap="20" count="0"/>
+      <line num="231" type="stmt" count="0"/>
       <line num="232" type="stmt" count="0"/>
       <line num="233" type="stmt" count="0"/>
       <line num="234" type="stmt" count="0"/>
@@ -409,14 +410,13 @@
       <line num="236" type="stmt" count="0"/>
       <line num="237" type="stmt" count="0"/>
       <line num="238" type="stmt" count="0"/>
-      <line num="239" type="stmt" count="0"/>
+      <line num="240" type="stmt" count="0"/>
       <line num="241" type="stmt" count="0"/>
       <line num="242" type="stmt" count="0"/>
       <line num="243" type="stmt" count="0"/>
       <line num="244" type="stmt" count="0"/>
-      <line num="245" type="stmt" count="0"/>
-      <line num="248" type="stmt" count="0"/>
-      <metrics loc="251" ncloc="231" classes="1" methods="11" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="112" coveredstatements="95" elements="123" coveredelements="102"/>
+      <line num="247" type="stmt" count="0"/>
+      <metrics loc="250" ncloc="230" classes="1" methods="11" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="112" coveredstatements="95" elements="123" coveredelements="102"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/Meld.php">
       <class name="App\Game\Meld" namespace="global">
@@ -563,6 +563,6 @@
       <line num="38" type="stmt" count="1"/>
       <metrics loc="41" ncloc="32" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
     </file>
-    <metrics files="13" loc="1280" ncloc="1116" classes="11" methods="92" coveredmethods="83" conditionals="0" coveredconditionals="0" statements="395" coveredstatements="336" elements="487" coveredelements="419"/>
+    <metrics files="13" loc="1279" ncloc="1115" classes="11" methods="92" coveredmethods="83" conditionals="0" coveredconditionals="0" statements="395" coveredstatements="336" elements="487" coveredelements="419"/>
   </project>
 </coverage>
