@@ -73,7 +73,9 @@ final class GinRummyScoringTest extends TestCase
     {
         $hand = $this->hand;
         // $hand->method('getUnmatched')->willReturn($this->cards);
-        $hand->expects($this->atLeastOnce())->method('getMelds');
+        $hand-> /** @scrutinizer ignore-call */
+            expects($this->atLeastOnce())->
+            method('getMelds');
 
         $score = $this->scoring->meld($hand);
 

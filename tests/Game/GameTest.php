@@ -137,9 +137,10 @@ final class GameTest extends TestCase
     {
         $handSize = $this->game->getHandSize();
         $round = $this->createMock(Round::class);
-        $round->expects($this->exactly($handSize))
-            ->method('deal')
-            ->with($this->identicalTo($this->deck));
+        $round-> /** @scrutinizer ignore-call */
+            expects($this->exactly($handSize))->
+            method('deal')->
+            with($this->identicalTo($this->deck));
 
         $this->game->setRound($round);
 
@@ -156,18 +157,18 @@ final class GameTest extends TestCase
         $discard = $this->discard;
 
         $deck->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('draw')
-            ->willReturn($card);
+            expects($this->once())->
+            method('draw')->
+            willReturn($card);
 
         $card->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('reveal');
+            expects($this->once())->
+            method('reveal');
 
         $discard->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('add')
-            ->with($this->identicalTo($card));
+            expects($this->once())->
+            method('add')->
+            with($this->identicalTo($card));
 
         $success = $this->game->deckToDiscard();
         $this->assertTrue($success);
@@ -182,13 +183,13 @@ final class GameTest extends TestCase
         $discard = $this->discard;
 
         $deck->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('draw')
-            ->willReturn(null);
+            expects($this->once())->
+            method('draw')->
+            willReturn(null);
 
         $discard->/** @scrutinizer ignore-call */
-            expects($this->never())
-            ->method('add');
+            expects($this->never())->
+            method('add');
 
         $success = $this->game->deckToDiscard();
         $this->assertFalse($success);
@@ -204,25 +205,36 @@ final class GameTest extends TestCase
 
         $playerHand = $this->playerHand;
         $playerHand->/** @scrutinizer ignore-call */
-            method('getCardsRemaining')->willReturn(1);
+            method('getCardsRemaining')->
+            willReturn(1);
         $playerHand->/** @scrutinizer ignore-call */
-            expects($this->once())->method('draw')->willReturn($card);
+            expects($this->once())->
+            method('draw')->
+            willReturn($card);
 
         $opponentHand = $this->opponentHand;
         $opponentHand->/** @scrutinizer ignore-call */
-            method('getCardsRemaining')->willReturn(1);
+            method('getCardsRemaining')->
+            willReturn(1);
         $opponentHand->/** @scrutinizer ignore-call */
-            expects($this->once())->method('draw')->willReturn($card);
+            expects($this->once())->
+            method('draw')->
+            willReturn($card);
 
         $discard = $this->discard;
         $discard->/** @scrutinizer ignore-call */
-            method('getCardsRemaining')->willReturn(1);
+            method('getCardsRemaining')->
+            willReturn(1);
         $discard->/** @scrutinizer ignore-call */
-            expects($this->once())->method('draw')->willReturn($card);
+            expects($this->once())->
+            method('draw')->
+            willReturn($card);
 
         $deck = $this->deck;
         $deck->/** @scrutinizer ignore-call */
-            expects($this->exactly(3))->method('add')->with($this->identicalTo($card));
+            expects($this->exactly(3))->
+            method('add')->
+            with($this->identicalTo($card));
 
         $this->game->returnCards();
     }
@@ -260,9 +272,9 @@ final class GameTest extends TestCase
         $knockBonus = $this->game->getKnockBonus();
         $knocking = $this->player;
         $knocking->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('addScore')
-            ->with(
+            expects($this->once())->
+            method('addScore')->
+            with(
                 $this->equalTo(20 + $knockBonus)
             );
         $notKnocking = $this->opponent;
@@ -279,9 +291,9 @@ final class GameTest extends TestCase
 
         $notKnocking = $this->opponent;
         $notKnocking->/** @scrutinizer ignore-call */
-            expects($this->once())
-            ->method('addScore')
-            ->with(
+            expects($this->once())->
+            method('addScore')->
+            with(
                 $this->equalTo(20 + $undercutBonus)
             );
 

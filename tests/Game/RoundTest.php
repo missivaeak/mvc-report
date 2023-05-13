@@ -144,27 +144,32 @@ final class RoundTest extends TestCase
         $card = $this->createStub(StandardPlayingCard::class);
 
         $deck = $this->createStub(StandardPlayingCardsDeck::class);
-        $deck->expects($this->exactly(2))
-            ->method('draw')
-            ->willReturn($card);
+        $deck-> /** @scrutinizer ignore-call */
+            expects($this->exactly(2))->
+            method('draw')->
+            willReturn($card);
 
         $playerHand = $this->createStub(GinRummyHand::class);
-        $playerHand->expects($this->once())
-            ->method('add')
-            ->with($card);
+        $playerHand-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('add')->
+            with($card);
 
         $player = $this->player;
-        $player->method('getHand')
-            ->willReturn($playerHand);
+        $player-> /** @scrutinizer ignore-call */
+            method('getHand')->
+            willReturn($playerHand);
 
         $opponentHand = $this->createStub(GinRummyHand::class);
-        $opponentHand->expects($this->once())
-            ->method('add')
-            ->with($card);
+        $opponentHand-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('add')->
+            with($card);
 
         $opponent = $this->opponent;
-        $opponent->method('getHand')
-            ->willReturn($opponentHand);
+        $opponent-> /** @scrutinizer ignore-call */
+            method('getHand')->
+            willReturn($opponentHand);
 
         $this->round->deal($deck);
     }
