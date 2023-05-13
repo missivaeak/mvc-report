@@ -24,6 +24,7 @@ final class GinRummyScoringTest extends TestCase
      */
     protected function setUp(): void
     {
+        /** @var array<StandardPlayingCard> $cards */
         $cards = [$this->createStub(StandardPlayingCard::class)];
         for ($i = 0; $i < 9; $i++) {
             $card = clone $cards[0];
