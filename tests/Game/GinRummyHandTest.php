@@ -101,9 +101,10 @@ final class GinRummyHandTest extends TestCase
         ];
 
         $meld = $this->meld;
-        $meld->expects($this->once())
-            ->method('getCards')
-            ->willReturn($meldCards);
+        $meld-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('getCards')->
+            willReturn($meldCards);
 
         $unmatched = $this->nonEmptyHand->getUnmatched();
         foreach ($meldCards as $card) {
@@ -120,9 +121,10 @@ final class GinRummyHandTest extends TestCase
         $card = $unmatched[0];
 
         $meld = $this->meld;
-        $meld->expects($this->once())
-            ->method('add')
-            ->with($this->identicalTo($card));
+        $meld-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('add')->
+            with($this->identicalTo($card));
 
         $this->nonEmptyHand->addToMeld(0, 0);
     }

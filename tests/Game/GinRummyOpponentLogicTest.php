@@ -73,7 +73,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testPickDiscard(): void
     {
         $discard = $this->discard;
-        $discard->method('draw')->willReturn($this->card);
+        $discard-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
         $pickedCard = $this->logic->pickDiscard();
 
         $this->assertSame($this->card, $pickedCard);
@@ -85,7 +87,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testPickDiscardEmptyDiscard(): void
     {
         $discard = $this->discard;
-        $discard->method('draw')->willReturn(null);
+        $discard-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn(null);
         $pickedCard = $this->logic->pickDiscard();
 
         $this->assertSame(null, $pickedCard);
@@ -97,7 +101,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testPickDeck(): void
     {
         $deck = $this->deck;
-        $deck->method('draw')->willReturn($this->card);
+        $deck-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
         $pickedCard = $this->logic->pickDeck();
 
         $this->assertSame($this->card, $pickedCard);
@@ -109,7 +115,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testPickDeckEmptyDeck(): void
     {
         $deck = $this->deck;
-        $deck->method('draw')->willReturn(null);
+        $deck-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn(null);
         $pickedCard = $this->logic->pickDeck();
 
         $this->assertSame(null, $pickedCard);
@@ -122,13 +130,19 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testDiscard(): void
     {
         $card1 = clone $this->card;
-        $card1->method('getValue')->willReturn(2);
+        $card1-> /** @scrutinizer ignore-call */
+            method('getValue')->
+            willReturn(2);
 
         $card2 = clone $this->card;
-        $card2->method('getValue')->willReturn(4);
+        $card2-> /** @scrutinizer ignore-call */
+            method('getValue')->
+            willReturn(4);
 
         $hand = $this->opponentHand;
-        $hand->method('getUnmatched')->willReturn([$card2, $card1]);
+        $hand-> /** @scrutinizer ignore-call */
+            method('getUnmatched')->
+            willReturn([$card2, $card1]);
         $success = false;
         for ($i = 0; $i < 100; $i++) {
             $discardedCard = $this->logic->discard();
@@ -147,7 +161,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testDiscardEmptyHand(): void
     {
         $hand = $this->opponentHand;
-        $hand->method('getUnmatched')->willReturn([]);
+        $hand-> /** @scrutinizer ignore-call */
+            method('getUnmatched')->
+            willReturn([]);
         $discardedCard = $this->logic->discard();
 
         $this->assertNull($discardedCard);
@@ -158,7 +174,9 @@ final class GinRummyOpponentLogicTest extends TestCase
      */
     public function testDrawOrPass(): void
     {
-        $this->discard->method('draw')->willReturn($this->card);
+        $this->discard-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
         $cardOnceFlag = false;
         $nullOnceFlag = false;
 
@@ -181,8 +199,12 @@ final class GinRummyOpponentLogicTest extends TestCase
      */
     public function testDrawDeckOrDrawDiscard(): void
     {
-        $this->deck->method('draw')->willReturn($this->card);
-        $this->discard->method('draw')->willReturn($this->card);
+        $this->deck-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
+        $this->discard-> /** @scrutinizer ignore-call */
+            method('draw')->
+            willReturn($this->card);
         $drawDeckOnceFlag= false;
         $drawDiscardOnceFlag = false;
 
@@ -206,7 +228,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testKnockOrPassCanKnock(): void
     {
         $scoring = $this->scoring;
-        $scoring->method('handScore')->willReturn(6);
+        $scoring-> /** @scrutinizer ignore-call */
+            method('handScore')->
+            willReturn(6);
 
         $this->assertTrue($this->logic->knockOrPass());
     }
@@ -217,7 +241,9 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testKnockOrPassCannotKnock(): void
     {
         $scoring = $this->scoring;
-        $scoring->method('handScore')->willReturn(11);
+        $scoring-> /** @scrutinizer ignore-call */
+            method('handScore')->
+            willReturn(11);
 
         $this->assertFalse($this->logic->knockOrPass());
     }
@@ -229,14 +255,16 @@ final class GinRummyOpponentLogicTest extends TestCase
     public function testAddToPlayersMeld(): void
     {
         $hand = $this->opponentHand;
-        $hand->method('getUnmatched')->willReturn([
-            $this->card,
-            clone $this->card,
-            clone $this->card
-        ]);
+        $hand-> /** @scrutinizer ignore-call */
+            method('getUnmatched')->
+            willReturn([
+                $this->card,
+                clone $this->card,
+                clone $this->card
+            ]);
 
         $scoring = $this->scoring;
-        $scoring->
+        $scoring-> /** @scrutinizer ignore-call */
             method('addToOthersMeld')->
             will($this->onConsecutiveCalls(
                 true,
