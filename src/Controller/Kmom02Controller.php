@@ -81,10 +81,9 @@ class Kmom02Controller extends AbstractController
         $hand = new Hand();
 
         for ($i = 0; $i < $num; $i++) {
-            try {
-                $hand->add($deck->draw());
-            } catch (TypeError $e) {
-                break;
+            $card = $deck->draw();
+            if ($card) {
+                $hand->add($card);
             }
         }
 

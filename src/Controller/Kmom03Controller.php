@@ -124,7 +124,6 @@ class Kmom03Controller extends AbstractController
         $player = $game->getPlayer();
         $opponent = $game->getOpponent();
         $playerHand = $game->getPlayerHand();
-        $opponentHand = $game->getOpponentHand();
 
         if ($game->getDeck()->getCardsRemaining() < 3) {
             $this->addFlash('notice', 'Kortleken tar slut och rundan avslutas. Inga poäng delas ut.');
@@ -327,7 +326,6 @@ class Kmom03Controller extends AbstractController
 
     #[Route("/game/end/game", name: "game_end_game")]
     public function gameEndGame(
-        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get("game");
