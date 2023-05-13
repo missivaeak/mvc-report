@@ -213,16 +213,16 @@ final class GinRummyScoringTest extends TestCase
             $this->cards[0],
             $this->cards[1]
         ];
-        $this->hand->
+        $this->hand-> /** @scrutinizer ignore-call */
             method('getUnmatched')->
             willReturn($unmatched);
         $player = $this->createStub(Player::class);
-        $player->
+        $player-> /** @scrutinizer ignore-call */
             method('getHand')->
             willReturn($this->hand);
         $opponent = $this->createStub(Player::class);
         $game = $this->createStub(Game::class);
-        $game->
+        $game-> /** @scrutinizer ignore-call */
             method('score')->
             willReturn(-1);
 
@@ -237,16 +237,16 @@ final class GinRummyScoringTest extends TestCase
             $this->cards[0],
             $this->cards[1]
         ];
-        $this->hand->
+        $this->hand-> /** @scrutinizer ignore-call */
             method('getUnmatched')->
             willReturn($unmatched);
         $player = $this->createStub(Player::class);
-        $player->
+        $player-> /** @scrutinizer ignore-call */
             method('getHand')->
             willReturn($this->hand);
         $opponent = $this->createStub(Player::class);
         $game = $this->createStub(Game::class);
-        $game->
+        $game-> /** @scrutinizer ignore-call */
             method('score')->
             willReturn(1);
 
@@ -258,16 +258,16 @@ final class GinRummyScoringTest extends TestCase
     public function testCheckScoreDiffEqual(): void
     {
         $unmatched = [];
-        $this->hand->
+        $this->hand-> /** @scrutinizer ignore-call */
             method('getUnmatched')->
             willReturn($unmatched);
         $player = $this->createStub(Player::class);
-        $player->
+        $player-> /** @scrutinizer ignore-call */
             method('getHand')->
             willReturn($this->hand);
         $opponent = $this->createStub(Player::class);
         $game = $this->createStub(Game::class);
-        $game->
+        $game-> /** @scrutinizer ignore-call */
             method('score')->
             willReturn(10);
 

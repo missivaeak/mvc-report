@@ -310,11 +310,11 @@ final class GinRummyOpponentLogicTest extends TestCase
             method('setStep')->
             with($this->anything());
 
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->any())->
             method('resetMelds');
 
-        $this->scoring->
+        $this->scoring-> /** @scrutinizer ignore-call */
             method('handScore')->
             willReturn(12);
 
@@ -362,11 +362,11 @@ final class GinRummyOpponentLogicTest extends TestCase
             method('setStep')->
             with($this->anything());
 
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->any())->
             method('resetMelds');
 
-        $this->scoring->
+        $this->scoring-> /** @scrutinizer ignore-call */
             method('handScore')->
             willReturn(2);
 
@@ -420,7 +420,7 @@ final class GinRummyOpponentLogicTest extends TestCase
             expects($this->once())->
             method('setStep')->
             with($this->equalTo(5));
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->once())->
             method('resetMelds');
 
@@ -444,7 +444,7 @@ final class GinRummyOpponentLogicTest extends TestCase
             expects($this->once())->
             method('setStep')->
             with($this->equalTo(6));
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->once())->
             method('resetMelds');
 
@@ -474,7 +474,7 @@ final class GinRummyOpponentLogicTest extends TestCase
             expects($this->exactly(100))->
             method('setStep')->
             with($this->anything());
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->any())->
             method('resetMelds');
 
@@ -503,7 +503,7 @@ final class GinRummyOpponentLogicTest extends TestCase
             expects($this->once())->
             method('setStep')->
             with($this->equalTo(0));
-        $this->opponentHand->
+        $this->opponentHand-> /** @scrutinizer ignore-call */
             expects($this->any())->
             method('resetMelds');
 
