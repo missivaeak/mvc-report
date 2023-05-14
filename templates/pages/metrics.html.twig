@@ -48,16 +48,7 @@
 
 <h2>Scrutinizer</h2>
 
-<figure>
-    <img src="{{ asset('img/metrics/quality-score.svg') }}" alt="Scrutinizer Code Quality">
-
-    <img src="{{ asset('img/metrics/coverage.svg') }}" alt="Code Coverage">
-
-    <img src="{{ asset('img/metrics/build.svg') }}" alt="Build Status">
-    <figcaption>Scrutinizer badges före åtgärder</figcaption>
-</figure>
-
-<p>I Scrutinizers analys så får projektet bra betyg, se badges ovan. Trots det går det att hitta vissa svagheter.</p>
+<p>I Scrutinizers analys så får projektet bra betyg, trots det går det att hitta vissa svagheter.</p>
 
 <figure>
     <img src="{{ asset('img/metrics/scrutinizer-cc.png') }}" alt="Hög cyklomatiskt komplexitet.">
@@ -82,29 +73,46 @@
 
 <h2>Förbättringar</h2>
 
-<p>För att förbättra projeketets kodkvalitet kommer jag välja att fokusera på några åtgärder. 9.67</p>
+<p>För att förbättra projeketets kodkvalitet kommer jag välja att fokusera på några åtgärder.</p>
 
 <h3>Hög komplexitet Kmom03Controller::gameOpponent()</h3>
 
-<p>Denna metoden är såpass komplex på grund av att den innehåller motståndarens beslustsfattande villkor samt speldrag direkt i kontrollern. Jag har för avsikt att flytta ut mycket av koden från kontrollern till en klass, möjligtvis en helt ny klass som representerar just motståndarens besultsfattande. cc 17</p>
+<p>Denna metoden är såpass komplex på grund av att den innehåller motståndarens beslustsfattande villkor samt speldrag direkt i kontrollern. Jag har för avsikt att flytta ut mycket av koden från kontrollern till en klass, möjligtvis en helt ny klass som representerar just motståndarens besultsfattande.</p>
 
 <h3>Låg cohesion ApiController</h3>
 
-<p>Denna kontroller har låg cohesion på grund av att jag lagt in alla API-routes i samma controller. Jag plockar ut varje kursmoments egna API-routes till sin egen kontroller och då bör cohesion bli märkbart bättre. lcom 9</p>
+<p>Denna kontroller har låg cohesion på grund av att jag lagt in alla API-routes i samma controller. Jag plockar ut varje kursmoments egna API-routes till sin egen kontroller och då bör cohesion bli märkbart bättre.</p>
 
 <h3>Högt CRAP-värde i fler metoder i GinRummyScoring</h3>
 
-<p>Denna klass har några alldeles för stora metoder. Jag åtgärdar den höga komplexiteten genom att bryta upp metoderna i mindre beståndsdelar, då kommer även CRAP att minska som följd. Möjligtvis lägger jag till några nya tester för också då täckningen inte är 100%, men jag kanske nöjer mig utan det. crap 12, 10, 7</p>
+<p>Denna klass har några alldeles för stora metoder. Jag åtgärdar den höga komplexiteten genom att bryta upp metoderna i mindre beståndsdelar, då kommer även CRAP att minska som följd. Möjligtvis lägger jag till några nya tester för också då täckningen inte är 100%, men jag kanske nöjer mig utan det.</p>
 
 <h3>Issues i Scrutinizer</h3>
 
-<p>Jag jobbar igenom de issues som Scrutinizer flaggar för, den har en bra mess detector som jag gärna betar av. 25 issues</p>
+<p>Jag jobbar igenom de issues som Scrutinizer flaggar för, den har en bra mess detector som jag gärna betar av.</p>
 
-<i><ul>
-    <li>Implementera sedan förbättringarna.</li>
-    <li>Analysera därefter rapporterna från phpmetrics och Scrutinizer och notera de nya mätvärdena.</li>
-    <li>Gör det tydligt hur mätvärdena såg ut innan och efter dina förbättringar.</li>
-</ul></i>
+<h3>Efter åtgärder</h3>
+
+<p>Innan hade Kmom03Controller 17 CC, nu efter åtgärder har den 10. Det är fortfarande en av de högre CC-värden i projektet, men en kraftig förbättring.</p>
+
+<p>ApiController hade LCOM-värde 9 innan åtgärder. Efter åtgärderna finns inte klassen kvar och den har ersätts av fyra filer med LCOM-värde 2, 5, 1 och 2 respektive. Den som fortfarande har högt LCOM-värde är Kmom02ApiController som hanterar /api/-routes för kortleken och den har många fler klasser och metoder än de andra.</p>
+
+<p>De metoder med högst CRAP hade innan åtgärder 12 och 10 i CRAP-värde. Efteråt har de två metoderna 8 och 3 respektive.</p>
+
+<p>Alla 25 issues arbetates igenom och åtgärdades, med undantag för en som berodde på en fil från Symfony som jag ignorerade.</p>
+
+<p>Nedan är också scrutinizer-badges före och efter.</p>
+
+<figure>
+    <img src="{{ asset('img/metrics/quality-score.svg') }}" alt="Scrutinizer Code Quality">
+
+    <img src="{{ asset('img/metrics/coverage.svg') }}" alt="Code Coverage">
+
+    <img src="{{ asset('img/metrics/build.svg') }}" alt="Build Status">
+
+    <figcaption>Scrutinizer badges före åtgärder</figcaption>
+
+</figure>
 
 <figure>
     <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a>
@@ -113,11 +121,17 @@
 
     <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/build-status/main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/build.png?b=main" alt="Build Status"></a>
 
-    <figcaption>Scrutinizer badges efter åtgärder</figcaption>
+    <figcaption>...och efter åtgärder</figcaption>
 </figure>
 
 <h2>Diskussion</h2>
 
-<p>aoeaotheaoe</p>
+<p>Efter att ha arbetat igenom projektet med phpmetrics och Scrutinizers analysverktyg så känner jag mig nöjd med resultatet. Jag har täppt till vissa stora svagheter i projektet.</p>
+
+<p>Det finns vissa svagheter med att jobba på detta viset. Huvudsakligen att programmeraren lämnar över kvaliteten till någon annan och förlitar oss på deras expertis. Det kan fungera bra när programmeraren använder analysverktygen som en indikator för problem men att hen sedan använder sin egen expertis för att jobba vidare med problemen. Men det är också tänkbart att det dyker upp falska negativa resultat och då ser programmeraren aldrig det.</p>
+
+<p>Förutom de nackdelarna så är det bra att få maskinell hjälp med avläsning av koden, då en människa lätt missar små saker i ett stort projekt.</p>
+
+<p>Andra sätt att jobba med god kodkvalitet som jag ser det beror mest på arbetsprocessenen. Det är tänkbart att man lämnar över varje metod man jobbat med för uppföljning av en kollega, exempelvis. Man förlorar arbetsstid men ett extra par ögon kan hjälpa, inte bara för den ytterligare hjälpen utan också för att den första programmeraren vet att hen skriver kod som ska förstås av nån annan.</p>
 
 {% endblock %}
