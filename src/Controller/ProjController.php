@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Roadlike\Challenger;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +25,10 @@ class ProjController extends AbstractController
     #[Route('/proj/game', name: 'proj_game')]
     public function game(): Response
     {
-        return $this->render('proj/game.twig');
+        $challenger = new Challenger("Snick Flames", []);
+        return $this->render('proj/game.twig', [
+            "challenger" => $challenger
+        ]);
     }
     
     #[Route('/proj/leaderboard', name: 'proj_leaderboard')]

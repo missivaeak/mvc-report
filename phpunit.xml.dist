@@ -26,6 +26,7 @@
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src/Game</directory>
+            <directory suffix=".php">src/Roadlike</directory>
         </include>
         <report>
             <clover outputFile="docs/coverage.clover"/>
