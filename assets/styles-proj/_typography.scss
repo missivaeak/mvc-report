@@ -1,0 +1,48 @@
+@use "vars";
+@import url('https://fonts.googleapis.com/css2?family=Flavors&family=Pangolin&family=Acme');
+
+html {
+    font-size: 100%;
+}
+
+body { 
+    line-height: vars.$base-line-height;
+}
+
+* {
+    font-family: 'Pangolin', Helvetica, sans-serif;
+}
+
+p { 
+    font-size: vars.$base-font-size;
+    color: vars.$color-primary-4;
+
+    &:not(:last-child) {
+        margin-bottom: vars.$magic-number;
+    }
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: vars.$magic-number * 2;
+    font-family: 'Flavors', fantasy;
+    color: vars.$color-complement-4;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: vars.$magic-number;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: vars.$magic-number;
+}
+
+a {
+    color: #000;
+
+    &:visited {
+        color: #000;
+    }
+}

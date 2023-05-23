@@ -1,0 +1,17 @@
+{% extends "proj/partials/base.twig" %}
+
+{#% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %#}
+
+{% block body %}
+    <p>
+        Välkommen till RoadLike, ett spel som handlar om något som liknar en väg.
+    </p>
+
+    <p>
+        Led din utmanare genom en serie utmaningar och hinder och försök komma så långt som möjligt innan dagen tar slut.
+    </p>
+
+    <p>
+        <a href="{{path('proj_game_new')}}">Börja!</a>
+    </p>
+{% endblock %}

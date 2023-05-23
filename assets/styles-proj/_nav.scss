@@ -1,0 +1,46 @@
+@use "vars";
+@use "mixins";
+
+$padding: vars.$magic-number;
+
+.nav {
+    @include mixins.shadow;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    transform: translate(50%, calc(-100% + $padding));
+    background-color: vars.$color-primary-1;
+    // width: vars.$main-width;
+    width: 100%;
+    margin: 0 auto;
+    transition: all 400ms ease-in;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    cursor: pointer;
+
+    .links {
+        padding: $padding $padding $padding*0.5 $padding;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: vars.$magic-number*2;
+        justify-content: center;
+    }
+
+    .arrow {
+        transition: all 200ms ease-in;
+        transform: rotate(90deg);
+        font-family: 'Acme', sans-serif;
+        text-align: center;
+        display: inline-block;
+    }
+
+    // &:hover,
+    &.visible {
+        transform: translate(50%, 0);
+
+        .arrow {
+            transform: rotate(-90deg);
+        }
+    }
+}

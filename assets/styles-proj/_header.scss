@@ -1,0 +1,9 @@
+@use "vars";
+@use "nav";
+
+.header {
+    margin-top: nav.$padding*3;
+    h1 {
+        text-align: center;
+    }
+}

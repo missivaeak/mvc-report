@@ -1,0 +1,11 @@
+@use "vars";
+@use "mixins";
+
+.main {
+    @include mixins.shadow;
+    margin: 0 auto;
+    max-width: vars.$main-width;
+    background-color: vars.$color-primary-2;
+    padding: vars.$magic-number*2;
+    // box-shadow: 1px 1px 5px #0003;
+}
