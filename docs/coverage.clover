@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1684882816">
-  <project timestamp="1684882816">
+<coverage generated="1684909891">
+  <project timestamp="1684909891">
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/CardCollectionAbstract.php">
       <class name="App\Game\CardCollectionAbstract" namespace="global">
         <metrics complexity="18" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="35" coveredelements="35"/>
@@ -604,10 +604,10 @@
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Roadlike/Crossroads.php">
       <class name="App\Roadlike\Crossroads" namespace="global">
-        <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="9" coveredelements="0"/>
+        <metrics complexity="4" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="9" coveredelements="2"/>
       </class>
-      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
-      <line num="20" type="stmt" count="0"/>
+      <line num="18" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="20" type="stmt" count="1"/>
       <line num="27" type="method" name="addRoad" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="29" type="stmt" count="0"/>
       <line num="36" type="method" name="getRoads" visibility="public" complexity="1" crap="2" count="0"/>
@@ -615,11 +615,11 @@
       <line num="45" type="method" name="getRandomRoad" visibility="public" complexity="1" crap="2" count="0"/>
       <line num="47" type="stmt" count="0"/>
       <line num="49" type="stmt" count="0"/>
-      <metrics loc="51" ncloc="32" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="0" elements="9" coveredelements="0"/>
+      <metrics loc="51" ncloc="32" classes="1" methods="4" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="1" elements="9" coveredelements="2"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Roadlike/Obstacle.php">
       <class name="App\Roadlike\Obstacle" namespace="global">
-        <metrics complexity="22" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="72" elements="83" coveredelements="83"/>
+        <metrics complexity="22" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="78" elements="89" coveredelements="89"/>
       </class>
       <line num="35" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
       <line num="37" type="stmt" count="5"/>
@@ -649,62 +649,68 @@
       <line num="88" type="stmt" count="2"/>
       <line num="89" type="stmt" count="2"/>
       <line num="90" type="stmt" count="2"/>
+      <line num="91" type="stmt" count="2"/>
       <line num="92" type="stmt" count="2"/>
       <line num="93" type="stmt" count="2"/>
-      <line num="94" type="stmt" count="2"/>
       <line num="95" type="stmt" count="2"/>
       <line num="96" type="stmt" count="2"/>
       <line num="97" type="stmt" count="2"/>
       <line num="98" type="stmt" count="2"/>
       <line num="99" type="stmt" count="2"/>
+      <line num="100" type="stmt" count="2"/>
       <line num="101" type="stmt" count="2"/>
       <line num="102" type="stmt" count="2"/>
       <line num="103" type="stmt" count="2"/>
       <line num="104" type="stmt" count="2"/>
-      <line num="106" type="stmt" count="2"/>
-      <line num="116" type="method" name="testDifficulty" visibility="protected" complexity="3" crap="3" count="2"/>
-      <line num="118" type="stmt" count="2"/>
-      <line num="120" type="stmt" count="2"/>
-      <line num="121" type="stmt" count="2"/>
-      <line num="122" type="stmt" count="2"/>
+      <line num="105" type="stmt" count="2"/>
+      <line num="107" type="stmt" count="2"/>
+      <line num="108" type="stmt" count="2"/>
+      <line num="109" type="stmt" count="2"/>
+      <line num="110" type="stmt" count="2"/>
+      <line num="112" type="stmt" count="2"/>
+      <line num="122" type="method" name="testDifficulty" visibility="protected" complexity="3" crap="3" count="2"/>
       <line num="124" type="stmt" count="2"/>
+      <line num="126" type="stmt" count="2"/>
       <line num="127" type="stmt" count="2"/>
-      <line num="135" type="method" name="luckChance" visibility="private" complexity="2" crap="2" count="2"/>
-      <line num="137" type="stmt" count="2"/>
-      <line num="138" type="stmt" count="2"/>
-      <line num="140" type="stmt" count="2"/>
-      <line num="141" type="stmt" count="1"/>
+      <line num="128" type="stmt" count="2"/>
+      <line num="130" type="stmt" count="2"/>
+      <line num="133" type="stmt" count="2"/>
+      <line num="141" type="method" name="luckChance" visibility="private" complexity="2" crap="2" count="2"/>
+      <line num="143" type="stmt" count="2"/>
       <line num="144" type="stmt" count="2"/>
-      <line num="153" type="method" name="calcSuccessFactor" visibility="protected" complexity="5" crap="5" count="2"/>
-      <line num="155" type="stmt" count="2"/>
-      <line num="156" type="stmt" count="2"/>
-      <line num="157" type="stmt" count="2"/>
-      <line num="158" type="stmt" count="2"/>
-      <line num="159" type="stmt" count="2"/>
+      <line num="146" type="stmt" count="2"/>
+      <line num="147" type="stmt" count="1"/>
+      <line num="150" type="stmt" count="2"/>
+      <line num="159" type="method" name="calcSuccessFactor" visibility="protected" complexity="5" crap="5" count="2"/>
+      <line num="161" type="stmt" count="2"/>
       <line num="162" type="stmt" count="2"/>
       <line num="163" type="stmt" count="2"/>
-      <line num="166" type="stmt" count="2"/>
-      <line num="167" type="stmt" count="2"/>
-      <line num="170" type="stmt" count="2"/>
-      <line num="171" type="stmt" count="2"/>
+      <line num="164" type="stmt" count="2"/>
+      <line num="165" type="stmt" count="2"/>
+      <line num="168" type="stmt" count="2"/>
+      <line num="169" type="stmt" count="2"/>
+      <line num="172" type="stmt" count="2"/>
       <line num="173" type="stmt" count="2"/>
-      <line num="174" type="stmt" count="1"/>
+      <line num="176" type="stmt" count="2"/>
       <line num="177" type="stmt" count="2"/>
-      <line num="188" type="method" name="calcResourceDelta" visibility="protected" complexity="3" crap="3" count="2"/>
-      <line num="190" type="stmt" count="2"/>
-      <line num="191" type="stmt" count="2"/>
-      <line num="193" type="stmt" count="2"/>
-      <line num="194" type="stmt" count="2"/>
-      <line num="195" type="stmt" count="2"/>
+      <line num="179" type="stmt" count="2"/>
+      <line num="180" type="stmt" count="1"/>
+      <line num="183" type="stmt" count="2"/>
+      <line num="194" type="method" name="calcResourceDelta" visibility="protected" complexity="3" crap="3" count="2"/>
       <line num="196" type="stmt" count="2"/>
+      <line num="197" type="stmt" count="2"/>
       <line num="199" type="stmt" count="2"/>
-      <line num="209" type="method" name="calcStatDelta" visibility="protected" complexity="3" crap="3" count="2"/>
-      <line num="211" type="stmt" count="2"/>
-      <line num="212" type="stmt" count="2"/>
-      <line num="213" type="stmt" count="2"/>
-      <line num="214" type="stmt" count="2"/>
+      <line num="200" type="stmt" count="2"/>
+      <line num="201" type="stmt" count="2"/>
+      <line num="202" type="stmt" count="2"/>
+      <line num="205" type="stmt" count="2"/>
+      <line num="215" type="method" name="calcStatDelta" visibility="protected" complexity="3" crap="3" count="2"/>
       <line num="217" type="stmt" count="2"/>
-      <metrics loc="219" ncloc="160" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="72" coveredstatements="72" elements="83" coveredelements="83"/>
+      <line num="218" type="stmt" count="2"/>
+      <line num="219" type="stmt" count="2"/>
+      <line num="220" type="stmt" count="2"/>
+      <line num="223" type="stmt" count="2"/>
+      <metrics loc="225" ncloc="166" classes="1" methods="11" coveredmethods="11" conditionals="0" coveredconditionals="0" statements="78" coveredstatements="78" elements="89" coveredelements="89"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Roadlike/Road.php">
       <class name="App\Roadlike\Road" namespace="global">
@@ -718,6 +724,6 @@
       </class>
       <metrics loc="14" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
-    <metrics files="18" loc="1669" ncloc="1411" classes="14" methods="117" coveredmethods="109" conditionals="0" coveredconditionals="0" statements="495" coveredstatements="486" elements="612" coveredelements="595"/>
+    <metrics files="18" loc="1675" ncloc="1417" classes="14" methods="117" coveredmethods="110" conditionals="0" coveredconditionals="0" statements="501" coveredstatements="493" elements="618" coveredelements="603"/>
   </project>
 </coverage>

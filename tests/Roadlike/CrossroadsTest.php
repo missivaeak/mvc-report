@@ -12,22 +12,27 @@ use PHPUnit\Framework\MockObject;
  */
 final class CrossroadsTest extends TestCase
 {
+    private Crossroads $crossroadsOne;
+    private Crossroads $crossroadsTwo;
+    private Crossroads $crossroadsThree;
 
-    // /**
-    //  * Setup
-    //  */
-    // protected function setUp(): void
-    // {
-    //     $this->;
-    //     $this->;
-    // }
+    /**
+     * Setup
+     */
+    protected function setUp(): void
+    {
+        $this->crossroadsOne = new Crossroads();
+        $this->crossroadsTwo = new Crossroads();
+        $this->crossroadsThree = new Crossroads();
+    }
 
-    // /**
-    //  * Test instansiation
-    //  */
-    // public function testInstansiate(): void
-    // {
-    //     $this->assertInstanceOf("App\Roadlike\", $this->);
-    //     $this->assertInstanceOf("App\Roadlike\", $this->);
-    // }
+    /**
+     * Test instansiation
+     */
+    public function testInstansiate(): void
+    {
+        $this->assertInstanceOf("App\Roadlike\Crossroads", $this->crossroadsOne);
+        $this->assertInstanceOf("App\Roadlike\Crossroads", $this->crossroadsTwo);
+        $this->assertInstanceOf("App\Roadlike\Crossroads", $this->crossroadsThree);
+    }
 }

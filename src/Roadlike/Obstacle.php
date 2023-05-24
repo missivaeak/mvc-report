@@ -30,7 +30,7 @@ class Obstacle
      * @param string $name Name of the obstacle
      * @param string $description Description of the obstacle
      * @param array{intelligence?: int, strength?: int, dexterity?: int} $difficulties Difficulty for the obstacle
-     * @param array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int} $costRewards Costs and rewards for the obstacle
+     * @param array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} $costRewards Costs and rewards for the obstacle
      */
     public function __construct(string $name, string $description, array $difficulties, array $costRewards)
     {
@@ -67,7 +67,7 @@ class Obstacle
     /**
      * Attempts the obstacle with a challenger
      * @param Challenger $challenger
-     * @return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int}
+     * @return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}
      */
     public function attempt(Challenger $challenger): array
     {
@@ -88,6 +88,9 @@ class Obstacle
         $intDelta = $this->calcStatDelta($costRewards["intelligence"], $successFactor);
         $strDelta = $this->calcStatDelta($costRewards["strength"], $successFactor);
         $dexDelta = $this->calcStatDelta($costRewards["dexterity"], $successFactor);
+        $luckDelta = $this->calcStatDelta($costRewards["luck"], $successFactor);
+        $speedDelta = $this->calcStatDelta($costRewards["speed"], $successFactor);
+        $conDelta = $this->calcStatDelta($costRewards["constitution"], $successFactor);
 
         $deltas = [
             "time" => $timeDelta,
@@ -95,7 +98,10 @@ class Obstacle
             "stamina" => $staminaDelta,
             "intelligence" => $intDelta,
             "strength" => $strDelta,
-            "dexterity" => $dexDelta
+            "dexterity" => $dexDelta,
+            "luck" => $luckDelta,
+            "speed" => $speedDelta,
+            "constitution" => $conDelta
         ];
 
         $result = [
@@ -146,8 +152,8 @@ class Obstacle
 
     /**
      * Calculates an average success factor
-     * @param array<int|null> Success factors
-     * @param bool Whether the challenger got lucky
+     * @param array<int|null> $factors Success factors
+     * @param bool $lucky Whether the challenger got lucky
      * @return float
      */
     protected function calcSuccessFactor(array $factors, bool $lucky): float
@@ -180,8 +186,8 @@ class Obstacle
     /**
      * Calculates time spent to complete the obstacle
      * @param int $time Time cost value, negative incurs a cost, positive refunds time
-     * @param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} The challenger's stats
-     * @param string Relevant stat to compare
+     * @param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats The challenger's stats
+     * @param string $stat Relevant stat to compare
      * @param float $successFactor A factor affects the result, higher is better for the challenger, must be positive and non-zero
      * @return int
      */

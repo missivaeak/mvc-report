@@ -55,7 +55,10 @@ final class ObstacleTest extends TestCase
             "stamina" => -13,
             "intelligence" => -5,
             "strength" => 2,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ]);
 
         $this->obstacleTwo = new Obstacle("namn", "beskrivning", [], [
@@ -64,7 +67,10 @@ final class ObstacleTest extends TestCase
             "stamina" => -13,
             "intelligence" => -5,
             "strength" => 2,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ]);
     }
 
@@ -93,7 +99,7 @@ final class ObstacleTest extends TestCase
     }
 
     /** 
-     * Test an attempt at the obstacle with unlucky challenger
+     * Test an attempt at the obstacle with an unlucky challenger
      */
     public function testAttemptUnlucky(): void
     {
@@ -106,7 +112,10 @@ final class ObstacleTest extends TestCase
             "stamina" => -2,
             "intelligence" => -7,
             "strength" => 1,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ], $resultOne["deltas"]);
         $this->assertEquals([
             "time" => 3,
@@ -114,14 +123,17 @@ final class ObstacleTest extends TestCase
             "stamina" => -3,
             "intelligence" => -5,
             "strength" => 2,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ], $resultTwo["deltas"]);
         $this->assertFalse($resultOne["lucky"]);
         $this->assertFalse($resultTwo["lucky"]);
     }
 
     /** 
-     * Test an attempt at the obstacle with llucky challenger
+     * Test an attempt at the obstacle with a lucky challenger
      */
     public function testAttemptLucky(): void
     {
@@ -134,7 +146,10 @@ final class ObstacleTest extends TestCase
             "stamina" => -4,
             "intelligence" => -4,
             "strength" => 3,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ], $resultOne["deltas"]);
         $this->assertEquals([
             "time" => 3,
@@ -142,7 +157,10 @@ final class ObstacleTest extends TestCase
             "stamina" => -3,
             "intelligence" => -5,
             "strength" => 2,
-            "dexterity" => 0
+            "dexterity" => 0,
+            "luck" => 0,
+            "speed" => 0,
+            "constitution" => 0
         ], $resultTwo["deltas"]);
         $this->assertTrue($resultOne["lucky"]);
         $this->assertTrue($resultTwo["lucky"]);
