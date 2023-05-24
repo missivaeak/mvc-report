@@ -42,10 +42,14 @@ class Crossroads
      * Get a random road
      * @return Road
      */
-    public function getRandomRoad(): Road
+    public function getRandomRoad(): ?Road
     {
-        $index = array_rand($this->roads);
+        if ($this->roads) {
+            $index = array_rand($this->roads);
 
-        return $this->roads[$index];
+            return $this->roads[$index];
+        }
+
+        return null;
     }
 }
