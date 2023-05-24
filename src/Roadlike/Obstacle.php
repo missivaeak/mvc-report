@@ -74,13 +74,18 @@ class Obstacle
         $stats = $challenger->getStats();
         $difficulties = $this->getDifficulties();
         $costRewards = $this->getCostRewards();
-        $lucky = $this->luckChance($stats["luck"]);
+        $lucky = false;
 
         $intSuccess = $this->testDifficulty("intelligence", $difficulties, $stats);
         $strSuccess = $this->testDifficulty("strength", $difficulties, $stats);
         $dexSuccess = $this->testDifficulty("dexterity", $difficulties, $stats);
+        $successes = [$intSuccess, $strSuccess, $dexSuccess];
 
-        $successFactor = $this->calcSuccessFactor([$intSuccess, $strSuccess, $dexSuccess], $lucky);
+        if (array_sum($successes) > 0) {
+            $lucky = $this->luckChance($stats["luck"]);
+        }
+
+        $successFactor = $this->calcSuccessFactor($successes, $lucky);
 
         $timeDelta = $this->calcResourceDelta($costRewards["time"], $stats, "speed", $successFactor);
         $healthDelta = $this->calcResourceDelta($costRewards["health"], $stats, "", $successFactor);

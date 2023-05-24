@@ -134,6 +134,8 @@ final class ObstacleTest extends TestCase
 
     /** 
      * Test an attempt at the obstacle with a lucky challenger
+     * that the result deltas match expected values and that lucky is
+     * true if there were stat tests, and false if there were not
      */
     public function testAttemptLucky(): void
     {
@@ -163,6 +165,6 @@ final class ObstacleTest extends TestCase
             "constitution" => 0
         ], $resultTwo["deltas"]);
         $this->assertTrue($resultOne["lucky"]);
-        $this->assertTrue($resultTwo["lucky"]);
+        $this->assertFalse($resultTwo["lucky"]);
     }
 }
