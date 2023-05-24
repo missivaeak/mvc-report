@@ -44,7 +44,7 @@ class Crossroads
      */
     public function getRandomRoad(): ?Road
     {
-        if ($this->roads) {
+        if (!empty($this->roads)) {
             $index = array_rand($this->roads);
 
             return $this->roads[$index];
