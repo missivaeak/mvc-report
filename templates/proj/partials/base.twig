@@ -17,7 +17,7 @@
     <body>
         {% block nav %}{{ include('proj/partials/nav.twig') }}{% endblock %}
         {% block header %}{{ include('proj/partials/header.twig') }}{% endblock %}
-        <main class="main">
+        <main class="main {% block view %}{% endblock %}">
             {% block body %}{% endblock %}
         </main>
         {#{ include('partials/footer.html.twig') }#}

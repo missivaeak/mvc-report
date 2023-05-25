@@ -1,11 +1,15 @@
 @use "vars";
 @use "mixins";
 
+$grid-cell: calc(vars.$main-width / 16);
+
 .main {
     @include mixins.shadow;
     margin: 0 auto;
     max-width: vars.$main-width;
     background-color: vars.$color-primary-2;
-    padding: vars.$magic-number*2;
+    display: grid;
+    grid-template-columns: repeat(14, $grid-cell);
+    padding: $grid-cell;
     // box-shadow: 1px 1px 5px #0003;
 }
