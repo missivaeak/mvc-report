@@ -9,7 +9,7 @@ use App\Roadlike\Crossroads;
 class Manager
 {
     /** @var int Start time */
-    const STARTTIME = 500;
+    private int $startingTime;
 
     /** @var Challenger The player's challenger */
     private Challenger $challenger;
@@ -23,17 +23,17 @@ class Manager
     /** @var int Time remaining */
     private int $time;
 
-    /** @var int Starting time */
-    private int $startingTime;
-
     /**
      * Constructor
      * @param Challenger $challenger Player's challenger
      * @param Road $road Completed road
      * @param int $time Start time, defaults to class constant value
      */
-    public function __construct(Challenger $challenger, Road $journey, int $time=self::STARTTIME)
-    {
+    public function __construct(
+        Challenger $challenger,
+        Road $journey, 
+        int $time=500
+    ) {
         $this->challenger = $challenger;
         $this->journey = $journey;
         $this->time = $time;

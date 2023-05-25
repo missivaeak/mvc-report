@@ -9,10 +9,10 @@ namespace App\Roadlike;
 class Obstacle
 {
     /** @var float Luck multiplier */
-    const LUCKMULTIPLIER = 2.0;
+    private const LUCKMULTIPLIER = 2.0;
 
     /** @var int Resource cost factor */
-    const COSTFACTOR = 10;
+    private const COSTFACTOR = 10;
 
     /** @var string Obstacle name */
     private string $name;

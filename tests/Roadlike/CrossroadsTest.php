@@ -27,11 +27,11 @@ final class CrossroadsTest extends TestCase
         $this->roadTwo = $this->createStub("App\Roadlike\Road");
 
         $this->crossroadsOne = new Crossroads();
-        $this->crossroadsOne->addRoad($this->roadOne);
+        $this->crossroadsOne->addPath($this->roadOne);
 
         $this->crossroadsTwo = new Crossroads();
-        $this->crossroadsTwo->addRoad($this->roadOne);
-        $this->crossroadsTwo->addRoad($this->roadTwo);
+        $this->crossroadsTwo->addPath($this->roadOne);
+        $this->crossroadsTwo->addPath($this->roadTwo);
 
         $this->crossroadsNone = new Crossroads();
 
@@ -52,9 +52,9 @@ final class CrossroadsTest extends TestCase
      */
     public function testGetAddRoad(): void
     {
-        $noRoads = $this->crossroadsNone->getRoads();
-        $oneRoads = $this->crossroadsOne->getRoads();
-        $twoRoads = $this->crossroadsTwo->getRoads();
+        $noRoads = $this->crossroadsNone->getPaths();
+        $oneRoads = $this->crossroadsOne->getPaths();
+        $twoRoads = $this->crossroadsTwo->getPaths();
 
         $this->assertContainsOnlyInstancesOf("App\Roadlike\Road", $oneRoads);
         $this->assertContainsOnlyInstancesOf("App\Roadlike\Road", $twoRoads);
@@ -69,7 +69,7 @@ final class CrossroadsTest extends TestCase
      */
     public function testGetRandomRoadNull(): void
     {
-        $road = $this->crossroadsNone->getRandomRoad();
+        $road = $this->crossroadsNone->getRandomPath();
 
         $this->assertNull($road);
     }
@@ -79,7 +79,7 @@ final class CrossroadsTest extends TestCase
      */
     public function testGetRandomRoadOne(): void
     {
-        $road = $this->crossroadsOne->getRandomRoad();
+        $road = $this->crossroadsOne->getRandomPath();
 
         $this->assertInstanceOf("App\Roadlike\Road", $road);
         $this->assertEquals($this->roadOne, $road);
@@ -94,7 +94,7 @@ final class CrossroadsTest extends TestCase
         $roadTwoFoundFlag = false;
 
         for ($i = 0; $i < 100; $i++) {
-            $road = $this->crossroadsTwo->getRandomRoad();
+            $road = $this->crossroadsTwo->getRandomPath();
             if ($road === $this->roadOne) {
                 $roadOneFoundFlag = true;
             } elseif ($road === $this->roadTwo) {

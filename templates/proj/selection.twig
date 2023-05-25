@@ -1,0 +1,38 @@
+{% extends "proj/partials/base.twig" %}
+
+{% block body %}
+    <div class="selection">
+        {% for challenger in selection %}
+            {% set stats = challenger["stats"] %}
+            <div class="challenger">
+                <h2>{{challenger["name"]}}</h2>
+                <p>
+                    <i class="fa-solid fa-brain"></i>
+                    Intelligens: {{stats["intelligence"]}}
+                </p>
+                <p>
+                    <i class="fa-solid fa-dumbbell"></i>
+                    Styrka: {{stats["strength"]}}
+                </p>
+                <p>
+                    <i class="fa-solid fa-user-ninja"></i>
+                    Smidighet: {{stats["dexterity"]}}
+                </p>
+                <p>
+                    <i class="fa-solid fa-clover"></i>
+                    Tur: {{stats["luck"]}}
+                </p>
+                <p>
+                    <i class="fa-solid fa-person-running"></i>
+                    Hastighet: {{stats["speed"]}}
+                </p>
+                <p>
+                    <i class="fa-solid fa-solid fa-heart-pulse"></i>
+                    Uthållighet: {{stats["constitution"]}}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+        {# {{dump(selection)}} #}
+{% endblock %}

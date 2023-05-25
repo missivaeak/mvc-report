@@ -1,5 +1,5 @@
 @use "vars";
-@import url('https://fonts.googleapis.com/css2?family=Flavors&family=Pangolin&family=Acme');
+@import url('https://fonts.googleapis.com/css2?family=Flavors&family=Neucha&family=Acme');
 
 html {
     font-size: 100%;
@@ -10,12 +10,13 @@ body {
 }
 
 * {
-    font-family: 'Pangolin', Helvetica, sans-serif;
+    font-family: 'Neucha', Helvetica, sans-serif;
 }
 
 p { 
     font-size: vars.$base-font-size;
     color: vars.$color-primary-4;
+    font-weight: 600;
 
     &:not(:last-child) {
         margin-bottom: vars.$magic-number;
@@ -32,6 +33,7 @@ h1 {
 h2 {
     font-size: 2em;
     margin-bottom: vars.$magic-number;
+    color: vars.$color-complement-4;
 }
 
 h3 {
@@ -45,4 +47,8 @@ a {
     &:visited {
         color: #000;
     }
+}
+
+.fa-solid {
+    color: #000;
 }

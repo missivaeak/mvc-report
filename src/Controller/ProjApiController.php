@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-// use App\Card\Deck;
-// use App\Card\Hand;
+use App\Roadlike\Challenger;
 
 use App\Repository\ObstacleRepository;
-use App\Entity\Obstacle;
+use App\Entity\Obstacle as ObstacleEntity;
+use App\Repository\TemplateRepository;
+use App\Entity\Template as TemplateEntity;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,17 +20,19 @@ use TypeError;
 
 class ProjApiController extends AbstractController
 {
-    #[Route("/api/proj/obstacle", name: "api_proj_obstacle", methods: ["GET", "POST"])]
-    public function apiProjObstaclesGet(
-        ObstacleRepository $obstacleRepository,
+    #[Route("/api/proj/obstacle", name: "api_proj_obstacle", methods: ["GET", "POST", "DELETE"])]
+    public function apiProjObstacle(
+        ObstacleRepository $repository,
         Request $request,
         ManagerRegistry $doctrine
     ): Response {
         $data = [];
         if ($request->getMethod() === "GET") {
-            $data = $this->getAllObstacles($obstacleRepository);
+            $data = $this->getAllObstacles($repository);
         } elseif ($request->getMethod() === "POST") {
             $data = $this->addObstacle($doctrine, $request);
+        } elseif ($request->getMethod() === "DELETE") {
+            $data = $this->delObstacle($doctrine, $request, $repository);
         }
 
 
@@ -42,12 +45,13 @@ class ProjApiController extends AbstractController
     }
 
     private function getAllObstacles(
-        ObstacleRepository $obstacleRepository
+        ObstacleRepository $repository
     ): array {
         $data = [];
-        $obstacles = $obstacleRepository->findAll();
+        $obstacles = $repository->findAll();
         foreach ($obstacles as $obstacle) {
             $data[] = [
+                'id' => $obstacle->getId() ?? null,
                 'name' => $obstacle->getName() ?? null,
                 'description' => $obstacle->getDescription() ?? null,
                 'difficulty_int' => $obstacle->getDifficultyInt() ?? null,
@@ -67,7 +71,7 @@ class ProjApiController extends AbstractController
 
         return $data;
     }
-    
+
     private function addObstacle(
         ManagerRegistry $doctrine,
         Request $request
@@ -89,7 +93,7 @@ class ProjApiController extends AbstractController
         $costRewardSpd = $request->request->get("cost_reward_spd");
         $costRewardCon = $request->request->get("cost_reward_con");
 
-        $obstacle = new Obstacle();
+        $obstacle = new ObstacleEntity();
 
         $obstacle->setName($name);
         $obstacle->setDescription($description);
@@ -110,5 +114,142 @@ class ProjApiController extends AbstractController
         $entityManager->flush();
 
         return ["status" => "success", "obstacle_added" => $name];
+    }
+
+    private function delObstacle(
+        ManagerRegistry $doctrine,
+        Request $request,
+        ObstacleRepository $repository
+    ): array {
+        $entityManager = $doctrine->getManager();
+        $id = $request->request->get('id');
+        $obstacle = $repository->find($id);
+        $name = null;
+
+        if (!$obstacle) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $name = $obstacle->getName();
+        $entityManager->remove($obstacle);
+        $entityManager->flush();
+
+        return ["status" => "success", "obstacle_deleted" => $name];
+    }
+
+    #[Route("/api/proj/template", name: "api_proj_template", methods: ["GET", "POST", "DELETE"])]
+    public function apiProjTemplate(
+        TemplateRepository $repository,
+        Request $request,
+        ManagerRegistry $doctrine
+    ): Response {
+        $data = [];
+        if ($request->getMethod() === "GET") {
+            $data = self::getAllTemplates($repository);
+        } elseif ($request->getMethod() === "POST") {
+            $data = $this->addTemplate($doctrine, $request);
+        } elseif ($request->getMethod() === "DELETE") {
+            $data = $this->delTemplate($doctrine, $request, $repository);
+        }
+
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    private static function getAllTemplates(
+        TemplateRepository $repository
+    ): array {
+        $data = [];
+        $templates = $repository->findAll();
+        foreach ($templates as $template) {
+            $data[] = [
+                'id' => $template->getId() ?? null,
+                'name' => $template->getName() ?? null
+            ];
+        }
+
+        return $data;
+    }
+
+    private function addTemplate(
+        ManagerRegistry $doctrine,
+        Request $request
+    ): array {
+        $entityManager = $doctrine->getManager();
+
+        $name = $request->request->get("name");
+
+        $template = new TemplateEntity();
+
+        $template->setName($name);
+
+        $entityManager->persist($template);
+        $entityManager->flush();
+
+        return ["status" => "success", "template_added" => $name];
+    }
+
+    private function delTemplate(
+        ManagerRegistry $doctrine,
+        Request $request,
+        TemplateRepository $repository
+    ): array {
+        $entityManager = $doctrine->getManager();
+        $id = $request->request->get('id');
+        $template = $repository->find($id);
+        $name = null;
+
+        if (!$template) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $name = $template->getName();
+        $entityManager->remove($template);
+        $entityManager->flush();
+
+        return ["status" => "success", "template_deleted" => $name];
+    }
+
+    #[Route("/api/proj/challenger/selection", name: "api_proj_challenger_selection", methods: ["GET"])]
+    public function apiProjChallengerSelection(
+        TemplateRepository $repository
+    ): Response {
+        $data = self::challengerSelection($repository);
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    public static function challengerSelection(
+        TemplateRepository $repository
+    ): array {
+        $data = [];
+        $templates = self::getAllTemplates($repository);
+        $selectionSize = 3;
+        $keys = array_rand($templates, $selectionSize);
+
+        foreach ($keys as $key) {
+            $name = $templates[$key]["name"];
+            $stats = Challenger::randomStatDistribution();
+            $data[] = [
+                "name" => $name,
+                "stats" => $stats
+            ];
+        }
+
+        return $data;
     }
 }

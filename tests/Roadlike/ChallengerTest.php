@@ -150,4 +150,20 @@ final class ChallengerTest extends TestCase
     {
         $this->assertEquals("Jens", $this->challenger->getName());
     }
+
+    /**
+     * Test random stat distribution
+     */
+    public function testRandomStatDistribution(): void
+    {
+        $stats = Challenger::randomStatDistribution();
+
+        $this->assertContainsOnly("int", $stats);
+        $this->assertArrayHasKey("intelligence", $stats);
+        $this->assertArrayHasKey("strength", $stats);
+        $this->assertArrayHasKey("dexterity", $stats);
+        $this->assertArrayHasKey("speed", $stats);
+        $this->assertArrayHasKey("constitution", $stats);
+        $this->assertArrayHasKey("luck", $stats);
+    }
 }
