@@ -1,0 +1,9 @@
+@use "vars";
+@use "animation";
+
+.active,
+.hoverable:hover {
+    @include animation.jump;
+    cursor: pointer;
+    border: solid 2px vars.$color-complement-4;
+}

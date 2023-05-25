@@ -4,21 +4,8 @@
 .selection {
     width: 100%;
 
-    .challenger {
+    form {
         grid-column-end: span 4;
-        flex-grow: 1;
-        flex-basis: 0;
-        padding: vars.$magic-number;
-        background: vars.$color-complement-1;
-        border: solid 1px vars.$color-complement-0;
-        border-radius: 7px;
-        cursor: pointer;
-
-        .active,
-        &:hover {
-            @include animation.jump;
-            border: solid 2px vars.$color-complement-4;
-        }
 
         &:nth-child(1) {
             grid-column-start: 1;

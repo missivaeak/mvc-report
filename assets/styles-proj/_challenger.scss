@@ -1,0 +1,26 @@
+@use "vars";
+
+.challenger {
+    padding: vars.$magic-number*0.5;
+    background: vars.$color-complement-1;
+    border: solid 1px vars.$color-complement-0;
+    border-radius: 7px;
+    width: 100%;
+
+    th {
+        font-size: 1.5em;
+        padding-bottom: vars.$magic-number*0.5;
+    }
+
+    td {
+        font-size: 1.1em;
+
+        &:nth-of-type(2) {
+            text-align: right;
+        }
+
+        &:nth-of-type(3) {
+            text-align: center;
+        }
+    }
+}

@@ -13,3 +13,9 @@ $grid-cell: calc(vars.$main-width / 16);
     padding: $grid-cell;
     // box-shadow: 1px 1px 5px #0003;
 }
+
+.index *,
+.leaderboard *,
+.about *{
+    grid-column: auto / span 14;
+}
