@@ -124,7 +124,6 @@ class ProjApiController extends AbstractController
         $entityManager = $doctrine->getManager();
         $id = $request->request->get('id');
         $obstacle = $repository->find($id);
-        $name = null;
 
         if (!$obstacle) {
             throw $this->createNotFoundException(
@@ -204,7 +203,6 @@ class ProjApiController extends AbstractController
         $entityManager = $doctrine->getManager();
         $id = $request->request->get('id');
         $template = $repository->find($id);
-        $name = null;
 
         if (!$template) {
             throw $this->createNotFoundException(
