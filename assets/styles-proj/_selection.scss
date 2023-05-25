@@ -8,7 +8,7 @@
         grid-column-end: span 4;
 
         &:nth-child(1) {
-            grid-column-start: 1;
+            grid-column-start: 2;
         }
 
         &:nth-child(2) {
@@ -16,7 +16,7 @@
         }
 
         &:nth-child(3) {
-            grid-column-start: 11;
+            grid-column-start: 10;
         }
     }
 }

@@ -17,3 +17,28 @@ body {
     cursor: pointer;
     border: solid 2px vars.$color-complement-4;
 }
+
+.bar {
+    width: 100%;
+    outline: solid 1px #000;
+
+    div {
+        height: vars.$magic-number*0.5;
+    }
+
+    .health {
+        background: vars.$color-health;
+    }
+
+    .stamina {
+        background: vars.$color-stamina;
+    }
+
+    .time {
+        background: vars.$color-time;
+    }
+}
+
+.spacer {
+    height: vars.$magic-number*0.5;
+}

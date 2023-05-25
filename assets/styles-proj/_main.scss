@@ -1,7 +1,7 @@
 @use "vars";
 @use "mixins";
 
-$grid-cell: calc(vars.$main-width / 16);
+$grid-cell: calc(calc(vars.$main-width - 13 * vars.$magic-number) / 16);
 
 .main {
     @include mixins.shadow;
@@ -11,7 +11,7 @@ $grid-cell: calc(vars.$main-width / 16);
     display: grid;
     grid-template-columns: repeat(14, $grid-cell);
     padding: $grid-cell;
-    // box-shadow: 1px 1px 5px #0003;
+    gap: vars.$magic-number;
 }
 
 .index *,

@@ -16,10 +16,6 @@
         font-size: 1.1em;
     }
 
-    .spacer {
-        height: vars.$magic-number*0.5;
-    }
-
     .stat {
         :nth-of-type(2) {
             text-align: right;

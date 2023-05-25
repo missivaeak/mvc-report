@@ -2,29 +2,12 @@
 @use "animation";
 
 .game {
-
     .challenger {
         grid-column-end: span 3;
 
         .resource {
             td:nth-of-type(2) {
                 text-align: right;
-            }
-
-            .bar {
-                width: 100%;
-
-                div {
-                    height: vars.$magic-number*0.5;
-                }
-
-                .health {
-                    background: vars.$color-health;
-                }
-
-                .stamina {
-                    background: vars.$color-stamina;
-                }
             }
         }
 
@@ -33,6 +16,17 @@
             .stat {
                 display: none;
             }
+        }
+    }
+
+    .gamestate {
+        grid-column: span 11;
+        font-size: 1.3em;
+
+        .label {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
         }
     }
 }

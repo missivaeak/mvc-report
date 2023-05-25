@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Roadlike\Challenger;
+use App\Roadlike\Manager;
+use App\Roadlike\Road;
 
 use App\Repository\TemplateRepository;
 
@@ -45,7 +47,11 @@ class ProjController extends AbstractController
                 "constitution" => $request->request->get("constitution")
             ];
 
-            $session->set("challenger", new Challenger($name, $stats));
+            $challenger = new Challenger($name, $stats);
+            $journey = new Road(0);
+            $game = new Manager($challenger, $journey);
+
+            $session->set("game", $game);
 
             return $this->redirectToRoute('proj_game');
         }
@@ -62,9 +68,21 @@ class ProjController extends AbstractController
     #[Route('/proj/game', name: 'proj_game')]
     public function game(SessionInterface $session): Response
     {
-        $challenger = $session->get('challenger') ?? null;
+        $game = $session->get('game') ?? null;
+
+        if (!$game) {
+            return $this->redirectToRoute('proj_index');
+        }
+
+        $challenger = $game->getChallenger() ?? null;
+        $journey = $game->getJourney() ?? null;
+        $crossroads = $game->getCrossroads() ?? null;
+
         return $this->render('proj/game.twig', [
-            "challenger" => $challenger
+            "game" => $game,
+            "challenger" => $challenger,
+            "journey" => $journey,
+            "crossroads" => $crossroads
         ]);
     }
 

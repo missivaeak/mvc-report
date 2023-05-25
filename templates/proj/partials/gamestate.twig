@@ -1,0 +1,31 @@
+{% set journey = game.getJourney() %}
+{% set timePercent = game.getTime() / game.getStartingTime() * 100 %}
+{% if timePercent > 100 %}{% set timePercent = 100 %}{% endif %}
+{% set journeyDecimal = journey.getLength() / 500 %}
+{% set journeyPercent = journeyDecimal * 100 %}
+
+<div class="gamestate">
+    <h2>Din resa</h2>
+    <div class="label">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <p>{{game.getTime()}}</p>
+    </div>
+    <div class="bar">
+        <div class="time" style="width: {{timePercent}}%;"></div>
+    </div>
+    <div class="spacer"></div>
+    <div class="label">
+        <i class="fa-solid fa-person-hiking"></i>
+        <p>{{journey.getLength()}}m</p>
+    </div>
+    {% for i in 0..journeyPercent|round(0, 'ceil') %}
+        <div class="bar">
+            {% if loop.last %}
+                {% set remaining = journeyPercent % 100 %}
+                <div class="journey" style="width: {{remaining}}%;"></div>
+            {% else %}
+                <div class="journey" style="width: 100%;"></div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
