@@ -49,6 +49,8 @@ class ProjController extends AbstractController
 
             return $this->redirectToRoute('proj_game');
         }
+
+        return $this->redirectToRoute('proj_index');
     }
 
     // #[Route('/proj/game/new', name: 'proj_game_new')]
