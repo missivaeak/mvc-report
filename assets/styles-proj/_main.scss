@@ -1,7 +1,8 @@
 @use "vars";
 @use "mixins";
 
-$grid-cell: calc(calc(vars.$main-width - 13 * vars.$magic-number) / 16);
+$gutter: vars.$magic-number;
+$grid-cell: calc(calc(vars.$main-width - calc(13 * $gutter)) / 16);
 
 .main {
     @include mixins.shadow;
