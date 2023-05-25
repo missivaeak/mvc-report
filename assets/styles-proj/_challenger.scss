@@ -6,20 +6,26 @@
     border: solid 1px vars.$color-complement-0;
     border-radius: 7px;
     width: 100%;
+    transition: all 200ms ease-in;
 
     th {
         font-size: 1.5em;
-        padding-bottom: vars.$magic-number*0.5;
     }
 
     td {
         font-size: 1.1em;
+    }
 
-        &:nth-of-type(2) {
+    .spacer {
+        height: vars.$magic-number*0.5;
+    }
+
+    .stat {
+        :nth-of-type(2) {
             text-align: right;
         }
 
-        &:nth-of-type(3) {
+        :nth-of-type(3) {
             text-align: center;
         }
     }

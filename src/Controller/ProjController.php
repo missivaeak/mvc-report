@@ -37,7 +37,7 @@ class ProjController extends AbstractController
         } elseif ($request->getMethod() === "POST") {
             $name = $request->request->get("name");
             $stats = [
-                "intelligence" => $request->request->get("name"),
+                "intelligence" => $request->request->get("intelligence"),
                 "strength" => $request->request->get("strength"),
                 "dexterity" => $request->request->get("dexterity"),
                 "luck" => $request->request->get("luck"),

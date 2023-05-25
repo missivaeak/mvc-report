@@ -1,4 +1,5 @@
 @use "vars";
+@use "animation";
 
 * {
     margin: 0;
@@ -8,4 +9,11 @@
 
 body {
     background-color: vars.$color-primary-0;
+}
+
+.active,
+.hoverable:hover {
+    @include animation.jump;
+    cursor: pointer;
+    border: solid 2px vars.$color-complement-4;
 }
