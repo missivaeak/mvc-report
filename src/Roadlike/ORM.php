@@ -23,7 +23,7 @@ class ORM
 
     /**
      * Gets all templates from the database
-     * @return array{id: int?, name: string?}
+     * @return array{id: ?int, name: ?string}
      */
     public function getAllTemplates(): array
     {
@@ -59,7 +59,7 @@ class ORM
     /**
      * Removes a template from the database
      * @param int $id Id of template to delete
-     * @return array{status: string, template_deleted: string?}
+     * @return array{status: string, template_deleted: ?string}
      */
     public function delTemplate(int $id): array
     {
@@ -79,7 +79,7 @@ class ORM
 
     /**
      * Gets all obstacles in the database
-     * @return array<array{id: int?, name: int?, description: int?, difficulty_int: int?, difficulty_str: int?, difficulty_dex: int?, cost_reward_time: int?, cost_reward_health: int?, cost_reward_stamina: int?, cost_reward_int: int?, cost_reward_str: int?, cost_reward_dex: int?, cost_reward_lck: int?, cost_reward_spd: int?, cost_reward_con: int?}>
+     * @return array<array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int}>
      */
     public function getAllObstacles(): array
     {
@@ -111,7 +111,7 @@ class ORM
 
     /**
      * Adds an obstacle to the database
-     * @param array{name: int?, description: int?, difficulty_int: int?, difficulty_str: int?, difficulty_dex: int?, cost_reward_time: int?, cost_reward_health: int?, cost_reward_stamina: int?, cost_reward_int: int?, cost_reward_str: int?, cost_reward_dex: int?, cost_reward_lck: int?, cost_reward_spd: int?, cost_reward_con: int?} $o Array with obstacle data to add
+     * @param array{name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $o Array with obstacle data to add
      * @return array{status: string, obstacle_added: string}
      */
     public function addObstacle(array $o): array {
@@ -141,7 +141,7 @@ class ORM
     /**
      * Deletes an obstacle from the database
      * @param int $id Id of the obstacle to delete
-     * @return array{status: string, obstacle_deleted: string?}
+     * @return array{status: string, obstacle_deleted: ?string}
      */
     public function delObstacle(int $id): array
     {

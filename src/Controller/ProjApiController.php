@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Roadlike\Challenger;
-use App\Roadlike\Builder;
 use App\Roadlike\Factory;
 use App\Roadlike\ORM;
 
@@ -14,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
-use TypeError;
 
 class ProjApiController extends AbstractController
 {

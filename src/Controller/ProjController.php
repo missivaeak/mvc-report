@@ -56,11 +56,16 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj_index');
     }
 
-    // #[Route('/proj/game/new', name: 'proj_game_new')]
-    // public function gameNew(): Response
-    // {
-    //     return $this->redirectToRoute('proj_game');
-    // }
+    #[Route('/proj/game/end', name: 'proj_game_end')]
+    public function gameEnd(SessionInterface $session): Response
+    {
+        $game = $session->get('game');
+        $session->remove('game');
+
+        return $this->render('proj/end.twig', [
+            "game" => $game
+        ]);
+    }
 
     #[Route('/proj/game', name: 'proj_game')]
     public function game(SessionInterface $session): Response

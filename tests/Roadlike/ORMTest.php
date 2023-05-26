@@ -47,23 +47,6 @@ final class ORMTest extends TestCase
                 'cost_reward_con' => 0
             ]
         ];
-        $this->obstacleDataCC = [
-                'id' => 1,
-                'name' => "hål",
-                'description' => "farligt",
-                'difficultyInt' => 10,
-                'difficultyStr' => 0,
-                'difficultyDex' => null,
-                'costRewardTime' => 1,
-                'costRewardHealth' => 0,
-                'costRewardStamina' => -4,
-                'costRewardInt' => 0,
-                'costRewardStr' => 1,
-                'costRewardDex' => -1,
-                'costRewardLck' => 0,
-                'costRewardSpd' => 0,
-                'costRewardCon' => 0
-            ];
         $this->obstacle = $this->createStub("App\Entity\Obstacle");
         $this->obstacle-> /** @scrutinizer ignore-call */
             method('getId')->willReturn(1);
@@ -206,7 +189,6 @@ final class ORMTest extends TestCase
         $this->em-> /** @scrutinizer ignore-call */
             method('getRepository')->
             willReturn($repo);
-        $obstacle = $this->createStub("App\Entity\Obstacle");
         $repo-> /** @scrutinizer ignore-call */
             expects($this->once())->
             method('findAll')->
@@ -229,7 +211,23 @@ final class ORMTest extends TestCase
             expects($this->once())->
             method('flush');
 
-        $result = $this->orm->addObstacle($this->obstacleDataCC);
+        $result = $this->orm->addObstacle([
+            'id' => 1,
+            'name' => "hål",
+            'description' => "farligt",
+            'difficultyInt' => 10,
+            'difficultyStr' => 0,
+            'difficultyDex' => null,
+            'costRewardTime' => 1,
+            'costRewardHealth' => 0,
+            'costRewardStamina' => -4,
+            'costRewardInt' => 0,
+            'costRewardStr' => 1,
+            'costRewardDex' => -1,
+            'costRewardLck' => 0,
+            'costRewardSpd' => 0,
+            'costRewardCon' => 0
+        ]);
         $this->assertEquals(["status" => "success", "obstacle_added" => "hål"], $result);
     }
 

@@ -17,6 +17,7 @@ $grid-cell: calc(calc(vars.$main-width - calc(13 * $gutter)) / 16);
 
 .index *,
 .leaderboard *,
-.about *{
+.about *,
+.end * {
     grid-column: auto / span 14;
 }
