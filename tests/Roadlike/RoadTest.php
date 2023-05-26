@@ -79,17 +79,4 @@ final class RoadTest extends TestCase
         $length = $this->roadTwo->getLength();
         $this->assertEquals(172, $length);
     }
-
-    /**
-     * Test randomshape static method
-     */
-    public function testRandomShape(): void
-    {
-        $shape = Road::randomShape();
-        $this->assertContainsOnly("int", $shape);
-        $this->assertArrayHasKey("length", $shape);
-        $this->assertArrayHasKey("obstacles", $shape);
-        $this->assertIsInt($shape["length"]);
-        $this->assertIsInt($shape["obstacles"]);
-    }
 }

@@ -1,7 +1,9 @@
 {% extends "proj/partials/base.twig" %}
 
 {#% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %#}
-
+{% set challenger = game.getChallenger() %}
+{% set journey = game.getJourney() %}
+{% set crossroads = game.getCrossroads() %}
 {% set stats = challenger.getStats() %}
 {% set healthPercent = challenger.getHealth()/challenger.getMaxHealth()*100 %}
 {% set staminaPercent = challenger.getStamina()/challenger.getMaxStamina()*100 %}
@@ -13,6 +15,8 @@
     {{ include('proj/partials/challenger.twig') }}
 
     {{ include('proj/partials/gamestate.twig') }}
+
+    {{ include('proj/partials/crossroads.twig') }}
 
     {#{dump(challenger.getStats())}#}
 {% endblock %}

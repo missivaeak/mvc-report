@@ -126,42 +126,4 @@ class Challenger
     {
         $this->stamina += $value;
     }
-    
-    /**
-     * Returns a random stat distribution
-     * @return array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int}
-     */
-    public static function randomStatDistribution(): array
-    {
-        // pool of points to distribute
-        $pointPool = 200;
-
-        // starting point
-        $stats = [
-            "intelligence" => 0,
-            "strength" => 0,
-            "dexterity" => 0,
-            "speed" => 0,
-            "constitution" => 0,
-            "luck" => 0
-        ];
-
-        // create a random stat profile
-        $percents = [0.2, 0.15, 0.1, 0.07, 0.04];
-        foreach ($percents as $percent) {
-            $points = intval(round($pointPool * $percent));
-            $pointPool -= $points;
-            $stat = array_rand($stats);
-            $stats[$stat] += $points;
-        }
-
-        // distribute remaining points randomly
-        while ($pointPool > 0) {
-            $stat = array_rand($stats);
-            $stats[$stat] += 1;
-            $pointPool -= 1;
-        }
-
-        return $stats;
-    }
 }

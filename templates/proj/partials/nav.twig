@@ -3,7 +3,9 @@
     ">
     <div class="links">
         <a href="{{ path('proj_index') }}">Start</a>
-        <a href="{{ path('proj_game') }}">Fortsätt spela</a>
+        {% if app.session and app.session.get('game') %}
+            <a href="{{ path('proj_game') }}">Fortsätt spela</a>
+        {% endif %}
         <a href="{{ path('proj_game_new') }}">Nytt spel</a>
         <a href="{{ path('proj_leaderboard') }}">Topplista</a>
         <a href="{{ path('proj_about') }}">Om</a>

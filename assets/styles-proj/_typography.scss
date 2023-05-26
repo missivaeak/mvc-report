@@ -18,9 +18,9 @@ p {
     color: vars.$color-primary-4;
     font-weight: 600;
 
-    &:not(:last-child) {
-        margin-bottom: vars.$magic-number;
-    }
+    // &:not(:last-child) {
+    //     margin-bottom: vars.$magic-number;
+    // }
 }
 
 h1 {
@@ -33,11 +33,13 @@ h1 {
 h2 {
     font-size: 2em;
     color: vars.$color-complement-4;
+    font-weight: 600;
 }
 
 h3 {
-    font-size: 1.5em;
-    margin-bottom: vars.$magic-number;
+    font-size: 2em;
+    color: vars.$color-complement-4;
+    font-weight: 400;
 }
 
 a {

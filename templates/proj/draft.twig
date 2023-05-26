@@ -1,20 +1,14 @@
 {% extends "proj/partials/base.twig" %}
-{% block view %}selection{% endblock %}
+{% block view %}draft{% endblock %}
 {% block body %}
-    {% for challenger in selection %}
-        {% set stats = challenger["stats"] %}
+    {% for challenger in draft %}
+        {% set stats = challenger.getStats() %}
         <form method="post">
-            <input type="text" style="display: none;" name="name" value="{{challenger["name"]}}">
-            <input type="number" style="display: none;" name="intelligence" value="{{stats["intelligence"]}}">
-            <input type="number" style="display: none;" name="strength" value="{{stats["strength"]}}">
-            <input type="number" style="display: none;" name="dexterity" value="{{stats["dexterity"]}}">
-            <input type="number" style="display: none;" name="luck" value="{{stats["luck"]}}">
-            <input type="number" style="display: none;" name="speed" value="{{stats["speed"]}}">
-            <input type="number" style="display: none;" name="constitution" value="{{stats["constitution"]}}">
+            <input type="number" style="display: none;" name="index" value="{{ loop.index0 }}">
             <table class="challenger hoverable" onclick="this.parentNode.submit();">
                 <thead>
                     <tr>
-                        <th colspan="3">{{challenger["name"]}}</th>
+                        <th colspan="3">{{challenger.getName()}}</th>
                     </tr>
                 <thead>
 

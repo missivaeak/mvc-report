@@ -58,25 +58,4 @@ class Road
     {
         $this->length += $length;
     }
-
-    /**
-     * Gets a random shape for a road
-     * @return array{length: int, obstacles: int}
-     */
-    public static function randomShape(): array
-    {
-        $obstacles = rand(2,3);
-        $length = 0;
-
-        for ($i = 0; $i < $obstacles; $i++) {
-            $length += rand(35, 65);
-        }
-
-        $shape = [
-            "length" => $length,
-            "obstacles" => $obstacles
-        ];
-
-        return $shape;
-    }
 }

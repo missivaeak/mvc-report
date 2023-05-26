@@ -5,16 +5,15 @@ namespace App\Controller;
 use App\Roadlike\Challenger;
 use App\Roadlike\Manager;
 use App\Roadlike\Road;
-
-use App\Repository\TemplateRepository;
-
-use App\Controller\ProjApiController;
+use App\Roadlike\Factory;
+use App\Roadlike\ORM;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 class ProjController extends AbstractController
 {
@@ -26,32 +25,30 @@ class ProjController extends AbstractController
 
     #[Route('/proj/game/new', name: 'proj_game_new', methods: ["POST", "GET"])]
     public function gameNew(
-        TemplateRepository $templateRepository,
+        EntityManagerInterface $entityManager,
         Request $request,
         SessionInterface $session
     ): Response {
-        if ($request->getMethod() === "GET") {
-            $selection = ProjApiController::challengerSelection($templateRepository);
+        $factory = new Factory();
+        $orm = new ORM($entityManager);
 
-            return $this->render('proj/selection.twig', [
-                'selection' => $selection
+        if ($request->getMethod() === "GET") {
+            $templates = $orm->getAllTemplates();
+            $draft = $factory->buildDraft($templates, 3);
+            $session->set("draft", $draft);
+
+            return $this->render('proj/draft.twig', [
+                'draft' => $draft
             ]);
         } elseif ($request->getMethod() === "POST") {
-            $name = $request->request->get("name");
-            $stats = [
-                "intelligence" => $request->request->get("intelligence"),
-                "strength" => $request->request->get("strength"),
-                "dexterity" => $request->request->get("dexterity"),
-                "luck" => $request->request->get("luck"),
-                "speed" => $request->request->get("speed"),
-                "constitution" => $request->request->get("constitution")
-            ];
+            $index = $request->request->get("index");
+            $draft = $session->get("draft") ?? null;
 
-            $challenger = new Challenger($name, $stats);
-            $journey = new Road(0);
-            $game = new Manager($challenger, $journey);
-
-            $session->set("game", $game);
+            if ($draft) {
+                $challenger = $draft[$index];
+                $game = $factory->buildManager($challenger);
+                $session->set("game", $game);
+            }
 
             return $this->redirectToRoute('proj_game');
         }
@@ -74,15 +71,8 @@ class ProjController extends AbstractController
             return $this->redirectToRoute('proj_index');
         }
 
-        $challenger = $game->getChallenger() ?? null;
-        $journey = $game->getJourney() ?? null;
-        $crossroads = $game->getCrossroads() ?? null;
-
         return $this->render('proj/game.twig', [
-            "game" => $game,
-            "challenger" => $challenger,
-            "journey" => $journey,
-            "crossroads" => $crossroads
+            "game" => $game
         ]);
     }
 
