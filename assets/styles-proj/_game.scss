@@ -37,23 +37,28 @@
     }
 
     .crossroads {
-        grid-row: 2;
+        grid-row: 2 / span 1;
         grid-column: auto / span 14;
     }
 
     .path-form {
-        grid-row: 3;
+        grid-row: 3 / span 2;
         grid-column: auto / span 4;
     }
 
+    .travel {
+        grid-row: 3;
+        grid-column: span 10;
+    }
+
     .giveup {
-        grid-row: 4;
-        grid-column: auto / span 14;
+        grid-row: 5;
+        grid-column: 12 / span 3;
         justify-self: right;
     }
     
     .continue {
-        grid-row: 3;
+        grid-row: 4;
         grid-column: 12 / span 3;
         justify-self: end;
         align-self: end;

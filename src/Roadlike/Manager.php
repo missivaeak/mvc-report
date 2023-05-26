@@ -108,4 +108,140 @@ class Manager
     {
         $this->time += $time;
     }
+
+    /**
+     * Resolves an obstacle attempt
+     * @param array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}} $result Result data from the attempt
+     * @return array<string>
+     */
+    public function resolveAttempt(array $result): array
+    {
+        $response = $this->buildResponse($result);
+
+        return $response;
+    }
+
+    /**
+     * Makes an array of strings for the obstacle attempt
+     * @param array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}} $result Result data from the attempt
+     * @return array<String>
+     */
+    private function buildResponse(array $result): array
+    {
+        $response = [];
+        $deltas = $result["deltas"];
+        $resources = ["time", "health", "stamina"];
+        $stats = ["intelligence", "strength", "dexterity", "luck", "speed", "constitution"];
+
+        if ($result["lucky"]) {
+            $response[] = "Du hade tur!";
+        }
+
+        foreach ($resources as $resource) {
+            $delta = $deltas[$resource];
+            $string = $this->buildResourceString($resource, $delta);
+            if ($string) {
+                $response[] = $string;
+            }
+        }
+
+        foreach ($stats as $stat) {
+            $delta = $deltas[$stat];
+            $string = $this->buildStatString($stat, $delta);
+            if ($string) {
+                $response[] = $string;
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * Makes a string out of a resources change
+     * @param string $resource Name of the resource
+     * @param int $delta Delta of the change
+     * @return string
+     */
+    private function buildResourceString(string $resource, int $delta): ?string
+    {
+        if ($this->sign($delta) === 0) {
+            return null;
+        }
+        $string = "Du ";
+        switch ($this->sign($delta)) {
+            case -1:
+                $string .= "förlorade ";
+                break;
+            case 1:
+                $string .= "fick ";
+                break;
+        }
+        $string .= strval(abs($delta)) . " ";
+        switch ($resource) {
+            case "time":
+                $string .= "tid.";
+                break;
+            case "health":
+                $string .= "hälsa.";
+                break;
+            case "stamina":
+                $string .= "energi.";
+                break;
+        }
+
+        return $string;
+    }
+
+    /**
+     * Makes a string out of a stat change
+     * @param string $stat Name of the resource
+     * @param int $delta Delta of the change
+     * @return string
+     */
+    private function buildStatString(string $stat, int $delta): ?string
+    {
+        if ($this->sign($delta) === 0) {
+            return null;
+        }
+        $string = "";
+        switch ($stat) {
+            case "intelligence":
+                $string .= "Intelligens ";
+                break;
+            case "strength":
+                $string .= "Styrka ";
+                break;
+            case "dexterity":
+                $string .= "Smidighet ";
+                break;
+            case "luck":
+                $string .= "Tur ";
+                break;
+            case "speed":
+                $string .= "Hastighet ";
+                break;
+            case "constitution":
+                $string .= "Uthållighet ";
+                break;
+        }
+        switch ($this->sign($delta)) {
+            case -1:
+                $string .= "minskade med ";
+                break;
+            case 1:
+                $string .= "ökade med ";
+                break;
+        }
+        $string .= strval(abs($delta)) . " poäng.";
+        return $string;
+    }
+
+    /**
+     * Get the sign for a number
+     * @param int $number Number to check
+     * @return int returns -1, 0 or 1
+     */
+    function sign($number) {
+        return ($number > 0) - ($number < 0);
+    }
 }

@@ -1,8 +1,12 @@
-{% set path = travelPath %}
+{% set path = app.session.get('travelPath') %}
 
 <h2>Reser</h2>
 
 {{ include('proj/partials/path.twig') }}
+
+<div class="travel">
+    {{ dump(app.session.get('travelResult')) }}
+</div>
 
 <form class="continue" action="{{ path('proj_game_next') }}">
     <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätta din resa.</a>

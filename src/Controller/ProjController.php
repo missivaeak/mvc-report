@@ -66,20 +66,39 @@ class ProjController extends AbstractController
         $factory = new Factory();
         $game = $session->get("game");
 
-        if ($game->getCrossroads() && $game) {
+        if ($game && $game->getCrossroads()) {
             // there is a crossroads so next is travelling
             $index = intval($request->request->get('id'));
             $paths = $game->getCrossroads()->getPaths();
-            $session->set("travel_path", $paths[$index]);
+            $travelPath = $paths[$index];
             $game->unsetCrossroads();
+
+            // travelling results
+            $challenger = $game->getChallenger();
+            $obstacles = $travelPath->getObstacles();
+            $results = [];
+            foreach ($obstacles as $obstacle) {
+                $results[] = $obstacle->attempt($challenger);
+            }
+
+            // resolve travelling
+            $response = [];
+            foreach ($results as $result) {
+                $response[] = $game->resolveAttempt($result);
+            }
+
+            $session->set('travelResult', $response);
+            $session->set("travelPath", $travelPath);
 
             return $this->redirectToRoute('proj_game');
         } elseif ($game) {
             // no crossroads, next is a crossroads
-            $session->remove('travel_path');
             $obstacleData = $orm->getAllObstacles();
             $crossroads = $factory->buildCrossroads($obstacleData, 2, 3);
             $game->setCrossroads($crossroads);
+
+            $session->remove('travelPath');
+            $session->remove('travelResult');
 
             return $this->redirectToRoute('proj_game');
         }
@@ -108,22 +127,29 @@ class ProjController extends AbstractController
         SessionInterface $session
     ): Response {
         $game = $session->get('game') ?? null;
-        $travelPath = $session->get('travel_path') ?? null;
+        $travelPath = $session->get('travelPath') ?? null;
+        $travelResult = $session->get('travelResult') ?? null;
+        $hasTravelPath = $session->has('travelPath');
+        $hasTravelResult = $session->has('travelResult');
 
-        if ($travelPath && $game) {
-            //resolve travelling
+        // throw $this->createNotFoundException(
+        //     var_dump($travelResult)
+        // );
 
-            return $this->render('proj/game.twig', [
-                "game" => $game,
-                "travelPath" => $travelPath
-            ]);
-        } elseif ($game) {
+        if (!$game) {
+            return $this->redirectToRoute('proj_index');
+        } elseif (!$travelPath) {
             return $this->render('proj/game.twig', [
                 "game" => $game
             ]);
         }
 
-        return $this->redirectToRoute('proj_index');
+        if (!$travelResult) {
+        }
+
+        return $this->render('proj/game.twig', [
+            "game" => $game
+        ]);
     }
 
     #[Route('/proj/leaderboard', name: 'proj_leaderboard')]
