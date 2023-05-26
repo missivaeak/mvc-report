@@ -18,5 +18,6 @@
 
     {{ include('proj/partials/crossroads.twig') }}
 
+    <a class="giveup" href="{{ path('proj_game_end') }}">Återvänd och gå hem.</a>
     {#{dump(challenger.getStats())}#}
 {% endblock %}

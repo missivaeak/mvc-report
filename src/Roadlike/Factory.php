@@ -87,8 +87,8 @@ class Factory
      * Builds a crossroads
      * 
      * @param array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $repository ORM Obstacle repository
-     * @param int min Minimum number of paths
-     * @param int max Maximum number of paths
+     * @param int $min Minimum number of paths
+     * @param int $max Maximum number of paths
      * @return Crossroads
      */
     public function buildCrossroads(array $obstacleData, int $min, int $max): Crossroads

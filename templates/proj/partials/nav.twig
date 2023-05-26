@@ -5,8 +5,9 @@
         <a href="{{ path('proj_index') }}">Start</a>
         {% if app.session and app.session.get('game') %}
             <a href="{{ path('proj_game') }}">Fortsätt spela</a>
+        {% else %}
+            <a href="{{ path('proj_game_new') }}">Nytt spel</a>
         {% endif %}
-        <a href="{{ path('proj_game_new') }}">Nytt spel</a>
         <a href="{{ path('proj_leaderboard') }}">Topplista</a>
         <a href="{{ path('proj_about') }}">Om</a>
     </div>

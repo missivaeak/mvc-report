@@ -39,4 +39,10 @@
     .crossroads {
         grid-row: 2;
     }
+
+    .giveup {
+        grid-row: 3;
+        grid-column: auto / span 14;
+        justify-self: right;
+    }
 }
