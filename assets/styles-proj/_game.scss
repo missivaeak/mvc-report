@@ -1,5 +1,5 @@
 @use "vars";
-@use "animation";
+@use "animations";
 @use "main";
 
 .game {
@@ -41,7 +41,7 @@
         grid-column: auto / span 14;
     }
 
-    .path {
+    .path-form {
         grid-row: 3;
         grid-column: auto / span 4;
     }

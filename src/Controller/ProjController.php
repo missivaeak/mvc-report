@@ -50,6 +50,32 @@ class ProjController extends AbstractController
                 $session->set("game", $game);
             }
 
+            return $this->redirectToRoute('proj_game_next');
+        }
+
+        return $this->redirectToRoute('proj_index');
+    }
+
+    #[Route('/proj/game/next', name: 'proj_game_next')]
+    public function gameNext(
+        EntityManagerInterface $entityManager,
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        $orm = new ORM($entityManager);
+        $factory = new Factory();
+        $game = $session->get("game");
+
+        if ($game->getCrossroads() && $game) {
+            // there is a crossroads so next is travelling
+            $index = intval($request->request->get('id'));
+            $paths = $game->getCrossroads()->getPaths();
+            $session->set("travel_path", $paths[$index]);
+            $game->unsetCrossroads();
+
+            return $this->redirectToRoute('proj_game');
+        } elseif ($game) {
+            // no crossroads, next is a crossroads
             $obstacleData = $orm->getAllObstacles();
             $crossroads = $factory->buildCrossroads($obstacleData, 2, 3);
             $game->setCrossroads($crossroads);
@@ -64,25 +90,40 @@ class ProjController extends AbstractController
     public function gameEnd(SessionInterface $session): Response
     {
         $game = $session->get('game');
-        $session->remove('game');
 
-        return $this->render('proj/end.twig', [
-            "game" => $game
-        ]);
+        if ($game) {
+            $session->remove('game');
+
+            return $this->render('proj/end.twig', [
+                "game" => $game
+            ]);
+        }
+
+        return $this->redirectToRoute('proj_index');
     }
 
     #[Route('/proj/game', name: 'proj_game')]
-    public function game(SessionInterface $session): Response
-    {
+    public function game(
+        Request $request,
+        SessionInterface $session
+    ): Response {
         $game = $session->get('game') ?? null;
+        $travelPath = $session->get('travel_path') ?? null;
 
-        if (!$game) {
-            return $this->redirectToRoute('proj_index');
+        if ($travelPath && $game) {
+            //resolve travelling
+            $session->remove('travel_path');
+
+            return $this->render('proj/game.twig', [
+                "game" => $game
+            ]);
+        } elseif ($game) {
+            return $this->render('proj/game.twig', [
+                "game" => $game
+            ]);
         }
 
-        return $this->render('proj/game.twig', [
-            "game" => $game
-        ]);
+        return $this->redirectToRoute('proj_index');
     }
 
     #[Route('/proj/leaderboard', name: 'proj_leaderboard')]

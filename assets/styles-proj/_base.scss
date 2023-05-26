@@ -1,5 +1,6 @@
 @use "vars";
-@use "animation";
+@use "animations";
+@use "mixins";
 
 * {
     margin: 0;
@@ -13,9 +14,9 @@ body {
 
 .active,
 .hoverable:hover {
-    @include animation.jump;
+    @include animations.jump;
     cursor: pointer;
-    border: solid 2px vars.$color-complement-4;
+    outline: solid 2px vars.$color-complement-4;
 }
 
 .bar {
@@ -44,6 +45,7 @@ body {
 }
 
 .flyout {
+    @include mixins.shadow;
     display: none;
     position: absolute;
     background: vars.$color-primary-1;

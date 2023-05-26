@@ -1,13 +1,11 @@
 {% extends "proj/partials/base.twig" %}
 
-{#% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %#}
 {% set challenger = game.getChallenger() %}
 {% set journey = game.getJourney() %}
 {% set crossroads = game.getCrossroads() %}
 {% set stats = challenger.getStats() %}
 {% set healthPercent = challenger.getHealth()/challenger.getMaxHealth()*100 %}
 {% set staminaPercent = challenger.getStamina()/challenger.getMaxStamina()*100 %}
-
 
 {% block view %}game{% endblock %}
 
@@ -18,7 +16,11 @@
 
     {{ include('proj/partials/challenger.twig') }}
 
-    {{ include('proj/partials/crossroads.twig') }}
+    {% if crossroads %}
+        {{ include('proj/partials/crossroads.twig') }}
+    {% else %}
+        {{ include('proj/partials/travel.twig') }}
+    {% endif %}
 
     <a class="giveup" href="{{ path('proj_game_end') }}">Återvänd och gå hem.</a>
     {#{dump(challenger.getStats())}#}
