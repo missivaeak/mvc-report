@@ -18,7 +18,6 @@ final class ORMTest extends TestCase
     private EntityManagerInterface $em;
     private ORM $orm;
     private array $obstacleData;
-    private array $obstacleDataCC;
     private ObstacleEntity $obstacle;
 
     /**
