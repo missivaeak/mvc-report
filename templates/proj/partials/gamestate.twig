@@ -3,6 +3,7 @@
 {% if timePercent > 100 %}{% set timePercent = 100 %}{% endif %}
 {% set journeyDecimal = journey.getLength() / 500 %}
 {% set journeyPercent = journeyDecimal * 100 %}
+{% set journeyBarLoops = journeyDecimal|round(0, 'floor') %}
 
 <div class="gamestate">
     <h2>Din resa</h2>
@@ -18,8 +19,8 @@
         <i class="fa-solid fa-person-hiking"></i>
         <p>{{journey.getLength()}}m</p>
     </div>
-    {% for i in 0..journeyPercent|round(0, 'ceil') %}
-        <div class="bar">
+    {% for i in 0..journeyBarLoops %}
+        <div class="bar space-under">
             {% if loop.last %}
                 {% set remaining = journeyPercent % 100 %}
                 <div class="journey" style="width: {{remaining}}%;"></div>

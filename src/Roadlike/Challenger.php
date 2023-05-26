@@ -5,10 +5,10 @@ namespace App\Roadlike;
 class Challenger
 {
     /** @var int Base health for challengers */
-    public const BASEHEALTH = 100;
+    public const BASEHEALTH = 300;
 
     /** @var int Base stamina for challengers */
-    public const BASESTAMINA = 100;
+    public const BASESTAMINA = 300;
 
     /** @var string Name of the challenger */
     private string $name;
@@ -116,6 +116,9 @@ class Challenger
     public function modifyHealth(int $value): void
     {
         $this->health += $value;
+        if ($this->health > $this->getMaxHealth()) {
+            $this->health = $this->getMaxHealth();
+        }
     }
 
     /**
@@ -125,5 +128,8 @@ class Challenger
     public function modifyStamina(int $value): void
     {
         $this->stamina += $value;
+        if ($this->stamina > $this->getMaxStamina()) {
+            $this->stamina = $this->getMaxStamina();
+        }
     }
 }

@@ -68,7 +68,7 @@ class ProjController extends AbstractController
 
         if ($game && $game->getCrossroads()) {
             // there is a crossroads so next is travelling
-            $index = intval($request->request->get('id'));
+            $index = intval($request->query->get('index'));
             $paths = $game->getCrossroads()->getPaths();
             $travelPath = $paths[$index];
             $game->unsetCrossroads();
@@ -82,6 +82,8 @@ class ProjController extends AbstractController
             }
 
             // resolve travelling
+            $distance = $travelPath->getLength();
+            $game->getJourney()->addLength($distance);
             $response = [];
             foreach ($results as $result) {
                 $response[] = $game->resolveAttempt($result);

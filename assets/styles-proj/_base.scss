@@ -38,6 +38,14 @@ body {
     .time {
         background: vars.$color-time;
     }
+
+    .journey {
+        background: vars.$color-journey;
+    }
+
+    &.space-under:not(:last-child) {
+        margin-bottom: vars.$magic-number*0.3;
+    }
 }
 
 .spacer {

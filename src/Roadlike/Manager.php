@@ -32,7 +32,7 @@ class Manager
     public function __construct(
         Challenger $challenger,
         Road $journey, 
-        int $time=500
+        int $time=300
     ) {
         $this->challenger = $challenger;
         $this->journey = $journey;
@@ -107,6 +107,9 @@ class Manager
     public function modifyTime(int $time): void
     {
         $this->time += $time;
+        if ($this->time < 0) {
+            $this->time = 0;
+        }
     }
 
     /**
@@ -116,6 +119,29 @@ class Manager
      */
     public function resolveAttempt(array $result): array
     {
+        $deltas = $result["deltas"];
+
+        foreach ($deltas as $stat => $delta) {
+            switch ($stat) {
+                case "time":
+                    $this->modifyTime($delta);
+                case "health":
+                    $this->challenger->modifyHealth($delta);
+                    break;
+                case "stamina":
+                    $this->challenger->modifyStamina($delta);
+                    break;
+                case "constitution":
+                    $this->challenger->modifyStat($stat, $delta);
+                    $this->challenger->modifyHealth($delta);
+                    $this->challenger->modifyStamina($delta);
+                    break;
+                default:
+                    $this->challenger->modifyStat($stat, $delta);
+                    break;
+            }
+        }
+
         $response = $this->buildResponse($result);
 
         return $response;

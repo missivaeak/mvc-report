@@ -1,12 +1,21 @@
 {% set path = app.session.get('travelPath') %}
+{% set obstacles = path.getObstacles() %}
+{% set results = app.session.get('travelResult') %}
 
 <h2>Reser</h2>
 
 {{ include('proj/partials/path.twig') }}
 
 <div class="travel">
-    {{ dump(app.session.get('travelResult')) }}
+    {% for obstacle in results %}
+        <p>{{obstacles[loop.index0].getName()}}</p>
+        {% for line in obstacle %}
+            <p>{{line}}</p>
+        {% endfor %}
+    {% endfor %}
 </div>
+
+{# {{ dump(app.session.get('travelResult')) }#}
 
 <form class="continue" action="{{ path('proj_game_next') }}">
     <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätta din resa.</a>
