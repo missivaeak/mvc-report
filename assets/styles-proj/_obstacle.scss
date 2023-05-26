@@ -1,0 +1,49 @@
+@use "vars";
+
+.obstacle {
+    background-color: vars.$color-primary-4;
+    border-radius: 5px;
+    padding: vars.$magic-number*0.5;
+    position: relative;
+
+    .title {
+        display: flex;
+        gap: 5px;
+        align-items: end;
+
+        i {
+            height: 1.4rem;
+        }
+
+        p {
+            flex-grow: 1;
+            color: #000;
+            font-size: 1em;
+        }
+    }
+
+    &:hover .flyout {
+        display: table;
+        width: 200px;
+        bottom: 90%;
+        right: 90%;
+
+        td {
+            &:not(:first-child) {
+                padding-left: vars.$magic-number*0.5;
+            }
+
+            &:not(:last-child) {
+                padding-right: vars.$magic-number*0.5;
+            }
+        }
+
+        .icon {
+            text-align: left;
+        }
+        
+        .value {
+            text-align: right;
+        }
+    }
+}

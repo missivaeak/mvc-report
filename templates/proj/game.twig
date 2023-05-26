@@ -12,9 +12,11 @@
 {% block view %}game{% endblock %}
 
 {% block body %}
-    {{ include('proj/partials/challenger.twig') }}
-
     {{ include('proj/partials/gamestate.twig') }}
+
+    <div class="challenger-dummy"></div>
+
+    {{ include('proj/partials/challenger.twig') }}
 
     {{ include('proj/partials/crossroads.twig') }}
 

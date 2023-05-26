@@ -1,0 +1,26 @@
+@use "vars";
+
+.path {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: vars.$magic-number*0.5;
+    background: vars.$color-primary-3;
+    border-radius: 7px;
+    padding: vars.$magic-number*0.5;
+    cursor: pointer;
+
+    h3 {
+        text-align: center;
+    }
+
+    .length {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        p {
+            font-size: 1em;
+            color: #000;
+        }
+    }
+}

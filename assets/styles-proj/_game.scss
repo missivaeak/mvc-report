@@ -38,10 +38,16 @@
 
     .crossroads {
         grid-row: 2;
+        grid-column: auto / span 14;
+    }
+
+    .path {
+        grid-row: 3;
+        grid-column: auto / span 4;
     }
 
     .giveup {
-        grid-row: 3;
+        grid-row: 4;
         grid-column: auto / span 14;
         justify-self: right;
     }

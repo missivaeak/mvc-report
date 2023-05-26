@@ -1,0 +1,75 @@
+{% set difficulties = obstacle.getDifficulties()|filter(v => not v is null) %}
+{% set difficultyIcons = [] %}
+
+{% for key, value in difficulties %}
+    {% if key == "intelligence" %}
+        {% set difficultyIcons = difficultyIcons|merge({"fa-brain": value}) %}
+    {% elseif key == "strength" %}
+        {% set difficultyIcons = difficultyIcons|merge({"fa-dumbbell": value}) %}
+    {% elseif key == "dexterity" %}
+        {% set difficultyIcons = difficultyIcons|merge({"fa-user-ninja": value}) %}
+    {% endif %}
+{% endfor %}
+
+{% set costRewards = obstacle.getCostRewards()|filter(v => not v == 0) %}
+{% set costRewardIcons = [] %}
+
+{% for key, value in costRewards %}
+    {% if key == "time" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-hourglass-half": value}) %}
+    {% elseif key == "health" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-heart": value}) %}
+    {% elseif key == "stamina" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-bolt": value}) %}
+    {% elseif key == "intelligence" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-brain": value}) %}
+    {% elseif key == "strength" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-dumbbell": value}) %}
+    {% elseif key == "dexterity" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-user-ninja": value}) %}
+    {% elseif key == "luck" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-clover": value}) %}
+    {% elseif key == "speed" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-person-running": value}) %}
+    {% elseif key == "constitution" %}
+        {% set costRewardIcons = costRewardIcons|merge({"fa-heart-pulse": value}) %}
+    {% endif %}
+{% endfor %}
+
+<div class="obstacle">
+    <div class="title">
+        <i class="fa-solid fa-bell"></i>
+        <p>{{ obstacle.getName() }}</p>
+        {% for icon, value in difficultyIcons %}
+            <i class="fa-solid {{icon}}"></i>
+        {% endfor %}
+    </div>
+    <table class="flyout">
+        <thead>
+            <tr>
+                <th colspan="4">
+                    {{obstacle.getName()}}
+                </th>
+            <tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">
+                    {{obstacle.getDescription()}}
+                </td>
+            </tr>
+            {% for icon, value in costRewardIcons %}
+                {% if loop.index % 2 == 1 %}
+                    <tr>
+                {% endif %}
+                <td class="icon"><i class="fa-solid {{icon}}"></i></td>
+                <td class="value">{{value}}</td>
+                {% if loop.index % 2 == 1 and loop.last %}
+                    <td></td>
+                {% endif %}
+                {% if loop.index % 2 == 0 or loop.last %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+    </table>
+</div>

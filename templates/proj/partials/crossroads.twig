@@ -1,3 +1,18 @@
+{% set paths = crossroads.getPaths() %}
+{% set spacerSpan = "span 1" %}
+{% if paths|length == 2 %}
+    {% set spacerSpan = "span 3" %}
+{% endif %}
+
 <div class="crossroads">
     <h3>Vägskäl</h2>
 </div>
+<div style="grid-column:1 / {{spacerSpan}}; grid-row: 3;"></div>
+{% for path in paths %}
+    {{ include('proj/partials/path.twig') }}
+{% endfor %}
+<div style="grid-column:14 / {{spacerSpan}}; grid-row: 3;"></div>
+
+{#<div style="grid-column:auto/span 14;">
+    {{dump(crossroads)}}
+</div>#}

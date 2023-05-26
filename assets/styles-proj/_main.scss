@@ -13,6 +13,7 @@ $grid-cell: calc(calc(vars.$main-width - calc(13 * $gutter)) / 16);
     grid-template-columns: repeat(14, $grid-cell);
     padding: $grid-cell;
     gap: vars.$magic-number;
+    margin-bottom: vars.$magic-number*3;
 }
 
 .index *,

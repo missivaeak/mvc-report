@@ -50,6 +50,10 @@ class ProjController extends AbstractController
                 $session->set("game", $game);
             }
 
+            $obstacleData = $orm->getAllObstacles();
+            $crossroads = $factory->buildCrossroads($obstacleData, 2, 3);
+            $game->setCrossroads($crossroads);
+
             return $this->redirectToRoute('proj_game');
         }
 

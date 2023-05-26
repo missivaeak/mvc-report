@@ -1,0 +1,21 @@
+{% set direction = "Mitten" %}
+{% if loop.first %}
+    {% set direction = "Vänster" %}
+{% elseif loop.last %}
+    {% set direction = "Höger" %}
+{% endif %}
+
+<div class="path hoverable">
+    <h3>
+        {# <i class="fa-solid fa-signs-post"></i> #}
+        {{direction}}
+    </h3>
+    <div class="length">
+        <i class="fa-solid fa-person-hiking"></i>
+        <p>{{path.getLength()}}m</p>
+    </div>
+
+    {% for obstacle in path.getObstacles() %}
+        {{ include('proj/partials/obstacle.twig') }}
+    {% endfor %}
+</div>
