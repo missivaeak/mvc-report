@@ -59,7 +59,7 @@ class ORM
     /**
      * Removes a template from the database
      * @param int $id Id of template to delete
-     * @return array{status: string, template_deleted: string}
+     * @return array{status: string, template_deleted: string?}
      */
     public function delTemplate(int $id): array
     {
@@ -67,9 +67,7 @@ class ORM
         $template = $repository->find($id);
 
         if (!$template) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+            return ["status" => "failed", "template_deleted" => null];
         }
 
         $name = $template->getName();
