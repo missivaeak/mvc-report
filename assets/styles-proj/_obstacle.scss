@@ -1,5 +1,7 @@
 @use "vars";
 
+$offset: calc(100% - 10px);
+
 .obstacle {
     background-color: vars.$color-primary-4;
     border-radius: 5px;
@@ -26,8 +28,9 @@
     &:hover .flyout {
         display: table;
         width: 200px;
-        bottom: 90%;
-        right: 90%;
+        bottom: $offset;
+        right: $offset;
+        z-index: 1;
 
         td {
             &:not(:first-child) {
@@ -48,3 +51,8 @@
         }
     }
 }
+
+// .path.left .obstacle:hover .flyout {
+//     right: unset;
+//     left: $offset;
+// }

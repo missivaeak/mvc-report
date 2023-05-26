@@ -1,17 +1,28 @@
-{% set direction = "Mitten" %}
-{% if loop.first %}
-    {% set direction = "Vänster" %}
-{% elseif loop.last %}
-    {% set direction = "Höger" %}
+{% set direction = "" %}
+{% set hoverable = "" %}
+{% if loop is defined %}
+    {% set direction = "Mitten" %}
+    {% set hoverable = "hoverable" %}
+    {% if loop.first %}
+        {% set direction = "Vänster" %}
+    {% elseif loop.last %}
+        {% set direction = "Höger" %}
+    {% endif %}
 {% endif %}
 
-<form class="path-form hoverable" action="{{ path('proj_game_next') }}">
-    <input type="number" style="display: none;" name="index" value="{{ loop.index0 }}">
-    <div class="path" onclick="this.parentNode.submit();">
-        <h3>
-            {# <i class="fa-solid fa-signs-post"></i> #}
-            {{direction}}
-        </h3>
+<form class="path-form {{hoverable}}" action="{{ path('proj_game_next') }}">
+    {% if loop is defined %}
+        <input type="number" style="display: none;" name="index" value="{{ loop.index0 }}">
+        <div class="path {% if loop.first %}left{% endif %}" onclick="this.parentNode.submit();">
+    {% else %}
+        <div class="path">
+    {% endif %}
+        {% if direction %}
+            <h3>
+                {# <i class="fa-solid fa-signs-post"></i> #}
+                {{direction}}
+            </h3>
+        {% endif %}
         <div class="length">
             <i class="fa-solid fa-person-hiking"></i>
             <p>{{path.getLength()}}m</p>

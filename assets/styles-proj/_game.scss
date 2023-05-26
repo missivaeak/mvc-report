@@ -51,4 +51,11 @@
         grid-column: auto / span 14;
         justify-self: right;
     }
+    
+    .continue {
+        grid-row: 3;
+        grid-column: 12 / span 3;
+        justify-self: end;
+        align-self: end;
+    }
 }

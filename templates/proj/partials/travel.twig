@@ -1,5 +1,9 @@
-<p>aoeaoeaeaoee</p>
+{% set path = travelPath %}
 
-<form action="{{ path('proj_game_next') }}">
-    <input type="submit" value="nästa">
+<h2>Reser</h2>
+
+{{ include('proj/partials/path.twig') }}
+
+<form class="continue" action="{{ path('proj_game_next') }}">
+    <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätta din resa.</a>
 </form>

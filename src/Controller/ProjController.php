@@ -76,6 +76,7 @@ class ProjController extends AbstractController
             return $this->redirectToRoute('proj_game');
         } elseif ($game) {
             // no crossroads, next is a crossroads
+            $session->remove('travel_path');
             $obstacleData = $orm->getAllObstacles();
             $crossroads = $factory->buildCrossroads($obstacleData, 2, 3);
             $game->setCrossroads($crossroads);
@@ -104,7 +105,6 @@ class ProjController extends AbstractController
 
     #[Route('/proj/game', name: 'proj_game')]
     public function game(
-        Request $request,
         SessionInterface $session
     ): Response {
         $game = $session->get('game') ?? null;
@@ -112,10 +112,10 @@ class ProjController extends AbstractController
 
         if ($travelPath && $game) {
             //resolve travelling
-            $session->remove('travel_path');
 
             return $this->render('proj/game.twig', [
-                "game" => $game
+                "game" => $game,
+                "travelPath" => $travelPath
             ]);
         } elseif ($game) {
             return $this->render('proj/game.twig', [
