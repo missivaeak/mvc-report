@@ -117,4 +117,51 @@ final class ManagerTest extends TestCase
         $this->assertEquals(498, $first);
         $this->assertEquals(508, $second);
     }
+
+    /**
+     * Test resolve attempt response array
+     */
+    public function testResolveAttempt(): void
+    {
+        $resultOne = [
+            "lucky" => true,
+            "deltas" => [
+                "time" => -4,
+                "health" => 0,
+                "stamina" => 6,
+                "intelligence" => 0,
+                "strength" => 0,
+                "dexterity" => 1,
+                "luck" => -1,
+                "speed" => 0,
+                "constitution" => 0
+            ]
+        ];
+        $resultTwo = [
+            "lucky" => true,
+            "deltas" => [
+                "time" => -4,
+                "health" => 1,
+                "stamina" => 6,
+                "intelligence" => 1,
+                "strength" => 1,
+                "dexterity" => 1,
+                "luck" => -1,
+                "speed" => 1,
+                "constitution" => 1
+            ]
+        ];
+        $responseOne = $this->managerOne->resolveAttempt($resultOne);
+        $responseTwo = $this->managerOne->resolveAttempt($resultTwo);
+
+        $this->assertContainsOnly("string", $responseOne);
+        $this->assertContainsOnly("string", $responseTwo);
+        $this->assertEquals([
+            "Du hade tur!",
+            "Du förlorade 4 tid.",
+            "Du fick 6 energi.",
+            "Smidighet ökade med 1 poäng.",
+            "Tur minskade med 1 poäng."
+        ], $responseOne);
+    }
 }

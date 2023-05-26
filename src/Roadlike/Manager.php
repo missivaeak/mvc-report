@@ -241,7 +241,7 @@ class Manager
      * @param int $number Number to check
      * @return int returns -1, 0 or 1
      */
-    function sign($number) {
+    private function sign($number) {
         return ($number > 0) - ($number < 0);
     }
 }
