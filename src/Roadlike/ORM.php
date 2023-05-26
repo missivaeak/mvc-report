@@ -143,7 +143,7 @@ class ORM
     /**
      * Deletes an obstacle from the database
      * @param int $id Id of the obstacle to delete
-     * @return array{status: string, obstacle_deleted: string}
+     * @return array{status: string, obstacle_deleted: string?}
      */
     public function delObstacle(int $id): array
     {
@@ -151,9 +151,7 @@ class ORM
         $obstacle = $repository->find($id);
 
         if (!$obstacle) {
-            throw $this->createNotFoundException(
-                'No product found for id '.$id
-            );
+            return ["status" => "failed", "obstacle_deleted" => null];
         }
 
         $name = $obstacle->getName();

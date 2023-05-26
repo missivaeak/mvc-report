@@ -12,6 +12,85 @@ use PHPUnit\Framework\MockObject;
  */
 final class FactoryTest extends TestCase
 {
+    private array $obstacleData;
+
+    /**
+     * Setup
+     */
+    public function setUp(): void
+    {
+        $this->obstacleData = [
+            [
+                'id' => 1,
+                'name' => "grop1",
+                'description' => "farlig!",
+                'difficulty_int' => 10,
+                'difficulty_str' => 0,
+                'difficulty_dex' => null,
+                'cost_reward_time' => -2,
+                'cost_reward_health' => 0,
+                'cost_reward_stamina' => -1,
+                'cost_reward_int' => 1,
+                'cost_reward_str' => 0,
+                'cost_reward_dex' => 0,
+                'cost_reward_lck' => 0,
+                'cost_reward_spd' => -1,
+                'cost_reward_con' => 0
+            ],
+            [
+                'id' => 2,
+                'name' => "grop2",
+                'description' => "farlig!",
+                'difficulty_int' => 10,
+                'difficulty_str' => 0,
+                'difficulty_dex' => null,
+                'cost_reward_time' => -2,
+                'cost_reward_health' => 0,
+                'cost_reward_stamina' => -1,
+                'cost_reward_int' => 1,
+                'cost_reward_str' => 0,
+                'cost_reward_dex' => 0,
+                'cost_reward_lck' => 0,
+                'cost_reward_spd' => -1,
+                'cost_reward_con' => 0
+            ],
+            [
+                'id' => 3,
+                'name' => "grop3",
+                'description' => "farlig!",
+                'difficulty_int' => 10,
+                'difficulty_str' => 0,
+                'difficulty_dex' => null,
+                'cost_reward_time' => -2,
+                'cost_reward_health' => 0,
+                'cost_reward_stamina' => -1,
+                'cost_reward_int' => 1,
+                'cost_reward_str' => 0,
+                'cost_reward_dex' => 0,
+                'cost_reward_lck' => 0,
+                'cost_reward_spd' => -1,
+                'cost_reward_con' => 0
+            ],
+            [
+                'id' => 4,
+                'name' => "grop4",
+                'description' => "farlig!",
+                'difficulty_int' => 10,
+                'difficulty_str' => 0,
+                'difficulty_dex' => null,
+                'cost_reward_time' => -2,
+                'cost_reward_health' => 0,
+                'cost_reward_stamina' => -1,
+                'cost_reward_int' => 1,
+                'cost_reward_str' => 0,
+                'cost_reward_dex' => 0,
+                'cost_reward_lck' => 0,
+                'cost_reward_spd' => -1,
+                'cost_reward_con' => 0
+            ]
+        ];
+    }
+
     /**
      * Tests building a manager
      */
@@ -22,18 +101,51 @@ final class FactoryTest extends TestCase
         $manager = $factory->buildManager($challenger);
 
         $this->assertEquals($challenger, $manager->getChallenger());
+        $this->assertInstanceOf("App\Roadlike\Road", $manager->getJourney());
+        $this->assertNull($manager->getCrossroads());
     }
 
-    // /**
-    //  * Test randomshape static method
-    //  */
-    // public function testRandomRoadShape(): void
-    // {
-    //     $shape = Factory::randomRoadShape();
-    //     $this->assertContainsOnly("int", $shape);
-    //     $this->assertArrayHasKey("length", $shape);
-    //     $this->assertArrayHasKey("obstacles", $shape);
-    //     $this->assertIsInt($shape["length"]);
-    //     $this->assertIsInt($shape["obstacles"]);
-    // }
+    /**
+     * Tests building a draft
+     */
+    public function testBuildDraft(): void
+    {
+        $factory = new Factory();
+        $templates = [
+            ["name" => "ettan"],
+            ["name" => "tvåan"],
+            ["name" => "trean"],
+            ["name" => "fyran"],
+            ["name" => "femman"],
+            ["name" => "sexan"]
+        ];
+        $draft = $factory->buildDraft($templates, 3);
+
+        $this->assertContainsOnly("App\Roadlike\Challenger", $draft);
+        $this->assertCount(3, $draft);
+    }
+
+    /**
+     * Test building obstacles
+     */
+    public function testBuildObstacles(): void
+    {
+        $factory = new Factory();
+        $obstacles = $factory->buildObstacles($this->obstacleData, 2);
+
+        $this->assertContainsOnly("App\Roadlike\Obstacle", $obstacles);
+        $this->assertCount(2, $obstacles);
+    }
+
+    /**
+     * Test building crossroads
+     */
+    public function testBuildCrossroads(): void
+    {
+        $factory = new Factory();
+        $crossroads = $factory->buildCrossroads($this->obstacleData, 2, 3);
+
+        $this->assertInstanceOf("App\Roadlike\Crossroads", $crossroads);
+        $this->assertContainsOnly("App\Roadlike\Road", $crossroads->getPaths());
+    }
 }
