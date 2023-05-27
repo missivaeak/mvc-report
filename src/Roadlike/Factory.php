@@ -28,7 +28,8 @@ class Factory
     /**
      * Builds a draft of challengers
      *
-     * @param int $amount Amount of challengers in the draft
+     * @param array<array{name: ?string}> $templates Templates from the database
+     * @param int $draftSize Amount of challengers in the draft
      * @return array<Challenger>
      */
     public function buildDraft(array $templates, int $draftSize): array

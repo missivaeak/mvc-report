@@ -23,7 +23,7 @@ class Obstacle
     /** @var array{intelligence?: int, strength?: int, dexterity?: int} Difficulty of the obstacle as an array keyed by stats to test */
     private array $difficulties;
 
-    /** @var array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int} Costs and rewards for the obstacle as an array keyed by resource */
+    /** @var array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} Costs and rewards for the obstacle as an array keyed by resource */
     private array $costRewards;
 
     /**
@@ -58,7 +58,7 @@ class Obstacle
         return $this->difficulties;
     }
 
-    /** @return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int} Gets the costs and rewards for the obstacle */
+    /** @return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} Gets the costs and rewards for the obstacle */
     public function getCostRewards(): array
     {
         return $this->costRewards;
@@ -67,7 +67,7 @@ class Obstacle
     /**
      * Attempts the obstacle with a challenger
      * @param Challenger $challenger
-     * @return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}
+     * @return array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}}
      */
     public function attempt(Challenger $challenger): array
     {
@@ -132,7 +132,7 @@ class Obstacle
             $statValue = $stats[$stat];
             $factor = $statValue / $difficulty;
 
-            return $factor;
+            return floatval($factor);
         }
 
         return null;
@@ -157,7 +157,7 @@ class Obstacle
 
     /**
      * Calculates an average success factor
-     * @param array<int|null> $factors Success factors
+     * @param array<float|null> $factors Success factors
      * @param bool $lucky Whether the challenger got lucky
      * @return float
      */
@@ -190,7 +190,7 @@ class Obstacle
 
     /**
      * Calculates time spent to complete the obstacle
-     * @param int $time Time cost value, negative incurs a cost, positive refunds time
+     * @param int $resourceCostReward Resource cost value, negative incurs a cost, positive refunds resource
      * @param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats The challenger's stats
      * @param string $stat Relevant stat to compare
      * @param float $successFactor A factor affects the result, higher is better for the challenger, must be positive and non-zero
@@ -212,8 +212,7 @@ class Obstacle
 
     /**
      * Calculates stat change for completing the obstacle
-     * @param int $time Stat modificiation value, positive adds and negative subtracts from the stat
-     * @param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} The challenger's stats
+     * @param int $statDelta Stat modificiation value, positive adds and negative subtracts from the stat
      * @param float $successFactor A factor affects the result, higher is better for the challenger, must be positive and non-zero
      * @return int
      */

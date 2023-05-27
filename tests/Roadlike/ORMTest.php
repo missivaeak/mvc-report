@@ -17,6 +17,7 @@ final class ORMTest extends TestCase
 {
     private EntityManagerInterface $em;
     private ORM $orm;
+    /** @var array<array{id: int, name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}> */
     private array $obstacleData;
     private ObstacleEntity $obstacle;
 
@@ -213,18 +214,18 @@ final class ORMTest extends TestCase
         $result = $this->orm->addObstacle([
             'name' => "hål",
             'description' => "farligt",
-            'difficultyInt' => 10,
-            'difficultyStr' => 0,
-            'difficultyDex' => null,
-            'costRewardTime' => 1,
-            'costRewardHealth' => 0,
-            'costRewardStamina' => -4,
-            'costRewardInt' => 0,
-            'costRewardStr' => 1,
-            'costRewardDex' => -1,
-            'costRewardLck' => 0,
-            'costRewardSpd' => 0,
-            'costRewardCon' => 0
+            'difficulty_int' => 10,
+            'difficulty_str' => 0,
+            'difficulty_dex' => null,
+            'cost_reward_time' => 1,
+            'cost_reward_health' => 0,
+            'cost_reward_stamina' => -4,
+            'cost_reward_int' => 0,
+            'cost_reward_str' => 1,
+            'cost_reward_dex' => -1,
+            'cost_reward_lck' => 0,
+            'cost_reward_spd' => 0,
+            'cost_reward_con' => 0
         ]);
         $this->assertEquals(["status" => "success", "obstacle_added" => "hål"], $result);
     }

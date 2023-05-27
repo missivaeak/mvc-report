@@ -29,7 +29,7 @@ class Manager
     /**
      * Constructor
      * @param Challenger $challenger Player's challenger
-     * @param Road $road Completed road
+     * @param Road $journey Completed road
      * @param int $time Start time, defaults to class constant value
      */
     public function __construct(

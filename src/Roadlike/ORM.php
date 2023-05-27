@@ -24,7 +24,7 @@ class ORM
 
     /**
      * Gets all templates from the database
-     * @return array{id: ?int, name: ?string}
+     * @return array<array{id: ?int, name: ?string}>
      */
     public function getAllTemplates(): array
     {
@@ -80,7 +80,7 @@ class ORM
 
     /**
      * Gets all obstacles in the database
-     * @return array<array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int}>
+     * @return array<array{id: ?int, name: ?string, description: ?string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int}>
      */
     public function getAllObstacles(): array
     {
@@ -121,18 +121,18 @@ class ORM
 
         $obstacle->setName($o["name"]);
         $obstacle->setDescription($o["description"]);
-        $obstacle->setDifficultyInt($o["difficultyInt"]);
-        $obstacle->setDifficultyStr($o["difficultyStr"]);
-        $obstacle->setDifficultyDex($o["difficultyDex"]);
-        $obstacle->setCostRewardTime($o["costRewardTime"]);
-        $obstacle->setCostRewardHealth($o["costRewardHealth"]);
-        $obstacle->setCostRewardStamina($o["costRewardStamina"]);
-        $obstacle->setCostRewardInt($o["costRewardInt"]);
-        $obstacle->setCostRewardStr($o["costRewardStr"]);
-        $obstacle->setCostRewardDex($o["costRewardDex"]);
-        $obstacle->setCostRewardLck($o["costRewardLck"]);
-        $obstacle->setCostRewardSpd($o["costRewardSpd"]);
-        $obstacle->setCostRewardCon($o["costRewardCon"]);
+        $obstacle->setDifficultyInt($o["difficulty_int"]);
+        $obstacle->setDifficultyStr($o["difficulty_str"]);
+        $obstacle->setDifficultyDex($o["difficulty_dex"]);
+        $obstacle->setCostRewardTime($o["cost_reward_time"]);
+        $obstacle->setCostRewardHealth($o["cost_reward_health"]);
+        $obstacle->setCostRewardStamina($o["cost_reward_stamina"]);
+        $obstacle->setCostRewardInt($o["cost_reward_int"]);
+        $obstacle->setCostRewardStr($o["cost_reward_str"]);
+        $obstacle->setCostRewardDex($o["cost_reward_dex"]);
+        $obstacle->setCostRewardLck($o["cost_reward_lck"]);
+        $obstacle->setCostRewardSpd($o["cost_reward_spd"]);
+        $obstacle->setCostRewardCon($o["cost_reward_con"]);
 
         $this->entityManager->persist($obstacle);
         $this->entityManager->flush();
