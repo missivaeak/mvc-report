@@ -105,7 +105,9 @@ class ProjApiController extends AbstractController
     ): Response {
         $orm = new ORM($entityManager);
         $data = [];
-        if ($request->getMethod() === "GET") {
+        if ($request->getMethod() === "GET" && $request->query->get('top10') == "true" ) {
+            $data = $orm->getLeaderboard();
+        } elseif ($request->getMethod() === "GET") {
             $data = $orm->getAllLeaders();
         } elseif ($request->getMethod() === "POST") {
             $leader = [
