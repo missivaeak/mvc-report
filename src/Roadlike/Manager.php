@@ -252,7 +252,7 @@ class Manager
     /**
      * Get the sign for a number
      * @param int $number Number to check
-     * @return int returns -1, 0 or 1
+     * @return string returns NEG, EVEN or POS
      */
     private function sign($number)
     {
