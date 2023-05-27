@@ -148,11 +148,8 @@ class Kmom05Controller extends AbstractController
         /** @var Connection $connection */
         $connection = $doctrine->getConnection();
 
-        $file = '../var/backup.sql';
+        $file = '../assets/data_backup.sql';
         $sql = '
-            DROP TABLE IF EXISTS book;
-            DROP TABLE IF EXISTS doctrine_migration_versions;
-            DROP TABLE IF EXISTS messenger_messages;
         ' . file_get_contents($file);
 
         $connection->executeStatement($sql);
