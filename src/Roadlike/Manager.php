@@ -203,37 +203,23 @@ class Manager
     }
 
     /**
-     * Makes a string out of a resources change
+     * Makes a string out of a resource change
      * @param string $resource Name of the resource
      * @param int $delta Delta of the change
      * @return string
      */
     private function buildResourceString(string $resource, int $delta): ?string
     {
-        if ($this->sign($delta) === 0) {
+        if ($this->sign($delta) === "EVEN") {
             return null;
         }
-        $string = "Du ";
-        switch ($this->sign($delta)) {
-            case -1:
-                $string .= "förlorade ";
-                break;
-            case 1:
-                $string .= "fick ";
-                break;
-        }
-        $string .= strval(abs($delta)) . " ";
-        switch ($resource) {
-            case "time":
-                $string .= "tid.";
-                break;
-            case "health":
-                $string .= "hälsa.";
-                break;
-            case "stamina":
-                $string .= "energi.";
-                break;
-        }
+
+        $string = "Du " . $this->sign($delta) . " " . abs($delta) . " " . $resource . ".";
+        $string = str_replace("time", "tid", $string);
+        $string = str_replace("health", "hälsa", $string);
+        $string = str_replace("stamina", "energi", $string);
+        $string = str_replace("NEG", "förlorade", $string);
+        $string = str_replace("POS", "fick", $string);
 
         return $string;
     }
@@ -246,39 +232,20 @@ class Manager
      */
     private function buildStatString(string $stat, int $delta): ?string
     {
-        if ($this->sign($delta) === 0) {
+        if ($this->sign($delta) === "EVEN") {
             return null;
         }
-        $string = "";
-        switch ($stat) {
-            case "intelligence":
-                $string .= "Intelligens ";
-                break;
-            case "strength":
-                $string .= "Styrka ";
-                break;
-            case "dexterity":
-                $string .= "Smidighet ";
-                break;
-            case "luck":
-                $string .= "Tur ";
-                break;
-            case "speed":
-                $string .= "Hastighet ";
-                break;
-            case "constitution":
-                $string .= "Uthållighet ";
-                break;
-        }
-        switch ($this->sign($delta)) {
-            case -1:
-                $string .= "minskade med ";
-                break;
-            case 1:
-                $string .= "ökade med ";
-                break;
-        }
-        $string .= strval(abs($delta)) . " poäng.";
+
+        $string = $stat . " " . $this->sign($delta) . " med " . abs($delta) . " poäng.";
+        $string = str_replace("intelligence", "Intelligens", $string);
+        $string = str_replace("strength", "Styrka", $string);
+        $string = str_replace("dexterity", "Smidighet", $string);
+        $string = str_replace("luck", "Tur", $string);
+        $string = str_replace("speed", "Hastighet", $string);
+        $string = str_replace("constitution", "Uthållighet", $string);
+        $string = str_replace("NEG", "minskade", $string);
+        $string = str_replace("POS", "ökade", $string);
+
         return $string;
     }
 
@@ -289,6 +256,12 @@ class Manager
      */
     private function sign($number)
     {
-        return ($number > 0) - ($number < 0);
+        $sign = ($number > 0) - ($number < 0);
+        if ($sign === -1) {
+            return "NEG";
+        } elseif ($sign === 1) {
+            return "POS";
+        }
+        return "EVEN";
     }
 }
