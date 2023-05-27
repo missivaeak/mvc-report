@@ -115,29 +115,29 @@ class ORM
      * @param array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $o Array with obstacle data to add
      * @return array{status: string, obstacle_added: string}
      */
-    public function addObstacle(array $o): array
+    public function addObstacle(array $obsArr): array
     {
         $obstacle = new ObstacleEntity();
 
-        $obstacle->setName($o["name"]);
-        $obstacle->setDescription($o["description"]);
-        $obstacle->setDifficultyInt($o["difficulty_int"]);
-        $obstacle->setDifficultyStr($o["difficulty_str"]);
-        $obstacle->setDifficultyDex($o["difficulty_dex"]);
-        $obstacle->setCostRewardTime($o["cost_reward_time"]);
-        $obstacle->setCostRewardHealth($o["cost_reward_health"]);
-        $obstacle->setCostRewardStamina($o["cost_reward_stamina"]);
-        $obstacle->setCostRewardInt($o["cost_reward_int"]);
-        $obstacle->setCostRewardStr($o["cost_reward_str"]);
-        $obstacle->setCostRewardDex($o["cost_reward_dex"]);
-        $obstacle->setCostRewardLck($o["cost_reward_lck"]);
-        $obstacle->setCostRewardSpd($o["cost_reward_spd"]);
-        $obstacle->setCostRewardCon($o["cost_reward_con"]);
+        $obstacle->setName($obsArr["name"]);
+        $obstacle->setDescription($obsArr["description"]);
+        $obstacle->setDifficultyInt($obsArr["difficulty_int"]);
+        $obstacle->setDifficultyStr($obsArr["difficulty_str"]);
+        $obstacle->setDifficultyDex($obsArr["difficulty_dex"]);
+        $obstacle->setCostRewardTime($obsArr["cost_reward_time"]);
+        $obstacle->setCostRewardHealth($obsArr["cost_reward_health"]);
+        $obstacle->setCostRewardStamina($obsArr["cost_reward_stamina"]);
+        $obstacle->setCostRewardInt($obsArr["cost_reward_int"]);
+        $obstacle->setCostRewardStr($obsArr["cost_reward_str"]);
+        $obstacle->setCostRewardDex($obsArr["cost_reward_dex"]);
+        $obstacle->setCostRewardLck($obsArr["cost_reward_lck"]);
+        $obstacle->setCostRewardSpd($obsArr["cost_reward_spd"]);
+        $obstacle->setCostRewardCon($obsArr["cost_reward_con"]);
 
         $this->entityManager->persist($obstacle);
         $this->entityManager->flush();
 
-        return ["status" => "success", "obstacle_added" => $o["name"]];
+        return ["status" => "success", "obstacle_added" => $obsArr["name"]];
     }
 
     /**
@@ -187,18 +187,18 @@ class ORM
      * @param array{player: string, challenger: string, distance: int} $p Array with player data to add
      * @return array{status: string, leaderboard_entry_new: string}
      */
-    public function addLeader(array $p): array
+    public function addLeader(array $leaderArr): array
     {
         $leader = new LeaderboardEntity();
 
-        $leader->setPlayer($p["player"]);
-        $leader->setChallenger($p["challenger"]);
-        $leader->setDistance($p["distance"]);
+        $leader->setPlayer($leaderArr["player"]);
+        $leader->setChallenger($leaderArr["challenger"]);
+        $leader->setDistance($leaderArr["distance"]);
 
         $this->entityManager->persist($leader);
         $this->entityManager->flush();
 
-        return ["status" => "success", "leaderboard_entry_new" => $p["player"]];
+        return ["status" => "success", "leaderboard_entry_new" => $leaderArr["player"]];
     }
 
     /**
@@ -230,8 +230,8 @@ class ORM
     public function getLeaderboard(): array
     {
         $leaders = $this->getAllLeaders();
-        usort($leaders, function ($a, $b) {
-            return $b["distance"] <=> $a["distance"];
+        usort($leaders, function ($first, $second) {
+            return $second["distance"] <=> $first["distance"];
         });
 
         return array_slice($leaders, 0, 10);

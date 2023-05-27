@@ -74,14 +74,14 @@ class Factory
         }
 
         foreach ($keys as $key) {
-            $o = $obstaclesData[$key];
-            $name = $o["name"];
-            $description = $o["description"];
-            array_key_exists("difficulty_int", $o) ? $difficultyInt = $o["difficulty_int"] : $difficultyInt = null;
+            $obstacle = $obstaclebstaclesData[$key];
+            $name = $obstacle["name"];
+            $description = $obstacle["description"];
+            array_key_exists("difficulty_int", $obstacle) ? $difficultyInt = $obstacle["difficulty_int"] : $difficultyInt = null;
             $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
-            array_key_exists("difficulty_str", $o) ? $difficultyStr = $o["difficulty_str"] : $difficultyStr = null;
+            array_key_exists("difficulty_str", $obstacle) ? $difficultyStr = $obstacle["difficulty_str"] : $difficultyStr = null;
             $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
-            array_key_exists("difficulty_dex", $o) ? $difficultyDex = $o["difficulty_dex"] : $difficultyDex = null;
+            array_key_exists("difficulty_dex", $obstacle) ? $difficultyDex = $obstacle["difficulty_dex"] : $difficultyDex = null;
             $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
             $difficulties = [
                 'intelligence' => $difficultyInt,
@@ -89,15 +89,15 @@ class Factory
                 'dexterity' => $difficultyDex
             ];
             $costRewards = [
-                'time' => $o['cost_reward_time'],
-                'health' => $o['cost_reward_health'],
-                'stamina' => $o['cost_reward_stamina'],
-                'intelligence' => $o['cost_reward_int'],
-                'strength' => $o['cost_reward_str'],
-                'dexterity' => $o['cost_reward_dex'],
-                'luck' => $o['cost_reward_lck'],
-                'speed' => $o['cost_reward_spd'],
-                'constitution' => $o['cost_reward_con']
+                'time' => $obstacle['cost_reward_time'],
+                'health' => $obstacle['cost_reward_health'],
+                'stamina' => $obstacle['cost_reward_stamina'],
+                'intelligence' => $obstacle['cost_reward_int'],
+                'strength' => $obstacle['cost_reward_str'],
+                'dexterity' => $obstacle['cost_reward_dex'],
+                'luck' => $obstacle['cost_reward_lck'],
+                'speed' => $obstacle['cost_reward_spd'],
+                'constitution' => $obstacle['cost_reward_con']
             ];
             $obstacles[] = new Obstacle($name, $description, $difficulties, $costRewards);
         }
