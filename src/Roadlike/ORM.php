@@ -183,7 +183,7 @@ class ORM
 
     /**
      * Adds a player to the leaderboard
-     * @param array{player: ?string, challenger: ?string, distance: ?int} $p Array with player data to add
+     * @param array{player: string, challenger: string, distance: int} $p Array with player data to add
      * @return array{status: string, leaderboard_entry_new: string}
      */
     public function addLeader(array $p): array {
