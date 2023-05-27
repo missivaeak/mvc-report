@@ -28,7 +28,7 @@ class Factory
     /**
      * Builds a draft of challengers
      *
-     * @param array<array{name: ?string}> $templates Templates from the database
+     * @param array<array{name: string}> $templates Templates from the database
      * @param int $draftSize Amount of challengers in the draft
      * @return array<Challenger>
      */
