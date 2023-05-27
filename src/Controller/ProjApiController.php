@@ -80,6 +80,35 @@ class ProjApiController extends AbstractController
         return $response;
     }
 
+    #[Route("/api/proj/leaderboard", name: "api_proj_leaderboard", methods: ["GET", "POST", "DELETE"])]
+    public function apiProjLeaderboard(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $orm = new ORM($entityManager);
+        $data = [];
+        if ($request->getMethod() === "GET") {
+            $data = $orm->getAllLeaders();
+        } elseif ($request->getMethod() === "POST") {
+            $leader = [
+                "player" => $request->request->get("player"),
+                "challenger" => $request->request->get("challenger"),
+                "distance" => $request->request->get("distance")
+            ];
+            $data = $orm->addLeader($leader);
+        } elseif ($request->getMethod() === "DELETE") {
+            $id = $request->request->get('id');
+            $data = $orm->delLeader($id);
+        }
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
     #[Route("/api/proj/draft", name: "api_proj_draft", methods: ["GET"])]
     public function apiProjDraft(
         EntityManagerInterface $entityManager

@@ -5,7 +5,28 @@
 {% block view %}leaderboard{% endblock %}
 
 {% block body %}
-    <p>
-        topplista
-    </p>
+    <h2>Topplista</h2>
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Spelare</th>
+                <th>Utmanare</th>
+                <th>Avstånd</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leader in leaderboard %}
+                <tr>
+                    <td>{{loop.index}}.</td>
+                    <td>{{ leader["player"] }}</td>
+                    <td>{{ leader["challenger"] }}</td>
+                    <td>{{ leader["distance"] }}m</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form class="continue hoverable" action="{{ path('proj_game_new') }}" onclick="this.submit();">
+        <p>Spela igen</p>
+    </form>
 {% endblock %}

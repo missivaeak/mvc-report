@@ -22,6 +22,6 @@
         {{ include('proj/partials/travel.twig') }}
     {% endif %}
 
-    <a class="giveup" href="{{ path('proj_game_end') }}">Återvänd och gå hem.</a>
+    <a class="giveup" href="{{ path('proj_game_end') }}">Avsluta din resa.</a>
     {#{dump(challenger.getStats())}#}
 {% endblock %}

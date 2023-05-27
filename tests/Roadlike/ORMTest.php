@@ -211,7 +211,6 @@ final class ORMTest extends TestCase
             method('flush');
 
         $result = $this->orm->addObstacle([
-            'id' => 1,
             'name' => "hål",
             'description' => "farligt",
             'difficultyInt' => 10,
@@ -276,5 +275,158 @@ final class ORMTest extends TestCase
 
         $result = $this->orm->delObstacle(4);
         $this->assertEquals(["status" => "failed", "obstacle_deleted" => null], $result);
+    }
+
+    /**
+     * Test get all leaders
+     */
+    public function testGetAllLeaders(): void
+    {
+        $repo = $this->createMock("App\Repository\LeaderboardRepository");
+        $this->em-> /** @scrutinizer ignore-call */
+            method('getRepository')->
+            willReturn($repo);
+        $leader = $this->createStub("App\Entity\Leaderboard");
+        $leader-> /** @scrutinizer ignore-call */
+            method('getId')->
+            willReturn(2);
+        $leader-> /** @scrutinizer ignore-call */
+            method('getPlayer')->
+            willReturn('gördis');
+        $leader-> /** @scrutinizer ignore-call */
+            method('getChallenger')->
+            willReturn('zelda');
+        $leader-> /** @scrutinizer ignore-call */
+            method('getDistance')->
+            willReturn(123);
+        $repo-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('findAll')->
+            willReturn([$leader]);
+        $leaders = $this->orm->getAllLeaders();
+
+        $this->assertEquals([[
+            "id" => 2,
+            "player" => "gördis",
+            "challenger" => "zelda",
+            "distance" => 123
+        ]], $leaders);
+    }
+
+    /**
+     * Test add leader
+     */
+    public function testAddLeader(): void
+    {
+        $this->em-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('persist')->
+            with($this->isInstanceOf("App\Entity\Leaderboard"));
+        $this->em-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('flush');
+
+        $result = $this->orm->addLeader([
+            'player' => "hål",
+            'challenger' => "farligt",
+            'distance' => 10
+        ]);
+        $this->assertEquals(["status" => "success", "leaderboard_entry_new" => "hål"], $result);
+    }
+
+    /**
+     * Test delete leader
+     */
+    public function testDelLeader(): void
+    {
+        $repo = $this->createMock("App\Repository\LeaderboardRepository");
+        $this->em-> /** @scrutinizer ignore-call */
+            method('getRepository')->
+            willReturn($repo);
+        $leader = $this->createStub("App\Entity\Leaderboard");
+        $leader-> /** @scrutinizer ignore-call */
+            method('getPlayer')->
+            willReturn('skrut');
+        $repo-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('find')->
+            with(4)->
+            willReturn($leader);
+        $this->em-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('remove')->
+            with($leader);
+        $this->em-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('flush');
+
+        $result = $this->orm->delLeader(4);
+        $this->assertEquals(["status" => "success", "leaderboard_entry_deleted" => "skrut"], $result);
+    }
+
+    /**
+     * Test delete leader not found
+     */
+    public function testDelLeaderNotFound(): void
+    {
+        $repo = $this->createMock("App\Repository\LeaderboardRepository");
+        $this->em-> /** @scrutinizer ignore-call */
+            method('getRepository')->
+            willReturn($repo);
+        $repo-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('find')->
+            with(4);
+
+        $result = $this->orm->delLeader(4);
+        $this->assertEquals(["status" => "failed", "leaderboard_entry_deleted" => null], $result);
+    }
+
+    /**
+     * Test get leaderboard
+     */
+    public function testGetLeaderboard(): void
+    {
+        $repo = $this->createMock("App\Repository\LeaderboardRepository");
+        $this->em-> /** @scrutinizer ignore-call */
+            method('getRepository')->
+            willReturn($repo);
+        $leadersData = [
+            ["player" => "kent", "challenger" => "knet", "distance" => 60],
+            ["player" => "kunt", "challenger" => "knut", "distance" => 660],
+            ["player" => "kont", "challenger" => "knot", "distance" => 107],
+            ["player" => "kant", "challenger" => "knat", "distance" => 1001],
+            ["player" => "kint", "challenger" => "knit", "distance" => 100],
+            ["player" => "känt", "challenger" => "knät", "distance" => 1113],
+            ["player" => "kånt", "challenger" => "knåt", "distance" => 112],
+            ["player" => "könt", "challenger" => "knöt", "distance" => 101],
+            ["player" => "kynt", "challenger" => "knyt", "distance" => 110],
+            ["player" => "kbnt", "challenger" => "knbt", "distance" => 1000],
+            ["player" => "ktnt", "challenger" => "kntt", "distance" => 0]
+        ];
+        $leaders = [];
+        $i = 0;
+        foreach ($leadersData as $leaderData) {
+            $leader = $this->createStub("App\Entity\Leaderboard");
+            $leader-> /** @scrutinizer ignore-call */
+                method('getId')->willReturn($i);
+            $leader-> /** @scrutinizer ignore-call */
+                method('getPlayer')->willReturn($leaderData["player"]);
+            $leader-> /** @scrutinizer ignore-call */
+                method('getChallenger')->willReturn($leaderData["challenger"]);
+            $leader-> /** @scrutinizer ignore-call */
+                method('getDistance')->willReturn($leaderData["distance"]);
+            $leaders[] = $leader;
+            $i++;
+        }
+        $repo-> /** @scrutinizer ignore-call */
+            expects($this->once())->
+            method('findAll')->
+            willReturn($leaders);
+        $leaderboard = $this->orm->getLeaderboard();
+
+        $this->assertCount(10, $leaderboard);
+        $this->assertContainsOnly("array", $leaderboard);
+        $this->assertEquals(["id" => 5, "player" => "känt", "challenger" => "knät", "distance" => 1113], $leaderboard[0]);
     }
 }

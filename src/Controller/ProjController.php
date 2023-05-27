@@ -112,20 +112,33 @@ class ProjController extends AbstractController
         return $this->redirectToRoute('proj_index');
     }
 
-    #[Route('/proj/game/end', name: 'proj_game_end')]
-    public function gameEnd(SessionInterface $session): Response
-    {
+    #[Route('/proj/game/end', name: 'proj_game_end', methods: ["GET", "POST"])]
+    public function gameEnd(
+        EntityManagerInterface $entityManager,
+        Request $request,
+        SessionInterface $session
+    ): Response {
         $game = $session->get('game');
 
-        if ($game) {
-            $session->remove('game');
-
-            return $this->render('proj/end.twig', [
-                "game" => $game
-            ]);
+        if (!$game) {
+            return $this->redirectToRoute('proj_index');
         }
 
-        return $this->redirectToRoute('proj_index');
+        if ($request->getMethod() === "POST") {
+            $orm = new ORM($entityManager);
+            $data = [
+                "player" => $request->request->get('player'),
+                "challenger" => $game->getChallenger()->getName(),
+                "distance" => $game->getJourney()->getLength()
+            ];
+            $orm->addLeader($data);
+            $session->remove('game');
+            return $this->redirectToRoute('proj_leaderboard');
+        }
+
+        return $this->render('proj/end.twig', [
+            "game" => $game
+        ]);
     }
 
     #[Route('/proj/game', name: 'proj_game')]
@@ -153,9 +166,13 @@ class ProjController extends AbstractController
     }
 
     #[Route('/proj/leaderboard', name: 'proj_leaderboard')]
-    public function leaderboard(): Response
+    public function leaderboard(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('proj/leaderboard.twig');
+        $orm = new ORM($entityManager);
+        $leaderboard = $orm->getLeaderboard();
+        return $this->render('proj/leaderboard.twig', [
+            "leaderboard" => $leaderboard
+        ]);
     }
 
     #[Route('/proj/about', name: 'proj_about')]

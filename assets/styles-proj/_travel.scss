@@ -2,16 +2,15 @@
 @use "animations";
 
 .travel {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: vars.$magic-number;
     background: vars.$color-complement-1;
     padding: vars.$magic-number;
     border-radius: 7px;
 
     .obstacle {
-        background: vars.$color-complement-0;
-    }
-
-    h3 {
-        margin-bottom: vars.$magic-number;
+        background: vars.$color-complement-2;
     }
 
     > div {
@@ -26,6 +25,19 @@
     
         p {
             color: #000;
+        }
+    }
+
+    .continue {
+        width: max-content;
+        justify-self: end;
+        align-self: end;
+        border-radius: 7px;
+        padding: vars.$magic-number*0.5;
+        background: vars.$color-complement-4;
+
+        p {
+            color: lighten(vars.$color-complement-1, 5%);
         }
     }
 }

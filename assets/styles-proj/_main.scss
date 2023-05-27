@@ -16,9 +16,16 @@ $grid-cell: calc(calc(vars.$main-width - calc(13 * $gutter)) / 16);
     margin-bottom: vars.$magic-number*3;
 }
 
+.main.end,
+.main.leaderboard,
+.main.draft {
+    background: none;
+    box-shadow: none;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .index *,
-.leaderboard *,
-.about *,
-.end * {
+.about * {
     grid-column: auto / span 14;
 }

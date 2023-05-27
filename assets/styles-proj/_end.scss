@@ -1,0 +1,76 @@
+@use "vars";
+@use "mixins";
+
+.end {
+    .leaderboard-form,
+    .game-stats {
+        @include mixins.shadow;
+        grid-column-end: span 5;
+        border-radius: 7px;
+        padding: vars.$magic-number;
+    }
+
+    .leaderboard-form {
+        background: vars.$color-primary-4;
+        grid-column-start: 3;
+
+        p,
+        h2 {
+            margin-bottom: vars.$magic-number;
+        }
+
+        * {
+            color: vars.$color-complement-4;
+        }
+
+        input {
+            padding: vars.$magic-number*0.5;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+        }
+
+        input[type=text] {
+            width: 60%;
+        }
+        
+        input[type=submit] {
+            width: 40%;
+        }
+    }
+
+    .game-stats {
+        background: vars.$color-complement-3;
+        grid-column-start: 8;
+        display: flex;
+        flex-flow: column nowrap;
+
+        .label {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        
+        * {
+            color: #000;
+        }
+
+        td {
+            &:not(:first-child) {
+                padding-left: vars.$magic-number*0.5;
+            }
+
+            &:not(:last-child) {
+                padding-right: vars.$magic-number*0.5;
+            }
+        }
+
+        .icon {
+            text-align: left;
+        }
+        
+        .value {
+            text-align: right;
+        }
+    }
+}

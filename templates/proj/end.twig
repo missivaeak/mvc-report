@@ -1,19 +1,139 @@
 {% extends "proj/partials/base.twig" %}
 
-{#% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %#}
+{% set journey = game.getJourney() %}
+{% set timePercent = game.getTime() / game.getStartingTime() * 100 %}
+{% if timePercent > 100 %}{% set timePercent = 100 %}{% endif %}
+{% set journeyDecimal = journey.getLength() / 500 %}
+{% set journeyPercent = journeyDecimal * 100 %}
+{% set journeyBarLoops = journeyDecimal|round(0, 'floor') %}
+{% set challenger = game.getChallenger() %}
+{% set stats = challenger.getStats() %}
+{% set healthPercent = challenger.getHealth()/challenger.getMaxHealth()*100 %}
+{% set staminaPercent = challenger.getStamina()/challenger.getMaxStamina()*100 %}
 
 {% block view %}end{% endblock %}
 
 {% block body %}
-    <p>
-        Du kom {{game.getJourney().getLength}} meter. Jättelångt!
-    </p>
+    <form class="leaderboard-form" method="post">
+        <h2>Resans slut</h2>
+        <p>
+            Din resa är nu slut. Du kom {{game.getJourney().getLength}} meter. Nästa gång kanske du kommer ännu längre?
+        </p>
+        <p>
+            Spara ditt resultat på topplistan.
+        </p>
+        <input type="text" name="player" placeholder="Ditt namn..."><input type="submit" value="Skicka in">
+    </form>
 
-    <p>
-        <a href="{{ path('proj_leaderboard') }}">Till topplistan.</a>
-    </p>
+    <div class="game-stats">
+        <h2>Din resa</h2>
+        <div class="label">
+            <i class="fa-solid fa-hourglass-half"></i>
+            <p>{{game.getTime()}}</p>
+        </div>
+        <div class="bar">
+            <div class="time" style="width: {{timePercent}}%;"></div>
+        </div>
+        <div class="spacer"></div>
+        <div class="label">
+            <i class="fa-solid fa-person-hiking"></i>
+            <p>{{journey.getLength()}}m</p>
+        </div>
+        {% for i in 0..journeyBarLoops %}
+            <div class="bar space-under">
+                {% if loop.last %}
+                    {% set remaining = journeyPercent % 100 %}
+                    <div class="journey" style="width: {{remaining}}%;"></div>
+                {% else %}
+                    <div class="journey" style="width: 100%;"></div>
+                {% endif %}
+            </div>
+        {% endfor %}
 
-    <p>
-        <a href="{{ path('proj_game_new') }}">Spela igen.</a>
-    </p>
+        <div class="spacer"></div>
+
+        <table class="challenger">
+            <thead>
+                <tr>
+                    <th colspan="4">{{challenger.getName()}}</th>
+                </tr>
+            <thead>
+
+            <tbody>
+                <tr class="resource">
+                    <td colspan="2" class="icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </td>
+                    <td colspan="2" class="value">
+                        {{challenger.getHealth()}}/{{challenger.getMaxHealth()}}
+                    </td>
+                </tr>
+                <tr class="resource">
+                    <td colspan="4">
+                        <div class="bar">
+                            <div class="health" style="width: {{healthPercent}}%;"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="resource">
+                    <td colspan="2" class="icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </td>
+                    <td colspan="2" class="value">
+                        {{challenger.getStamina()}}/{{challenger.getMaxStamina()}}
+                    </td>
+                </tr>
+                <tr class="resource">
+                    <td colspan="4">
+                        <div class="bar">
+                            <div class="stamina" style="width: {{staminaPercent}}%;"></div>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td class="spacer" colspan="3"></td></tr>
+                <tr class="stat">
+                    <td class="icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["intelligence"]}}
+                    </td>
+                    <td class="icon">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["strength"]}}
+                    </td>
+                </tr>
+                <tr class="stat">
+                    <td class="icon">
+                        <i class="fa-solid fa-user-ninja"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["dexterity"]}}
+                    </td>
+                    <td class="icon">
+                        <i class="fa-solid fa-clover"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["luck"]}}
+                    </td>
+                </tr>
+                <tr class="stat">
+                    <td class="icon">
+                        <i class="fa-solid fa-person-running"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["speed"]}}
+                    </td>
+                    <td class="icon">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </td>
+                    <td class="value">
+                        {{stats["constitution"]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

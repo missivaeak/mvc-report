@@ -1,6 +1,7 @@
 {% extends "proj/partials/base.twig" %}
 {% block view %}draft{% endblock %}
 {% block body %}
+    <h2>Välj utmanare</h2>
     {% for challenger in draft %}
         {% set stats = challenger.getStats() %}
         <form class="draft-form hoverable" method="post">

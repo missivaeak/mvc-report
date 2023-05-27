@@ -1,26 +1,33 @@
 @use "vars";
 @use "animations";
+@use "mixins";
 
 .draft {
     width: 100%;
 
+    h2 {
+        grid-column: 2 / span 12;
+    }
+
     form {
+        grid-row: 2;
         grid-column-end: span 4;
 
-        &:nth-child(1) {
+        &:nth-child(2) {
             grid-column-start: 2;
         }
 
-        &:nth-child(2) {
+        &:nth-child(3) {
             grid-column-start: 6;
         }
 
-        &:nth-child(3) {
+        &:nth-child(4) {
             grid-column-start: 10;
         }
     }
 }
 
 .draft-form {
+    @include mixins.shadow;
     border-radius: 7px;
 }

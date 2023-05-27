@@ -4,6 +4,7 @@ namespace App\Roadlike;
 
 use App\Entity\Obstacle as ObstacleEntity;
 use App\Entity\Template as TemplateEntity;
+use App\Entity\Leaderboard as LeaderboardEntity;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -157,5 +158,80 @@ class ORM
         $this->entityManager->flush();
 
         return ["status" => "success", "obstacle_deleted" => $name];
+    }
+
+    /**
+     * Gets all leaderboard entries
+     * @return array<array{id: ?int, player: ?string, challenger: ?string, distance: ?int}>
+     */
+    public function getAllLeaders(): array
+    {
+        $data = [];
+        $repository = $this->entityManager->getRepository(LeaderboardEntity::class);
+        $leaders = $repository->findAll();
+        foreach ($leaders as $leader) {
+            $data[] = [
+                'id' => $leader->getId() ?? null,
+                'player' => $leader->getPlayer() ?? null,
+                'challenger' => $leader->getChallenger() ?? null,
+                'distance' => $leader->getDistance() ?? null
+            ];
+        }
+
+        return $data;
+    }
+
+    /**
+     * Adds a player to the leaderboard
+     * @param array{player: ?string, challenger: ?string, distance: ?int} $p Array with player data to add
+     * @return array{status: string, leaderboard_entry_new: string}
+     */
+    public function addLeader(array $p): array {
+        $leader = new LeaderboardEntity();
+
+        $leader->setPlayer($p["player"]);
+        $leader->setChallenger($p["challenger"]);
+        $leader->setDistance($p["distance"]);
+
+        $this->entityManager->persist($leader);
+        $this->entityManager->flush();
+
+        return ["status" => "success", "leaderboard_entry_new" => $p["player"]];
+    }
+
+    /**
+     * Deletes a player from the leaderboard
+     * @param int $id Id of the leader to delete
+     * @return array{status: string, leaderboard_entry_deleted: ?string}
+     */
+    public function delLeader(int $id): array
+    {
+        $repository = $this->entityManager->getRepository(LeaderboardEntity::class);
+        $player = $repository->find($id);
+
+        if (!$player) {
+            return ["status" => "failed", "leaderboard_entry_deleted" => null];
+        }
+
+        $name = $player->getPlayer();
+        $this->entityManager->remove($player);
+        $this->entityManager->flush();
+
+        return ["status" => "success", "leaderboard_entry_deleted" => $name];
+    }
+
+    /**
+     * Gets the leaderboards top players sorted
+     * in descending order by distance travelled
+     * @return array<array{id: ?int, player: ?string, challenger: ?string, distance: ?int}>
+     */
+    public function getLeaderboard(): array
+    {
+        $leaders = $this->getAllLeaders();
+        usort($leaders, function ($a, $b) {
+            return $b["distance"] <=> $a["distance"];
+        });
+
+        return array_slice($leaders, 0, 10);
     }
 }

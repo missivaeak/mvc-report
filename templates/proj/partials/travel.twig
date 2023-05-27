@@ -22,10 +22,10 @@
             </div>
         {% endfor %}
     </div>
+    <form class="continue hoverable" action="{{ path('proj_game_next') }}" onclick="this.submit();">
+        <p>Fortsätt din resa</p>
+    </form>
 </div>
 
 {# {{ dump(app.session.get('travelResult')) }#}
 
-<form class="continue" action="{{ path('proj_game_next') }}">
-    <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätt din resa.</a>
-</form>
