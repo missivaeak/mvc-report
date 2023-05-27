@@ -74,31 +74,13 @@ class Factory
         }
 
         foreach ($keys as $key) {
-            $obstacle = $obstaclebstaclesData[$key];
-            $name = $obstacle["name"];
-            $description = $obstacle["description"];
-            array_key_exists("difficulty_int", $obstacle) ? $difficultyInt = $obstacle["difficulty_int"] : $difficultyInt = null;
-            $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
-            array_key_exists("difficulty_str", $obstacle) ? $difficultyStr = $obstacle["difficulty_str"] : $difficultyStr = null;
-            $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
-            array_key_exists("difficulty_dex", $obstacle) ? $difficultyDex = $obstacle["difficulty_dex"] : $difficultyDex = null;
-            $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
-            $difficulties = [
-                'intelligence' => $difficultyInt,
-                'strength' => $difficultyStr,
-                'dexterity' => $difficultyDex
-            ];
-            $costRewards = [
-                'time' => $obstacle['cost_reward_time'],
-                'health' => $obstacle['cost_reward_health'],
-                'stamina' => $obstacle['cost_reward_stamina'],
-                'intelligence' => $obstacle['cost_reward_int'],
-                'strength' => $obstacle['cost_reward_str'],
-                'dexterity' => $obstacle['cost_reward_dex'],
-                'luck' => $obstacle['cost_reward_lck'],
-                'speed' => $obstacle['cost_reward_spd'],
-                'constitution' => $obstacle['cost_reward_con']
-            ];
+            $obstacle = $obstaclesData[$key];
+            $data = $this->arrangeObstacleData($obstacle);
+            $name = $data["name"];
+            $description = $data["description"];
+            $difficulties = $data["difficulties"];
+            $costRewards = $data["costRewards"];
+
             $obstacles[] = new Obstacle($name, $description, $difficulties, $costRewards);
         }
 
@@ -194,5 +176,45 @@ class Factory
         /* phpstan doesnt understand this function, overriding */
         /** @var array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats */
         return $stats;
+    }
+
+    /**
+     * Arranges obstacle data to build obstacles from
+     * @param array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $obstacle
+     * @return array{name: string, description: string, difficulties: array{intelligence: ?int, strength: ?int, dexterity: ?int}, costRewards: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}}
+     */
+    private function arrangeObstacleData(array $obstacle): array
+    {
+        $name = $obstacle["name"];
+        $description = $obstacle["description"];
+        array_key_exists("difficulty_int", $obstacle) ? $difficultyInt = $obstacle["difficulty_int"] : $difficultyInt = null;
+        $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
+        array_key_exists("difficulty_str", $obstacle) ? $difficultyStr = $obstacle["difficulty_str"] : $difficultyStr = null;
+        $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
+        array_key_exists("difficulty_dex", $obstacle) ? $difficultyDex = $obstacle["difficulty_dex"] : $difficultyDex = null;
+        $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
+        $difficulties = [
+            'intelligence' => $difficultyInt,
+            'strength' => $difficultyStr,
+            'dexterity' => $difficultyDex
+        ];
+        $costRewards = [
+            'time' => $obstacle['cost_reward_time'],
+            'health' => $obstacle['cost_reward_health'],
+            'stamina' => $obstacle['cost_reward_stamina'],
+            'intelligence' => $obstacle['cost_reward_int'],
+            'strength' => $obstacle['cost_reward_str'],
+            'dexterity' => $obstacle['cost_reward_dex'],
+            'luck' => $obstacle['cost_reward_lck'],
+            'speed' => $obstacle['cost_reward_spd'],
+            'constitution' => $obstacle['cost_reward_con']
+        ];
+
+        return [
+            "name" => $name,
+            "description" => $description,
+            "difficulties" => $difficulties,
+            "costRewards" => $costRewards
+        ];
     }
 }

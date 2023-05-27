@@ -159,40 +159,54 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/App-Roadlike-Crossroads.html#property_roads">$roads</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/App-Roadlike-Crossroads.html#property_max">$max</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/App-Roadlike-Crossroads.html#property_min">$min</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/App-Roadlike-Crossroads.html#property_paths">$paths</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd>Roads the player can choose between</dd>
+<dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Roadlike-Crossroads.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Creates an empty instance. Add roads with addRoad method.</dd>
+<dd>Creates an empty instance. Add paths with addPath method.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Roadlike-Crossroads.html#method_addRoad">addRoad()</a>
+    <a href="classes/App-Roadlike-Crossroads.html#method_addPath">addPath()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Add a road to the object</dd>
+<dd>Add a path to the object</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Roadlike-Crossroads.html#method_getRandomRoad">getRandomRoad()</a>
-    <span>
-                                &nbsp;: <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>    </span>
-</dt>
-<dd>Get a random road</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/App-Roadlike-Crossroads.html#method_getRoads">getRoads()</a>
+    <a href="classes/App-Roadlike-Crossroads.html#method_getPaths">getPaths()</a>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&gt;    </span>
 </dt>
-<dd>Gets an array of all roads</dd>
+<dd>Gets an array of all paths</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Roadlike-Crossroads.html#method_getRandomPath">getRandomPath()</a>
+    <span>
+                                &nbsp;: <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>    </span>
+</dt>
+<dd>Get a random path</dd>
 
         </dl>
 
@@ -210,12 +224,46 @@
         class="
             phpdocumentor-element
             -property
-            -private
-                                                        "
+            -public
+            -static                                            "
 >
-    <h4 class="phpdocumentor-element__name" id="property_roads">
-        $roads
-        <a href="classes/App-Roadlike-Crossroads.html#property_roads" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_max">
+        $max
+        <a href="classes/App-Roadlike-Crossroads.html#property_max" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">10</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$max</span>
+     = <span class="phpdocumentor-signature__default-value">3</span></code>
+
+    
+        <section class="phpdocumentor-description"><p>Maximum paths in a crossroads</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+            -static                                            "
+>
+    <h4 class="phpdocumentor-element__name" id="property_min">
+        $min
+        <a href="classes/App-Roadlike-Crossroads.html#property_min" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -226,18 +274,50 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Roads the player can choose between</p>
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$min</span>
+     = <span class="phpdocumentor-signature__default-value">1</span></code>
 
+    
+        <section class="phpdocumentor-description"><p>Minimum paths in a crossroads</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_paths">
+        $paths
+        <a href="classes/App-Roadlike-Crossroads.html#property_paths" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">16</span>
+
+    </aside>
+
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$roads</span>
+    <span class="phpdocumentor-signature__name">$paths</span>
     </code>
 
-        <section class="phpdocumentor-description"><p>@var array&lt;Road&gt;</p>
+    
+        <section class="phpdocumentor-description"><p>Paths the player can choose between</p>
 </section>
-
-        <section class="phpdocumentor-description"></section>
 
     
 
@@ -262,11 +342,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Creates an empty instance. Add roads with addRoad method.</p>
+        <p class="phpdocumentor-summary">Creates an empty instance. Add paths with addPath method.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -288,28 +368,28 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addRoad">
-        addRoad()
-        <a href="classes/App-Roadlike-Crossroads.html#method_addRoad" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addPath">
+        addPath()
+        <a href="classes/App-Roadlike-Crossroads.html#method_addPath" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Add a road to the object</p>
+        <p class="phpdocumentor-summary">Add a path to the object</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">addRoad</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$road</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">addPath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$road</span>
+                <span class="phpdocumentor-signature__argument__name">$path</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -331,29 +411,29 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getRandomRoad">
-        getRandomRoad()
-        <a href="classes/App-Roadlike-Crossroads.html#method_getRandomRoad" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getPaths">
+        getPaths()
+        <a href="classes/App-Roadlike-Crossroads.html#method_getPaths" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Get a random road</p>
+        <p class="phpdocumentor-summary">Gets an array of all paths</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getRandomRoad</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">getPaths</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&gt;</span></code>
 
     
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&gt;</span>
             &mdash;
         
     
@@ -364,29 +444,29 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getRoads">
-        getRoads()
-        <a href="classes/App-Roadlike-Crossroads.html#method_getRoads" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getRandomPath">
+        getRandomPath()
+        <a href="classes/App-Roadlike-Crossroads.html#method_getRandomPath" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Roadlike/Crossroads.php"><a href="files/src-roadlike-crossroads.html"><abbr title="src/Roadlike/Crossroads.php">Crossroads.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Gets an array of all roads</p>
+        <p class="phpdocumentor-summary">Get a random path</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getRoads</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getRandomPath</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a></span></code>
 
     
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a>&gt;</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/App-Roadlike-Road.html"><abbr title="\App\Roadlike\Road">Road</abbr></a></span>
             &mdash;
         
     

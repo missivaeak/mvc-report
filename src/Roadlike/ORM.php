@@ -112,7 +112,7 @@ class ORM
 
     /**
      * Adds an obstacle to the database
-     * @param array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $o Array with obstacle data to add
+     * @param array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $obsArr Array with obstacle data to add
      * @return array{status: string, obstacle_added: string}
      */
     public function addObstacle(array $obsArr): array
@@ -184,7 +184,7 @@ class ORM
 
     /**
      * Adds a player to the leaderboard
-     * @param array{player: string, challenger: string, distance: int} $p Array with player data to add
+     * @param array{player: string, challenger: string, distance: int} $leaderArr Array with player data to add
      * @return array{status: string, leaderboard_entry_new: string}
      */
     public function addLeader(array $leaderArr): array

@@ -132,11 +132,27 @@
                 </tr>
                                                             <tr>
                     <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Roadlike/Challenger.php">src/Roadlike/Challenger.php</a></td>
-                    <td class="phpdocumentor-cell">1</td>
+                    <td class="phpdocumentor-cell">3</td>
                 </tr>
                                                             <tr>
                     <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Roadlike/Obstacle.php">src/Roadlike/Obstacle.php</a></td>
-                    <td class="phpdocumentor-cell">5</td>
+                    <td class="phpdocumentor-cell">10</td>
+                </tr>
+                                                            <tr>
+                    <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Controller/ProjApiController.php">src/Controller/ProjApiController.php</a></td>
+                    <td class="phpdocumentor-cell">1</td>
+                </tr>
+                                                            <tr>
+                    <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Roadlike/Factory.php">src/Roadlike/Factory.php</a></td>
+                    <td class="phpdocumentor-cell">7</td>
+                </tr>
+                                                            <tr>
+                    <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Roadlike/Manager.php">src/Roadlike/Manager.php</a></td>
+                    <td class="phpdocumentor-cell">2</td>
+                </tr>
+                                                            <tr>
+                    <td class="phpdocumentor-cell"><a href="reports/errors.html#src/Roadlike/ORM.php">src/Roadlike/ORM.php</a></td>
+                    <td class="phpdocumentor-cell">12</td>
                 </tr>
                                     </table>
     
@@ -175,6 +191,16 @@
                     <td class="phpdocumentor-cell">0</td>
                     <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{intelligence?: int, strength?: int, dexterity?: int, speed?: int, constitution?: int, luck?: int} $stats Character stats&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
                 </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int}&quot; has error &quot;\App\Roadlike\array{intelligence: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;var&quot; with body &quot;@var array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} Challenger stats&quot; has error &quot;\App\Roadlike\array{intelligence: int&quot; is not a valid Fqsen.</td>
+                </tr>
                         </tbody>
         </table>
             <a id="src/Roadlike/Obstacle.php"></a>
@@ -191,27 +217,214 @@
                             <tr>
                     <td class="phpdocumentor-cell">ERROR</td>
                     <td class="phpdocumentor-cell">0</td>
-                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{intelligence?: int, strength?: int, dexterity?: int}&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} $difficulties Difficulty for the obstacle&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
                 </tr>
                             <tr>
                     <td class="phpdocumentor-cell">ERROR</td>
                     <td class="phpdocumentor-cell">0</td>
-                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{time?: int, health?: int, stamina?: int, intelligence?: int, strength?: int, dexterity?: int}&quot; has error &quot;\App\Roadlike\array{time&quot; is not a valid Fqsen.</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} $costRewards Costs and rewards for the obstacle&quot; has error &quot;\App\Roadlike\array{time: int&quot; is not a valid Fqsen.</td>
                 </tr>
                             <tr>
                     <td class="phpdocumentor-cell">ERROR</td>
                     <td class="phpdocumentor-cell">0</td>
-                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{time?: int, health?: int, stamina?: int, intelligence?: int, strength?: int, dexterity?: int}&quot; has error &quot;\App\Roadlike\array{time&quot; is not a valid Fqsen.</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} Gets obstacle difficulty&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
                 </tr>
                             <tr>
                     <td class="phpdocumentor-cell">ERROR</td>
                     <td class="phpdocumentor-cell">0</td>
-                    <td class="phpdocumentor-cell">Tag &quot;var&quot; with body &quot;@var array&lt;int&gt;{intelligence?: int, strength?: int, dexterity?: int} Difficulty of the obstacle as an array keyed by stats to test&quot; has error &quot;\App\Roadlike\{intelligence&quot; is not a valid Fqsen.</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} Gets the costs and rewards for the obstacle&quot; has error &quot;\App\Roadlike\array{time: int&quot; is not a valid Fqsen.</td>
                 </tr>
                             <tr>
                     <td class="phpdocumentor-cell">ERROR</td>
                     <td class="phpdocumentor-cell">0</td>
-                    <td class="phpdocumentor-cell">Tag &quot;var&quot; with body &quot;@var array&lt;int&gt;{time?: int, health?: int, stamina?: int, intelligence?: int, strength?: int, dexterity?: int} Costs and rewards for the obstacle as an array keyed by resource&quot; has error &quot;\App\Roadlike\{time&quot; is not a valid Fqsen.</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}}&quot; has error &quot;\App\Roadlike\array{lucky: bool&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} $difficulties&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats&quot; has error &quot;\App\Roadlike\array{intelligence: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats The challenger&#039;s stats&quot; has error &quot;\App\Roadlike\array{intelligence: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;var&quot; with body &quot;@var array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} Difficulty of the obstacle as an array keyed by stats to test&quot; has error &quot;\App\Roadlike\array{intelligence&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;var&quot; with body &quot;@var array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} Costs and rewards for the obstacle as an array keyed by resource&quot; has error &quot;\App\Roadlike\array{time: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                        </tbody>
+        </table>
+            <a id="src/Controller/ProjApiController.php"></a>
+        <h3><abbr title="src/Controller/ProjApiController.php">ProjApiController.php</abbr></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}&quot; has error &quot;\App\Controller\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                        </tbody>
+        </table>
+            <a id="src/Roadlike/Factory.php"></a>
+        <h3><abbr title="src/Roadlike/Factory.php">Factory.php</abbr></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array&lt;array{name?: ?string}&gt; $templates Templates from the database&quot; has error &quot;\App\Roadlike\array{name&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array&lt;array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}&gt; $obstaclesData Obstacle data from the database&quot; has error &quot;\App\Roadlike\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array&lt;array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}&gt; $obstacleData Obstacle data from database&quot; has error &quot;\App\Roadlike\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{length: int, obstacles: int}&quot; has error &quot;\App\Roadlike\array{length: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int}&quot; has error &quot;\App\Roadlike\array{intelligence: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $obstacle&quot; has error &quot;\App\Roadlike\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{name: string, description: string, difficulties: array{intelligence: ?int, strength: ?int, dexterity: ?int}, costRewards: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}}&quot; has error &quot;\App\Roadlike\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                        </tbody>
+        </table>
+            <a id="src/Roadlike/Manager.php"></a>
+        <h3><abbr title="src/Roadlike/Manager.php">Manager.php</abbr></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}} $result Result data from the attempt&quot; has error &quot;\App\Roadlike\array{lucky: bool&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{lucky: bool, deltas: array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int}} $result Result data from the attempt&quot; has error &quot;\App\Roadlike\array{lucky: bool&quot; is not a valid Fqsen.</td>
+                </tr>
+                        </tbody>
+        </table>
+            <a id="src/Roadlike/ORM.php"></a>
+        <h3><abbr title="src/Roadlike/ORM.php">ORM.php</abbr></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array&lt;array{id: ?int, name: ?string}&gt;&quot; has error &quot;\App\Roadlike\array{id: &quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, template_added: string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, template_deleted: ?string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array&lt;array{id: int, name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}&gt;&quot; has error &quot;\App\Roadlike\array{id: int&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $obsArr Array with obstacle data to add&quot; has error &quot;\App\Roadlike\array{name: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, obstacle_added: string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, obstacle_deleted: ?string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array&lt;array{id: ?int, player: ?string, challenger: ?string, distance: ?int}&gt;&quot; has error &quot;\App\Roadlike\array{id: &quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;param&quot; with body &quot;@param array{player: string, challenger: string, distance: int} $leaderArr Array with player data to add&quot; has error &quot;\App\Roadlike\array{player: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, leaderboard_entry_new: string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array{status: string, leaderboard_entry_deleted: ?string}&quot; has error &quot;\App\Roadlike\array{status: string&quot; is not a valid Fqsen.</td>
+                </tr>
+                            <tr>
+                    <td class="phpdocumentor-cell">ERROR</td>
+                    <td class="phpdocumentor-cell">0</td>
+                    <td class="phpdocumentor-cell">Tag &quot;return&quot; with body &quot;@return array&lt;array{id: ?int, player: ?string, challenger: ?string, distance: ?int}&gt;&quot; has error &quot;\App\Roadlike\array{id: &quot; is not a valid Fqsen.</td>
                 </tr>
                         </tbody>
         </table>

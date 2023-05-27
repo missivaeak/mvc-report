@@ -1,5 +1,136 @@
 var classes = [
     {
+        "name": "App\\Controller\\ProjController",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "index",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "gameNew",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "gameNext",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "gameEnd",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "game",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "leaderboard",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "about",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 7,
+        "nbMethods": 7,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 7,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 25,
+        "ccn": 19,
+        "ccnMethodMax": 7,
+        "externals": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "App\\Roadlike\\Factory",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "App\\Roadlike\\ORM",
+            "App\\Roadlike\\Factory",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\Response"
+        ],
+        "parents": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController"
+        ],
+        "implements": [],
+        "lcom": 1,
+        "length": 260,
+        "vocabulary": 55,
+        "volume": 1503.15,
+        "difficulty": 12.06,
+        "effort": 18129.87,
+        "level": 0.08,
+        "bugs": 0.5,
+        "time": 1007,
+        "intelligentContent": 124.63,
+        "number_operators": 63,
+        "number_operands": 197,
+        "number_operators_unique": 6,
+        "number_operands_unique": 49,
+        "cloc": 11,
+        "loc": 117,
+        "lloc": 106,
+        "mi": 53.89,
+        "mIwoC": 31.02,
+        "commentWeight": 22.87,
+        "kanDefect": 1.17,
+        "relativeStructuralComplexity": 676,
+        "relativeDataComplexity": 0.65,
+        "relativeSystemComplexity": 676.65,
+        "totalStructuralComplexity": 4732,
+        "totalDataComplexity": 4.56,
+        "totalSystemComplexity": 4736.56,
+        "package": "App\\Controller\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 7,
+        "instability": 1,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
         "name": "App\\Controller\\Kmom01ApiController",
         "interface": false,
         "abstract": false,
@@ -925,6 +1056,366 @@ var classes = [
         "violations": {}
     },
     {
+        "name": "App\\Controller\\ProjApiController",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "apiProjObstacle",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "arrangeObstaclePostData",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "apiProjTemplate",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "apiProjLeaderboard",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "apiProjDraft",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 5,
+        "nbMethods": 5,
+        "nbMethodsPrivate": 1,
+        "nbMethodsPublic": 4,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 17,
+        "ccn": 13,
+        "ccnMethodMax": 4,
+        "externals": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "Symfony\\Component\\HttpFoundation\\Request",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "Symfony\\Component\\HttpFoundation\\Response",
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "App\\Roadlike\\Factory",
+            "App\\Roadlike\\ORM",
+            "Symfony\\Component\\HttpFoundation\\JsonResponse"
+        ],
+        "parents": [
+            "Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController"
+        ],
+        "implements": [],
+        "lcom": 4,
+        "length": 270,
+        "vocabulary": 53,
+        "volume": 1546.54,
+        "difficulty": 10.89,
+        "effort": 16834.72,
+        "level": 0.09,
+        "bugs": 0.52,
+        "time": 935,
+        "intelligentContent": 142.07,
+        "number_operators": 61,
+        "number_operands": 209,
+        "number_operators_unique": 5,
+        "number_operands_unique": 48,
+        "cloc": 8,
+        "loc": 85,
+        "lloc": 77,
+        "mi": 57.65,
+        "mIwoC": 34.77,
+        "commentWeight": 22.88,
+        "kanDefect": 0.36,
+        "relativeStructuralComplexity": 289,
+        "relativeDataComplexity": 0.37,
+        "relativeSystemComplexity": 289.37,
+        "totalStructuralComplexity": 1445,
+        "totalDataComplexity": 1.83,
+        "totalSystemComplexity": 1446.83,
+        "package": "App\\Controller\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 7,
+        "instability": 1,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Repository\\ObstacleRepository",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "save",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "remove",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 3,
+        "nbMethods": 3,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 3,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 5,
+        "ccn": 3,
+        "ccnMethodMax": 2,
+        "externals": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "Doctrine\\Persistence\\ManagerRegistry",
+            "App\\Entity\\Obstacle",
+            "App\\Entity\\Obstacle"
+        ],
+        "parents": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository"
+        ],
+        "implements": [],
+        "lcom": 2,
+        "length": 16,
+        "vocabulary": 5,
+        "volume": 37.15,
+        "difficulty": 1.75,
+        "effort": 65.01,
+        "level": 0.57,
+        "bugs": 0.01,
+        "time": 4,
+        "intelligentContent": 21.23,
+        "number_operators": 2,
+        "number_operands": 14,
+        "number_operators_unique": 1,
+        "number_operands_unique": 4,
+        "cloc": 32,
+        "loc": 53,
+        "lloc": 22,
+        "mi": 105.99,
+        "mIwoC": 59.32,
+        "commentWeight": 46.67,
+        "kanDefect": 0.29,
+        "relativeStructuralComplexity": 25,
+        "relativeDataComplexity": 0.28,
+        "relativeSystemComplexity": 25.28,
+        "totalStructuralComplexity": 75,
+        "totalDataComplexity": 0.83,
+        "totalSystemComplexity": 75.83,
+        "package": "App\\Repository\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 3,
+        "instability": 1,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Repository\\LeaderboardRepository",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "save",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "remove",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 3,
+        "nbMethods": 3,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 3,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 5,
+        "ccn": 3,
+        "ccnMethodMax": 2,
+        "externals": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "Doctrine\\Persistence\\ManagerRegistry",
+            "App\\Entity\\Leaderboard",
+            "App\\Entity\\Leaderboard"
+        ],
+        "parents": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository"
+        ],
+        "implements": [],
+        "lcom": 2,
+        "length": 16,
+        "vocabulary": 5,
+        "volume": 37.15,
+        "difficulty": 1.75,
+        "effort": 65.01,
+        "level": 0.57,
+        "bugs": 0.01,
+        "time": 4,
+        "intelligentContent": 21.23,
+        "number_operators": 2,
+        "number_operands": 14,
+        "number_operators_unique": 1,
+        "number_operands_unique": 4,
+        "cloc": 32,
+        "loc": 53,
+        "lloc": 22,
+        "mi": 105.99,
+        "mIwoC": 59.32,
+        "commentWeight": 46.67,
+        "kanDefect": 0.29,
+        "relativeStructuralComplexity": 25,
+        "relativeDataComplexity": 0.28,
+        "relativeSystemComplexity": 25.28,
+        "totalStructuralComplexity": 75,
+        "totalDataComplexity": 0.83,
+        "totalSystemComplexity": 75.83,
+        "package": "App\\Repository\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 3,
+        "instability": 1,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Repository\\TemplateRepository",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "save",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "remove",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 3,
+        "nbMethods": 3,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 3,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 5,
+        "ccn": 3,
+        "ccnMethodMax": 2,
+        "externals": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository",
+            "Doctrine\\Persistence\\ManagerRegistry",
+            "App\\Entity\\Template",
+            "App\\Entity\\Template"
+        ],
+        "parents": [
+            "Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository"
+        ],
+        "implements": [],
+        "lcom": 2,
+        "length": 16,
+        "vocabulary": 5,
+        "volume": 37.15,
+        "difficulty": 1.75,
+        "effort": 65.01,
+        "level": 0.57,
+        "bugs": 0.01,
+        "time": 4,
+        "intelligentContent": 21.23,
+        "number_operators": 2,
+        "number_operands": 14,
+        "number_operators_unique": 1,
+        "number_operands_unique": 4,
+        "cloc": 32,
+        "loc": 53,
+        "lloc": 22,
+        "mi": 105.99,
+        "mIwoC": 59.32,
+        "commentWeight": 46.67,
+        "kanDefect": 0.29,
+        "relativeStructuralComplexity": 25,
+        "relativeDataComplexity": 0.28,
+        "relativeSystemComplexity": 25.28,
+        "totalStructuralComplexity": 75,
+        "totalDataComplexity": 0.83,
+        "totalSystemComplexity": 75.83,
+        "package": "App\\Repository\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 0,
+        "efferentCoupling": 3,
+        "instability": 1,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
         "name": "App\\Repository\\BookRepository",
         "interface": false,
         "abstract": false,
@@ -999,7 +1490,7 @@ var classes = [
         "totalDataComplexity": 0.83,
         "totalSystemComplexity": 75.83,
         "package": "App\\Repository\\",
-        "pageRank": 0.02,
+        "pageRank": 0.01,
         "afferentCoupling": 2,
         "efferentCoupling": 3,
         "instability": 0.6,
@@ -1174,7 +1665,7 @@ var classes = [
         "totalDataComplexity": 14.5,
         "totalSystemComplexity": 21.5,
         "package": "App\\Card\\",
-        "pageRank": 0.04,
+        "pageRank": 0.03,
         "afferentCoupling": 2,
         "efferentCoupling": 1,
         "instability": 0.33,
@@ -1265,7 +1756,7 @@ var classes = [
         "totalDataComplexity": 16,
         "totalSystemComplexity": 16,
         "package": "App\\Card\\",
-        "pageRank": 0.02,
+        "pageRank": 0.01,
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
@@ -1414,6 +1905,363 @@ var classes = [
         "violations": {}
     },
     {
+        "name": "App\\Entity\\Obstacle",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "getId",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getName",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setName",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDescription",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setDescription",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDifficultyInt",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setDifficultyInt",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDifficultyStr",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setDifficultyStr",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDifficultyDex",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setDifficultyDex",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardTime",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardTime",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardHealth",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardHealth",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardStamina",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardStamina",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardInt",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardInt",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardStr",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardStr",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardDex",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardDex",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardLck",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardLck",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardSpd",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardSpd",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewardCon",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCostRewardCon",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 29,
+        "nbMethods": 0,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 0,
+        "nbMethodsGetter": 15,
+        "nbMethodsSetters": 14,
+        "wmc": 0,
+        "ccn": 1,
+        "ccnMethodMax": 0,
+        "externals": [],
+        "parents": [],
+        "implements": [],
+        "lcom": 0,
+        "length": 116,
+        "vocabulary": 18,
+        "volume": 483.71,
+        "difficulty": 4.56,
+        "effort": 2206.93,
+        "level": 0.22,
+        "bugs": 0.16,
+        "time": 123,
+        "intelligentContent": 106.02,
+        "number_operators": 43,
+        "number_operands": 73,
+        "number_operators_unique": 2,
+        "number_operands_unique": 16,
+        "cloc": 18,
+        "loc": 167,
+        "lloc": 149,
+        "mi": 58.01,
+        "mIwoC": 33.66,
+        "commentWeight": 24.35,
+        "kanDefect": 0.15,
+        "relativeStructuralComplexity": 0,
+        "relativeDataComplexity": 29.48,
+        "relativeSystemComplexity": 29.48,
+        "totalStructuralComplexity": 0,
+        "totalDataComplexity": 855,
+        "totalSystemComplexity": 855,
+        "package": "App\\Entity\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 0,
+        "instability": 0,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Entity\\Template",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "getId",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getName",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setName",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 3,
+        "nbMethods": 0,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 0,
+        "nbMethodsGetter": 2,
+        "nbMethodsSetters": 1,
+        "wmc": 0,
+        "ccn": 1,
+        "ccnMethodMax": 0,
+        "externals": [],
+        "parents": [],
+        "implements": [],
+        "lcom": 0,
+        "length": 11,
+        "vocabulary": 5,
+        "volume": 25.54,
+        "difficulty": 2.33,
+        "effort": 59.6,
+        "level": 0.43,
+        "bugs": 0.01,
+        "time": 3,
+        "intelligentContent": 10.95,
+        "number_operators": 4,
+        "number_operands": 7,
+        "number_operators_unique": 2,
+        "number_operands_unique": 3,
+        "cloc": 5,
+        "loc": 24,
+        "lloc": 19,
+        "mi": 94.6,
+        "mIwoC": 62.12,
+        "commentWeight": 32.48,
+        "kanDefect": 0.15,
+        "relativeStructuralComplexity": 0,
+        "relativeDataComplexity": 3.33,
+        "relativeSystemComplexity": 3.33,
+        "totalStructuralComplexity": 0,
+        "totalDataComplexity": 10,
+        "totalSystemComplexity": 10,
+        "package": "App\\Entity\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 0,
+        "instability": 0,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Entity\\Leaderboard",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "getId",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getPlayer",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setPlayer",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getChallenger",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setChallenger",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDistance",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setDistance",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 7,
+        "nbMethods": 0,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 0,
+        "nbMethodsGetter": 4,
+        "nbMethodsSetters": 3,
+        "wmc": 0,
+        "ccn": 1,
+        "ccnMethodMax": 0,
+        "externals": [],
+        "parents": [],
+        "implements": [],
+        "lcom": 0,
+        "length": 28,
+        "vocabulary": 7,
+        "volume": 78.61,
+        "difficulty": 3.6,
+        "effort": 282.98,
+        "level": 0.28,
+        "bugs": 0.03,
+        "time": 16,
+        "intelligentContent": 21.83,
+        "number_operators": 10,
+        "number_operands": 18,
+        "number_operators_unique": 2,
+        "number_operands_unique": 5,
+        "cloc": 7,
+        "loc": 46,
+        "lloc": 39,
+        "mi": 80.3,
+        "mIwoC": 51.89,
+        "commentWeight": 28.41,
+        "kanDefect": 0.15,
+        "relativeStructuralComplexity": 0,
+        "relativeDataComplexity": 7.43,
+        "relativeSystemComplexity": 7.43,
+        "totalStructuralComplexity": 0,
+        "totalDataComplexity": 52,
+        "totalSystemComplexity": 52,
+        "package": "App\\Entity\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 0,
+        "instability": 0,
+        "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
         "name": "App\\Entity\\Book",
         "interface": false,
         "abstract": false,
@@ -1505,7 +2353,7 @@ var classes = [
         "totalDataComplexity": 85,
         "totalSystemComplexity": 85,
         "package": "App\\Entity\\",
-        "pageRank": 0.02,
+        "pageRank": 0.01,
         "afferentCoupling": 2,
         "efferentCoupling": 0,
         "instability": 0,
@@ -1562,11 +2410,823 @@ var classes = [
         "totalDataComplexity": 0,
         "totalSystemComplexity": 0,
         "package": "App\\Errors\\",
-        "pageRank": 0.05,
+        "pageRank": 0.03,
         "afferentCoupling": 1,
         "efferentCoupling": 1,
         "instability": 0.5,
         "numberOfUnitTests": 0,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Crossroads",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addPath",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getPaths",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getRandomPath",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 4,
+        "nbMethods": 3,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 3,
+        "nbMethodsGetter": 1,
+        "nbMethodsSetters": 0,
+        "wmc": 4,
+        "ccn": 2,
+        "ccnMethodMax": 2,
+        "externals": [
+            "App\\Roadlike\\Road"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 1,
+        "length": 19,
+        "vocabulary": 8,
+        "volume": 57,
+        "difficulty": 3.6,
+        "effort": 205.2,
+        "level": 0.28,
+        "bugs": 0.02,
+        "time": 11,
+        "intelligentContent": 15.83,
+        "number_operators": 7,
+        "number_operands": 12,
+        "number_operators_unique": 3,
+        "number_operands_unique": 5,
+        "cloc": 18,
+        "loc": 45,
+        "lloc": 27,
+        "mi": 97.73,
+        "mIwoC": 56.21,
+        "commentWeight": 41.52,
+        "kanDefect": 0.22,
+        "relativeStructuralComplexity": 0,
+        "relativeDataComplexity": 3.25,
+        "relativeSystemComplexity": 3.25,
+        "totalStructuralComplexity": 0,
+        "totalDataComplexity": 13,
+        "totalSystemComplexity": 13,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 1,
+        "instability": 0.33,
+        "numberOfUnitTests": 3,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Obstacle",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getName",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDescription",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getDifficulties",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCostRewards",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "attempt",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "testDifficulty",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "luckChance",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "calcSuccessFactor",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "calcResourceDelta",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "calcStatDelta",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 11,
+        "nbMethods": 7,
+        "nbMethodsPrivate": 5,
+        "nbMethodsPublic": 2,
+        "nbMethodsGetter": 4,
+        "nbMethodsSetters": 0,
+        "wmc": 20,
+        "ccn": 14,
+        "ccnMethodMax": 5,
+        "externals": [
+            "App\\Roadlike\\Challenger"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 2,
+        "length": 296,
+        "vocabulary": 66,
+        "volume": 1789.14,
+        "difficulty": 26.49,
+        "effort": 47395.35,
+        "level": 0.04,
+        "bugs": 0.6,
+        "time": 2633,
+        "intelligentContent": 67.54,
+        "number_operators": 80,
+        "number_operands": 216,
+        "number_operators_unique": 13,
+        "number_operands_unique": 53,
+        "cloc": 58,
+        "loc": 178,
+        "lloc": 120,
+        "mi": 68.66,
+        "mIwoC": 29.99,
+        "commentWeight": 38.67,
+        "kanDefect": 0.94,
+        "relativeStructuralComplexity": 64,
+        "relativeDataComplexity": 1.51,
+        "relativeSystemComplexity": 65.51,
+        "totalStructuralComplexity": 704,
+        "totalDataComplexity": 16.56,
+        "totalSystemComplexity": 720.56,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.06,
+        "afferentCoupling": 2,
+        "efferentCoupling": 1,
+        "instability": 0.33,
+        "numberOfUnitTests": 2,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Manager",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getChallenger",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getJourney",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getCrossroads",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getTime",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getStartingTime",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "setCrossroads",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "unsetCrossroads",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "modifyTime",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "isGameOver",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "resolveAttempt",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildResponse",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildResourceString",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildStatString",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "sign",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 15,
+        "nbMethods": 10,
+        "nbMethodsPrivate": 4,
+        "nbMethodsPublic": 6,
+        "nbMethodsGetter": 4,
+        "nbMethodsSetters": 1,
+        "wmc": 40,
+        "ccn": 31,
+        "ccnMethodMax": 10,
+        "externals": [
+            "App\\Roadlike\\Challenger",
+            "App\\Roadlike\\Road",
+            "App\\Roadlike\\Challenger",
+            "App\\Roadlike\\Road",
+            "App\\Roadlike\\Crossroads"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 1,
+        "length": 262,
+        "vocabulary": 58,
+        "volume": 1534.79,
+        "difficulty": 26.58,
+        "effort": 40791.33,
+        "level": 0.04,
+        "bugs": 0.51,
+        "time": 2266,
+        "intelligentContent": 57.75,
+        "number_operators": 78,
+        "number_operands": 184,
+        "number_operators_unique": 13,
+        "number_operands_unique": 45,
+        "cloc": 67,
+        "loc": 250,
+        "lloc": 183,
+        "mi": 60.11,
+        "mIwoC": 24.17,
+        "commentWeight": 35.94,
+        "kanDefect": 2.5,
+        "relativeStructuralComplexity": 121,
+        "relativeDataComplexity": 1.32,
+        "relativeSystemComplexity": 122.32,
+        "totalStructuralComplexity": 1815,
+        "totalDataComplexity": 19.75,
+        "totalSystemComplexity": 1834.75,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 1,
+        "efferentCoupling": 3,
+        "instability": 0.75,
+        "numberOfUnitTests": 2,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Factory",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "buildManager",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildDraft",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildObstacles",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "buildCrossroads",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "randomRoadShape",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "randomStatDistribution",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "arrangeObstacleData",
+                "role": null,
+                "public": false,
+                "private": true,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 7,
+        "nbMethods": 7,
+        "nbMethodsPrivate": 3,
+        "nbMethodsPublic": 4,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 0,
+        "wmc": 24,
+        "ccn": 18,
+        "ccnMethodMax": 7,
+        "externals": [
+            "App\\Roadlike\\Manager",
+            "App\\Roadlike\\Challenger",
+            "App\\Roadlike\\Road",
+            "App\\Roadlike\\Manager",
+            "App\\Roadlike\\Challenger",
+            "App\\Roadlike\\Obstacle",
+            "App\\Roadlike\\Crossroads",
+            "App\\Roadlike\\Crossroads",
+            "App\\Roadlike\\Road"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 3,
+        "length": 317,
+        "vocabulary": 82,
+        "volume": 2015.34,
+        "difficulty": 20.66,
+        "effort": 41631.25,
+        "level": 0.05,
+        "bugs": 0.67,
+        "time": 2313,
+        "intelligentContent": 97.56,
+        "number_operators": 76,
+        "number_operands": 241,
+        "number_operators_unique": 12,
+        "number_operands_unique": 70,
+        "cloc": 51,
+        "loc": 153,
+        "lloc": 102,
+        "mi": 69.62,
+        "mIwoC": 30.63,
+        "commentWeight": 38.99,
+        "kanDefect": 1.51,
+        "relativeStructuralComplexity": 36,
+        "relativeDataComplexity": 1.51,
+        "relativeSystemComplexity": 37.51,
+        "totalStructuralComplexity": 252,
+        "totalDataComplexity": 10.57,
+        "totalSystemComplexity": 262.57,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 5,
+        "instability": 0.71,
+        "numberOfUnitTests": 4,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Road",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getLength",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getObstacles",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addObstacle",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addLength",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 5,
+        "nbMethods": 3,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 3,
+        "nbMethodsGetter": 2,
+        "nbMethodsSetters": 0,
+        "wmc": 3,
+        "ccn": 1,
+        "ccnMethodMax": 1,
+        "externals": [
+            "App\\Roadlike\\Obstacle"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 1,
+        "length": 20,
+        "vocabulary": 7,
+        "volume": 56.15,
+        "difficulty": 5.25,
+        "effort": 294.77,
+        "level": 0.19,
+        "bugs": 0.02,
+        "time": 16,
+        "intelligentContent": 10.69,
+        "number_operators": 6,
+        "number_operands": 14,
+        "number_operators_unique": 3,
+        "number_operands_unique": 4,
+        "cloc": 23,
+        "loc": 50,
+        "lloc": 27,
+        "mi": 99.78,
+        "mIwoC": 56.39,
+        "commentWeight": 43.39,
+        "kanDefect": 0.15,
+        "relativeStructuralComplexity": 0,
+        "relativeDataComplexity": 2.8,
+        "relativeSystemComplexity": 2.8,
+        "totalStructuralComplexity": 0,
+        "totalDataComplexity": 14,
+        "totalSystemComplexity": 14,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.03,
+        "afferentCoupling": 3,
+        "efferentCoupling": 1,
+        "instability": 0.25,
+        "numberOfUnitTests": 3,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\Challenger",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getStats",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getHealth",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getStamina",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getName",
+                "role": "getter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getMaxHealth",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getMaxStamina",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "modifyStat",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "modifyHealth",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "modifyStamina",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 10,
+        "nbMethods": 6,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 6,
+        "nbMethodsGetter": 4,
+        "nbMethodsSetters": 0,
+        "wmc": 17,
+        "ccn": 12,
+        "ccnMethodMax": 7,
+        "externals": [],
+        "parents": [],
+        "implements": [],
+        "lcom": 1,
+        "length": 106,
+        "vocabulary": 20,
+        "volume": 458.12,
+        "difficulty": 19.38,
+        "effort": 8880.56,
+        "level": 0.05,
+        "bugs": 0.15,
+        "time": 493,
+        "intelligentContent": 23.63,
+        "number_operators": 34,
+        "number_operands": 72,
+        "number_operators_unique": 7,
+        "number_operands_unique": 13,
+        "cloc": 47,
+        "loc": 110,
+        "lloc": 63,
+        "mi": 82.91,
+        "mIwoC": 40.5,
+        "commentWeight": 42.41,
+        "kanDefect": 0.36,
+        "relativeStructuralComplexity": 4,
+        "relativeDataComplexity": 2.2,
+        "relativeSystemComplexity": 6.2,
+        "totalStructuralComplexity": 40,
+        "totalDataComplexity": 22,
+        "totalSystemComplexity": 62,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.1,
+        "afferentCoupling": 3,
+        "efferentCoupling": 0,
+        "instability": 0,
+        "numberOfUnitTests": 2,
+        "violations": {}
+    },
+    {
+        "name": "App\\Roadlike\\ORM",
+        "interface": false,
+        "abstract": false,
+        "final": false,
+        "methods": [
+            {
+                "name": "__construct",
+                "role": "setter",
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getAllTemplates",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addTemplate",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "delTemplate",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getAllObstacles",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addObstacle",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "delObstacle",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getAllLeaders",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "addLeader",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "delLeader",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            },
+            {
+                "name": "getLeaderboard",
+                "role": null,
+                "public": true,
+                "private": false,
+                "_type": "Hal\\Metric\\FunctionMetric"
+            }
+        ],
+        "nbMethodsIncludingGettersSetters": 11,
+        "nbMethods": 10,
+        "nbMethodsPrivate": 0,
+        "nbMethodsPublic": 10,
+        "nbMethodsGetter": 0,
+        "nbMethodsSetters": 1,
+        "wmc": 36,
+        "ccn": 27,
+        "ccnMethodMax": 14,
+        "externals": [
+            "Doctrine\\ORM\\EntityManagerInterface",
+            "App\\Entity\\Template",
+            "App\\Entity\\Obstacle",
+            "App\\Entity\\Leaderboard"
+        ],
+        "parents": [],
+        "implements": [],
+        "lcom": 1,
+        "length": 297,
+        "vocabulary": 49,
+        "volume": 1667.57,
+        "difficulty": 13.35,
+        "effort": 22265.83,
+        "level": 0.07,
+        "bugs": 0.56,
+        "time": 1237,
+        "intelligentContent": 124.89,
+        "number_operators": 62,
+        "number_operands": 235,
+        "number_operators_unique": 5,
+        "number_operands_unique": 44,
+        "cloc": 52,
+        "loc": 174,
+        "lloc": 122,
+        "mi": 65.76,
+        "mIwoC": 28.3,
+        "commentWeight": 37.46,
+        "kanDefect": 1.05,
+        "relativeStructuralComplexity": 1764,
+        "relativeDataComplexity": 0.34,
+        "relativeSystemComplexity": 1764.34,
+        "totalStructuralComplexity": 19404,
+        "totalDataComplexity": 3.74,
+        "totalSystemComplexity": 19407.74,
+        "package": "App\\Roadlike\\",
+        "pageRank": 0.01,
+        "afferentCoupling": 2,
+        "efferentCoupling": 4,
+        "instability": 0.67,
+        "numberOfUnitTests": 1,
         "violations": {}
     },
     {
@@ -1784,7 +3444,7 @@ var classes = [
         "totalDataComplexity": 7.8,
         "totalSystemComplexity": 119.8,
         "package": "App\\Game\\",
-        "pageRank": 0.09,
+        "pageRank": 0.07,
         "afferentCoupling": 5,
         "efferentCoupling": 4,
         "instability": 0.44,
@@ -2132,7 +3792,7 @@ var classes = [
         "totalDataComplexity": 28.25,
         "totalSystemComplexity": 136.25,
         "package": "App\\Game\\",
-        "pageRank": 0.02,
+        "pageRank": 0.01,
         "afferentCoupling": 3,
         "efferentCoupling": 2,
         "instability": 0.4,
@@ -2268,7 +3928,7 @@ var classes = [
         "totalDataComplexity": 14.43,
         "totalSystemComplexity": 446.43,
         "package": "App\\Game\\",
-        "pageRank": 0.12,
+        "pageRank": 0.09,
         "afferentCoupling": 5,
         "efferentCoupling": 1,
         "instability": 0.17,
@@ -2464,7 +4124,7 @@ var classes = [
         "totalDataComplexity": 4.43,
         "totalSystemComplexity": 184.43,
         "package": "App\\Game\\",
-        "pageRank": 0.05,
+        "pageRank": 0.03,
         "afferentCoupling": 2,
         "efferentCoupling": 2,
         "instability": 0.5,
@@ -2756,7 +4416,7 @@ var classes = [
         "totalDataComplexity": 10,
         "totalSystemComplexity": 10,
         "package": "App\\Game\\",
-        "pageRank": 0.04,
+        "pageRank": 0.03,
         "afferentCoupling": 4,
         "efferentCoupling": 1,
         "instability": 0.2,

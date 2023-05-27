@@ -1281,6 +1281,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjController.html#method_gameNew"
         },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AgameNext\u0028\u0029",
+            "name": "gameNext",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_gameNext"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjController\u003A\u003AgameEnd\u0028\u0029",
+            "name": "gameEnd",
+            "summary": "",
+            "url": "classes/App-Controller-ProjController.html#method_gameEnd"
+        },                {
             "fqsen": "\\App\\Controller\\ProjController\u003A\u003Agame\u0028\u0029",
             "name": "game",
             "summary": "",
@@ -1308,57 +1318,77 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetStats\u0028\u0029",
             "name": "getStats",
-            "summary": "",
+            "summary": "Get\u0020challenger\u0020stats",
             "url": "classes/App-Roadlike-Challenger.html#method_getStats"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetHealth\u0028\u0029",
             "name": "getHealth",
-            "summary": "",
+            "summary": "Get\u0020challenger\u0020health",
             "url": "classes/App-Roadlike-Challenger.html#method_getHealth"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetStamina\u0028\u0029",
             "name": "getStamina",
-            "summary": "",
+            "summary": "Get\u0020challenger\u0020stamina",
             "url": "classes/App-Roadlike-Challenger.html#method_getStamina"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetName\u0028\u0029",
             "name": "getName",
-            "summary": "",
+            "summary": "Get\u0020challenger\u0020name",
             "url": "classes/App-Roadlike-Challenger.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetMaxHealth\u0028\u0029",
+            "name": "getMaxHealth",
+            "summary": "Get\u0020challenger\u0020max\u0020health",
+            "url": "classes/App-Roadlike-Challenger.html#method_getMaxHealth"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AgetMaxStamina\u0028\u0029",
+            "name": "getMaxStamina",
+            "summary": "Get\u0020challenger\u0020max\u0020stamina",
+            "url": "classes/App-Roadlike-Challenger.html#method_getMaxStamina"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AmodifyStat\u0028\u0029",
             "name": "modifyStat",
-            "summary": "",
+            "summary": "Modifies\u0020a\u0020stat",
             "url": "classes/App-Roadlike-Challenger.html#method_modifyStat"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AmodifyHealth\u0028\u0029",
             "name": "modifyHealth",
-            "summary": "",
+            "summary": "Modifies\u0020health",
             "url": "classes/App-Roadlike-Challenger.html#method_modifyHealth"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003AmodifyStamina\u0028\u0029",
             "name": "modifyStamina",
-            "summary": "",
+            "summary": "Modifies\u0020stamina",
             "url": "classes/App-Roadlike-Challenger.html#method_modifyStamina"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003ABASEHEALTH",
+            "name": "BASEHEALTH",
+            "summary": "",
+            "url": "classes/App-Roadlike-Challenger.html#constant_BASEHEALTH"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003ABASESTAMINA",
+            "name": "BASESTAMINA",
+            "summary": "",
+            "url": "classes/App-Roadlike-Challenger.html#constant_BASESTAMINA"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003A\u0024name",
             "name": "name",
-            "summary": "Name\u0020of\u0020the\u0020challenger",
+            "summary": "",
             "url": "classes/App-Roadlike-Challenger.html#property_name"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003A\u0024stats",
             "name": "stats",
-            "summary": "Challenger\u0020stats",
+            "summary": "",
             "url": "classes/App-Roadlike-Challenger.html#property_stats"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003A\u0024stamina",
             "name": "stamina",
-            "summary": "Current\u0020stamina",
+            "summary": "",
             "url": "classes/App-Roadlike-Challenger.html#property_stamina"
         },                {
             "fqsen": "\\App\\Roadlike\\Challenger\u003A\u003A\u0024health",
             "name": "health",
-            "summary": "Current\u0020health",
+            "summary": "",
             "url": "classes/App-Roadlike-Challenger.html#property_health"
         },                {
             "fqsen": "\\App\\Roadlike\\Crossroads",
@@ -1368,33 +1398,48 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Creates\u0020an\u0020empty\u0020instance.\u0020Add\u0020roads\u0020with\u0020addRoad\u0020method.",
+            "summary": "Creates\u0020an\u0020empty\u0020instance.\u0020Add\u0020paths\u0020with\u0020addPath\u0020method.",
             "url": "classes/App-Roadlike-Crossroads.html#method___construct"
         },                {
-            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AaddRoad\u0028\u0029",
-            "name": "addRoad",
-            "summary": "Add\u0020a\u0020road\u0020to\u0020the\u0020object",
-            "url": "classes/App-Roadlike-Crossroads.html#method_addRoad"
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AaddPath\u0028\u0029",
+            "name": "addPath",
+            "summary": "Add\u0020a\u0020path\u0020to\u0020the\u0020object",
+            "url": "classes/App-Roadlike-Crossroads.html#method_addPath"
         },                {
-            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AgetRoads\u0028\u0029",
-            "name": "getRoads",
-            "summary": "Gets\u0020an\u0020array\u0020of\u0020all\u0020roads",
-            "url": "classes/App-Roadlike-Crossroads.html#method_getRoads"
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AgetPaths\u0028\u0029",
+            "name": "getPaths",
+            "summary": "Gets\u0020an\u0020array\u0020of\u0020all\u0020paths",
+            "url": "classes/App-Roadlike-Crossroads.html#method_getPaths"
         },                {
-            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AgetRandomRoad\u0028\u0029",
-            "name": "getRandomRoad",
-            "summary": "Get\u0020a\u0020random\u0020road",
-            "url": "classes/App-Roadlike-Crossroads.html#method_getRandomRoad"
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003AgetRandomPath\u0028\u0029",
+            "name": "getRandomPath",
+            "summary": "Get\u0020a\u0020random\u0020path",
+            "url": "classes/App-Roadlike-Crossroads.html#method_getRandomPath"
         },                {
-            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003A\u0024roads",
-            "name": "roads",
-            "summary": "Roads\u0020the\u0020player\u0020can\u0020choose\u0020between",
-            "url": "classes/App-Roadlike-Crossroads.html#property_roads"
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003A\u0024max",
+            "name": "max",
+            "summary": "",
+            "url": "classes/App-Roadlike-Crossroads.html#property_max"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003A\u0024min",
+            "name": "min",
+            "summary": "",
+            "url": "classes/App-Roadlike-Crossroads.html#property_min"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Crossroads\u003A\u003A\u0024paths",
+            "name": "paths",
+            "summary": "",
+            "url": "classes/App-Roadlike-Crossroads.html#property_paths"
         },                {
             "fqsen": "\\App\\Roadlike\\Obstacle",
             "name": "Obstacle",
             "summary": "Represents\u0020an\u0020obstacle\u0020to\u0020be\u0020put\u0020into\u0020a\u0020Road\u0020object,\ncan\u0020be\u0020used\u0020with\u0020a\u0020Challenger\u0020object",
             "url": "classes/App-Roadlike-Obstacle.html"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Roadlike-Obstacle.html#method___construct"
         },                {
             "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AgetName\u0028\u0029",
             "name": "getName",
@@ -1406,20 +1451,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Roadlike-Obstacle.html#method_getDescription"
         },                {
-            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AgetDifficulty\u0028\u0029",
-            "name": "getDifficulty",
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AgetDifficulties\u0028\u0029",
+            "name": "getDifficulties",
             "summary": "",
-            "url": "classes/App-Roadlike-Obstacle.html#method_getDifficulty"
+            "url": "classes/App-Roadlike-Obstacle.html#method_getDifficulties"
         },                {
-            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AgetCostReward\u0028\u0029",
-            "name": "getCostReward",
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AgetCostRewards\u0028\u0029",
+            "name": "getCostRewards",
             "summary": "",
-            "url": "classes/App-Roadlike-Obstacle.html#method_getCostReward"
+            "url": "classes/App-Roadlike-Obstacle.html#method_getCostRewards"
         },                {
             "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003Aattempt\u0028\u0029",
             "name": "attempt",
             "summary": "Attempts\u0020the\u0020obstacle\u0020with\u0020a\u0020challenger",
             "url": "classes/App-Roadlike-Obstacle.html#method_attempt"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AtestDifficulty\u0028\u0029",
+            "name": "testDifficulty",
+            "summary": "Tests\u0020the\u0020obstacle\u0027s\u0020difficulty\u0020for\u0020a\u0020given\u0020stat",
+            "url": "classes/App-Roadlike-Obstacle.html#method_testDifficulty"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AluckChance\u0028\u0029",
+            "name": "luckChance",
+            "summary": "Lucky\u0020completion,\u0020a\u0020chance\u0020to\u0020increase\u0020success\u0020factor\u0020yield",
+            "url": "classes/App-Roadlike-Obstacle.html#method_luckChance"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AcalcSuccessFactor\u0028\u0029",
+            "name": "calcSuccessFactor",
+            "summary": "Calculates\u0020an\u0020average\u0020success\u0020factor",
+            "url": "classes/App-Roadlike-Obstacle.html#method_calcSuccessFactor"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AcalcResourceDelta\u0028\u0029",
+            "name": "calcResourceDelta",
+            "summary": "Calculates\u0020time\u0020spent\u0020to\u0020complete\u0020the\u0020obstacle",
+            "url": "classes/App-Roadlike-Obstacle.html#method_calcResourceDelta"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003AcalcStatDelta\u0028\u0029",
+            "name": "calcStatDelta",
+            "summary": "Calculates\u0020stat\u0020change\u0020for\u0020completing\u0020the\u0020obstacle",
+            "url": "classes/App-Roadlike-Obstacle.html#method_calcStatDelta"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003ALUCKMULTIPLIER",
+            "name": "LUCKMULTIPLIER",
+            "summary": "",
+            "url": "classes/App-Roadlike-Obstacle.html#constant_LUCKMULTIPLIER"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003ACOSTFACTOR",
+            "name": "COSTFACTOR",
+            "summary": "",
+            "url": "classes/App-Roadlike-Obstacle.html#constant_COSTFACTOR"
         },                {
             "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A\u0024name",
             "name": "name",
@@ -1431,40 +1511,675 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Roadlike-Obstacle.html#property_description"
         },                {
-            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A\u0024difficulty",
-            "name": "difficulty",
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A\u0024difficulties",
+            "name": "difficulties",
             "summary": "",
-            "url": "classes/App-Roadlike-Obstacle.html#property_difficulty"
+            "url": "classes/App-Roadlike-Obstacle.html#property_difficulties"
         },                {
-            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A\u0024costReward",
-            "name": "costReward",
+            "fqsen": "\\App\\Roadlike\\Obstacle\u003A\u003A\u0024costRewards",
+            "name": "costRewards",
             "summary": "",
-            "url": "classes/App-Roadlike-Obstacle.html#property_costReward"
+            "url": "classes/App-Roadlike-Obstacle.html#property_costRewards"
         },                {
             "fqsen": "\\App\\Roadlike\\Road",
             "name": "Road",
             "summary": "",
             "url": "classes/App-Roadlike-Road.html"
         },                {
-            "fqsen": "\\App\\Roadlike\\RoadlikeManager",
-            "name": "RoadlikeManager",
-            "summary": "",
-            "url": "classes/App-Roadlike-RoadlikeManager.html"
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor",
+            "url": "classes/App-Roadlike-Road.html#method___construct"
         },                {
-            "fqsen": "\\App\\Roadlike\\RoadlikeManager\u003A\u003A\u0024challenger",
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003AgetLength\u0028\u0029",
+            "name": "getLength",
+            "summary": "Gets\u0020road\u0020length",
+            "url": "classes/App-Roadlike-Road.html#method_getLength"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003AgetObstacles\u0028\u0029",
+            "name": "getObstacles",
+            "summary": "Gets\u0020road\u0020obstacles",
+            "url": "classes/App-Roadlike-Road.html#method_getObstacles"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003AaddObstacle\u0028\u0029",
+            "name": "addObstacle",
+            "summary": "Adds\u0020a\u0020new\u0020obstacle\u0020to\u0020the\u0020road",
+            "url": "classes/App-Roadlike-Road.html#method_addObstacle"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003AaddLength\u0028\u0029",
+            "name": "addLength",
+            "summary": "Add\u0020length\u0020to\u0020the\u0020road",
+            "url": "classes/App-Roadlike-Road.html#method_addLength"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003A\u0024length",
+            "name": "length",
+            "summary": "",
+            "url": "classes/App-Roadlike-Road.html#property_length"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Road\u003A\u003A\u0024obstacles",
+            "name": "obstacles",
+            "summary": "",
+            "url": "classes/App-Roadlike-Road.html#property_obstacles"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController",
+            "name": "ProjApiController",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjObstacle\u0028\u0029",
+            "name": "apiProjObstacle",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjObstacle"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AarrangeObstaclePostData\u0028\u0029",
+            "name": "arrangeObstaclePostData",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_arrangeObstaclePostData"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjTemplate\u0028\u0029",
+            "name": "apiProjTemplate",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjTemplate"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjLeaderboard\u0028\u0029",
+            "name": "apiProjLeaderboard",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjLeaderboard"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjDraft\u0028\u0029",
+            "name": "apiProjDraft",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjDraft"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard",
+            "name": "Leaderboard",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AgetPlayer\u0028\u0029",
+            "name": "getPlayer",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_getPlayer"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AsetPlayer\u0028\u0029",
+            "name": "setPlayer",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_setPlayer"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AgetChallenger\u0028\u0029",
+            "name": "getChallenger",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_getChallenger"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AsetChallenger\u0028\u0029",
+            "name": "setChallenger",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_setChallenger"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AgetDistance\u0028\u0029",
+            "name": "getDistance",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_getDistance"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003AsetDistance\u0028\u0029",
+            "name": "setDistance",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#method_setDistance"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003A\u0024player",
+            "name": "player",
+            "summary": "",
+            "url": "classes/App-Entity-Leaderboard.html#property_player"
+        },                {
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003A\u0024challenger",
             "name": "challenger",
             "summary": "",
-            "url": "classes/App-Roadlike-RoadlikeManager.html#property_challenger"
+            "url": "classes/App-Entity-Leaderboard.html#property_challenger"
         },                {
-            "fqsen": "\\App\\Roadlike\\RoadlikeManager\u003A\u003A\u0024road",
-            "name": "road",
+            "fqsen": "\\App\\Entity\\Leaderboard\u003A\u003A\u0024distance",
+            "name": "distance",
             "summary": "",
-            "url": "classes/App-Roadlike-RoadlikeManager.html#property_road"
+            "url": "classes/App-Entity-Leaderboard.html#property_distance"
         },                {
-            "fqsen": "\\App\\Roadlike\\RoadlikeManager\u003A\u003A\u0024crossroads",
+            "fqsen": "\\App\\Entity\\Obstacle",
+            "name": "Obstacle",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetDescription\u0028\u0029",
+            "name": "getDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetDescription\u0028\u0029",
+            "name": "setDescription",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setDescription"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetDifficultyInt\u0028\u0029",
+            "name": "getDifficultyInt",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getDifficultyInt"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetDifficultyInt\u0028\u0029",
+            "name": "setDifficultyInt",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setDifficultyInt"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetDifficultyStr\u0028\u0029",
+            "name": "getDifficultyStr",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getDifficultyStr"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetDifficultyStr\u0028\u0029",
+            "name": "setDifficultyStr",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setDifficultyStr"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetDifficultyDex\u0028\u0029",
+            "name": "getDifficultyDex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getDifficultyDex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetDifficultyDex\u0028\u0029",
+            "name": "setDifficultyDex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setDifficultyDex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardTime\u0028\u0029",
+            "name": "getCostRewardTime",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardTime"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardTime\u0028\u0029",
+            "name": "setCostRewardTime",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardTime"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardHealth\u0028\u0029",
+            "name": "getCostRewardHealth",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardHealth"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardHealth\u0028\u0029",
+            "name": "setCostRewardHealth",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardHealth"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardStamina\u0028\u0029",
+            "name": "getCostRewardStamina",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardStamina"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardStamina\u0028\u0029",
+            "name": "setCostRewardStamina",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardStamina"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardInt\u0028\u0029",
+            "name": "getCostRewardInt",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardInt"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardInt\u0028\u0029",
+            "name": "setCostRewardInt",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardInt"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardStr\u0028\u0029",
+            "name": "getCostRewardStr",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardStr"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardStr\u0028\u0029",
+            "name": "setCostRewardStr",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardStr"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardDex\u0028\u0029",
+            "name": "getCostRewardDex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardDex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardDex\u0028\u0029",
+            "name": "setCostRewardDex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardDex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardLck\u0028\u0029",
+            "name": "getCostRewardLck",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardLck"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardLck\u0028\u0029",
+            "name": "setCostRewardLck",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardLck"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardSpd\u0028\u0029",
+            "name": "getCostRewardSpd",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardSpd"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardSpd\u0028\u0029",
+            "name": "setCostRewardSpd",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardSpd"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AgetCostRewardCon\u0028\u0029",
+            "name": "getCostRewardCon",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_getCostRewardCon"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003AsetCostRewardCon\u0028\u0029",
+            "name": "setCostRewardCon",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#method_setCostRewardCon"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_name"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024description",
+            "name": "description",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_description"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024difficulty_int",
+            "name": "difficulty_int",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_difficulty_int"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024difficulty_str",
+            "name": "difficulty_str",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_difficulty_str"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024difficulty_dex",
+            "name": "difficulty_dex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_difficulty_dex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_time",
+            "name": "cost_reward_time",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_time"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_health",
+            "name": "cost_reward_health",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_health"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_stamina",
+            "name": "cost_reward_stamina",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_stamina"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_int",
+            "name": "cost_reward_int",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_int"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_str",
+            "name": "cost_reward_str",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_str"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_dex",
+            "name": "cost_reward_dex",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_dex"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_lck",
+            "name": "cost_reward_lck",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_lck"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_spd",
+            "name": "cost_reward_spd",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_spd"
+        },                {
+            "fqsen": "\\App\\Entity\\Obstacle\u003A\u003A\u0024cost_reward_con",
+            "name": "cost_reward_con",
+            "summary": "",
+            "url": "classes/App-Entity-Obstacle.html#property_cost_reward_con"
+        },                {
+            "fqsen": "\\App\\Entity\\Template",
+            "name": "Template",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html"
+        },                {
+            "fqsen": "\\App\\Entity\\Template\u003A\u003AgetId\u0028\u0029",
+            "name": "getId",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html#method_getId"
+        },                {
+            "fqsen": "\\App\\Entity\\Template\u003A\u003AgetName\u0028\u0029",
+            "name": "getName",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html#method_getName"
+        },                {
+            "fqsen": "\\App\\Entity\\Template\u003A\u003AsetName\u0028\u0029",
+            "name": "setName",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html#method_setName"
+        },                {
+            "fqsen": "\\App\\Entity\\Template\u003A\u003A\u0024id",
+            "name": "id",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html#property_id"
+        },                {
+            "fqsen": "\\App\\Entity\\Template\u003A\u003A\u0024name",
+            "name": "name",
+            "summary": "",
+            "url": "classes/App-Entity-Template.html#property_name"
+        },                {
+            "fqsen": "\\App\\Repository\\LeaderboardRepository",
+            "name": "LeaderboardRepository",
+            "summary": "",
+            "url": "classes/App-Repository-LeaderboardRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\LeaderboardRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-LeaderboardRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\LeaderboardRepository\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "",
+            "url": "classes/App-Repository-LeaderboardRepository.html#method_save"
+        },                {
+            "fqsen": "\\App\\Repository\\LeaderboardRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-LeaderboardRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\ObstacleRepository",
+            "name": "ObstacleRepository",
+            "summary": "",
+            "url": "classes/App-Repository-ObstacleRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\ObstacleRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-ObstacleRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\ObstacleRepository\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "",
+            "url": "classes/App-Repository-ObstacleRepository.html#method_save"
+        },                {
+            "fqsen": "\\App\\Repository\\ObstacleRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-ObstacleRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Repository\\TemplateRepository",
+            "name": "TemplateRepository",
+            "summary": "",
+            "url": "classes/App-Repository-TemplateRepository.html"
+        },                {
+            "fqsen": "\\App\\Repository\\TemplateRepository\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/App-Repository-TemplateRepository.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Repository\\TemplateRepository\u003A\u003Asave\u0028\u0029",
+            "name": "save",
+            "summary": "",
+            "url": "classes/App-Repository-TemplateRepository.html#method_save"
+        },                {
+            "fqsen": "\\App\\Repository\\TemplateRepository\u003A\u003Aremove\u0028\u0029",
+            "name": "remove",
+            "summary": "",
+            "url": "classes/App-Repository-TemplateRepository.html#method_remove"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory",
+            "name": "Factory",
+            "summary": "",
+            "url": "classes/App-Roadlike-Factory.html"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AbuildManager\u0028\u0029",
+            "name": "buildManager",
+            "summary": "Builds\u0020a\u0020manager",
+            "url": "classes/App-Roadlike-Factory.html#method_buildManager"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AbuildDraft\u0028\u0029",
+            "name": "buildDraft",
+            "summary": "Builds\u0020a\u0020draft\u0020of\u0020challengers",
+            "url": "classes/App-Roadlike-Factory.html#method_buildDraft"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AbuildObstacles\u0028\u0029",
+            "name": "buildObstacles",
+            "summary": "Returns\u0020random\u0020obstacle\u0020objects\u0020from\u0020an\u0020array\u0020of\u0020obstacle\u0020data",
+            "url": "classes/App-Roadlike-Factory.html#method_buildObstacles"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AbuildCrossroads\u0028\u0029",
+            "name": "buildCrossroads",
+            "summary": "Builds\u0020a\u0020crossroads",
+            "url": "classes/App-Roadlike-Factory.html#method_buildCrossroads"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003ArandomRoadShape\u0028\u0029",
+            "name": "randomRoadShape",
+            "summary": "Gets\u0020a\u0020random\u0020shape\u0020for\u0020a\u0020road",
+            "url": "classes/App-Roadlike-Factory.html#method_randomRoadShape"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003ArandomStatDistribution\u0028\u0029",
+            "name": "randomStatDistribution",
+            "summary": "Returns\u0020a\u0020random\u0020stat\u0020distribution",
+            "url": "classes/App-Roadlike-Factory.html#method_randomStatDistribution"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AarrangeObstacleData\u0028\u0029",
+            "name": "arrangeObstacleData",
+            "summary": "Arranges\u0020obstacle\u0020data\u0020to\u0020build\u0020obstacles\u0020from",
+            "url": "classes/App-Roadlike-Factory.html#method_arrangeObstacleData"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager",
+            "name": "Manager",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor",
+            "url": "classes/App-Roadlike-Manager.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AgetChallenger\u0028\u0029",
+            "name": "getChallenger",
+            "summary": "Gets\u0020challenger",
+            "url": "classes/App-Roadlike-Manager.html#method_getChallenger"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AgetJourney\u0028\u0029",
+            "name": "getJourney",
+            "summary": "Gets\u0020journey",
+            "url": "classes/App-Roadlike-Manager.html#method_getJourney"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AgetCrossroads\u0028\u0029",
+            "name": "getCrossroads",
+            "summary": "Gets\u0020crossroads",
+            "url": "classes/App-Roadlike-Manager.html#method_getCrossroads"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AgetTime\u0028\u0029",
+            "name": "getTime",
+            "summary": "Gets\u0020time\u0020remaining",
+            "url": "classes/App-Roadlike-Manager.html#method_getTime"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AgetStartingTime\u0028\u0029",
+            "name": "getStartingTime",
+            "summary": "Gets\u0020starting\u0020time",
+            "url": "classes/App-Roadlike-Manager.html#method_getStartingTime"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AsetCrossroads\u0028\u0029",
+            "name": "setCrossroads",
+            "summary": "Set\u0020a\u0020new\u0020crossroads",
+            "url": "classes/App-Roadlike-Manager.html#method_setCrossroads"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AunsetCrossroads\u0028\u0029",
+            "name": "unsetCrossroads",
+            "summary": "Unset\u0020crossroads",
+            "url": "classes/App-Roadlike-Manager.html#method_unsetCrossroads"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AmodifyTime\u0028\u0029",
+            "name": "modifyTime",
+            "summary": "Modify\u0020time\u0020remaining",
+            "url": "classes/App-Roadlike-Manager.html#method_modifyTime"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AisGameOver\u0028\u0029",
+            "name": "isGameOver",
+            "summary": "Checks\u0020if\u0020the\u0020game\u0020is\u0020over",
+            "url": "classes/App-Roadlike-Manager.html#method_isGameOver"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AresolveAttempt\u0028\u0029",
+            "name": "resolveAttempt",
+            "summary": "Resolves\u0020an\u0020obstacle\u0020attempt",
+            "url": "classes/App-Roadlike-Manager.html#method_resolveAttempt"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AbuildResponse\u0028\u0029",
+            "name": "buildResponse",
+            "summary": "Makes\u0020an\u0020array\u0020of\u0020strings\u0020for\u0020the\u0020obstacle\u0020attempt",
+            "url": "classes/App-Roadlike-Manager.html#method_buildResponse"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AbuildResourceString\u0028\u0029",
+            "name": "buildResourceString",
+            "summary": "Makes\u0020a\u0020string\u0020out\u0020of\u0020a\u0020resources\u0020change",
+            "url": "classes/App-Roadlike-Manager.html#method_buildResourceString"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AbuildStatString\u0028\u0029",
+            "name": "buildStatString",
+            "summary": "Makes\u0020a\u0020string\u0020out\u0020of\u0020a\u0020stat\u0020change",
+            "url": "classes/App-Roadlike-Manager.html#method_buildStatString"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003Asign\u0028\u0029",
+            "name": "sign",
+            "summary": "Get\u0020the\u0020sign\u0020for\u0020a\u0020number",
+            "url": "classes/App-Roadlike-Manager.html#method_sign"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003ABASETIME",
+            "name": "BASETIME",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html#constant_BASETIME"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A\u0024startingTime",
+            "name": "startingTime",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html#property_startingTime"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A\u0024challenger",
+            "name": "challenger",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html#property_challenger"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A\u0024journey",
+            "name": "journey",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html#property_journey"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A\u0024crossroads",
             "name": "crossroads",
             "summary": "",
-            "url": "classes/App-Roadlike-RoadlikeManager.html#property_crossroads"
+            "url": "classes/App-Roadlike-Manager.html#property_crossroads"
+        },                {
+            "fqsen": "\\App\\Roadlike\\Manager\u003A\u003A\u0024time",
+            "name": "time",
+            "summary": "",
+            "url": "classes/App-Roadlike-Manager.html#property_time"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM",
+            "name": "ORM",
+            "summary": "",
+            "url": "classes/App-Roadlike-ORM.html"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor",
+            "url": "classes/App-Roadlike-ORM.html#method___construct"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AgetAllTemplates\u0028\u0029",
+            "name": "getAllTemplates",
+            "summary": "Gets\u0020all\u0020templates\u0020from\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_getAllTemplates"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AaddTemplate\u0028\u0029",
+            "name": "addTemplate",
+            "summary": "Add\u0020a\u0020new\u0020template\u0020to\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_addTemplate"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AdelTemplate\u0028\u0029",
+            "name": "delTemplate",
+            "summary": "Removes\u0020a\u0020template\u0020from\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_delTemplate"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AgetAllObstacles\u0028\u0029",
+            "name": "getAllObstacles",
+            "summary": "Gets\u0020all\u0020obstacles\u0020in\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_getAllObstacles"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AaddObstacle\u0028\u0029",
+            "name": "addObstacle",
+            "summary": "Adds\u0020an\u0020obstacle\u0020to\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_addObstacle"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AdelObstacle\u0028\u0029",
+            "name": "delObstacle",
+            "summary": "Deletes\u0020an\u0020obstacle\u0020from\u0020the\u0020database",
+            "url": "classes/App-Roadlike-ORM.html#method_delObstacle"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AgetAllLeaders\u0028\u0029",
+            "name": "getAllLeaders",
+            "summary": "Gets\u0020all\u0020leaderboard\u0020entries",
+            "url": "classes/App-Roadlike-ORM.html#method_getAllLeaders"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AaddLeader\u0028\u0029",
+            "name": "addLeader",
+            "summary": "Adds\u0020a\u0020player\u0020to\u0020the\u0020leaderboard",
+            "url": "classes/App-Roadlike-ORM.html#method_addLeader"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AdelLeader\u0028\u0029",
+            "name": "delLeader",
+            "summary": "Deletes\u0020a\u0020player\u0020from\u0020the\u0020leaderboard",
+            "url": "classes/App-Roadlike-ORM.html#method_delLeader"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003AgetLeaderboard\u0028\u0029",
+            "name": "getLeaderboard",
+            "summary": "Gets\u0020the\u0020leaderboards\u0020top\u0020players\u0020sorted\nin\u0020descending\u0020order\u0020by\u0020distance\u0020travelled",
+            "url": "classes/App-Roadlike-ORM.html#method_getLeaderboard"
+        },                {
+            "fqsen": "\\App\\Roadlike\\ORM\u003A\u003A\u0024entityManager",
+            "name": "entityManager",
+            "summary": "",
+            "url": "classes/App-Roadlike-ORM.html#property_entityManager"
         },                {
             "fqsen": "\\",
             "name": "\\",
