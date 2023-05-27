@@ -12,6 +12,6 @@ import './styles-proj/proj.scss';
 import './bootstrap';
 
 // javascript
-// import gameHash from './js/game';
+import eventLinePop from './js/proj.js';
 
-// document.addEventListener('DOMContentLoaded', gameHash, false);
+document.addEventListener('DOMContentLoaded', eventLinePop, false);

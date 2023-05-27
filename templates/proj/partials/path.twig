@@ -1,12 +1,12 @@
-{% set direction = "" %}
+{% set header = "Väg" %}
 {% set hoverable = "" %}
 {% if loop is defined %}
-    {% set direction = "Mitten" %}
+    {% set header = "Mitten" %}
     {% set hoverable = "hoverable" %}
     {% if loop.first %}
-        {% set direction = "Vänster" %}
+        {% set header = "Vänster" %}
     {% elseif loop.last %}
-        {% set direction = "Höger" %}
+        {% set header = "Höger" %}
     {% endif %}
 {% endif %}
 
@@ -17,10 +17,10 @@
     {% else %}
         <div class="path">
     {% endif %}
-        {% if direction %}
+        {% if header %}
             <h3>
                 {# <i class="fa-solid fa-signs-post"></i> #}
-                {{direction}}
+                {{header}}
             </h3>
         {% endif %}
         <div class="length">

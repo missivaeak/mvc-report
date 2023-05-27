@@ -1,9 +1,14 @@
 @use "vars";
+@use "animations";
 
 .travel {
     background: vars.$color-complement-1;
     padding: vars.$magic-number;
     border-radius: 7px;
+
+    .obstacle {
+        background: vars.$color-complement-0;
+    }
 
     h3 {
         margin-bottom: vars.$magic-number;
