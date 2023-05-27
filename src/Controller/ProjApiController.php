@@ -26,28 +26,8 @@ class ProjApiController extends AbstractController
             $data = $orm->getAllObstacles();
         } elseif ($request->getMethod() === "POST") {
             // intval these numbers but keep null
-            $difficultyInt = $request->request->get("difficulty_int");
-            $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
-            $difficultyStr = $request->request->get("difficulty_str");
-            $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
-            $difficultyDex = $request->request->get("difficulty_dex");
-            $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
-            $obstacle = [
-                'name' => strval($request->request->get("name")),
-                'description' => strval($request->request->get("description")),
-                'difficulty_int' => $difficultyInt,
-                'difficulty_str' => $difficultyStr,
-                'difficulty_dex' => $difficultyDex,
-                'cost_reward_time' => intval($request->request->get("cost_reward_time")),
-                'cost_reward_health' => intval($request->request->get("cost_reward_health")),
-                'cost_reward_stamina' => intval($request->request->get("cost_reward_stamina")),
-                'cost_reward_int' => intval($request->request->get("cost_reward_int")),
-                'cost_reward_str' => intval($request->request->get("cost_reward_str")),
-                'cost_reward_dex' => intval($request->request->get("cost_reward_dex")),
-                'cost_reward_lck' => intval($request->request->get("cost_reward_lck")),
-                'cost_reward_spd' => intval($request->request->get("cost_reward_spd")),
-                'cost_reward_con' => intval($request->request->get("cost_reward_con"))
-                ];
+            $obstacle = $this->arrangeObstaclePostData($request);
+
             $data = $orm->addObstacle($obstacle);
         } elseif ($request->getMethod() === "DELETE") {
             $id = intval($request->request->get('id'));
@@ -60,6 +40,37 @@ class ProjApiController extends AbstractController
         );
 
         return $response;
+    }
+
+    /**
+     * @return array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}
+     */
+    private function arrangeObstaclePostData(Request $request)
+    {
+        $difficultyInt = $request->request->get("difficulty_int");
+        $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
+        $difficultyStr = $request->request->get("difficulty_str");
+        $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
+        $difficultyDex = $request->request->get("difficulty_dex");
+        $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
+        $data = [
+            'name' => strval($request->request->get("name")),
+            'description' => strval($request->request->get("description")),
+            'difficulty_int' => $difficultyInt,
+            'difficulty_str' => $difficultyStr,
+            'difficulty_dex' => $difficultyDex,
+            'cost_reward_time' => intval($request->request->get("cost_reward_time")),
+            'cost_reward_health' => intval($request->request->get("cost_reward_health")),
+            'cost_reward_stamina' => intval($request->request->get("cost_reward_stamina")),
+            'cost_reward_int' => intval($request->request->get("cost_reward_int")),
+            'cost_reward_str' => intval($request->request->get("cost_reward_str")),
+            'cost_reward_dex' => intval($request->request->get("cost_reward_dex")),
+            'cost_reward_lck' => intval($request->request->get("cost_reward_lck")),
+            'cost_reward_spd' => intval($request->request->get("cost_reward_spd")),
+            'cost_reward_con' => intval($request->request->get("cost_reward_con"))
+            ];
+
+        return $data;
     }
 
     #[Route("/api/proj/template", name: "api_proj_template", methods: ["GET", "POST", "DELETE"])]
