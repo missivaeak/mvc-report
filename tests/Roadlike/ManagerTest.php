@@ -89,8 +89,8 @@ final class ManagerTest extends TestCase
     {
         $time = $this->managerOne->getTime();
         $startingTime = $this->managerOne->getStartingTime();
-        $this->assertEquals(500, $time);
-        $this->assertEquals(500, $startingTime);
+        $this->assertEquals(300, $time);
+        $this->assertEquals(300, $startingTime);
     }
 
     /**
@@ -110,12 +110,11 @@ final class ManagerTest extends TestCase
     public function testModifyTime(): void
     {
         $this->managerOne->modifyTime(-2);
-        $first = $this->managerOne->getTime();
+        $this->assertEquals(298, $this->managerOne->getTime());
         $this->managerOne->modifyTime(10);
-        $second = $this->managerOne->getTime();
-
-        $this->assertEquals(498, $first);
-        $this->assertEquals(508, $second);
+        $this->assertEquals(308, $this->managerOne->getTime());
+        $this->managerOne->modifyTime(-1110);
+        $this->assertEquals(0, $this->managerOne->getTime());
     }
 
     /**

@@ -125,6 +125,7 @@ class Manager
             switch ($stat) {
                 case "time":
                     $this->modifyTime($delta);
+                    break;
                 case "health":
                     $this->challenger->modifyHealth($delta);
                     break;

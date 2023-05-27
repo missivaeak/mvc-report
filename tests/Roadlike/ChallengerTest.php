@@ -94,8 +94,8 @@ final class ChallengerTest extends TestCase
      */
     public function testGetHealth(): void
     {
-        $this->assertEquals(111, $this->challenger->getHealth());
-        $this->assertEquals(100, $this->challengerNoStats->getHealth());
+        $this->assertEquals(311, $this->challenger->getHealth());
+        $this->assertEquals(300, $this->challengerNoStats->getHealth());
     }
 
     /**
@@ -103,8 +103,8 @@ final class ChallengerTest extends TestCase
      */
     public function testGetMaxHealth(): void
     {
-        $this->assertEquals(111, $this->challenger->getMaxHealth());
-        $this->assertEquals(100, $this->challengerNoStats->getMaxHealth());
+        $this->assertEquals(311, $this->challenger->getMaxHealth());
+        $this->assertEquals(300, $this->challengerNoStats->getMaxHealth());
     }
 
     /**
@@ -113,7 +113,9 @@ final class ChallengerTest extends TestCase
     public function testModifyHealth(): void
     {
         $this->challenger->modifyHealth(-2);
-        $this->assertEquals(109, $this->challenger->getHealth());
+        $this->assertEquals(309, $this->challenger->getHealth());
+        $this->challenger->modifyHealth(1111);
+        $this->assertEquals(311, $this->challenger->getHealth());
     }
 
     /**
@@ -121,8 +123,8 @@ final class ChallengerTest extends TestCase
      */
     public function testGetStamina(): void
     {
-        $this->assertEquals(111, $this->challenger->getStamina());
-        $this->assertEquals(100, $this->challengerNoStats->getStamina());
+        $this->assertEquals(311, $this->challenger->getStamina());
+        $this->assertEquals(300, $this->challengerNoStats->getStamina());
     }
 
     /**
@@ -130,8 +132,8 @@ final class ChallengerTest extends TestCase
      */
     public function testGetMaxStamina(): void
     {
-        $this->assertEquals(111, $this->challenger->getMaxStamina());
-        $this->assertEquals(100, $this->challengerNoStats->getMaxStamina());
+        $this->assertEquals(311, $this->challenger->getMaxStamina());
+        $this->assertEquals(300, $this->challengerNoStats->getMaxStamina());
     }
 
     /**
@@ -140,7 +142,9 @@ final class ChallengerTest extends TestCase
     public function testModifyStamina(): void
     {
         $this->challenger->modifyStamina(-2);
-        $this->assertEquals(109, $this->challenger->getStamina());
+        $this->assertEquals(309, $this->challenger->getStamina());
+        $this->challenger->modifyStamina(20);
+        $this->assertEquals(311, $this->challenger->getStamina());
     }
 
     /**
