@@ -131,12 +131,6 @@ class ProjController extends AbstractController
         $game = $session->get('game') ?? null;
         $travelPath = $session->get('travelPath') ?? null;
         $travelResult = $session->get('travelResult') ?? null;
-        $hasTravelPath = $session->has('travelPath');
-        $hasTravelResult = $session->has('travelResult');
-
-        // throw $this->createNotFoundException(
-        //     var_dump($travelResult)
-        // );
 
         if (!$game) {
             return $this->redirectToRoute('proj_index');

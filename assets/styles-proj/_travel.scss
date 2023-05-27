@@ -1,0 +1,26 @@
+@use "vars";
+
+.travel {
+    background: vars.$color-complement-1;
+    padding: vars.$magic-number;
+    border-radius: 7px;
+
+    h3 {
+        margin-bottom: vars.$magic-number;
+    }
+
+    > div {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        gap: vars.$magic-number;
+
+        h4 {
+            color: #000;
+        }
+    
+        p {
+            color: #000;
+        }
+    }
+}

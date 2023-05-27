@@ -7,16 +7,21 @@
 {{ include('proj/partials/path.twig') }}
 
 <div class="travel">
-    {% for obstacle in results %}
-        <p>{{obstacles[loop.index0].getName()}}</p>
-        {% for line in obstacle %}
-            <p>{{line}}</p>
+    <h3>Detta hände</h3>
+    <div>
+        {% for obstacle in results %}
+            <div class="obstacle">
+                <h4>{{obstacles[loop.index0].getName()}}</h4>
+                {% for line in obstacle %}
+                    <p>{{line}}</p>
+                {% endfor %}
+            </div>
         {% endfor %}
-    {% endfor %}
+    </div>
 </div>
 
 {# {{ dump(app.session.get('travelResult')) }#}
 
 <form class="continue" action="{{ path('proj_game_next') }}">
-    <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätta din resa.</a>
+    <a href="{{ path('proj_game')}}" onclick="event.preventDefault(); this.parentNode.submit();">Fortsätt din resa.</a>
 </form>
