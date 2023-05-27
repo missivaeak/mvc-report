@@ -8,6 +8,9 @@ use App\Roadlike\Crossroads;
 
 class Manager
 {
+    /** @var int Base time */
+    const BASETIME = 100;
+
     /** @var int Start time */
     private int $startingTime;
 
@@ -32,7 +35,7 @@ class Manager
     public function __construct(
         Challenger $challenger,
         Road $journey, 
-        int $time=300
+        int $time=self::BASETIME
     ) {
         $this->challenger = $challenger;
         $this->journey = $journey;
@@ -110,6 +113,22 @@ class Manager
         if ($this->time < 0) {
             $this->time = 0;
         }
+    }
+
+    /**
+     * Checks if the game is over
+     */
+    public function isGameOver(): bool
+    {
+        if (
+            $this->getTime() <= 0
+            || $this->challenger->getHealth() <= 0
+            || $this->challenger->getStamina() <= 0
+        ) {
+            return true;
+        }
+
+        return false;
     }
 
     /**

@@ -89,8 +89,8 @@ final class ManagerTest extends TestCase
     {
         $time = $this->managerOne->getTime();
         $startingTime = $this->managerOne->getStartingTime();
-        $this->assertEquals(300, $time);
-        $this->assertEquals(300, $startingTime);
+        $this->assertEquals(Manager::BASETIME, $time);
+        $this->assertEquals(Manager::BASETIME, $startingTime);
     }
 
     /**
@@ -110,9 +110,9 @@ final class ManagerTest extends TestCase
     public function testModifyTime(): void
     {
         $this->managerOne->modifyTime(-2);
-        $this->assertEquals(298, $this->managerOne->getTime());
+        $this->assertEquals(Manager::BASETIME - 2, $this->managerOne->getTime());
         $this->managerOne->modifyTime(10);
-        $this->assertEquals(308, $this->managerOne->getTime());
+        $this->assertEquals(Manager::BASETIME + 8, $this->managerOne->getTime());
         $this->managerOne->modifyTime(-1110);
         $this->assertEquals(0, $this->managerOne->getTime());
     }
@@ -162,5 +162,66 @@ final class ManagerTest extends TestCase
             "Smidighet ökade med 1 poäng.",
             "Tur minskade med 1 poäng."
         ], $responseOne);
+    }
+
+    /**
+     * Test if game is over false result
+     */
+    public function testIsGameOverFalse(): void
+    {
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getHealth')->
+            willReturn(4);
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getStamina')->
+            willReturn(4);
+        $gameOver = $this->managerOne->isGameOver();
+        $this->assertFalse($gameOver);
+    }
+
+    /**
+     * Test if game is over no time
+     */
+    public function testIsGameOverNoTime(): void
+    {
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getHealth')->
+            willReturn(4);
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getStamina')->
+            willReturn(4);
+        $this->managerOne->modifyTime(-1000);
+        $gameOver = $this->managerOne->isGameOver();
+        $this->assertTrue($gameOver);
+    }
+
+    /**
+     * Test if game is over no time
+     */
+    public function testIsGameOverNoHealth(): void
+    {
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getHealth')->
+            willReturn(0);
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getStamina')->
+            willReturn(4);
+        $gameOver = $this->managerOne->isGameOver();
+        $this->assertTrue($gameOver);
+    }
+
+    /**
+     * Test if game is over no time
+     */
+    public function testIsGameOverNoStamina(): void
+    {
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getHealth')->
+            willReturn(100);
+        $this->challenger-> /** @scrutinizer ignore-call */
+            method('getStamina')->
+            willReturn(0);
+        $gameOver = $this->managerOne->isGameOver();
+        $this->assertTrue($gameOver);
     }
 }

@@ -5,10 +5,10 @@ namespace App\Roadlike;
 class Challenger
 {
     /** @var int Base health for challengers */
-    public const BASEHEALTH = 300;
+    public const BASEHEALTH = 100;
 
     /** @var int Base stamina for challengers */
-    public const BASESTAMINA = 300;
+    public const BASESTAMINA = 100;
 
     /** @var string Name of the challenger */
     private string $name;

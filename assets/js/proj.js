@@ -1,6 +1,6 @@
 export default () => {
     const lines = document.getElementsByClassName('event-line');
-    console.log(lines.length);
+    // console.log(lines.length);
     for (let i = 0; i < lines.length; i++) {
         const delay = 600 * i;
         setTimeout(()=>{

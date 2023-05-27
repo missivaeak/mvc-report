@@ -66,6 +66,10 @@ class ProjController extends AbstractController
         $factory = new Factory();
         $game = $session->get("game");
 
+        if ($game->isGameOver()) {
+            return $this->redirectToRoute('proj_game_end');
+        }
+
         if ($game && $game->getCrossroads()) {
             // there is a crossroads so next is travelling
             $index = intval($request->query->get('index'));
