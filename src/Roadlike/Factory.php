@@ -187,16 +187,10 @@ class Factory
     {
         $name = $obstacle["name"];
         $description = $obstacle["description"];
-        array_key_exists("difficulty_int", $obstacle) ? $difficultyInt = $obstacle["difficulty_int"] : $difficultyInt = null;
-        $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
-        array_key_exists("difficulty_str", $obstacle) ? $difficultyStr = $obstacle["difficulty_str"] : $difficultyStr = null;
-        $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
-        array_key_exists("difficulty_dex", $obstacle) ? $difficultyDex = $obstacle["difficulty_dex"] : $difficultyDex = null;
-        $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
         $difficulties = [
-            'intelligence' => $difficultyInt,
-            'strength' => $difficultyStr,
-            'dexterity' => $difficultyDex
+            'intelligence' => $this->nullKeyValue("difficulty_int", $obstacle),
+            'strength' => $this->nullKeyValue("difficulty_str", $obstacle),
+            'dexterity' => $this->nullKeyValue("difficulty_dex", $obstacle)
         ];
         $costRewards = [
             'time' => $obstacle['cost_reward_time'],
@@ -216,5 +210,24 @@ class Factory
             "difficulties" => $difficulties,
             "costRewards" => $costRewards
         ];
+    }
+
+    /**
+     * Returns null if key doesnt exists or if value is null, else intvals the value
+     * @param string $key Key
+     * @param array<mixed> $arr Array
+     * @return ?int
+     */
+    private function nullKeyValue($key, $arr)
+    {
+        if (!array_key_exists($key, $arr)) {
+            return null;
+        }
+        
+        if ($arr[$key] === null) {
+            return null;
+        }
+        
+        return intval($arr[$key]);
     }
 }

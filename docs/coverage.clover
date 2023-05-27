@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685213789">
-  <project timestamp="1685213789">
+<coverage generated="1685214750">
+  <project timestamp="1685214750">
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Game/CardCollectionAbstract.php">
       <class name="App\Game\CardCollectionAbstract" namespace="global">
         <metrics complexity="18" methods="12" coveredmethods="12" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="35" coveredelements="35"/>
@@ -625,7 +625,7 @@
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Roadlike/Factory.php">
       <class name="App\Roadlike\Factory" namespace="global">
-        <metrics complexity="24" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="97" coveredstatements="94" elements="104" coveredelements="99"/>
+        <metrics complexity="21" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="96" coveredstatements="92" elements="104" coveredelements="97"/>
       </class>
       <line num="20" type="method" name="buildManager" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="22" type="stmt" count="1"/>
@@ -700,7 +700,7 @@
       <line num="172" type="stmt" count="1"/>
       <line num="173" type="stmt" count="1"/>
       <line num="178" type="stmt" count="1"/>
-      <line num="186" type="method" name="arrangeObstacleData" visibility="private" complexity="7" crap="7" count="2"/>
+      <line num="186" type="method" name="arrangeObstacleData" visibility="private" complexity="1" crap="1" count="2"/>
       <line num="188" type="stmt" count="2"/>
       <line num="189" type="stmt" count="2"/>
       <line num="190" type="stmt" count="2"/>
@@ -719,19 +719,19 @@
       <line num="203" type="stmt" count="2"/>
       <line num="204" type="stmt" count="2"/>
       <line num="205" type="stmt" count="2"/>
-      <line num="206" type="stmt" count="2"/>
       <line num="207" type="stmt" count="2"/>
       <line num="208" type="stmt" count="2"/>
       <line num="209" type="stmt" count="2"/>
       <line num="210" type="stmt" count="2"/>
       <line num="211" type="stmt" count="2"/>
-      <line num="213" type="stmt" count="2"/>
-      <line num="214" type="stmt" count="2"/>
-      <line num="215" type="stmt" count="2"/>
-      <line num="216" type="stmt" count="2"/>
-      <line num="217" type="stmt" count="2"/>
-      <line num="218" type="stmt" count="2"/>
-      <metrics loc="221" ncloc="170" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="97" coveredstatements="94" elements="104" coveredelements="99"/>
+      <line num="212" type="stmt" count="2"/>
+      <line num="221" type="method" name="nullKeyValue" visibility="private" complexity="3" crap="3.07" count="2"/>
+      <line num="223" type="stmt" count="2"/>
+      <line num="224" type="stmt" count="0"/>
+      <line num="227" type="stmt" count="2"/>
+      <line num="228" type="stmt" count="2"/>
+      <line num="231" type="stmt" count="2"/>
+      <metrics loc="234" ncloc="177" classes="1" methods="8" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="96" coveredstatements="92" elements="104" coveredelements="97"/>
     </file>
     <file name="/home/missivaeak/dbwebb-kurser/mvc/me/report/src/Roadlike/Manager.php">
       <class name="App\Roadlike\Manager" namespace="global">
@@ -1096,6 +1096,6 @@
       <line num="59" type="stmt" count="1"/>
       <metrics loc="62" ncloc="39" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="11" coveredelements="11"/>
     </file>
-    <metrics files="20" loc="2522" ncloc="2042" classes="18" methods="155" coveredmethods="149" conditionals="0" coveredconditionals="0" statements="823" coveredstatements="816" elements="978" coveredelements="965"/>
+    <metrics files="20" loc="2535" ncloc="2049" classes="18" methods="156" coveredmethods="149" conditionals="0" coveredconditionals="0" statements="822" coveredstatements="814" elements="978" coveredelements="963"/>
   </project>
 </coverage>
