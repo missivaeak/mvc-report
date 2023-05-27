@@ -9,7 +9,7 @@ use App\Roadlike\Crossroads;
 class Manager
 {
     /** @var int Base time */
-    const BASETIME = 100;
+    public const BASETIME = 100;
 
     /** @var int Start time */
     private int $startingTime;
@@ -34,7 +34,7 @@ class Manager
      */
     public function __construct(
         Challenger $challenger,
-        Road $journey, 
+        Road $journey,
         int $time=self::BASETIME
     ) {
         $this->challenger = $challenger;
@@ -287,7 +287,8 @@ class Manager
      * @param int $number Number to check
      * @return int returns -1, 0 or 1
      */
-    private function sign($number) {
+    private function sign($number)
+    {
         return ($number > 0) - ($number < 0);
     }
 }

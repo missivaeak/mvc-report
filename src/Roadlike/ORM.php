@@ -48,7 +48,7 @@ class ORM
      */
     public function addTemplate(string $name): array
     {
-        
+
         $template = new TemplateEntity();
         $template->setName($name);
         $this->entityManager->persist($template);
@@ -115,7 +115,8 @@ class ORM
      * @param array{name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int} $o Array with obstacle data to add
      * @return array{status: string, obstacle_added: string}
      */
-    public function addObstacle(array $o): array {
+    public function addObstacle(array $o): array
+    {
         $obstacle = new ObstacleEntity();
 
         $obstacle->setName($o["name"]);
@@ -186,7 +187,8 @@ class ORM
      * @param array{player: string, challenger: string, distance: int} $p Array with player data to add
      * @return array{status: string, leaderboard_entry_new: string}
      */
-    public function addLeader(array $p): array {
+    public function addLeader(array $p): array
+    {
         $leader = new LeaderboardEntity();
 
         $leader->setPlayer($p["player"]);

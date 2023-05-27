@@ -128,7 +128,7 @@ class Obstacle
     {
         if (array_key_exists($stat, $difficulties)) {
             // setting difficulty to if it's less than 1, as a sanity check
-            $difficulty = $difficulties[$stat] < 1 ? 1: $difficulties[$stat];
+            $difficulty = $difficulties[$stat] < 1 ? 1 : $difficulties[$stat];
             $statValue = $stats[$stat];
             $factor = $statValue / $difficulty;
 

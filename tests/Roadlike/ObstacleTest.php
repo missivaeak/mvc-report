@@ -98,7 +98,7 @@ final class ObstacleTest extends TestCase
         $this->assertEquals("beskrivning", $this->obstacleOne->getDescription());
     }
 
-    /** 
+    /**
      * Test an attempt at the obstacle with an unlucky challenger
      */
     public function testAttemptUnlucky(): void
@@ -132,7 +132,7 @@ final class ObstacleTest extends TestCase
         $this->assertFalse($resultTwo["lucky"]);
     }
 
-    /** 
+    /**
      * Test an attempt at the obstacle with a lucky challenger
      * that the result deltas match expected values and that lucky is
      * true if there were stat tests, and false if there were not

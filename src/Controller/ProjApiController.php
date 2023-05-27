@@ -25,25 +25,32 @@ class ProjApiController extends AbstractController
         if ($request->getMethod() === "GET") {
             $data = $orm->getAllObstacles();
         } elseif ($request->getMethod() === "POST") {
+            // intval these numbers but keep null
+            $difficultyInt = $request->request->get("difficulty_int");
+            $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
+            $difficultyStr = $request->request->get("difficulty_str");
+            $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
+            $difficultyDex = $request->request->get("difficulty_dex");
+            $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
             $obstacle = [
-                'name' => $request->request->get("name"),
-                'description' => $request->request->get("description"),
-                'difficultyInt' => $request->request->get("difficulty_int"),
-                'difficultyStr' => $request->request->get("difficulty_str"),
-                'difficultyDex' => $request->request->get("difficulty_dex"),
-                'costRewardTime' => $request->request->get("cost_reward_time"),
-                'costRewardHealth' => $request->request->get("cost_reward_health"),
-                'costRewardStamina' => $request->request->get("cost_reward_stamina"),
-                'costRewardInt' => $request->request->get("cost_reward_int"),
-                'costRewardStr' => $request->request->get("cost_reward_str"),
-                'costRewardDex' => $request->request->get("cost_reward_dex"),
-                'costRewardLck' => $request->request->get("cost_reward_lck"),
-                'costRewardSpd' => $request->request->get("cost_reward_spd"),
-                'costRewardCon' => $request->request->get("cost_reward_con")
+                'name' => strval($request->request->get("name")),
+                'description' => strval($request->request->get("description")),
+                'difficulty_int' => $difficultyInt,
+                'difficulty_str' => $difficultyStr,
+                'difficulty_dex' => $difficultyDex,
+                'cost_reward_time' => intval($request->request->get("cost_reward_time")),
+                'cost_reward_health' => intval($request->request->get("cost_reward_health")),
+                'cost_reward_stamina' => intval($request->request->get("cost_reward_stamina")),
+                'cost_reward_int' => intval($request->request->get("cost_reward_int")),
+                'cost_reward_str' => intval($request->request->get("cost_reward_str")),
+                'cost_reward_dex' => intval($request->request->get("cost_reward_dex")),
+                'cost_reward_lck' => intval($request->request->get("cost_reward_lck")),
+                'cost_reward_spd' => intval($request->request->get("cost_reward_spd")),
+                'cost_reward_con' => intval($request->request->get("cost_reward_con"))
                 ];
             $data = $orm->addObstacle($obstacle);
         } elseif ($request->getMethod() === "DELETE") {
-            $id = $request->request->get('id');
+            $id = intval($request->request->get('id'));
             $data = $orm->delObstacle($id);
         }
 

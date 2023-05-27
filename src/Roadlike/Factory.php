@@ -13,7 +13,7 @@ class Factory
 {
     /**
      * Builds a manager
-     * 
+     *
      * @param Challenger $challenger A challenger object to participate in the game
      * @return Manager
      */
@@ -27,7 +27,7 @@ class Factory
 
     /**
      * Builds a draft of challengers
-     * 
+     *
      * @param int $amount Amount of challengers in the draft
      * @return array<Challenger>
      */
@@ -47,7 +47,7 @@ class Factory
 
     /**
      * Returns random obstacle objects from an array of obstacle data
-     * 
+     *
      * @param array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $obstacleData Obstacle data from the database
      * @param int $amount Amount of obstacles to generate
      * @return array<Obstacle>
@@ -85,7 +85,7 @@ class Factory
 
     /**
      * Builds a crossroads
-     * 
+     *
      * @param array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $repository ORM Obstacle repository
      * @param int $min Minimum number of paths
      * @param int $max Maximum number of paths
@@ -111,7 +111,7 @@ class Factory
 
     /**
      * Gets a random shape for a road
-     * 
+     *
      * @param int $min Minimum number of obstacles
      * @param int $max Max number of obstacles
      * @return array{length: int, obstacles: int}
@@ -135,7 +135,7 @@ class Factory
 
     /**
      * Returns a random stat distribution
-     * 
+     *
      * @return array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int}
      */
     private function randomStatDistribution(): array

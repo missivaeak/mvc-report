@@ -12,6 +12,7 @@ use PHPUnit\Framework\MockObject;
  */
 final class FactoryTest extends TestCase
 {
+    /** @var array<array{id: int, name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}> */
     private array $obstacleData;
 
     /**
