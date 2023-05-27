@@ -20,7 +20,7 @@ class Obstacle
     /** @var string Obstacle description */
     private string $description;
 
-    /** @var array{intelligence?: int, strength?: int, dexterity?: int} Difficulty of the obstacle as an array keyed by stats to test */
+    /** @var array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} Difficulty of the obstacle as an array keyed by stats to test */
     private array $difficulties;
 
     /** @var array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} Costs and rewards for the obstacle as an array keyed by resource */
@@ -29,7 +29,7 @@ class Obstacle
     /**
      * @param string $name Name of the obstacle
      * @param string $description Description of the obstacle
-     * @param array{intelligence?: int, strength?: int, dexterity?: int} $difficulties Difficulty for the obstacle
+     * @param array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} $difficulties Difficulty for the obstacle
      * @param array{time: int, health: int, stamina: int, intelligence: int, strength: int, dexterity: int, luck: int, speed: int, constitution: int} $costRewards Costs and rewards for the obstacle
      */
     public function __construct(string $name, string $description, array $difficulties, array $costRewards)
@@ -52,7 +52,7 @@ class Obstacle
         return $this->description;
     }
 
-    /** @return array{intelligence?: int, strength?: int, dexterity?: int} Gets obstacle difficulty */
+    /** @return array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} Gets obstacle difficulty */
     public function getDifficulties(): array
     {
         return $this->difficulties;
@@ -120,7 +120,7 @@ class Obstacle
     /**
      * Tests the obstacle's difficulty for a given stat
      * @param string $stat
-     * @param array{intelligence?: int, strength?: int, dexterity?: int} $difficulties
+     * @param array{intelligence?: ?int, strength?: ?int, dexterity?: ?int} $difficulties
      * @param array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats
      * @return float|null Success factor for the test, always positive and non-zero
      */

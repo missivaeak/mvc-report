@@ -28,7 +28,7 @@ class Factory
     /**
      * Builds a draft of challengers
      *
-     * @param array<array{name: string}> $templates Templates from the database
+     * @param array<array{name?: ?string}> $templates Templates from the database
      * @param int $draftSize Amount of challengers in the draft
      * @return array<Challenger>
      */
@@ -37,11 +37,22 @@ class Factory
         $draft = [];
         $keys = array_rand($templates, $draftSize);
 
+        if (!(gettype($keys) === "array")) {
+            return $draft;
+        }
+
         foreach ($keys as $key) {
+            if (
+                !array_key_exists("name", $templates[$key])
+                || $templates[$key]["name"] === null
+            ) {
+                continue;
+            }
             $name = $templates[$key]["name"];
             $stats = $this->randomStatDistribution();
             $draft[] = new Challenger($name, $stats);
         }
+
 
         return $draft;
     }
@@ -49,7 +60,7 @@ class Factory
     /**
      * Returns random obstacle objects from an array of obstacle data
      *
-     * @param array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $obstacleData Obstacle data from the database
+     * @param array<array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}> $obstaclesData Obstacle data from the database
      * @param int $amount Amount of obstacles to generate
      * @return array<Obstacle>
      */
@@ -58,25 +69,35 @@ class Factory
         $obstacles = [];
         $keys = array_rand($obstaclesData, $amount);
 
+        if (!(gettype($keys) === "array")) {
+            return $obstacles;
+        }
+
         foreach ($keys as $key) {
-            $obstacle = $obstaclesData[$key];
-            $name = $obstacle["name"];
-            $description = $obstacle["description"];
+            $o = $obstaclesData[$key];
+            $name = $o["name"];
+            $description = $o["description"];
+            array_key_exists("difficulty_int", $o) ? $difficultyInt = $o["difficulty_int"] : $difficultyInt = null;
+            $difficultyInt = $difficultyInt === null ? null : intval($difficultyInt);
+            array_key_exists("difficulty_str", $o) ? $difficultyStr = $o["difficulty_str"] : $difficultyStr = null;
+            $difficultyStr = $difficultyStr === null ? null : intval($difficultyStr);
+            array_key_exists("difficulty_dex", $o) ? $difficultyDex = $o["difficulty_dex"] : $difficultyDex = null;
+            $difficultyDex = $difficultyDex === null ? null : intval($difficultyInt);
             $difficulties = [
-                'intelligence' => $obstacle['difficulty_int'],
-                'strength' => $obstacle['difficulty_str'],
-                'dexterity' => $obstacle['difficulty_dex']
+                'intelligence' => $difficultyInt,
+                'strength' => $difficultyStr,
+                'dexterity' => $difficultyDex
             ];
             $costRewards = [
-                'time' => $obstacle['cost_reward_time'],
-                'health' => $obstacle['cost_reward_health'],
-                'stamina' => $obstacle['cost_reward_stamina'],
-                'intelligence' => $obstacle['cost_reward_int'],
-                'strength' => $obstacle['cost_reward_str'],
-                'dexterity' => $obstacle['cost_reward_dex'],
-                'luck' => $obstacle['cost_reward_lck'],
-                'speed' => $obstacle['cost_reward_spd'],
-                'constitution' => $obstacle['cost_reward_con']
+                'time' => $o['cost_reward_time'],
+                'health' => $o['cost_reward_health'],
+                'stamina' => $o['cost_reward_stamina'],
+                'intelligence' => $o['cost_reward_int'],
+                'strength' => $o['cost_reward_str'],
+                'dexterity' => $o['cost_reward_dex'],
+                'luck' => $o['cost_reward_lck'],
+                'speed' => $o['cost_reward_spd'],
+                'constitution' => $o['cost_reward_con']
             ];
             $obstacles[] = new Obstacle($name, $description, $difficulties, $costRewards);
         }
@@ -87,7 +108,7 @@ class Factory
     /**
      * Builds a crossroads
      *
-     * @param array{id: ?int, name: ?int, description: ?int, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int} $repository ORM Obstacle repository
+     * @param array<array{name: string, description: string, difficulty_int?: ?int, difficulty_str?: ?int, difficulty_dex?: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}> $obstacleData Obstacle data from database
      * @param int $min Minimum number of paths
      * @param int $max Maximum number of paths
      * @return Crossroads
@@ -170,6 +191,8 @@ class Factory
             $pointPool -= 1;
         }
 
+        /* phpstan doesnt understand this function, overriding */
+        /** @var array{intelligence: int, strength: int, dexterity: int, speed: int, constitution: int, luck: int} $stats */
         return $stats;
     }
 }

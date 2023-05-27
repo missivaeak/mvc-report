@@ -127,9 +127,9 @@ class ProjController extends AbstractController
         if ($request->getMethod() === "POST") {
             $orm = new ORM($entityManager);
             $data = [
-                "player" => $request->request->get('player'),
-                "challenger" => $game->getChallenger()->getName(),
-                "distance" => $game->getJourney()->getLength()
+                "player" => strval($request->request->get('player')),
+                "challenger" => strval($game->getChallenger()->getName()),
+                "distance" => intval($game->getJourney()->getLength())
             ];
             $orm->addLeader($data);
             $session->remove('game');

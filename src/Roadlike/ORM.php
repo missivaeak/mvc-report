@@ -80,7 +80,7 @@ class ORM
 
     /**
      * Gets all obstacles in the database
-     * @return array<array{id: ?int, name: ?string, description: ?string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: ?int, cost_reward_health: ?int, cost_reward_stamina: ?int, cost_reward_int: ?int, cost_reward_str: ?int, cost_reward_dex: ?int, cost_reward_lck: ?int, cost_reward_spd: ?int, cost_reward_con: ?int}>
+     * @return array<array{id: int, name: string, description: string, difficulty_int: ?int, difficulty_str: ?int, difficulty_dex: ?int, cost_reward_time: int, cost_reward_health: int, cost_reward_stamina: int, cost_reward_int: int, cost_reward_str: int, cost_reward_dex: int, cost_reward_lck: int, cost_reward_spd: int, cost_reward_con: int}>
      */
     public function getAllObstacles(): array
     {
@@ -89,21 +89,21 @@ class ORM
         $obstacles = $repository->findAll();
         foreach ($obstacles as $obstacle) {
             $data[] = [
-                'id' => $obstacle->getId() ?? null,
-                'name' => $obstacle->getName() ?? null,
-                'description' => $obstacle->getDescription() ?? null,
-                'difficulty_int' => $obstacle->getDifficultyInt() ?? null,
-                'difficulty_str' => $obstacle->getDifficultyStr() ?? null,
-                'difficulty_dex' => $obstacle->getDifficultyDex() ?? null,
-                'cost_reward_time' => $obstacle->getCostRewardTime() ?? null,
-                'cost_reward_health' => $obstacle->getCostRewardHealth() ?? null,
-                'cost_reward_stamina' => $obstacle->getCostRewardStamina() ?? null,
-                'cost_reward_int' => $obstacle->getCostRewardInt() ?? null,
-                'cost_reward_str' => $obstacle->getCostRewardStr() ?? null,
-                'cost_reward_dex' => $obstacle->getCostRewardDex() ?? null,
-                'cost_reward_lck' => $obstacle->getCostRewardLck() ?? null,
-                'cost_reward_spd' => $obstacle->getCostRewardSpd() ?? null,
-                'cost_reward_con' => $obstacle->getCostRewardCon() ?? null
+                'id' => $obstacle->getId() ?? 0,
+                'name' => $obstacle->getName() ?? "",
+                'description' => $obstacle->getDescription() ?? "",
+                'difficulty_int' => $obstacle->getDifficultyInt(),
+                'difficulty_str' => $obstacle->getDifficultyStr(),
+                'difficulty_dex' => $obstacle->getDifficultyDex(),
+                'cost_reward_time' => $obstacle->getCostRewardTime() ?? 0,
+                'cost_reward_health' => $obstacle->getCostRewardHealth() ?? 0,
+                'cost_reward_stamina' => $obstacle->getCostRewardStamina() ?? 0,
+                'cost_reward_int' => $obstacle->getCostRewardInt() ?? 0,
+                'cost_reward_str' => $obstacle->getCostRewardStr() ?? 0,
+                'cost_reward_dex' => $obstacle->getCostRewardDex() ?? 0,
+                'cost_reward_lck' => $obstacle->getCostRewardLck() ?? 0,
+                'cost_reward_spd' => $obstacle->getCostRewardSpd() ?? 0,
+                'cost_reward_con' => $obstacle->getCostRewardCon() ?? 0
             ];
         }
 

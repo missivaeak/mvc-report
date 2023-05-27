@@ -83,10 +83,10 @@ class ProjApiController extends AbstractController
         if ($request->getMethod() === "GET") {
             $data = $orm->getAllTemplates();
         } elseif ($request->getMethod() === "POST") {
-            $name = $request->request->get("name");
+            $name = strval($request->request->get("name"));
             $data = $orm->addTemplate($name);
         } elseif ($request->getMethod() === "DELETE") {
-            $id = $request->request->get('id');
+            $id = intval($request->request->get('id'));
             $data = $orm->delTemplate($id);
         }
 
@@ -109,13 +109,13 @@ class ProjApiController extends AbstractController
             $data = $orm->getAllLeaders();
         } elseif ($request->getMethod() === "POST") {
             $leader = [
-                "player" => $request->request->get("player"),
-                "challenger" => $request->request->get("challenger"),
-                "distance" => $request->request->get("distance")
+                "player" => strval($request->request->get("player")),
+                "challenger" => strval($request->request->get("challenger")),
+                "distance" => intval($request->request->get("distance"))
             ];
             $data = $orm->addLeader($leader);
         } elseif ($request->getMethod() === "DELETE") {
-            $id = $request->request->get('id');
+            $id = intval($request->request->get('id'));
             $data = $orm->delLeader($id);
         }
 
