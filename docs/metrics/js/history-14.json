@@ -24,8 +24,8 @@
         "classesPerPackage": 5.22
     },
     "sum": {
-        "loc": 3388,
-        "cloc": 745,
+        "loc": 3387,
+        "cloc": 744,
         "lloc": 2647,
         "nbMethods": 198,
         "nbClasses": 45,

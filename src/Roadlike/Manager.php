@@ -257,6 +257,7 @@ class Manager
     private function sign($number)
     {
         $sign = ($number > 0) - ($number < 0);
+        /** @phpstan-ignore-next-line Phpstan does not understand $sign at this point */
         if ($sign === -1) {
             return "NEG";
         } elseif ($sign === 1) {

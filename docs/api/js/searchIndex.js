@@ -1566,25 +1566,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Controller-ProjApiController.html"
         },                {
-            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjObstacle\u0028\u0029",
-            "name": "apiProjObstacle",
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjObstacleGet\u0028\u0029",
+            "name": "apiProjObstacleGet",
             "summary": "",
-            "url": "classes/App-Controller-ProjApiController.html#method_apiProjObstacle"
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjObstacleGet"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjObstaclePost\u0028\u0029",
+            "name": "apiProjObstaclePost",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjObstaclePost"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjObstacleDelete\u0028\u0029",
+            "name": "apiProjObstacleDelete",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjObstacleDelete"
         },                {
             "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AarrangeObstaclePostData\u0028\u0029",
             "name": "arrangeObstaclePostData",
             "summary": "",
             "url": "classes/App-Controller-ProjApiController.html#method_arrangeObstaclePostData"
         },                {
-            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjTemplate\u0028\u0029",
-            "name": "apiProjTemplate",
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjTemplateGet\u0028\u0029",
+            "name": "apiProjTemplateGet",
             "summary": "",
-            "url": "classes/App-Controller-ProjApiController.html#method_apiProjTemplate"
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjTemplateGet"
         },                {
-            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjLeaderboard\u0028\u0029",
-            "name": "apiProjLeaderboard",
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjTemplatePost\u0028\u0029",
+            "name": "apiProjTemplatePost",
             "summary": "",
-            "url": "classes/App-Controller-ProjApiController.html#method_apiProjLeaderboard"
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjTemplatePost"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjTemplateDelete\u0028\u0029",
+            "name": "apiProjTemplateDelete",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjTemplateDelete"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjLeaderboardGet\u0028\u0029",
+            "name": "apiProjLeaderboardGet",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjLeaderboardGet"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjLeaderboardPost\u0028\u0029",
+            "name": "apiProjLeaderboardPost",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjLeaderboardPost"
+        },                {
+            "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjLeaderboardDelete\u0028\u0029",
+            "name": "apiProjLeaderboardDelete",
+            "summary": "",
+            "url": "classes/App-Controller-ProjApiController.html#method_apiProjLeaderboardDelete"
         },                {
             "fqsen": "\\App\\Controller\\ProjApiController\u003A\u003AapiProjDraft\u0028\u0029",
             "name": "apiProjDraft",
@@ -2006,6 +2036,11 @@ Search.appendIndex(
             "summary": "Arranges\u0020obstacle\u0020data\u0020to\u0020build\u0020obstacles\u0020from",
             "url": "classes/App-Roadlike-Factory.html#method_arrangeObstacleData"
         },                {
+            "fqsen": "\\App\\Roadlike\\Factory\u003A\u003AnullKeyValue\u0028\u0029",
+            "name": "nullKeyValue",
+            "summary": "Returns\u0020null\u0020if\u0020key\u0020doesnt\u0020exists\u0020or\u0020if\u0020value\u0020is\u0020null,\u0020else\u0020intvals\u0020the\u0020value",
+            "url": "classes/App-Roadlike-Factory.html#method_nullKeyValue"
+        },                {
             "fqsen": "\\App\\Roadlike\\Manager",
             "name": "Manager",
             "summary": "",
@@ -2073,7 +2108,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AbuildResourceString\u0028\u0029",
             "name": "buildResourceString",
-            "summary": "Makes\u0020a\u0020string\u0020out\u0020of\u0020a\u0020resources\u0020change",
+            "summary": "Makes\u0020a\u0020string\u0020out\u0020of\u0020a\u0020resource\u0020change",
             "url": "classes/App-Roadlike-Manager.html#method_buildResourceString"
         },                {
             "fqsen": "\\App\\Roadlike\\Manager\u003A\u003AbuildStatString\u0028\u0029",
