@@ -22,7 +22,7 @@ Om du får fel med composer så kan du behöva ställa in följande global `APP_
 
 ## Populera databasen
 
-För att spelet *Roadlike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
+För att spelet *RoadLike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
 
 ### Alternativ 1: Förkonfigurerad data
 
@@ -42,7 +42,7 @@ Använd sidans API för att populera databasen.
 GET /api/proj/obstacle
 ```
 
-Hämta alla obstacles. Obstacle är hinder i spelet som spelaren behöver ta sig genom.
+Hämta alla obstacles. Obstacle är hinder i spelet som spelarens utmanare behöver ta sig genom.
 
 ```
 POST /api/proj/obstacle
