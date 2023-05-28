@@ -49,23 +49,22 @@ Hämta alla hinder.
 POST /api/proj/obstacle
 ```
 
-Följade parametrar behövs i bodyn
-> name: Namn på hindred
-> description: Beskrivning
-> cost_reward_time: Förändring i tid
-> cost_reward_health: Förändring i hälsa
-> cost_reward_stamina: Förändring i energi
-> cost_reward_int: Förändring i intelligens
-> cost_reward_str: Förändring i styrka
-> cost_reward_dex: Förändring i smidighet
-> cost_reward_lck: Förändring i tur
-> cost_reward_spd: Förändring i hastighet
-> cost_reward_con: Förändring i uthållighet
-
-Följade parametrar är valbara
-> difficulty_int: Svårighetsfaktor för intelligens
-> difficulty_str: Svårighetsfaktor för styrka
-> difficulty_dex: Svårighetsfaktor för smidighet
+* Parametrar i body
+  * name: Namn på hindred
+  * description: Beskrivning
+  * cost_reward_time: Förändring i tid
+  * cost_reward_health: Förändring i hälsa
+  * cost_reward_stamina: Förändring i energi
+  * cost_reward_int: Förändring i intelligens
+  * cost_reward_str: Förändring i styrka
+  * cost_reward_dex: Förändring i smidighet
+  * cost_reward_lck: Förändring i tur
+  * cost_reward_spd: Förändring i hastighet
+  * cost_reward_con: Förändring i uthållighet
+* Valbara parametrar
+  * difficulty_int: Svårighetsfaktor för intelligens
+  * difficulty_str: Svårighetsfaktor för styrka
+  * difficulty_dex: Svårighetsfaktor för smidighet
 
 aoeaoe
 
