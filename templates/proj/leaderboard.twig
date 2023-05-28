@@ -24,6 +24,9 @@
                     <td>{{ leader["distance"] }}m</td>
                 </tr>
             {% endfor %}
+            {% if leaderboard|length == 0 %}
+                <tr><td colspan=4>Inga spelare på topplistan än.</td></tr>
+            {% endif %}
         </tbody>
     </table>
     <form class="continue hoverable" action="{{ path('proj_game_new') }}" onclick="this.submit();">
