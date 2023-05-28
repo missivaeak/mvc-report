@@ -24,6 +24,12 @@ li {
     // }
 }
 
+code {
+    font-family: monospace;
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
 h1 {
     font-size: 4em;
     margin-bottom: vars.$magic-number * 2;

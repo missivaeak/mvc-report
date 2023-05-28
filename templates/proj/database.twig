@@ -4,7 +4,34 @@
 
 {% block body %}
     <h2>Om databasen</h2>
+
     <p>
-        aoeaoeaoe
+        Databasen för RoadLike är en sqlite3-databas med tre tabeller.
     </p>
+
+    <h3>Schema</h3>
+
+    <img src="{{ asset('img/er.png') }}" alt="ER-diagramm över databasens tabeller för RoadLike">
+
+    <h4>Leaderboard</h4>
+
+    <p>Leaderboard innehåller topplistan, med spelarens namn, namnet på utmanaren i spelomgången och hur långt spelaren kom.</p>
+
+    <h4>Template</h4>
+
+    <p>Template innehåller i nuläget enbart namn, men tanken var att det skulle finnas möjlighet att lägga till bilder i framtida versioner. Även om det kan verka lite överflödigt att bara ha namn i en databas så är det rimligt att spara en namnlista i just en databas. Det är data annars skulle behöva hårdkodas någonstans, och med en databas så är det möjligt att redigera namnen programmatiskt, som vi gör t.ex. med API:t.</p>
+
+    <h4>Obstacle</h4>
+
+    <p>Obstacle-tabellen innehåller spelets hinder. Namn och beskrivning är självförklarande.</p>
+
+    <p>Fälten som heter <code>cost_reward_</code> beskriver hur värden bör förändras när en utmanare tar sig genom hindret. Värde <code>0</code> betyder ingen förändring, positiva värden är ökning och negativa värden är en minskning. Detta är en faktor som förändringarna beräknas på, så ett värde <code>10</code> i <code>cost_reward_time</code> kan betyda att spelaren får exempelvis, 0, 2 eller 20 tid, helt beroende på ytterligare faktorer.</p>
+
+    <p>Fälten som börjar med <code>difficulty_</code> beskriver hindrets svårighetsgrad i respektive egenskaper. Detta fält är nullable och null betyder att hindrets beräkningar inte beaktar egenskapen, ett hinder helt utan difficulties har därför inga färdighetstest knutna till sig. Ett hinder med alla difficulties <code>0</code> provar utmanarens egenskaper men är extremt enkelt.</p>
+
+    <h3>Utvärdering</h3>
+
+    <p>Jag gillar sqlite3 väldigt mycket, det känns behändigt att arbeta med filer och föredrar det när det är ett alternativ. Att använda doctrine med sqlite3 är också väldigt smidigt.</p>
+
+    <p>Som teknik är jag inte helt nöjd med ORM, det känns som ett krångligt sätt att arbeta med databaser. Särskilt då jag ändå gjorde en egen klass vid namn ORM som hade i uppgift att kalla på metoder i entities och repositories. Det känns som en teknik som försöker bygga bort en mellanhand, men jag känner mig ändå tvungen att göra den mellanhanden ändå. Dessutom så hade doctrines entities nullbara returns från tabeller med inte-nullbara fält, det orsakade mycket krångel att arbeta runt.</p>
 {% endblock %}
