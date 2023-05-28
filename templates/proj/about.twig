@@ -1,11 +1,13 @@
 {% extends "proj/partials/base.twig" %}
 
-{#% block header %}{{ include('partials/header.html.twig', {"big": true}) }}{% endblock %#}
-
 {% block view %}about{% endblock %}
 
 {% block body %}
+    <h2>Om</h2>
     <p>
-        about
+        Detta projektet är ett spel, av typen Roguelike, som går ut på att ta sig så långt som möjligt på en väg. Användaren börjar med att välja en utmanare och sedan bestämmer vilken väg utmanaren ska ta i olika vägskäl.
+    </p>
+    <p>
+        Dokumentation om appens databas hittar du <a href="{{ path('proj_about_database') }}">här</a>.
     </p>
 {% endblock %}

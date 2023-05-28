@@ -1,0 +1,96 @@
+{% extends "proj/partials/base.twig" %}
+
+{% block view %}api{% endblock %}
+
+{% block body %}
+    <h2>API</h2>
+    <div class="contents">
+        <p>
+            Spelet stödjer ett API för att ändra spelupplevelsen. Om du vill ha nya namn på utmanare eller nya, svårare eller lättare, hinder att stöta på när du spelar. Dessutom kan topplistan redigeras och utmanargenerering testas med API:et.
+        </p>
+
+        <h3>GET <a href="{{ path('api_proj_obstacle_get') }}">/api/proj/obstacle</a></h3>
+
+        <p>Hämta alla obstacles. Obstacle är hinder i spelet som spelarens utmanare behöver ta sig genom.</p>
+
+        <h3>POST /api/proj/obstacle</h3>
+
+        <p>Skapar ett nytt hinder till spelet.</p>
+
+        <ul>
+            <li>Parametrar i body</li>
+            <ul>
+                <li>name: Namn på hindret</li>
+                <li>description: Beskrivning</li>
+                <li>cost_reward_time: Förändring i tid</li>
+                <li>cost_reward_health: Förändring i hälsa</li>
+                <li>cost_reward_stamina: Förändring i energi</li>
+                <li>cost_reward_int: Förändring i intelligens</li>
+                <li>cost_reward_str: Förändring i styrka</li>
+                <li>cost_reward_dex: Förändring i smidighet</li>
+                <li>cost_reward_lck: Förändring i tur</li>
+                <li>cost_reward_spd: Förändring i hastighet</li>
+                <li>cost_reward_con: Förändring i uthållighet</li>
+            </ul>
+            <li>Valbara parametrar</li>
+            <ul>
+                <li>difficulty_int: Svårighetsfaktor för intelligens</li>
+                <li>difficulty_str: Svårighetsfaktor för styrka</li>
+                <li>difficulty_dex: Svårighetsfaktor för smidighet</li>
+            </ul>
+        </ul>
+
+        <h3>DELETE /api/proj/obstacle</h3>
+
+        <p>Ta bort ett obstacle.</p>
+
+        <ul>
+            <li>id: Obstacle id som det är angivet i GET</li>
+        </ul>
+
+        <h3>GET <a href="{{ path('api_proj_template_get') }}">/api/proj/template</a></h3>
+
+        <p>Hämtar alla utmanare-templates. En template är en mall för en utmanare och är underlag för när spelet generar utmanare som spelaren kan välja.</p>
+
+        <h3>POST /api/proj/template</h3>
+
+        <p>Skapar en ny template.</p>
+
+        <ul>
+            <li>name: Namn på utmanaren</li>
+        </ul>
+
+        <h3>DELETE /api/proj/template</h3>
+
+        <ul>
+            <li>id: Template id som det är angivet i GET</li>
+        </ul>
+
+        <h3>GET <a href="{{ path('api_proj_leaderboard_get')}}">/api/proj/leaderboard</a></h3>
+
+        <p>Hämtar alla spelare på topplistan. Med query <a href="{{ path('api_proj_leaderboard_get', {top10: 'true'}) }}">?top10=true</a> så hämtas de 10 högsta värden i fallande ordning istället.</p>
+
+        <h3>POST /api/proj/leaderboard</h3>
+
+        <p>Lägg till ny spelare på topplistan. Följande parametrar behövs i bodyn:</p>
+
+        <ul>
+            <li>player: Spelarens namn</li>
+            <li>challenger: Utmanarens namn</li>
+            <li>distance: Hur långt spelaren kom</li>
+        </ul>
+
+        <h3>DELETE /api/proj/leaderboard</h3>
+
+        <p>Ta bort en spelare ur topplistan.</p>
+
+        <ul>
+            <li>id: Spelar-id som det är angivet i GET</li>
+        </ul>
+
+        <h3>GET <a href="{{ path('api_proj_draft') }}">/api/proj/draft</a></h3>
+
+        <p>Hämtar ett urval av tre slumpmässigt utvalda utmanare.</p>
+    </div>
+
+{% endblock %}

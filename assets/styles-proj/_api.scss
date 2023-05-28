@@ -1,0 +1,12 @@
+@use "vars";
+
+.api .contents {
+    display: flex;
+    flex-flow: column wrap;
+    gap: vars.$magic-number;
+    height: vars.$magic-number*46.1;
+
+    > * {
+        width: 50%;
+    }
+}

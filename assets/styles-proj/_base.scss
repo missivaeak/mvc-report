@@ -15,6 +15,10 @@ body {
     background-color: vars.$color-primary-0;
 }
 
+ul {
+    list-style-position: inside;
+}
+
 .active,
 .hoverable:hover {
     @include animations.jump;

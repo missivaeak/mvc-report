@@ -13,7 +13,8 @@ body {
     font-family: 'Neucha', Helvetica, sans-serif;
 }
 
-p { 
+p,
+li { 
     font-size: vars.$base-font-size;
     color: vars.$color-primary-4;
     font-weight: 600;
