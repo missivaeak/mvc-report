@@ -12,6 +12,7 @@ För att bygga appen på din enhet kan du följa dessa steg.
 
 ```
 git clone git@github.com:missivaeak/mvc-report.git
+cd mvc-report/
 composer install --optimize-autoloader
 php bin/console cache:clear`
 npm install
