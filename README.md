@@ -15,13 +15,14 @@ git clone git@github.com:missivaeak/mvc-report.git
 composer install --optimize-autoloader
 php bin/console cache:clear`
 npm install
+npm build
 ```
 
-Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`
+Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.
 
 ## Populera databasen
 
-För att spelet *Roadlike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
+För att spelet *RoadLike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
 
 ### Alternativ 1: Förkonfigurerad data
 
@@ -37,30 +38,95 @@ Använd sidans API för att populera databasen.
 
 #### obstacle
 
-Obstacle är hinder i spelet.
-
 ```
 GET /api/proj/obstacle
 ```
 
-Hämta alla hinder.
+Hämta alla obstacles. Obstacle är hinder i spelet som spelarens utmanare behöver ta sig genom.
 
 ```
 POST /api/proj/obstacle
 ```
 
-> ```
-test
- ```
+=======
+Skapar ett nytt hinder till spelet.
 
-`DELETE /api/proj/obstacle`
+* Parametrar i body
+  * name: Namn på hindred
+  * description: Beskrivning
+  * cost_reward_time: Förändring i tid
+  * cost_reward_health: Förändring i hälsa
+  * cost_reward_stamina: Förändring i energi
+  * cost_reward_int: Förändring i intelligens
+  * cost_reward_str: Förändring i styrka
+  * cost_reward_dex: Förändring i smidighet
+  * cost_reward_lck: Förändring i tur
+  * cost_reward_spd: Förändring i hastighet
+  * cost_reward_con: Förändring i uthållighet
+* Valbara parametrar
+  * difficulty_int: Svårighetsfaktor för intelligens
+  * difficulty_str: Svårighetsfaktor för styrka
+  * difficulty_dex: Svårighetsfaktor för smidighet
 
-`GET /api/proj/template`
-`POST /api/proj/template`
-`DELETE /api/proj/template`
+```
+DELETE /api/proj/obstacle
+```
 
-`GET /api/proj/leaderboard`
-`POST /api/proj/leaderboard`
-`DELETE /api/proj/leaderboard`
+Ta bort ett obstacle.
 
-`GET /api/proj/draft`
+* id: Obstacle id som det är angivet i GET
+
+#### template
+
+```
+GET /api/proj/template
+```
+
+Hämtar alla utmanare-templates. En template är en mall för en utmanare och är underlag för när spelet generar utmanare som spelaren kan välja.
+
+```
+POST /api/proj/template
+```
+
+Skapar en ny template.
+
+* name: Namn på utmanaren
+
+```
+DELETE /api/proj/template
+```
+
+* id: Template id som det är angivet i GET
+>>>>>>> refs/remotes/origin/main
+
+## Ytterligare API
+
+Förutom API för att populera databasen finns dessa endpoints att använda.
+
+```
+GET /api/proj/leaderboard
+```
+
+Hämtar alla spelare på topplistan. Med query `?top10=true` så hämtas de 10 högsta värden i fallande ordning istället.
+
+```
+POST /api/proj/leaderboard
+```
+
+Lägg till ny spelare på topplistan. Följande parametrar behövs i bodyn:
+* player: Spelarens namn
+* challenger: Utmanarens namn
+* distance: Hur långt spelaren kom
+
+```
+DELETE /api/proj/leaderboard
+```
+
+Ta bort en spelare ur topplistan.
+* id: Spelar-id som det är angivet i GET
+
+```
+GET /api/proj/draft
+```
+
+Hämtar ett urval av tre slumpmässigt utvalda utmanare.
