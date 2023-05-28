@@ -15,25 +15,45 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class ProjApiController extends AbstractController
 {
-    #[Route("/api/proj/obstacle", name: "api_proj_obstacle", methods: ["GET", "POST", "DELETE"])]
-    public function apiProjObstacle(
+    #[Route("/api/proj/obstacle", name: "api_proj_obstacle_get", methods: ["GET"])]
+    public function apiProjObstacleGet(
+        EntityManagerInterface $entityManager
+    ): Response {
+        $orm = new ORM($entityManager);
+        $data = $orm->getAllObstacles();
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/proj/obstacle", name: "api_proj_obstacle_post", methods: ["POST"])]
+    public function apiProjObstaclePost(
         Request $request,
         EntityManagerInterface $entityManager
     ): Response {
         $orm = new ORM($entityManager);
-        $data = [];
-        if ($request->getMethod() === "GET") {
-            $data = $orm->getAllObstacles();
-        } elseif ($request->getMethod() === "POST") {
-            // intval these numbers but keep null
-            $obstacle = $this->arrangeObstaclePostData($request);
+        $obstacle = $this->arrangeObstaclePostData($request);
+        $data = $orm->addObstacle($obstacle);
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
 
-            $data = $orm->addObstacle($obstacle);
-        } elseif ($request->getMethod() === "DELETE") {
-            $id = intval($request->request->get('id'));
-            $data = $orm->delObstacle($id);
-        }
+        return $response;
+    }
 
+    #[Route("/api/proj/obstacle", name: "api_proj_obstacle_delete", methods: ["DELETE"])]
+    public function apiProjObstacleDelete(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $orm = new ORM($entityManager);
+        $id = intval($request->request->get('id'));
+        $data = $orm->delObstacle($id);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
@@ -73,22 +93,65 @@ class ProjApiController extends AbstractController
         return $data;
     }
 
-    #[Route("/api/proj/template", name: "api_proj_template", methods: ["GET", "POST", "DELETE"])]
-    public function apiProjTemplate(
+    #[Route("/api/proj/template", name: "api_proj_template_get", methods: ["GET"])]
+    public function apiProjTemplateGet(
+        EntityManagerInterface $entityManager,
+    ): Response {
+        $orm = new ORM($entityManager);
+        $data = $orm->getAllTemplates();
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/proj/template", name: "api_proj_template_post", methods: ["POST"])]
+    public function apiProjTemplatePost(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $orm = new ORM($entityManager);
+        $name = strval($request->request->get("name"));
+        $data = $orm->addTemplate($name);
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/proj/template", name: "api_proj_template_delete", methods: ["DELETE"])]
+    public function apiProjTemplateDelete(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $orm = new ORM($entityManager);
+        $id = intval($request->request->get('id'));
+        $data = $orm->delTemplate($id);
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/proj/leaderboard", name: "api_proj_leaderboard_get", methods: ["GET"])]
+    public function apiProjLeaderboardGet(
         EntityManagerInterface $entityManager,
         Request $request
     ): Response {
         $orm = new ORM($entityManager);
         $data = [];
-        if ($request->getMethod() === "GET") {
-            $data = $orm->getAllTemplates();
-        } elseif ($request->getMethod() === "POST") {
-            $name = strval($request->request->get("name"));
-            $data = $orm->addTemplate($name);
-        } elseif ($request->getMethod() === "DELETE") {
-            $id = intval($request->request->get('id'));
-            $data = $orm->delTemplate($id);
-        }
+
+        if ($request->query->get('top10') === "true" ) {
+            $data = $orm->getLeaderboard();
+        } else {
+            $data = $orm->getAllLeaders();
+        } 
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -98,29 +161,34 @@ class ProjApiController extends AbstractController
         return $response;
     }
 
-    #[Route("/api/proj/leaderboard", name: "api_proj_leaderboard", methods: ["GET", "POST", "DELETE"])]
-    public function apiProjLeaderboard(
+    #[Route("/api/proj/leaderboard", name: "api_proj_leaderboard_post", methods: ["POST"])]
+    public function apiProjLeaderboardPost(
         EntityManagerInterface $entityManager,
         Request $request
     ): Response {
         $orm = new ORM($entityManager);
-        $data = [];
-        if ($request->getMethod() === "GET" && $request->query->get('top10') == "true" ) {
-            $data = $orm->getLeaderboard();
-        } elseif ($request->getMethod() === "GET") {
-            $data = $orm->getAllLeaders();
-        } elseif ($request->getMethod() === "POST") {
-            $leader = [
-                "player" => strval($request->request->get("player")),
-                "challenger" => strval($request->request->get("challenger")),
-                "distance" => intval($request->request->get("distance"))
-            ];
-            $data = $orm->addLeader($leader);
-        } elseif ($request->getMethod() === "DELETE") {
-            $id = intval($request->request->get('id'));
-            $data = $orm->delLeader($id);
-        }
+        $leader = [
+            "player" => strval($request->request->get("player")),
+            "challenger" => strval($request->request->get("challenger")),
+            "distance" => intval($request->request->get("distance"))
+        ];
+        $data = $orm->addLeader($leader);
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
 
+        return $response;
+    }
+
+    #[Route("/api/proj/leaderboard", name: "api_proj_leaderboard_delete", methods: ["DELETE"])]
+    public function apiProjLeaderboardDelete(
+        EntityManagerInterface $entityManager,
+        Request $request
+    ): Response {
+        $orm = new ORM($entityManager);
+        $id = intval($request->request->get('id'));
+        $data = $orm->delLeader($id);
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
