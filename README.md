@@ -18,7 +18,7 @@ npm install
 npm build
 ```
 
-Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`
+Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.
 
 ## Populera databasen
 
