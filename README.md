@@ -19,9 +19,8 @@ npm install
 npm build
 ```
 
-Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.t
+Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.
 
-Om du får ett fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write a readonly database* så kan du behöva korrigera rättigheter. Hur du bäst korrigerar rättigheter beror på din miljö, men följande kommando `chmod 677 var/data.db` bör fungera på samtliga UNIX-system. OBS! Detta kan vara en säkerhetsrisk, så tänk dig för.
 
 ## Använda appen
 
@@ -30,6 +29,8 @@ För att använda appen behövs en http-server som levererar `./public/` utåt. 
 ## Populera databasen
 
 För att spelet *RoadLike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
+
+Om du får fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write a readonly database* så kan du behöva korrigera rättigheter för att tillåta att skriva till databasfilen. Hur du bäst korrigerar rättigheter beror på din miljö, men följande kommando `chmod 677 var/data.db` bör fungera på samtliga UNIX-system. OBS! Detta kan vara en säkerhetsrisk, så tänk dig för.
 
 ### Alternativ 1: Förkonfigurerad data
 
