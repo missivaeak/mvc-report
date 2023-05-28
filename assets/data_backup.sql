@@ -12,6 +12,7 @@ INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version202305
 INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20230524134923','2023-05-24 13:55:36',2);
 INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20230524135720','2023-05-24 13:58:34',2);
 INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20230525064818','2023-05-25 06:48:31',3);
+INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20230527075640','2023-05-27 07:56:50',3);
 CREATE TABLE book (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR(255) NOT NULL, isbn VARCHAR(255) DEFAULT NULL, author VARCHAR(255) NOT NULL, image_url VARCHAR(255) DEFAULT NULL);
 INSERT INTO book VALUES(4,'Korea: A Very Short Introduction','9780198830771','Michael J. Seth','https://m.media-amazon.com/images/I/41f3yQct+VL._SX317_BO1,204,203,200_.jpg');
 INSERT INTO book VALUES(5,'The Gate to China: A New History of the People''s Republic and Hong Kong','9780197576250','Michael Sheridan','https://m.media-amazon.com/images/I/51AAE2lu9mL._SX424_BO1,204,203,200_.jpg');

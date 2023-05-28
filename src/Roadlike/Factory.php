@@ -35,6 +35,11 @@ class Factory
     public function buildDraft(array $templates, int $draftSize): array
     {
         $draft = [];
+
+        if (empty($templates)) {
+            return $draft;
+        }
+
         $keys = array_rand($templates, $draftSize);
 
         if (!(gettype($keys) === "array")) {
