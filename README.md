@@ -53,7 +53,7 @@ POST /api/proj/obstacle
 Skapar ett nytt hinder till spelet.
 
 * Parametrar i body
-  * name: Namn på hindred
+  * name: Namn på hindret
   * description: Beskrivning
   * cost_reward_time: Förändring i tid
   * cost_reward_health: Förändring i hälsa
