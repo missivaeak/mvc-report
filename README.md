@@ -98,7 +98,6 @@ DELETE /api/proj/template
 ```
 
 * id: Template id som det är angivet i GET
->>>>>>> refs/remotes/origin/main
 
 ## Ytterligare API
 
