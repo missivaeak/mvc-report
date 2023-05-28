@@ -31,7 +31,9 @@
 
     <h3>Utvärdering</h3>
 
-    <p>Jag gillar sqlite3 väldigt mycket, det känns behändigt att arbeta med filer och föredrar det när det är ett alternativ. Att använda doctrine med sqlite3 är också väldigt smidigt.</p>
+    <p>Jag gillar sqlite3 väldigt mycket, det känns behändigt att arbeta med filer och föredrar det när det är ett alternativ. Att använda doctrine med sqlite3 är också väldigt smidigt. Jag gissar att det finns vissa nackdelar med sqlite3 jämfört med andra databassystem, kanske i form av vilka features som finns tillgängliga. Men det har inte kommit upp för mig än, så jag är helt nöjd.</p>
 
-    <p>Som teknik är jag inte helt nöjd med ORM, det känns som ett krångligt sätt att arbeta med databaser. Särskilt då jag ändå gjorde en egen klass vid namn ORM som hade i uppgift att kalla på metoder i entities och repositories. Det känns som en teknik som försöker bygga bort en mellanhand, men jag känner mig ändå tvungen att göra den mellanhanden ändå. Dessutom så hade doctrines entities nullbara returns från tabeller med inte-nullbara fält, det orsakade mycket krångel att arbeta runt.</p>
+    <p>Som teknik är jag inte helt nöjd med ORM, det känns som ett krångligt sätt att arbeta med databaser. Särskilt då jag ändå gjorde en egen klass vid namn ORM som hade i uppgift att kalla på metoder i entities och repositories. Det känns som en teknik som försöker bygga bort en mellanhand, men jag känner mig ändå tvungen att göra den mellanhanden. Dessutom så hade doctrines entities nullbara returns från tabeller med inte-nullbara fält, det orsakade mycket onödigt krångel att arbeta runt.</p>
+
+    <p>En fördel som jag kan se, men som jag inte dragit så mycket nytta av själv var möjligheten att generera migrations. Det kan jag föreställa mig är ett bra sätt att jobba med att förändra databasen i en miljö i drift, då det är minst lika lätt som att skriva SQL-queries för <code>ALTER TABLE[...]</code> men att man får upp- och ner-migrations på köpet.</p>
 {% endblock %}
