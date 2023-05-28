@@ -50,7 +50,6 @@ INSERT INTO template VALUES(5,'Koriander');
 INSERT INTO template VALUES(8,'Jensina');
 INSERT INTO template VALUES(9,'Lavera');
 CREATE TABLE leaderboard (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, player VARCHAR(255) NOT NULL, challenger VARCHAR(255) NOT NULL, distance INTEGER NOT NULL);
-INSERT INTO leaderboard VALUES(1,'Adam','Jens',90);
 DELETE FROM sqlite_sequence;
 INSERT INTO sqlite_sequence VALUES('book',9);
 INSERT INTO sqlite_sequence VALUES('obstacle',31);
