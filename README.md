@@ -123,4 +123,8 @@ DELETE /api/proj/leaderboard
 Ta bort en spelare ur topplistan.
 * id: Spelar-id som det är angivet i GET
 
-`GET /api/proj/draft`
+```
+GET /api/proj/draft
+```
+
+Hämtar ett urval av tre slumpmässigt utvalda utmanare.
