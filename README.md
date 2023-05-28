@@ -26,6 +26,8 @@ Om du får fel med composer så kan du behöva ställa in följande global `APP_
 
 För att använda appen behövs en http-server som levererar `./public/` utåt. APIer och appen är relativt denna folder.
 
+För att läsa genererad dokumentation behövs också `./docs/`.
+
 ## Populera databasen
 
 För att spelet *RoadLike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
