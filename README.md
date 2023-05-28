@@ -58,7 +58,6 @@ Hämta alla obstacles. Obstacle är hinder i spelet som spelarens utmanare behö
 POST /api/proj/obstacle
 ```
 
-=======
 Skapar ett nytt hinder till spelet.
 
 * Parametrar i body
