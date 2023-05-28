@@ -139,7 +139,7 @@ final class FactoryTest extends TestCase
             ["name" => "trean"]
         ];
         $this->expectException('TypeError');
-        $draft = $factory->buildDraft($templates, 3);
+        $factory->buildDraft($templates, 3);
     }
 
     /**
