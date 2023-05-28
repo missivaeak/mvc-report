@@ -16,7 +16,7 @@ cd mvc-report/
 composer install --optimize-autoloader
 php bin/console doctrine:migration:migrate
 npm install
-npm build
+npm run build
 ```
 
 Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.
@@ -58,7 +58,6 @@ Hämta alla obstacles. Obstacle är hinder i spelet som spelarens utmanare behö
 POST /api/proj/obstacle
 ```
 
-=======
 Skapar ett nytt hinder till spelet.
 
 * Parametrar i body
