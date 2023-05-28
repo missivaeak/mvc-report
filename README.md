@@ -25,7 +25,7 @@ Om du får ett fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write
 
 ## Använda appen
 
-För att använda appen behövs en http-server som levererar ./public/ utåt. APIer och appen är relativt denna folder.
+För att använda appen behövs en http-server som levererar `./public/` utåt. APIer och appen är relativt denna folder.
 
 ## Populera databasen
 
