@@ -10,17 +10,18 @@
 
 För att installera repot på din enhet kan du följa dessa steg.
 
-```git clone git@github.com:missivaeak/mvc-report.git```
+```
+git clone git@github.com:missivaeak/mvc-report.git
+composer install --optimize-autoloader
+php bin/console cache:clear`
+npm install
+```
 
-`APP_ENV=dev`
+Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`
 
-`composer install --optimize-autoloader`
-
-`php bin/console cache:clear`
-
-`npm install`
-
-`php bin/console doctrine:query:sql "$(< assets/data_backup.sql)"`
+```
+php bin/console doctrine:query:sql "$(< assets/data_backup.sql)"
+```
 
 Välj en utmanare och bestäm vilken väg du ska ta i varje vägskäl. Nä
 
