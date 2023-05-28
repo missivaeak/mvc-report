@@ -12,13 +12,14 @@ För att bygga appen på din enhet kan du följa dessa steg.
 
 ```
 git clone git@github.com:missivaeak/mvc-report.git
+cd mvc-report/
 composer install --optimize-autoloader
-php bin/console cache:clear`
+php bin/console doctrine:migration:migrate
 npm install
 npm build
 ```
 
-Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.
+Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.t
 
 ## Populera databasen
 
