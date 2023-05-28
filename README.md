@@ -23,6 +23,10 @@ Om du får fel med composer så kan du behöva ställa in följande global `APP_
 
 Om du får ett fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write a readonly database* så kan du behöva korrigera rättigheter. Hur du bäst korrigerar rättigheter beror på din miljö, men följande kommando `chmod 677 var/data.db` bör fungera på samtliga system. OBS! Detta kan vara en säkerhetsrisk, så tänk dig för.
 
+## Använda appen
+
+För att använda appen behövs en http-server som levererar ./public/ utåt. APIer och appen är relativt denna folder.
+
 ## Populera databasen
 
 För att spelet *RoadLike* ska gå att spela behövs innehåll i databasen. Databasen kan populeras på två vis. Det första är att ladda in en förkonfigurerad backupfil, det andra att lägga till hinder och utmanare manuellt.
