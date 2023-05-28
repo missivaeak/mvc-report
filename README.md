@@ -21,7 +21,7 @@ npm build
 
 Om du får fel med composer så kan du behöva ställa in följande global `APP_ENV=dev`.t
 
-Om du får ett fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write a readonly database* så kan du behöva korrigera rättigheter. Hur du bäst korrigerar rättigheter beror på din miljö, men följande kommando `chmod 677 var/data.db` bör fungera på samtliga system. OBS! Detta kan vara en säkerhetsrisk, så tänk dig för.
+Om du får ett fel som lyder *SQLSTATE[HY000]: General error: 8 attempt to write a readonly database* så kan du behöva korrigera rättigheter. Hur du bäst korrigerar rättigheter beror på din miljö, men följande kommando `chmod 677 var/data.db` bör fungera på samtliga UNIX-system. OBS! Detta kan vara en säkerhetsrisk, så tänk dig för.
 
 ## Använda appen
 
