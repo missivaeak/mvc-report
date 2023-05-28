@@ -50,8 +50,8 @@ POST /api/proj/obstacle
 ```
 
 > ```
->test
-> ```
+test
+ ```
 
 `DELETE /api/proj/obstacle`
 
