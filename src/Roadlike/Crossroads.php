@@ -4,6 +4,9 @@ namespace App\Roadlike;
 
 use App\Roadlike\Road;
 
+/**
+ * Represents a crossroads where the player has to choose which way to go, contains multiple Roads
+ */
 class Crossroads
 {
     /** @var int Maximum paths in a crossroads */

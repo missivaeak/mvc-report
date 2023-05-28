@@ -6,6 +6,7 @@ use App\Roadlike\Factory;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\MockObject;
+use TypeError;
 
 /**
  * Testsuit for Factory
@@ -107,7 +108,7 @@ final class FactoryTest extends TestCase
     }
 
     /**
-     * Tests building a draft
+     * Tests building a draft with an improper array
      */
     public function testBuildDraft(): void
     {
@@ -124,6 +125,33 @@ final class FactoryTest extends TestCase
 
         $this->assertContainsOnly("App\Roadlike\Challenger", $draft);
         $this->assertCount(3, $draft);
+    }
+
+    /**
+     * Tests building a draft with a bad array
+     */
+    public function testBuildDraftBadArray(): void
+    {
+        $factory = new Factory();
+        $templates = [
+            ["nameoo" => "ettan"],
+            ["name" => null],
+            ["name" => "trean"]
+        ];
+        $this->expectException('TypeError');
+        $draft = $factory->buildDraft($templates, 3);
+    }
+
+    /**
+     * Tests building a draft with an empty array
+     */
+    public function testBuildDraftEmptyArray(): void
+    {
+        $factory = new Factory();
+        $templates = [];
+        $draft = $factory->buildDraft($templates, 3);
+
+        $this->assertEquals([], $draft);
     }
 
     /**

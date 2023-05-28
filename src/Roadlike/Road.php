@@ -4,6 +4,9 @@ namespace App\Roadlike;
 
 use App\Roadlike\Obstacle;
 
+/**
+ * Represents a road in the game, can both function as a journey (the road the player already travelled) or a path (an option in a crossroads). Can contain Obstacle objects.
+ */
 class Road
 {
     /** @var int Length of the road */

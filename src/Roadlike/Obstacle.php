@@ -3,8 +3,7 @@
 namespace App\Roadlike;
 
 /**
- * Represents an obstacle to be put into a Road object,
- * can be used with a Challenger object
+ * Represents an obstacle to be put into a Road object, can be used with a Challenger object
  */
 class Obstacle
 {

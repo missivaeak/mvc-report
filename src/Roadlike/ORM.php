@@ -8,6 +8,9 @@ use App\Entity\Leaderboard as LeaderboardEntity;
 
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+ * Manages ORM operations and arranges data to be used by the rest of the game
+ */
 class ORM
 {
     /** @var EntityManagerInterface The entity manager */

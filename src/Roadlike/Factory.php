@@ -7,8 +7,11 @@ use App\Roadlike\Manager;
 use App\Roadlike\Road;
 use App\Roadlike\Crossroads;
 
-use App\Controller\ProjApiController;
+use TypeError;
 
+/**
+ * Factory for Challengers, Crossroads, Roads and the draft
+ */
 class Factory
 {
     /**
@@ -29,7 +32,7 @@ class Factory
      * Builds a draft of challengers
      *
      * @param array<array{name?: ?string}> $templates Templates from the database
-     * @param int $draftSize Amount of challengers in the draft
+     * @param int<2, max> $draftSize Amount of challengers in the draft, must be 2 or higher
      * @return array<Challenger>
      */
     public function buildDraft(array $templates, int $draftSize): array
@@ -42,22 +45,19 @@ class Factory
 
         $keys = array_rand($templates, $draftSize);
 
-        if (!(gettype($keys) === "array")) {
-            return $draft;
-        }
-
-        foreach ($keys as $key) {
-            if (
-                !array_key_exists("name", $templates[$key])
-                || $templates[$key]["name"] === null
-            ) {
-                continue;
+        if (gettype($keys) === "array") {
+            foreach ($keys as $key) {
+                if (
+                    !array_key_exists("name", $templates[$key])
+                    || $templates[$key]["name"] === null
+                ) {
+                    throw new TypeError("Wrong array shape or contents from database.");
+                }
+                $name = $templates[$key]["name"];
+                $stats = $this->randomStatDistribution();
+                $draft[] = new Challenger($name, $stats);
             }
-            $name = $templates[$key]["name"];
-            $stats = $this->randomStatDistribution();
-            $draft[] = new Challenger($name, $stats);
         }
-
 
         return $draft;
     }
@@ -74,19 +74,17 @@ class Factory
         $obstacles = [];
         $keys = array_rand($obstaclesData, $amount);
 
-        if (!(gettype($keys) === "array")) {
-            return $obstacles;
-        }
+        if (gettype($keys) === "array") {
+            foreach ($keys as $key) {
+                $obstacle = $obstaclesData[$key];
+                $data = $this->arrangeObstacleData($obstacle);
+                $name = $data["name"];
+                $description = $data["description"];
+                $difficulties = $data["difficulties"];
+                $costRewards = $data["costRewards"];
 
-        foreach ($keys as $key) {
-            $obstacle = $obstaclesData[$key];
-            $data = $this->arrangeObstacleData($obstacle);
-            $name = $data["name"];
-            $description = $data["description"];
-            $difficulties = $data["difficulties"];
-            $costRewards = $data["costRewards"];
-
-            $obstacles[] = new Obstacle($name, $description, $difficulties, $costRewards);
+                $obstacles[] = new Obstacle($name, $description, $difficulties, $costRewards);
+            }
         }
 
         return $obstacles;
@@ -225,14 +223,13 @@ class Factory
      */
     private function nullKeyValue($key, $arr)
     {
-        if (!array_key_exists($key, $arr)) {
-            return null;
-        }
-        
-        if ($arr[$key] === null) {
-            return null;
-        }
-        
+        if (
+            array_key_exists($key, $arr)
+            && $arr[$key] !== null
+        ) {
         return intval($arr[$key]);
+        }
+
+        return null;
     }
 }

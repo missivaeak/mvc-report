@@ -2,6 +2,9 @@
 
 namespace App\Roadlike;
 
+/**
+ * Represents a challenger who can have stats, attempt obstacles and get tired, get hurt and learn
+ */
 class Challenger
 {
     /** @var int Base health for challengers */

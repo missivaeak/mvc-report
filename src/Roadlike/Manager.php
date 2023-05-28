@@ -6,6 +6,9 @@ use App\Roadlike\Challenger;
 use App\Roadlike\Road;
 use App\Roadlike\Crossroads;
 
+/**
+ * Manages the game. Stores challenger, journey, crossroads as well as keeps track of the time and manages certain tasks that involve these classes and properties
+ */
 class Manager
 {
     /** @var int Base time */
