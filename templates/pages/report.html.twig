@@ -93,5 +93,52 @@
         <p>Som stil så valde jag att utgå från idéen om en väg och valde jordnära färger och komplementfärg till det, samt typsnitt som var slavrigt skrivna och för tankarna till något man skriver i grus.</p>
 
         <p>I <a href="https://github.com/missivaeak/mvc-report">repot</a> finns README.md med instruktioner för hur man bygger sidan. Dessutom finns genererad <a href="../docs/api/">dokumentation</a>, statisk kodanalys via <a href="../docs/metrics">phpmetrics</a> och kodtäckning via <a href="../docs/coverage/Roadlike/index.html">phpunit</a>.</p>
+
+        <figure>
+            <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/quality-score.png?b=main" alt="Scrutinizer Code Quality"></a> <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/?branch=main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/coverage.png?b=main" alt="Code Coverage"></a> <a href="https://scrutinizer-ci.com/g/missivaeak/mvc-report/build-status/main"><img src="https://scrutinizer-ci.com/g/missivaeak/mvc-report/badges/build.png?b=main" alt="Build Status"></a>
+            <figcaption><i>Sidans scrutinizer badges.</i></figcaption>
+        </figure>
+
+        <p>Jag tyckte projektet gick bra. Jag hade en bra idé om strukturen och implementationen jag tänkte använda. Jag började med att göra klasserna för spelet, Obstacle, Road, Crossroads, Challenger och Manager, och samtidigt gjorde jag enhetstesterna. Jag tycker att det är ett väldigt bra sätt att jobba, enhetstester och enheter samtidigt. Jag hade nästan inga buggar i min kod när jag började sammanställa hemsidan.</p>
+
+        <h3>Krav 4</h3>
+
+        <p><a href="{{path('proj_api')}}">API</a> endpointsen gjorde jag samtidigt som databasen och använde dem som utvecklingsverktyg när jag gjorde allt som kommunicerade med databasen, samt att populera databasen. På det viset kunde jag jobba med databasen och ORM först och sen göra hemsidan separat, även detta hjälpte mycket med att minska antalet buggar jag stötte på senare.</p>
+
+        <p>Jag har länkat till GET routes, POST och DELETE routes når man via postman eller motsvarande tjänst.</p>
+
+        <h3>Krav 5</h3>
+
+        <p>Sidan använder SQLite som databas. Doctrines sätt att lägga till tabeller fungerar helt okej. Jag fick ett fel som kändes som en bugg när jag skulle lägga till ett nytt fält i en tabell, så jag var tvungen att gå in i migration-filen och ändra så att SQL-uttrycket blev rätt och migrationen funkar. Dessutom hade jag mycket arbete att göra med att kontrollera för nullbara returns från Entities, något som kändes störande då fälten var <code>NOT NULL</code> i schemat. Jag övervägde att redigera i Entities, men det kändes som att det skulle vara mer arbete än att kontrollera för null, även om det också tog mycket tid.</p>
+
+        <p>Förutom dessa bekymmer gick det helt okej. Jag gjorde en ORM-klass som fick sköta allt med Entities och Repositories att göra. Det är väl det som Entities och Repositories ska göra, men detta kändes enklare för mig. Jag fick till ett bra flöde med APIer och backup genom en dumpad fil och ladda in med symfony's console.</p>
+
+        <h3>Krav 6</h3>
+
+        <p>Här vill jag lyfta fram några saker som jag valde att lägga extra fokus utöver grundkraven.</p>
+
+        <p>Först och främst vill jag lyfta fram sidans design, färgerna och typsnittet fungerar bra tillsammans och med syftet. Dessutom använde jag animationer och transitions till vissa saker för att få sidan att kännas mer interaktiv.</p>
+
+        <p>Det andra gäller projektets testbarhet. Jag använde dependency injection och pure functions såpass mycket att testningen var mycket enkel att genomföra och det märks i scrutinizers utvärdering av repot.</p>
+
+        <p>Som sista extragrej lyfter jag fram metoden och tillhörande privata metoder som beräknar hur ett obstacle attempt beräknas. Strukturen på metoderna blev väldigt tydlig och bra, samt beräkningarna använder sig av naturlig logaritm för att åstadkomma en utvecklingskurva som gör att förändringar minskar mer och mer.</p>
+
+        <h3>Allmänt</h3>
+
+        <p>Det var ett kul och rimligt projekt, tycker jag. Det blev sin beskärda del av problem förstås, men ändå rätt så få problem. Det känns trevligt att skriva kod i php, och symfony fungerar bra. Det var inget särskilt som tog extra lång tid utan att flöt på i jämnt tempo.</p>
+
+        <p>Det enda jag hade mycket problem med var problem som phpstans typ-förståelse flaggade för. Det berodde på nullbara värden. Jag fick lösa det med att kontrollera för null eller kontrollera för rätt typ, inga konstigheter, men det blir en del arbete när det gäller kedjor av data i flera metoder och genom databasen och requests, osv.</p>
+
+        <p>Det enda jag inte var helt nöjd med var att vi skulle jobba vidare med report-repot. Jag skulle vilja börja om från början med ett nytt repo.</p>
+
+        <h3>Avslutningsvis</h3>
+
+        <p>Jag ger kursen och handledning bra betyg. Det har varit väldigt lärorikt att börja skriva källkod i php, det har definitivt givit mig en uppskattning för att vissa programmeringsspråk är bättre/lättare att jobba med. Jag jämför med att skriva javascript-kod, som ibland känns krångligt.</p>
+
+        <p>Jag uppskattade också att vi hade ett lite längre kursmoment med en större uppgift i mitten, det gav möjlighet till en djupdykning innan projektet som jag tror gav rätt så mycket.</p>
+
+        <p>Jag ger kursen 9/10.</p>
+
+        <p>anoetasote</p>
     </section>
 {% endblock %}
